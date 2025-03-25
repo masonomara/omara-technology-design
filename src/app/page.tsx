@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
 
+// Supabase client
 const supabase = createClient(
   "https://kyewevtwtforyytzagxx.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZXdldnR3dGZvcnl5dHphZ3h4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NjM5NzcsImV4cCI6MjA1ODQzOTk3N30.nxpbqDbJWhUNpr-IdnbX07hX6nbvrjgKKCr4IFy-oD0"
@@ -16,8 +17,17 @@ export default function Home() {
   const [nickname, setNickname] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
+  const [warning, setWarning] = useState<string>("");
 
-  // Fetch the leaderboard when the game starts or after submission
+  // List of bad words
+  const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK",]; // Replace with actual bad words
+
+  // Function to check if the nickname contains a bad word
+  const containsBadWord = (nickname: string) => {
+    return badWords.some((word) => nickname.includes(word));
+  };
+
+  // Fetch leaderboard when game starts or after submission
   useEffect(() => {
     async function fetchLeaderboard() {
       const { data, error } = await supabase
@@ -35,7 +45,7 @@ export default function Home() {
           newLeaderboard = [...data, { nickname, score }];
         }
 
-        // Sort the leaderboard again after inserting the user's score
+        // Sort leaderboard again after inserting the user's score
         newLeaderboard.sort((a: any, b: any) => b.score - a.score);
 
         setLeaderboard(newLeaderboard);
@@ -43,7 +53,7 @@ export default function Home() {
     }
 
     fetchLeaderboard();
-  }, [score, nickname]); // Re-fetch whenever score or nickname changes
+  }, [score, nickname]);
 
   useEffect(() => {
     function positionEnemy() {
@@ -96,6 +106,17 @@ export default function Home() {
   async function submitScore() {
     if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
 
+    // If the nickname contains a bad word, show the warning, but allow submission on subsequent clicks
+    if (containsBadWord(nickname)) {
+      if (warning === "") {
+        setWarning("Your nickname contains a bad word. Please consider a different name.");
+        return;
+      }
+    } else {
+      setWarning(""); // Clear any previous warning
+    }
+
+    // Proceed to submit the score regardless of the bad word
     const { error } = await supabase.from("scores").insert([{ nickname, score: score * 1.0 }]);
 
     if (error) {
@@ -113,7 +134,9 @@ export default function Home() {
     setSubmitted(false);
     setNickname("");
     setLeaderboard([]);
+    setWarning(""); // Clear any previous warning
   }
+
 
   // Function to format the nickname when it's not fully entered
   const formatNickname = (nickname: string) => {
@@ -130,8 +153,9 @@ export default function Home() {
 
   return (
     <div>
-      <div className={styles.score}>Score: {score}</div>
+      <div className={styles.score}>{score} points</div>
       <div id="gameFrame" className={styles.gameFrame}>
+
         {currentEnemy < 10 ? (
           <div
             key={currentEnemy}
@@ -146,9 +170,8 @@ export default function Home() {
               <h2>Leaderboard</h2>
               <ol>
                 {leaderboard.map((entry, index) => (
-                  <li key={index}>
-                    {/* {index + 1}. {formatNickname(entry.nickname)} - {entry.score} */}
-                    {formatNickname(entry.nickname)} - {entry.score}
+                  <li key={index} className={styles.leaderboardEntry}>
+                    <div>{formatNickname(entry.nickname)}</div><div>{entry.score}</div>
                   </li>
                 ))}
               </ol>
@@ -162,14 +185,14 @@ export default function Home() {
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value.toUpperCase())}
                 />
-                <button onClick={submitScore}>Submit Score</button>
+                {warning && <div className={styles.warning}>{warning}</div>} {/* Show the warning */}
+                <button className={styles.button} onClick={submitScore}>{warning ? "Submit Anyway" : "Submit Score"}
+                </button>
               </>
             ) : (
               <p>Score submitted! 🎉</p>
             )}
             <button onClick={restartGame}>Restart</button>
-
-         
           </div>
         )}
       </div>
