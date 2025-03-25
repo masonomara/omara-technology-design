@@ -31,7 +31,7 @@ export default function Home() {
         let newLeaderboard = data;
 
         // Simulate adding the user's score into the leaderboard
-        if (nickname && score > 0) {
+        if (score > 0) {
           newLeaderboard = [...data, { nickname, score }];
         }
 
@@ -115,6 +115,19 @@ export default function Home() {
     setLeaderboard([]);
   }
 
+  // Function to format the nickname when it's not fully entered
+  const formatNickname = (nickname: string) => {
+    if (nickname.length === 0) {
+      return "_  ";
+    } else if (nickname.length === 1) {
+      return `${nickname}_ `;
+    } else if (nickname.length === 2) {
+      return `${nickname}_`;
+    } else {
+      return nickname;
+    }
+  };
+
   return (
     <div>
       <div className={styles.score}>Score: {score}</div>
@@ -129,6 +142,17 @@ export default function Home() {
         ) : (
           <div className={styles.gameOver}>
             <p>Game Over! 🎯 Final Score: {score}</p>
+            <div className={styles.leaderboard}>
+              <h2>Leaderboard</h2>
+              <ol>
+                {leaderboard.map((entry, index) => (
+                  <li key={index}>
+                    {/* {index + 1}. {formatNickname(entry.nickname)} - {entry.score} */}
+                    {formatNickname(entry.nickname)} - {entry.score}
+                  </li>
+                ))}
+              </ol>
+            </div>
             {!submitted ? (
               <>
                 <input
@@ -145,18 +169,7 @@ export default function Home() {
             )}
             <button onClick={restartGame}>Restart</button>
 
-            <div className={styles.leaderboard}>
-              <h2>Leaderboard</h2>
-              <ol>
-                {leaderboard.map((entry, index) => (
-                  <li key={index}>
-                    {/* {index + 1}. {entry.nickname} - {entry.score} */}
-                  {entry.nickname} - {entry.score}
-
-                  </li>
-                ))}
-              </ol>
-            </div>
+         
           </div>
         )}
       </div>
