@@ -9,7 +9,28 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZXdldnR3dGZvcnl5dHphZ3h4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NjM5NzcsImV4cCI6MjA1ODQzOTk3N30.nxpbqDbJWhUNpr-IdnbX07hX6nbvrjgKKCr4IFy-oD0"
 );
 
+document.addEventListener("DOMContentLoaded", () => {
+  const gameFrame = document.querySelector(".gameFrame");
+
+  gameFrame?.addEventListener("click", (event) => {
+    const bang = document.createElement("div");
+    bang.classList.add("bangMarker");
+
+    // Set position based on click
+    bang.style.left = `${event.clientX}px`;
+    bang.style.top = `${event.clientY}px`;
+
+    gameFrame.appendChild(bang);
+
+    // Remove the marker after a short duration
+    setTimeout(() => {
+      bang.remove();
+    }, 500);
+  });
+});
+
 export default function Home() {
+  const [bangs, setBangs] = useState<{ x: number; y: number; id: number }[]>([]);
   const [currentEnemy, setCurrentEnemy] = useState(0);
   const [score, setScore] = useState(0);
   const [spawnTime, setSpawnTime] = useState(0);
@@ -17,8 +38,35 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [warning, setWarning] = useState<string>("");
-  const [bangVisible, setBangVisible] = useState(false);
+  // const [bangVisible, setBangVisible] = useState(false);
   const [enemyHit, setEnemyHit] = useState(false);
+
+
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const gameFrame = document.getElementById("gameFrame");
+      if (!gameFrame) return;
+
+      const rect = gameFrame.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const bangId = Date.now();
+
+      setBangs((prev) => [...prev, { x, y, id: bangId }]);
+
+      // Remove the "bang" after 0.25s
+      setTimeout(() => {
+        setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
+      }, 250);
+    };
+
+    const gameFrame = document.getElementById("gameFrame");
+    gameFrame?.addEventListener("click", handleClick);
+
+    return () => gameFrame?.removeEventListener("click", handleClick);
+  }, []);
+
 
   // List of bad words
   const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK",]; // Replace with actual bad words
@@ -84,11 +132,11 @@ export default function Home() {
   }, [currentEnemy]);
 
   function iShoot(event: React.MouseEvent) {
-    setBangVisible(true);
+    // setBangVisible(true);
     setEnemyHit(true);
 
     setTimeout(() => {
-      setBangVisible(false);
+      // setBangVisible(false);
       setCurrentEnemy((prev) => prev + 1);
       setEnemyHit(false);
     }, 500);
@@ -172,29 +220,45 @@ export default function Home() {
     <div>
       <div className={styles.score}>{score} points</div>
       <div id="gameFrame" className={styles.gameFrame}>
+
         {currentEnemy < 10 ? (
           <>
-            {bangVisible && <div className={styles.bang}>BANG!</div>}
+            {/* {bangVisible && <div className={styles.bang}>BANG!</div>} */}
             <div
               key={currentEnemy}
               id={`enemy${currentEnemy}`}
               className={`${styles.enemy} ${enemyHit ? styles.enemyHit : ""}`}
               onClick={iShoot}
             ></div>
+            {bangs.map((bang) => (
+              <div
+                key={bang.id}
+                className={styles.bangMarker}
+                style={{ left: bang.x, top: bang.y }}
+              />
+            ))}
           </>
         ) : (
           <div className={styles.gameOver}>
             <p>Game Over! 🎯 Final Score: {score}</p>
             <div className={styles.leaderboard}>
               <h2>Leaderboard</h2>
+              <div className={styles.leaderboardHeader}>
+                <span>Rank</span>
+                <span>Name</span>
+                <span>Score</span>
+              </div>
               <ol>
                 {leaderboard.map((entry, index) => (
                   <li key={index} className={styles.leaderboardEntry}>
-                    <div>{formatNickname(entry.nickname)}</div><div>{entry.score}</div>
+                    <span>{index + 1}</span> {/* Rank */}
+                    <span>{formatNickname(entry.nickname)}</span> {/* Name */}
+                    <span>{entry.score}</span> {/* Score */}
                   </li>
                 ))}
               </ol>
             </div>
+
             {!submitted ? (
               <>
                 <input
@@ -204,17 +268,19 @@ export default function Home() {
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value.toUpperCase())}
                 />
-                {warning && <div className={styles.warning}>{warning}</div>} {/* Show the warning */}
-                <button className={styles.button} onClick={submitScore}>{warning ? "Submit Anyway" : "Submit Score"}
+                {warning && <div className={styles.warning}>{warning}</div>}
+                <button className={styles.button} onClick={submitScore}>
+                  {warning ? "Submit Anyway" : "Submit Score"}
                 </button>
               </>
             ) : (
               <p>Score submitted! 🎉</p>
             )}
+
             <button onClick={restartGame}>Restart</button>
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 }
