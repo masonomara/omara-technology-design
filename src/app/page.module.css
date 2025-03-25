@@ -48,7 +48,9 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
-
+.leaderboardList {
+  padding: 0px;
+}
 .leaderboardEntry {
   display: flex;
   justify-content: space-around;

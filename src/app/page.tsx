@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
 
 const supabase = createClient(
-  "https://kyewevtwtforyytzagxx.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZXdldnR3dGZvcnl5dHphZ3h4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NjM5NzcsImV4cCI6MjA1ODQzOTk3N30.nxpbqDbJWhUNpr-IdnbX07hX6nbvrjgKKCr4IFy-oD0"
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
+
+console.log('SUPABASE URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+console.log('SUPABASE ANON KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const gameFrame = document.querySelector(".gameFrame");
@@ -41,7 +45,26 @@ export default function Home() {
   // const [bangVisible, setBangVisible] = useState(false);
   const [enemyHit, setEnemyHit] = useState(false);
 
+  const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK"];
 
+  const containsBadWord = (nickname: string) =>
+    badWords.some((word) => nickname.includes(word));
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
+      if (error) {
+        console.error("Error fetching leaderboard:", error);
+      } else {
+        if (score > 0) {
+          data.push({ nickname, score });
+          data.sort((a, b) => b.score - a.score);
+        }
+        setLeaderboard(data);
+      }
+    };
+    fetchLeaderboard();
+  }, [score, nickname]);
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -68,129 +91,69 @@ export default function Home() {
   }, []);
 
 
-  // List of bad words
-  const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK",]; // Replace with actual bad words
-
-  // Function to check if the nickname contains a bad word
-  const containsBadWord = (nickname: string) => {
-    return badWords.some((word) => nickname.includes(word));
-  };
-
-  // Fetch leaderboard when game starts or after submission
   useEffect(() => {
-    async function fetchLeaderboard() {
-      const { data, error } = await supabase
-        .from("scores")
-        .select("*")
-        .order("score", { ascending: false }); // Sort by score descending
-
-      if (error) {
-        console.error("Error fetching leaderboard:", error);
-      } else {
-        let newLeaderboard = data;
-
-        // Simulate adding the user's score into the leaderboard
-        if (score > 0) {
-          newLeaderboard = [...data, { nickname, score }];
-        }
-
-        // Sort leaderboard again after inserting the user's score
-        newLeaderboard.sort((a: any, b: any) => b.score - a.score);
-
-        setLeaderboard(newLeaderboard);
-      }
-    }
-
-    fetchLeaderboard();
-  }, [score, nickname]);
-
-  useEffect(() => {
-    function positionEnemy() {
+    const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
       const enemy = document.getElementById(`enemy${currentEnemy}`);
-
       if (!gameFrame || !enemy) return;
 
-      const frameWidth = gameFrame.clientWidth;
-      const frameHeight = gameFrame.clientHeight;
+      const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
       const enemySize = 40;
-
-      const randomLeft = Math.random() * (frameWidth - enemySize);
-      const randomTop = Math.random() * (frameHeight - enemySize);
-
       enemy.style.position = "absolute";
-      enemy.style.left = `${randomLeft}px`;
-      enemy.style.top = `${randomTop}px`;
-
+      enemy.style.left = `${Math.random() * (frameWidth - enemySize)}px`;
+      enemy.style.top = `${Math.random() * (frameHeight - enemySize)}px`;
       setSpawnTime(performance.now());
-    }
+    };
 
     if (currentEnemy < 10) positionEnemy();
-
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
   }, [currentEnemy]);
 
-  function iShoot(event: React.MouseEvent) {
-    // setBangVisible(true);
-    setEnemyHit(true);
+  const handleClick = useCallback((event: MouseEvent) => {
+    const gameFrame = document.getElementById("gameFrame");
+    if (!gameFrame) return;
 
+    const rect = gameFrame.getBoundingClientRect();
+    const bangId = Date.now();
+    setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId }]);
+    setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
+  }, []);
+
+  useEffect(() => {
+    const gameFrame = document.getElementById("gameFrame");
+    gameFrame?.addEventListener("click", handleClick);
+    return () => gameFrame?.removeEventListener("click", handleClick);
+  }, [handleClick]);
+
+  function iShoot(event: React.MouseEvent) {
+    setEnemyHit(true);
     setTimeout(() => {
-      // setBangVisible(false);
       setCurrentEnemy((prev) => prev + 1);
       setEnemyHit(false);
     }, 500);
 
-    const enemy = event.currentTarget;
+    const enemy = event.currentTarget as HTMLElement;
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
-
-    const randomAngle = Math.random() * 360;
-    const randomX = (Math.random() - 0.5) * 300;
-    const randomY = (Math.random() - 0.5) * 300;
-    enemy.style.transform = `rotate(${randomAngle}deg) translate(${randomX}px, ${randomY}px)`;
+    enemy.style.transform = `rotate(${Math.random() * 360}deg) translate(${(Math.random() - 0.5) * 300}px, ${(Math.random() - 0.5) * 300}px)`;
     enemy.style.opacity = "0";
 
-    const enemyRect = enemy.getBoundingClientRect();
-    const clickX = event.clientX;
-    const clickY = event.clientY;
-
-    const centerX = enemyRect.left + enemyRect.width / 2;
-    const centerY = enemyRect.top + enemyRect.height / 2;
-
-    const maxDistance = Math.sqrt((enemyRect.width / 2) ** 2 + (enemyRect.height / 2) ** 2);
-    const clickDistance = Math.sqrt((clickX - centerX) ** 2 + (clickY - centerY) ** 2);
-    const accuracyScore = ((maxDistance - clickDistance) / maxDistance) * 50;
-
     const reactionTime = performance.now() - spawnTime;
-    const maxReactionTime = 2000;
-    const speedScore = Math.max(0, (1 - reactionTime / maxReactionTime) * 50);
-
+    const accuracyScore = 50;
+    const speedScore = Math.max(0, (1 - reactionTime / 2000) * 50);
     setScore((prev) => prev + Math.round(accuracyScore + speedScore));
   }
 
   async function submitScore() {
     if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
-
-    // If the nickname contains a bad word, show the warning, but allow submission on subsequent clicks
-    if (containsBadWord(nickname)) {
-      if (warning === "") {
-        setWarning("Your nickname contains a bad word. Please consider a different name.");
-        return;
-      }
-    } else {
-      setWarning(""); // Clear any previous warning
+    if (containsBadWord(nickname) && !warning) {
+      setWarning("Your nickname contains a bad word. Please consider a different name.");
+      return;
     }
-
-    // Proceed to submit the score regardless of the bad word
-    const { error } = await supabase.from("scores").insert([{ nickname, score: score * 1.0 }]);
-
-    if (error) {
-      console.error("Supabase Error:", error);
-      alert("Error submitting score: " + error.message);
-    } else {
-      console.log("Score submitted successfully!");
-      setSubmitted(true);
-    }
+    setWarning("");
+    const { error } = await supabase.from("scores").insert([{ nickname, score }]);
+    if (error) alert("Error submitting score: " + error.message);
+    else setSubmitted(true);
   }
 
   function restartGame() {
@@ -199,7 +162,7 @@ export default function Home() {
     setSubmitted(false);
     setNickname("");
     setLeaderboard([]);
-    setWarning(""); // Clear any previous warning
+    setWarning("");
   }
 
 
@@ -248,7 +211,7 @@ export default function Home() {
                 <span>Name</span>
                 <span>Score</span>
               </div>
-              <ol>
+              <ol className={styles.leaderboardList}>
                 {leaderboard.map((entry, index) => (
                   <li key={index} className={styles.leaderboardEntry}>
                     <span>{index + 1}</span> {/* Rank */}
