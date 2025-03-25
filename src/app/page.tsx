@@ -15,6 +15,35 @@ export default function Home() {
   const [spawnTime, setSpawnTime] = useState(0);
   const [nickname, setNickname] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [leaderboard, setLeaderboard] = useState<any[]>([]);
+
+  // Fetch the leaderboard when the game starts or after submission
+  useEffect(() => {
+    async function fetchLeaderboard() {
+      const { data, error } = await supabase
+        .from("scores")
+        .select("*")
+        .order("score", { ascending: false }); // Sort by score descending
+
+      if (error) {
+        console.error("Error fetching leaderboard:", error);
+      } else {
+        let newLeaderboard = data;
+
+        // Simulate adding the user's score into the leaderboard
+        if (nickname && score > 0) {
+          newLeaderboard = [...data, { nickname, score }];
+        }
+
+        // Sort the leaderboard again after inserting the user's score
+        newLeaderboard.sort((a: any, b: any) => b.score - a.score);
+
+        setLeaderboard(newLeaderboard);
+      }
+    }
+
+    fetchLeaderboard();
+  }, [score, nickname]); // Re-fetch whenever score or nickname changes
 
   useEffect(() => {
     function positionEnemy() {
@@ -66,23 +95,24 @@ export default function Home() {
 
   async function submitScore() {
     if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
-  
+
     const { error } = await supabase.from("scores").insert([{ nickname, score: score * 1.0 }]);
-    
+
     if (error) {
       console.error("Supabase Error:", error);
       alert("Error submitting score: " + error.message);
     } else {
+      console.log("Score submitted successfully!");
       setSubmitted(true);
     }
   }
-  
 
   function restartGame() {
     setCurrentEnemy(0);
     setScore(0);
     setSubmitted(false);
     setNickname("");
+    setLeaderboard([]);
   }
 
   return (
@@ -114,6 +144,19 @@ export default function Home() {
               <p>Score submitted! 🎉</p>
             )}
             <button onClick={restartGame}>Restart</button>
+
+            <div className={styles.leaderboard}>
+              <h2>Leaderboard</h2>
+              <ol>
+                {leaderboard.map((entry, index) => (
+                  <li key={index}>
+                    {/* {index + 1}. {entry.nickname} - {entry.score} */}
+                  {entry.nickname} - {entry.score}
+
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         )}
       </div>
