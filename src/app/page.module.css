@@ -1,0 +1,47 @@
+.gameFrame {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.enemy {
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border-radius: 10000px;
+}
+.deadEnemy {
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  border-radius: 10000px;
+  pointer-events: none;
+  opacity: 0
+}
+.gameOver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score {
+  font-size: 32px;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+}
+.leaderboardEntry {
+  border-bottom: 1.5px solid red;
+  color: red;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

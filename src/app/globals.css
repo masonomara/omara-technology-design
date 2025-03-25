@@ -1,0 +1,16 @@
+#gameFrame {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid blue;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.button {
+  font-size: 18px !important;
+}
+
+* {
+  font-family: "--font-inter";
+}
