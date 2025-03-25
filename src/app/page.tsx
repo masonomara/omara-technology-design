@@ -9,8 +9,6 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-console.log('SUPABASE URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
-console.log('SUPABASE ANON KEY:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -139,9 +137,21 @@ export default function Home() {
     enemy.style.opacity = "0";
 
     const reactionTime = performance.now() - spawnTime;
-    const accuracyScore = 50;
+    const enemyRect = enemy.getBoundingClientRect();
+    const enemyCenterX = enemyRect.left + enemyRect.width / 2;
+    const enemyCenterY = enemyRect.top + enemyRect.height / 2;
+    const distance = Math.sqrt(
+      Math.pow(event.clientX - enemyCenterX, 2) + Math.pow(event.clientY - enemyCenterY, 2)
+    );
+    const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
+    const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 50);
+    console.log("Accuracy Score:", accuracyScore)
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 50);
-    setScore((prev) => prev + Math.round(accuracyScore + speedScore));
+    console.log("Speed Score:", speedScore)
+
+
+    setScore((prev) => prev + (Math.round((accuracyScore + speedScore)) * 10));
+
   }
 
   async function submitScore() {
@@ -213,10 +223,13 @@ export default function Home() {
               </div>
               <ol className={styles.leaderboardList}>
                 {leaderboard.map((entry, index) => (
-                  <li key={index} className={styles.leaderboardEntry}>
-                    <span>{index + 1}</span> {/* Rank */}
-                    <span>{formatNickname(entry.nickname)}</span> {/* Name */}
-                    <span>{entry.score}</span> {/* Score */}
+                  <li
+                    key={index}
+                    className={`${styles.leaderboardEntry} ${nickname === entry.nickname ? styles.editing : ""}`}
+                  >
+                    <div className={styles.leaderboardRank}>{index + 1}</div>
+                    <div className={styles.leaderboardName}>{formatNickname(entry.nickname)}</div>
+                    <div className={styles.leaderboardScore}>{entry.score}</div>
                   </li>
                 ))}
               </ol>
