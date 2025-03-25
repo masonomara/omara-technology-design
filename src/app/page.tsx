@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
 
-// Supabase client
 const supabase = createClient(
   "https://kyewevtwtforyytzagxx.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZXdldnR3dGZvcnl5dHphZ3h4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NjM5NzcsImV4cCI6MjA1ODQzOTk3N30.nxpbqDbJWhUNpr-IdnbX07hX6nbvrjgKKCr4IFy-oD0"
@@ -18,6 +17,8 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [warning, setWarning] = useState<string>("");
+  const [bangVisible, setBangVisible] = useState(false);
+  const [enemyHit, setEnemyHit] = useState(false);
 
   // List of bad words
   const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK",]; // Replace with actual bad words
@@ -64,7 +65,7 @@ export default function Home() {
 
       const frameWidth = gameFrame.clientWidth;
       const frameHeight = gameFrame.clientHeight;
-      const enemySize = 40; // Enemy width/height
+      const enemySize = 40;
 
       const randomLeft = Math.random() * (frameWidth - enemySize);
       const randomTop = Math.random() * (frameHeight - enemySize);
@@ -83,7 +84,24 @@ export default function Home() {
   }, [currentEnemy]);
 
   function iShoot(event: React.MouseEvent) {
-    const enemy = event.currentTarget as HTMLElement;
+    setBangVisible(true);
+    setEnemyHit(true);
+
+    setTimeout(() => {
+      setBangVisible(false);
+      setCurrentEnemy((prev) => prev + 1);
+      setEnemyHit(false);
+    }, 500);
+
+    const enemy = event.currentTarget;
+    enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
+
+    const randomAngle = Math.random() * 360;
+    const randomX = (Math.random() - 0.5) * 300;
+    const randomY = (Math.random() - 0.5) * 300;
+    enemy.style.transform = `rotate(${randomAngle}deg) translate(${randomX}px, ${randomY}px)`;
+    enemy.style.opacity = "0";
+
     const enemyRect = enemy.getBoundingClientRect();
     const clickX = event.clientX;
     const clickY = event.clientY;
@@ -100,7 +118,6 @@ export default function Home() {
     const speedScore = Math.max(0, (1 - reactionTime / maxReactionTime) * 50);
 
     setScore((prev) => prev + Math.round(accuracyScore + speedScore));
-    setCurrentEnemy((prev) => prev + 1);
   }
 
   async function submitScore() {
@@ -155,14 +172,16 @@ export default function Home() {
     <div>
       <div className={styles.score}>{score} points</div>
       <div id="gameFrame" className={styles.gameFrame}>
-
         {currentEnemy < 10 ? (
-          <div
-            key={currentEnemy}
-            id={`enemy${currentEnemy}`}
-            className={styles.enemy}
-            onClick={iShoot}
-          ></div>
+          <>
+            {bangVisible && <div className={styles.bang}>BANG!</div>}
+            <div
+              key={currentEnemy}
+              id={`enemy${currentEnemy}`}
+              className={`${styles.enemy} ${enemyHit ? styles.enemyHit : ""}`}
+              onClick={iShoot}
+            ></div>
+          </>
         ) : (
           <div className={styles.gameOver}>
             <p>Game Over! 🎯 Final Score: {score}</p>
