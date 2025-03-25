@@ -1,12 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
+
+const supabase = createClient(
+  "https://kyewevtwtforyytzagxx.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5ZXdldnR3dGZvcnl5dHphZ3h4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NjM5NzcsImV4cCI6MjA1ODQzOTk3N30.nxpbqDbJWhUNpr-IdnbX07hX6nbvrjgKKCr4IFy-oD0"
+);
 
 export default function Home() {
   const [currentEnemy, setCurrentEnemy] = useState(0);
   const [score, setScore] = useState(0);
   const [spawnTime, setSpawnTime] = useState(0);
+  const [nickname, setNickname] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     function positionEnemy() {
@@ -26,7 +34,6 @@ export default function Home() {
       enemy.style.left = `${randomLeft}px`;
       enemy.style.top = `${randomTop}px`;
 
-      // Store spawn time to calculate reaction time later
       setSpawnTime(performance.now());
     }
 
@@ -45,21 +52,37 @@ export default function Home() {
     const centerX = enemyRect.left + enemyRect.width / 2;
     const centerY = enemyRect.top + enemyRect.height / 2;
 
-    // Calculate click accuracy (distance from center)
     const maxDistance = Math.sqrt((enemyRect.width / 2) ** 2 + (enemyRect.height / 2) ** 2);
     const clickDistance = Math.sqrt((clickX - centerX) ** 2 + (clickY - centerY) ** 2);
     const accuracyScore = ((maxDistance - clickDistance) / maxDistance) * 50;
 
-    // Calculate reaction speed
     const reactionTime = performance.now() - spawnTime;
-    const maxReactionTime = 2000; // 2 seconds for full score
+    const maxReactionTime = 2000;
     const speedScore = Math.max(0, (1 - reactionTime / maxReactionTime) * 50);
 
-    // Update score
     setScore((prev) => prev + Math.round(accuracyScore + speedScore));
-
-    // Move to the next enemy
     setCurrentEnemy((prev) => prev + 1);
+  }
+
+  async function submitScore() {
+    if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
+  
+    const { error } = await supabase.from("scores").insert([{ nickname, score: score * 1.0 }]);
+    
+    if (error) {
+      console.error("Supabase Error:", error);
+      alert("Error submitting score: " + error.message);
+    } else {
+      setSubmitted(true);
+    }
+  }
+  
+
+  function restartGame() {
+    setCurrentEnemy(0);
+    setScore(0);
+    setSubmitted(false);
+    setNickname("");
   }
 
   return (
@@ -74,7 +97,24 @@ export default function Home() {
             onClick={iShoot}
           ></div>
         ) : (
-          <p className={styles.gameOver}>Game Over! 🎯 Final Score: {score}</p>
+          <div className={styles.gameOver}>
+            <p>Game Over! 🎯 Final Score: {score}</p>
+            {!submitted ? (
+              <>
+                <input
+                  type="text"
+                  maxLength={3}
+                  placeholder="Your Name"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value.toUpperCase())}
+                />
+                <button onClick={submitScore}>Submit Score</button>
+              </>
+            ) : (
+              <p>Score submitted! 🎉</p>
+            )}
+            <button onClick={restartGame}>Restart</button>
+          </div>
         )}
       </div>
     </div>
