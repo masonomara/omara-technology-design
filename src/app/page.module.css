@@ -10,18 +10,21 @@
   overflow: hidden;
 }
 .enemy {
-  height: 40px;
-  width: 40px;
-  background-color: #8b1910;
+  height: 64px;
+  width: 64px;
+  background-image: url("/monogram.png");
+  background-size: cover; /* Ensures the image fills the element */
+  background-position: center;
   border-radius: 10000px;
 }
 .deadEnemy {
-  height: 40px;
-  width: 40px;
-  background-color: #8b1910;
+  height: 64px;
+  width: 64px;
+  background-image: url("/monogram.png");
+  background-size: cover; /* Ensures the image fills the element */
+  background-position: center;
   border-radius: 10000px;
   pointer-events: none;
-  opacity: 0;
 }
 .gameOver {
   display: flex;
