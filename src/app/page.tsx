@@ -9,33 +9,10 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const gameFrame = document.querySelector(".gameFrame");
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  gameFrame?.addEventListener("click", (event: any) => {
-    const bang = document.createElement("div");
-    bang.classList.add("bangMarker");
-
-    // Set position based on click
-    bang.style.left = `${event.clientX}px`;
-    bang.style.top = `${event.clientY}px`;
-
-    gameFrame.appendChild(bang);
-
-    // Remove the marker after a short duration
-    setTimeout(() => {
-      bang.remove();
-    }, 500);
-  });
-});
-
 interface LeaderboardEntry {
   nickname: string;
   score: number;
 }
-
 
 export default function Home() {
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number }[]>([]);
@@ -46,14 +23,32 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
-  // const [bangVisible, setBangVisible] = useState(false);
   const [enemyHit, setEnemyHit] = useState(false);
-
 
   const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK"];
 
   const containsBadWord = (nickname: string) =>
     badWords.some((word) => nickname.includes(word));
+
+  // This effect is for DOM manipulation related to the "bang" markers
+  useEffect(() => {
+    const gameFrame = document.getElementById("gameFrame");
+    const handleClick = (event: Event) => {
+      const mouseEvent = event as MouseEvent; // Type assertion
+      const gameFrame = document.getElementById("gameFrame");
+      if (!gameFrame) return;
+
+      const rect = gameFrame.getBoundingClientRect();
+      const bangId = Date.now();
+      setBangs((prev) => [...prev, { x: mouseEvent.clientX - rect.left, y: mouseEvent.clientY - rect.top, id: bangId }]);
+      setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
+    };
+
+    gameFrame?.addEventListener("click", handleClick);
+
+    return () => gameFrame?.removeEventListener("click", handleClick);
+  }, []);
+
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -94,7 +89,6 @@ export default function Home() {
 
     return () => gameFrame?.removeEventListener("click", handleClick);
   }, []);
-
 
   useEffect(() => {
     const positionEnemy = () => {
@@ -137,12 +131,12 @@ export default function Home() {
     setTimeout(() => {
       setEnemyHit(false);
     }, 500);
-  
+
     const enemy = event.currentTarget as HTMLElement;
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
     enemy.style.transform = `rotate(${Math.random() * 360}deg) scale(.5) translate(${(Math.random() - 0.5) * 300}px, ${(Math.random() - 0.5) * 300}px)`;
     enemy.style.opacity = "0";
-  
+
     const reactionTime = performance.now() - spawnTime;
     const enemyRect = enemy.getBoundingClientRect();
     const enemyCenterX = enemyRect.left + enemyRect.width / 2;
@@ -155,7 +149,7 @@ export default function Home() {
     console.log("Accuracy Score:", accuracyScore)
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 50);
     console.log("Speed Score:", speedScore)
-  
+
     setScore((prev) => prev + (Math.round((accuracyScore + speedScore)) * 10));
   }
 
@@ -180,8 +174,6 @@ export default function Home() {
     setWarning("");
   }
 
-
-  // Function to format the nickname when it's not fully entered
   const formatNickname = (nickname: string) => {
     if (nickname.length === 0) {
       return "_  ";
@@ -198,10 +190,8 @@ export default function Home() {
     <div>
       <div className={styles.score}>{score} points</div>
       <div id="gameFrame" className={styles.gameFrame}>
-
         {currentEnemy < 9 ? (
           <>
-            {/* {bangVisible && <div className={styles.bang}>BANG!</div>} */}
             <div
               key={currentEnemy}
               id={`enemy${currentEnemy}`}
@@ -262,6 +252,6 @@ export default function Home() {
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 }
