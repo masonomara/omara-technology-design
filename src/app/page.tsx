@@ -13,7 +13,8 @@ const supabase = createClient(
 document.addEventListener("DOMContentLoaded", () => {
   const gameFrame = document.querySelector(".gameFrame");
 
-  gameFrame?.addEventListener("click", (event:any) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  gameFrame?.addEventListener("click", (event: any) => {
     const bang = document.createElement("div");
     bang.classList.add("bangMarker");
 
@@ -30,6 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+interface LeaderboardEntry {
+  nickname: string;
+  score: number;
+}
+
+
 export default function Home() {
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number }[]>([]);
   const [currentEnemy, setCurrentEnemy] = useState(0);
@@ -37,7 +44,7 @@ export default function Home() {
   const [spawnTime, setSpawnTime] = useState(0);
   const [nickname, setNickname] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [leaderboard, setLeaderboard] = useState<any[]>([]);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
   // const [bangVisible, setBangVisible] = useState(false);
   const [enemyHit, setEnemyHit] = useState(false);
