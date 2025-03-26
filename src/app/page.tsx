@@ -103,7 +103,7 @@ export default function Home() {
       setSpawnTime(performance.now());
     };
 
-    if (currentEnemy < 10) positionEnemy();
+    if (currentEnemy < 9) positionEnemy();
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
   }, [currentEnemy]);
@@ -194,7 +194,7 @@ export default function Home() {
       <div className={styles.score}>{score} points</div>
       <div id="gameFrame" className={styles.gameFrame}>
 
-        {currentEnemy < 10 ? (
+        {currentEnemy < 9 ? (
           <>
             {/* {bangVisible && <div className={styles.bang}>BANG!</div>} */}
             <div

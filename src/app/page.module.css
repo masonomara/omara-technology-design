@@ -12,13 +12,13 @@
 .enemy {
   height: 40px;
   width: 40px;
-  background-color: black;
+  background-color: #8b1910;
   border-radius: 10000px;
 }
 .deadEnemy {
   height: 40px;
   width: 40px;
-  background-color: red;
+  background-color: #8b1910;
   border-radius: 10000px;
   pointer-events: none;
   opacity: 0;
@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: calc(100% - 32px);
 }
 .score {
   font-size: 32px;
@@ -40,6 +41,8 @@
 .leaderboard {
   text-align: center;
   margin-top: 20px;
+  color: #8b1910;
+  width: 100%;
 }
 
 .leaderboardHeader {
@@ -50,12 +53,33 @@
 }
 .leaderboardList {
   padding: 0px;
+  max-height: 50vh;
+  overflow-y: scroll;
+  border: 1px solid #8b1910;
+  padding: 0px 10px;
 }
 .leaderboardEntry {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr;
+  justify-content: flex-start;
   padding: 5px 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #8b1910;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  width: 100%;
+}
+.leaderboardRank {
+  text-align: left;
+}
+.leaderboardName {
+  text-align: left;
+}
+.leaderboardScore {
+  text-align: center;
+}
+.editing {
+  background-color: #8b191022;
 }
 
 .bangMarker {
