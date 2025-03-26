@@ -10,11 +10,10 @@ const supabase = createClient(
 );
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const gameFrame = document.querySelector(".gameFrame");
 
-  gameFrame?.addEventListener("click", (event) => {
+  gameFrame?.addEventListener("click", (event:any) => {
     const bang = document.createElement("div");
     bang.classList.add("bangMarker");
 
@@ -42,6 +41,7 @@ export default function Home() {
   const [warning, setWarning] = useState<string>("");
   // const [bangVisible, setBangVisible] = useState(false);
   const [enemyHit, setEnemyHit] = useState(false);
+
 
   const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK"];
 
@@ -126,16 +126,16 @@ export default function Home() {
 
   function iShoot(event: React.MouseEvent) {
     setEnemyHit(true);
+    setCurrentEnemy((prev) => prev + 1);
     setTimeout(() => {
-      setCurrentEnemy((prev) => prev + 1);
       setEnemyHit(false);
     }, 500);
-
+  
     const enemy = event.currentTarget as HTMLElement;
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
-    enemy.style.transform = `rotate(${Math.random() * 360}deg) translate(${(Math.random() - 0.5) * 300}px, ${(Math.random() - 0.5) * 300}px)`;
+    enemy.style.transform = `rotate(${Math.random() * 360}deg) scale(.5) translate(${(Math.random() - 0.5) * 300}px, ${(Math.random() - 0.5) * 300}px)`;
     enemy.style.opacity = "0";
-
+  
     const reactionTime = performance.now() - spawnTime;
     const enemyRect = enemy.getBoundingClientRect();
     const enemyCenterX = enemyRect.left + enemyRect.width / 2;
@@ -148,10 +148,8 @@ export default function Home() {
     console.log("Accuracy Score:", accuracyScore)
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 50);
     console.log("Speed Score:", speedScore)
-
-
+  
     setScore((prev) => prev + (Math.round((accuracyScore + speedScore)) * 10));
-
   }
 
   async function submitScore() {
