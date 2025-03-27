@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import Image from "next/image";
 import CursorFollower from "./components/CursorFollower";
 import './global.css'
 
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
 });
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#EDE1CC" }}>
       <head></head>
-      <body className={inter.className} style={{ margin: "0px", cursor: "none" }}>
+      <body className={archivo.className} style={{ margin: "0px", cursor: "none" }}>
         <CursorFollower /> {/* Add this component */}
         <header style={{ padding: "12px 24px" }}>
           <Image src="/monogram.png" width={52} height={60} alt="Logo" />

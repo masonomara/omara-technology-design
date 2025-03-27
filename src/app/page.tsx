@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -13,6 +14,8 @@ interface LeaderboardEntry {
   nickname: string;
   score: number;
 }
+
+const enemyImages = ["/can1.png", "/can2.png", "/can3.png"];
 
 export default function Home() {
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number }[]>([]);
@@ -33,19 +36,24 @@ export default function Home() {
   // This effect is for DOM manipulation related to the "bang" markers
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrame");
-    const handleClick = (event: Event) => {
-      const mouseEvent = event as MouseEvent; // Type assertion
-      const gameFrame = document.getElementById("gameFrame");
+    const handleClick = (event: MouseEvent) => {
       if (!gameFrame) return;
 
       const rect = gameFrame.getBoundingClientRect();
-      const bangId = Date.now();
-      setBangs((prev) => [...prev, { x: mouseEvent.clientX - rect.left, y: mouseEvent.clientY - rect.top, id: bangId }]);
-      setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
+      const bangId = Date.now() + Math.random(); // Ensures uniqueness
+      const rotation = Math.random() * 14 - 7; // Random rotation
+
+      setBangs((prev) => [
+        ...prev,
+        { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
+      ]);
+
+      setTimeout(() => {
+        setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
+      }, 250);
     };
 
     gameFrame?.addEventListener("click", handleClick);
-
     return () => gameFrame?.removeEventListener("click", handleClick);
   }, []);
 
@@ -74,11 +82,10 @@ export default function Home() {
       const rect = gameFrame.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      const bangId = Date.now();
+      const bangId = Date.now() * Math.random();
 
       setBangs((prev) => [...prev, { x, y, id: bangId }]);
 
-      // Remove the "bang" after 0.25s
       setTimeout(() => {
         setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
       }, 250);
@@ -97,10 +104,14 @@ export default function Home() {
       if (!gameFrame || !enemy) return;
 
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
-      const enemySize = 40;
       enemy.style.position = "absolute";
-      enemy.style.left = `${Math.random() * (frameWidth - enemySize)}px`;
-      enemy.style.top = `${Math.random() * (frameHeight - enemySize)}px`;
+      enemy.style.width = "70px";
+      enemy.style.height = "120px";
+      enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`;
+      enemy.style.backgroundSize = "cover";
+      enemy.style.backgroundPosition = "center";
+      enemy.style.left = `${Math.random() * (frameWidth - 70)}px`;
+      enemy.style.top = `${Math.random() * (frameHeight - 120)}px`;
       setSpawnTime(performance.now());
     };
 
@@ -127,14 +138,15 @@ export default function Home() {
 
   function iShoot(event: React.MouseEvent) {
     setEnemyHit(true);
-    setCurrentEnemy((prev) => prev + 1);
+
     setTimeout(() => {
       setEnemyHit(false);
+      setCurrentEnemy((prev) => prev + 1);
     }, 500);
 
     const enemy = event.currentTarget as HTMLElement;
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
-    enemy.style.transform = `rotate(${Math.random() * 360}deg) scale(.5) translate(${(Math.random() - 0.5) * 300}px, ${(Math.random() - 0.5) * 300}px)`;
+    enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
 
     const reactionTime = performance.now() - spawnTime;
@@ -146,11 +158,9 @@ export default function Home() {
     );
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 50);
-    console.log("Accuracy Score:", accuracyScore)
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 50);
-    console.log("Speed Score:", speedScore)
 
-    setScore((prev) => prev + (Math.round((accuracyScore + speedScore)) * 10));
+    setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
   async function submitScore() {
@@ -197,13 +207,20 @@ export default function Home() {
               id={`enemy${currentEnemy}`}
               className={`${styles.enemy} ${enemyHit ? styles.enemyHit : ""}`}
               onClick={iShoot}
-            ></div>
+            />
             {bangs.map((bang) => (
               <div
                 key={bang.id}
                 className={styles.bangMarker}
-                style={{ left: bang.x, top: bang.y }}
-              />
+                style={{
+                  left: bang.x - 60,
+                  top: bang.y - 60,
+                  transform: `rotate(${bang.rotation}deg)`,
+                  "--rotation": `${bang.rotation}deg` // For CSS animation
+                }}
+              >
+                <Image src={"/bang.png"} height={120} width={120} alt="bang" />
+              </div>
             ))}
           </>
         ) : (
