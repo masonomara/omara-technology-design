@@ -6,8 +6,13 @@
   align-items: center;
   justify-content: center;
   width: calc(100%);
-  height: calc(100vh);
+  height: calc(100vh - 71px);
   overflow: hidden;
+}
+@media screen and (max-width: 799px) {
+  .gameFrameWrapper {
+    height: calc(100vh - 65px);
+  }
 }
 .gameFrame {
   width: calc(100% - 96px);
@@ -22,14 +27,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1280px
+  max-width: 1800px;
 }
 .enemy {
   height: 120px;
   width: 70px;
   background-size: cover; /* Ensures the image fills the element */
   background-position: center;
-
 }
 .deadEnemy {
   height: 120px;
@@ -45,17 +49,33 @@
   justify-content: center;
   width: calc(100% - 32px);
 }
-.score {
-  font-size: 54px;
-  font-weight: 700;
+.scoreWrapper {
   bottom: 2.5vh;
   left: 2.5vw;
+  justify-content: center;
+  align-items: baseline;
   display: flex;
+  flex-direction: row;
   position: absolute;
+}
+.score {
+  /* title1 */
+  font-size: 74px;
   pointer-events: none;
   color: #8b1910;
-  font-variation-settings: "wdth" 62;
-
+  font-variation-settings: "wdth" 80, "wght" 600;
+  font-style: italic;
+  font-family: var(--font-radio);
+  letter-spacing: -0.03em;
+}
+.scoreDetails {
+  font-size: clamp(18px, 8vw, 25px);
+  pointer-events: none;
+  color: #8b1910;
+  font-weight: 800;
+  font-family: var(--font-overpass);
+  text-transform: uppercase;
+  font-style: italic;
 }
 .leaderboard {
   text-align: center;
@@ -136,6 +156,7 @@
   }
 }
 
-.bangMarker {
-
+#gameFrameWrapper img {
+  width: 100% !important;
+  height: 100% !important;
 }

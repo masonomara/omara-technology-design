@@ -29,8 +29,6 @@ export default function Home() {
   const [enemyHit, setEnemyHit] = useState(false);
   const [handImage, setHandImage] = useState("/handTriggerUp.png");
 
-
-
   // Inside the component:
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
@@ -161,23 +159,14 @@ export default function Home() {
     setWarning("");
   }
 
-  const formatNickname = (nickname: string) => {
-    if (nickname.length === 0) {
-      return "_  ";
-    } else if (nickname.length === 1) {
-      return `${nickname}_ `;
-    } else if (nickname.length === 2) {
-      return `${nickname}_`;
-    } else {
-      return nickname;
-    }
-  };
-
   return (
-    <div>
+    <div className={"pageContainer"}>
 
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
-        <div className={styles.score}>{score} points</div>
+        <div className={styles.scoreWrapper}>
+          <div className={styles.score}>{score}</div><div className={styles.scoreDetails}>&nbsp;points</div>
+        </div>
+
         <div
           style={{
             position: "absolute",
@@ -191,7 +180,6 @@ export default function Home() {
         >
           <Image
             src={handImage}
-
             alt="Hand Trigger"
             layout="intrinsic" // Keeps the aspect ratio
             width={500} // Placeholder value, can be any number
@@ -254,7 +242,6 @@ export default function Home() {
                 <>
                   <input
                     type="text"
-                    // maxLength={3}
                     placeholder="Your Name"
                     value={nickname}
                     onChange={(e) => setNickname(e.target.value.toUpperCase())}
