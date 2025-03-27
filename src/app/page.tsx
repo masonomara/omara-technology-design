@@ -18,7 +18,7 @@ interface LeaderboardEntry {
 const enemyImages = ["/can1.png", "/can2.png", "/can3.png"];
 
 export default function Home() {
-  const [bangs, setBangs] = useState<{ x: number; y: number; id: number }[]>([]);
+  const [bangs, setBangs] = useState<{ x: number; y: number; id: number; rotation: number }[]>([]);
   const [currentEnemy, setCurrentEnemy] = useState(0);
   const [score, setScore] = useState(0);
   const [spawnTime, setSpawnTime] = useState(0);
@@ -41,7 +41,7 @@ export default function Home() {
 
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random(); // Ensures uniqueness
-      const rotation = Math.random() * 14 - 7; // Random rotation
+      const rotation = Math.random() * 20 - 10; // Random rotation
 
       setBangs((prev) => [
         ...prev,
@@ -74,28 +74,28 @@ export default function Home() {
     fetchLeaderboard();
   }, [score, nickname]);
 
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      const gameFrame = document.getElementById("gameFrame");
-      if (!gameFrame) return;
+  // useEffect(() => {
+  //   const handleClick = (event: MouseEvent) => {
+  //     const gameFrame = document.getElementById("gameFrame");
+  //     if (!gameFrame) return;
 
-      const rect = gameFrame.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      const bangId = Date.now() * Math.random();
+  //     const rect = gameFrame.getBoundingClientRect();
+  //     const x = event.clientX - rect.left;
+  //     const y = event.clientY - rect.top;
+  //     const bangId = Date.now() * Math.random();
 
-      setBangs((prev) => [...prev, { x, y, id: bangId }]);
+  //     setBangs((prev) => [...prev, { x, y, id: bangId }]);
 
-      setTimeout(() => {
-        setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
-      }, 250);
-    };
+  //     setTimeout(() => {
+  //       setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
+  //     }, 250);
+  //   };
 
-    const gameFrame = document.getElementById("gameFrame");
-    gameFrame?.addEventListener("click", handleClick);
+  //   const gameFrame = document.getElementById("gameFrame");
+  //   gameFrame?.addEventListener("click", handleClick);
 
-    return () => gameFrame?.removeEventListener("click", handleClick);
-  }, []);
+  //   return () => gameFrame?.removeEventListener("click", handleClick);
+  // }, []);
 
   useEffect(() => {
     const positionEnemy = () => {
@@ -120,21 +120,21 @@ export default function Home() {
     return () => window.removeEventListener("resize", positionEnemy);
   }, [currentEnemy]);
 
-  const handleClick = useCallback((event: MouseEvent) => {
-    const gameFrame = document.getElementById("gameFrame");
-    if (!gameFrame) return;
+  // const handleClick = useCallback((event: MouseEvent) => {
+  //   const gameFrame = document.getElementById("gameFrame");
+  //   if (!gameFrame) return;
 
-    const rect = gameFrame.getBoundingClientRect();
-    const bangId = Date.now();
-    setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId }]);
-    setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
-  }, []);
+  //   const rect = gameFrame.getBoundingClientRect();
+  //   const bangId = Date.now();
+  //   setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId }]);
+  //   setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
+  // }, []);
 
-  useEffect(() => {
-    const gameFrame = document.getElementById("gameFrame");
-    gameFrame?.addEventListener("click", handleClick);
-    return () => gameFrame?.removeEventListener("click", handleClick);
-  }, [handleClick]);
+  // useEffect(() => {
+  //   const gameFrame = document.getElementById("gameFrame");
+  //   gameFrame?.addEventListener("click", handleClick);
+  //   return () => gameFrame?.removeEventListener("click", handleClick);
+  // }, [handleClick]);
 
   function iShoot(event: React.MouseEvent) {
     setEnemyHit(true);
@@ -164,7 +164,7 @@ export default function Home() {
   }
 
   async function submitScore() {
-    if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
+    // if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
     if (containsBadWord(nickname) && !warning) {
       setWarning("Your nickname contains a bad word. Please consider a different name.");
       return;
@@ -216,7 +216,7 @@ export default function Home() {
                   left: bang.x - 60,
                   top: bang.y - 60,
                   transform: `rotate(${bang.rotation}deg)`,
-                  "--rotation": `${bang.rotation}deg` // For CSS animation
+                  ["--rotation" as any]: `${bang.rotation}deg`
                 }}
               >
                 <Image src={"/bang.png"} height={120} width={120} alt="bang" />
@@ -251,7 +251,7 @@ export default function Home() {
               <>
                 <input
                   type="text"
-                  maxLength={3}
+                  // maxLength={3}
                   placeholder="Your Name"
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value.toUpperCase())}

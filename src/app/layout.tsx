@@ -8,6 +8,7 @@ import './global.css'
 const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
+  
 });
 
 export const metadata: Metadata = {
