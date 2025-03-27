@@ -1,6 +1,23 @@
-
-
 * {
   cursor: none !important;
 }
 
+.header {
+  border-bottom: 1px solid #8b1910;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 48px;
+}
+@media screen and (max-width: 989px) {
+  .header {
+    padding: 0px 16px;
+  }
+}
+
+.headerContent {
+  width: 100%;
+  max-width: 1280px;
+}

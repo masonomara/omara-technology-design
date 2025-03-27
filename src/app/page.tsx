@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
 import Image from "next/image";
@@ -27,6 +27,18 @@ export default function Home() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
   const [enemyHit, setEnemyHit] = useState(false);
+  const [handImage, setHandImage] = useState("/handTriggerUp.png");
+
+
+
+  // Inside the component:
+  const userScoreRef = useRef<HTMLLIElement | null>(null);
+
+  useEffect(() => {
+    if (currentEnemy >= 9 && userScoreRef.current) {
+      userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [currentEnemy]); // Runs only when the game ends and leaderboard appears
 
   const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK"];
 
@@ -35,7 +47,7 @@ export default function Home() {
 
   // This effect is for DOM manipulation related to the "bang" markers
   useEffect(() => {
-    const gameFrame = document.getElementById("gameFrame");
+    const gameFrame = document.getElementById("gameFrameWrapper");
     const handleClick = (event: MouseEvent) => {
       if (!gameFrame) return;
 
@@ -47,6 +59,10 @@ export default function Home() {
         ...prev,
         { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
       ]);
+      setHandImage("/handTriggerDown.png");
+      setTimeout(() => {
+        setHandImage("/handTriggerUp.png");
+      }, 250);
 
       setTimeout(() => {
         setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
@@ -74,29 +90,6 @@ export default function Home() {
     fetchLeaderboard();
   }, [score, nickname]);
 
-  // useEffect(() => {
-  //   const handleClick = (event: MouseEvent) => {
-  //     const gameFrame = document.getElementById("gameFrame");
-  //     if (!gameFrame) return;
-
-  //     const rect = gameFrame.getBoundingClientRect();
-  //     const x = event.clientX - rect.left;
-  //     const y = event.clientY - rect.top;
-  //     const bangId = Date.now() * Math.random();
-
-  //     setBangs((prev) => [...prev, { x, y, id: bangId }]);
-
-  //     setTimeout(() => {
-  //       setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
-  //     }, 250);
-  //   };
-
-  //   const gameFrame = document.getElementById("gameFrame");
-  //   gameFrame?.addEventListener("click", handleClick);
-
-  //   return () => gameFrame?.removeEventListener("click", handleClick);
-  // }, []);
-
   useEffect(() => {
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
@@ -119,22 +112,6 @@ export default function Home() {
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
   }, [currentEnemy]);
-
-  // const handleClick = useCallback((event: MouseEvent) => {
-  //   const gameFrame = document.getElementById("gameFrame");
-  //   if (!gameFrame) return;
-
-  //   const rect = gameFrame.getBoundingClientRect();
-  //   const bangId = Date.now();
-  //   setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId }]);
-  //   setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
-  // }, []);
-
-  // useEffect(() => {
-  //   const gameFrame = document.getElementById("gameFrame");
-  //   gameFrame?.addEventListener("click", handleClick);
-  //   return () => gameFrame?.removeEventListener("click", handleClick);
-  // }, [handleClick]);
 
   function iShoot(event: React.MouseEvent) {
     setEnemyHit(true);
@@ -198,76 +175,103 @@ export default function Home() {
 
   return (
     <div>
-      <div className={styles.score}>{score} points</div>
-      <div id="gameFrame" className={styles.gameFrame}>
-        {currentEnemy < 9 ? (
-          <>
-            <div
-              key={currentEnemy}
-              id={`enemy${currentEnemy}`}
-              className={`${styles.enemy} ${enemyHit ? styles.enemyHit : ""}`}
-              onClick={iShoot}
-            />
-            {bangs.map((bang) => (
+
+      <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
+        <div className={styles.score}>{score} points</div>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-5vh",
+            // right: "-7vw",
+            right: "-7vw",
+            width: "37vw", // Width is 37% of viewport height
+            height: "auto", // Height adjusts automatically
+            transition: "transform ease-in 200ms",
+          }}
+        >
+          <Image
+            src={handImage}
+
+            alt="Hand Trigger"
+            layout="intrinsic" // Keeps the aspect ratio
+            width={500} // Placeholder value, can be any number
+            height={500} // Placeholder value, will be overridden by intrinsic layout
+          />
+        </div>
+        <div id="gameFrame" className={styles.gameFrame} >
+          {currentEnemy < 9 ? (
+            <>
               <div
-                key={bang.id}
-                className={styles.bangMarker}
-                style={{
-                  left: bang.x - 60,
-                  top: bang.y - 60,
-                  transform: `rotate(${bang.rotation}deg)`,
-                  ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
-                }}
-              >
-                <Image src={"/bang.png"} height={120} width={120} alt="bang" />
+                key={currentEnemy}
+                id={`enemy${currentEnemy}`}
+                className={`${styles.enemy} ${enemyHit ? styles.enemyHit : ""}`}
+                onMouseDown={iShoot}
+              />
+              {bangs.map((bang) => (
+                <div
+                  key={bang.id}
+                  className={styles.bangMarker}
+                  style={{
+                    left: bang.x - 60,
+                    top: bang.y - 60,
+                    transform: `rotate(${bang.rotation}deg)`,
+                    ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
+                  }}
+                >
+                  <Image src={"/bang.png"} height={120} width={120} alt="bang" />
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className={styles.gameOver}>
+              <p>Game Over! 🎯 Final Score: {score}</p>
+              <div className={styles.leaderboard}>
+                <h2>Leaderboard</h2>
+                <div className={styles.leaderboardHeader}>
+                  <span>Rank</span>
+                  <span>Name</span>
+                  <span>Score</span>
+                </div>
+                <ol className={styles.leaderboardList}>
+                  {leaderboard.map((entry, index) => {
+                    const isUser = entry.nickname === nickname && entry.score === score;
+                    return (
+                      <li
+                        key={index}
+                        ref={isUser ? userScoreRef : null} // Attach ref only to the user's score
+                        className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
+                      >
+                        <div className={styles.leaderboardRank}>{index + 1}</div>
+                        <div className={styles.leaderboardName}>{entry.nickname}</div>
+                        <div className={styles.leaderboardScore}>{entry.score}</div>
+                      </li>
+                    );
+                  })}
+                </ol>
               </div>
-            ))}
-          </>
-        ) : (
-          <div className={styles.gameOver}>
-            <p>Game Over! 🎯 Final Score: {score}</p>
-            <div className={styles.leaderboard}>
-              <h2>Leaderboard</h2>
-              <div className={styles.leaderboardHeader}>
-                <span>Rank</span>
-                <span>Name</span>
-                <span>Score</span>
-              </div>
-              <ol className={styles.leaderboardList}>
-                {leaderboard.map((entry, index) => (
-                  <li
-                    key={index}
-                    className={`${styles.leaderboardEntry} ${nickname === entry.nickname ? styles.editing : ""}`}
-                  >
-                    <div className={styles.leaderboardRank}>{index + 1}</div>
-                    <div className={styles.leaderboardName}>{formatNickname(entry.nickname)}</div>
-                    <div className={styles.leaderboardScore}>{entry.score}</div>
-                  </li>
-                ))}
-              </ol>
+
+              {!submitted ? (
+                <>
+                  <input
+                    type="text"
+                    // maxLength={3}
+                    placeholder="Your Name"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value.toUpperCase())}
+                  />
+                  {warning && <div className={styles.warning}>{warning}</div>}
+                  <button className={styles.button} onClick={submitScore}>
+                    {warning ? "Submit Anyway" : "Submit Score"}
+                  </button>
+                </>
+              ) : (
+                <p>Score submitted! 🎉</p>
+              )}
+
+              <button onClick={restartGame}>Restart</button>
             </div>
-
-            {!submitted ? (
-              <>
-                <input
-                  type="text"
-                  // maxLength={3}
-                  placeholder="Your Name"
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value.toUpperCase())}
-                />
-                {warning && <div className={styles.warning}>{warning}</div>}
-                <button className={styles.button} onClick={submitScore}>
-                  {warning ? "Submit Anyway" : "Submit Score"}
-                </button>
-              </>
-            ) : (
-              <p>Score submitted! 🎉</p>
-            )}
-
-            <button onClick={restartGame}>Restart</button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,16 +1,28 @@
-.gameFrame {
-  width: calc(100% - 10vw);
-  height: calc(100vh - 96px - 5vh);
-  /* height: 100vh;
-  width: 100%; */
+.gameFrameWrapper {
   position: absolute;
   top: 0px;
   left: 0px;
-  padding: 96px 5vw 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: calc(100%);
+  height: calc(100vh);
   overflow: hidden;
+}
+.gameFrame {
+  width: calc(100% - 96px);
+  height: calc(100% - 80px - 120px);
+  /* height: 100vh;
+  width: 100%; */
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  padding: calc(80px + 60px) 48px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px
 }
 .enemy {
   height: 120px;
@@ -85,7 +97,7 @@
 .leaderboardScore {
   text-align: center;
 }
-.editing {
+.highlight {
   background-color: #8b191022;
 }
 

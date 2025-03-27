@@ -8,7 +8,7 @@ import './global.css'
 const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
-  
+
 });
 
 export const metadata: Metadata = {
@@ -27,8 +27,11 @@ export default function RootLayout({
       <head></head>
       <body className={archivo.className} style={{ margin: "0px", cursor: "none" }}>
         <CursorFollower /> {/* Add this component */}
-        <header style={{ padding: "12px 24px" }}>
+        <header className={"header"}>
+          <div className={"headerContent"}>
           <Image src="/monogram.png" width={52} height={60} alt="Logo" />
+
+          </div>
         </header>
         {children}
       </body>
