@@ -29,6 +29,8 @@ export default function Home() {
   const [warning, setWarning] = useState<string>("");
   const [enemyStates, setEnemyStates] = useState(Array(9).fill(false));
   const [handImage, setHandImage] = useState("/thumbsUp.svg");
+  const [gameAction, setGameAction] = useState(false);
+
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
@@ -60,9 +62,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
-    setSpawnTime(performance.now());
-  }, [currentEnemy]);
+    if (gameAction) {
+      setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
+      setSpawnTime(performance.now());
+    }
+  }, [currentEnemy, gameAction]);
 
   // fetches the leaderboard from supabase in order of the player's score
   useEffect(() => {
@@ -79,13 +83,16 @@ export default function Home() {
       }
     };
     fetchLeaderboard();
-  }, [score, nickname]);
+  }, [score]);
 
   // positions the enemies to shoot
   useEffect(() => {
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
       const enemy = document.getElementById(`enemy${currentEnemy}`);
+      if (enemy) {
+        enemy.classList.remove(styles.upcomingEnemy);
+      }
       const handWrapper = document.querySelector("." + styles.handWrapper);
       if (!gameFrame || !enemy || !handWrapper) return;
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
@@ -111,10 +118,11 @@ export default function Home() {
       enemy.style.top = `${enemyY}px`;
       setSpawnTime(performance.now());
     };
-    if (currentEnemy < 9) positionEnemy();
+
+    if (gameAction && currentEnemy < 9) positionEnemy();
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
-  }, [currentEnemy]);
+  }, [gameAction, currentEnemy]);
 
   // hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
   function iShoot(event: React.MouseEvent, index: number) {
@@ -124,14 +132,15 @@ export default function Home() {
     const enemy = event.currentTarget as HTMLElement;
     enemy.classList.add(styles.enemyHit);
 
-    // Delay the removal of the enemy by 500ms
     setTimeout(() => {
       enemy.classList.remove(styles.enemyHit);
       enemy.classList.add(styles.hidden);
     }, 500);
+
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
+
     const reactionTime = performance.now() - spawnTime;
     const enemyRect = enemy.getBoundingClientRect();
     const enemyCenterX = enemyRect.left + enemyRect.width / 2;
@@ -145,7 +154,6 @@ export default function Home() {
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
-  // checks if a user submitted a bad word, then allows them to submit their score
   async function submitScore() {
     if (containsBadWord(nickname) && !warning) {
       setWarning("Your nickname contains a bad word. Please consider a different name.");
@@ -157,7 +165,6 @@ export default function Home() {
     else setSubmitted(true);
   }
 
-  // allows the user to restart the game
   function restartGame() {
     setCurrentEnemy(0);
     setScore(0);
@@ -165,11 +172,32 @@ export default function Home() {
     setNickname("");
     setLeaderboard([]);
     setWarning("");
+    setBangs([]);
+    setHandImage("/thumbsUp.svg");
+    setGameAction(true);
+    setEnemyStates(Array(9).fill(false));
+    setEnemyStates((prev) => prev.map((_, index) => index === 0));
+    const allEnemies: NodeListOf<HTMLElement> = document.querySelectorAll(`.${styles.enemy}`);
+    allEnemies.forEach((enemy: HTMLElement) => {
+      enemy.style.transition = "";
+      enemy.style.transform = "";
+      enemy.style.opacity = "";
+      enemy.style.left = "";
+      enemy.style.top = "";
+      enemy.classList.remove(styles.enemyHit);
+      enemy.classList.remove(styles.hidden);
+      enemy.classList.remove(styles.active);
+      enemy.classList.add(styles.upcomingEnemy);
+    });
+  }
+
+  function startGame() {
+    setGameAction(true);
+    setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
 
   return (
     <div className={"pageContainer"}>
-
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
           <div className={styles.score}>{score}<span className={styles.scoreDetails}>points</span></div>
@@ -205,7 +233,7 @@ export default function Home() {
             <div
               key={index}
               id={`enemy${index}`}
-              className={`${styles.enemy} ${isActive ? styles.active : styles.hidden}`}
+              className={`${styles.enemy}`}
               onMouseDown={(e) => iShoot(e, index)}
               style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }}
             />
@@ -255,8 +283,10 @@ export default function Home() {
             )}
 
             <button onClick={restartGame}>Restart</button>
+            {!gameAction && (
+              <button className={styles.button} onClick={startGame}>Start Game</button> // Add Start Game button
+            )}
           </div>
-
         </div>
       </div>
     </div>

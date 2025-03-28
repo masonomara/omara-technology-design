@@ -220,7 +220,6 @@
   .handWrapper {
     right: none;
     left: 50%;
-
   }
   .hand {
     margin-left: 10%;
@@ -229,7 +228,6 @@
 }
 @media screen and (max-width: 599px) {
   .handWrapper {
-
     bottom: none;
     top: 60%;
   }
@@ -239,6 +237,10 @@
   }
 }
 
-.hidden {
+.hidden,
+.upcomingEnemy {
   display: none;
+}
+.active {
+  display: flex;
 }
