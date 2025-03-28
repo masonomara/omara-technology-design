@@ -132,8 +132,8 @@ export default function Home() {
       Math.pow(event.clientX - enemyCenterX, 2) + Math.pow(event.clientY - enemyCenterY, 2)
     );
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
-    const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 50);
-    const speedScore = Math.max(0, (1 - reactionTime / 2000) * 50);
+    const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
+    const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67);
 
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
@@ -164,7 +164,7 @@ export default function Home() {
 
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
-          <div className={styles.score}>{score}</div><div className={styles.scoreDetails}>&nbsp;points</div>
+          <div className={styles.score}>{score}</div><div className={styles.scoreDetails}>points</div>
         </div>
 
         <div
