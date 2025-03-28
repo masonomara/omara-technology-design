@@ -15,7 +15,7 @@ interface LeaderboardEntry {
   score: number;
 }
 
-const enemyImages = ["/can1.png", "/can2.png", "/can3.png"];
+const enemyImages = ["/can1.svg", "/can2.svg", "/can3.svg"]; // Changed PNG to SVG
 
 export default function Home() {
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number; rotation: number }[]>([]);
@@ -27,7 +27,7 @@ export default function Home() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
   const [enemyHit, setEnemyHit] = useState(false);
-  const [handImage, setHandImage] = useState("/handTriggerUp.png");
+  const [handImage, setHandImage] = useState("/handTriggerUp.svg"); // Changed PNG to SVG
 
   // Inside the component:
   const userScoreRef = useRef<HTMLLIElement | null>(null);
@@ -57,9 +57,9 @@ export default function Home() {
         ...prev,
         { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
       ]);
-      setHandImage("/handTriggerDown.png");
+      setHandImage("/handTriggerDown.svg"); // Changed PNG to SVG
       setTimeout(() => {
-        setHandImage("/handTriggerUp.png");
+        setHandImage("/handTriggerUp.svg"); // Changed PNG to SVG
       }, 250);
 
       setTimeout(() => {
@@ -98,7 +98,7 @@ export default function Home() {
       enemy.style.position = "absolute";
       enemy.style.width = "70px";
       enemy.style.height = "120px";
-      enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`;
+      enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`; // Using SVG
       enemy.style.backgroundSize = "cover";
       enemy.style.backgroundPosition = "center";
       enemy.style.left = `${Math.random() * (frameWidth - 70)}px`;
@@ -184,6 +184,7 @@ export default function Home() {
             layout="intrinsic"
             width={500}
             height={500}
+            style={{ width: "20vw", height: "auto", objectFit: "contain" }}
           />
         </div>
         <div id="gameFrame" className={styles.gameFrame} >
@@ -206,7 +207,7 @@ export default function Home() {
                     ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
                   }}
                 >
-                  <Image src={"/bang.png"} height={120} width={120} alt="bang" />
+                  <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
                 </div>
               ))}
             </>
