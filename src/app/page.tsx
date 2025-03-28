@@ -27,7 +27,7 @@ export default function Home() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
   const [enemyHit, setEnemyHit] = useState(false);
-  const [handImage, setHandImage] = useState("/handTriggerUp.svg"); // Changed PNG to SVG
+  const [handImage, setHandImage] = useState("/thumbsUp.svg"); // Changed PNG to SVG
 
   // Inside the component:
   const userScoreRef = useRef<HTMLLIElement | null>(null);
@@ -57,9 +57,9 @@ export default function Home() {
         ...prev,
         { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
       ]);
-      setHandImage("/handDown.svg"); // Changed PNG to SVG
+      setHandImage("/thumbsDown.svg"); // Changed PNG to SVG
       setTimeout(() => {
-        setHandImage("/handUp.svg"); // Changed PNG to SVG
+        setHandImage("/thumbsUp.svg"); // Changed PNG to SVG
       }, 250);
 
       setTimeout(() => {
@@ -96,13 +96,13 @@ export default function Home() {
 
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
       enemy.style.position = "absolute";
-      enemy.style.width = "84px";
-      enemy.style.height = "150px";
+      enemy.style.width = "clamp(51px, 9.7vw, 67px)";
+      enemy.style.height = "clamp(91px, 17.3vw, 120px)";
       enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`; // Using SVG
-      enemy.style.backgroundSize = "cover";
+      enemy.style.backgroundSize = "contain";
       enemy.style.backgroundPosition = "center";
-      enemy.style.left = `${Math.random() * (frameWidth - 84)}px`;
-      enemy.style.top = `${Math.random() * (frameHeight - 150)}px`;
+      enemy.style.left = `${Math.random() * (frameWidth - 67)}px`;
+      enemy.style.top = `${Math.random() * (frameHeight - 120)}px`;
       setSpawnTime(performance.now());
     };
 
@@ -169,14 +169,8 @@ export default function Home() {
         </div>
 
         <div
-          style={{
-            position: "absolute",
-            bottom: "-5vh",
-            right: "-7vw",
-            width: "37vw",
-            height: "auto",
-            transition: "transform ease-in 200ms",
-          }}
+          className={styles.handWrapper}
+
         >
           <Image
             src={handImage}
@@ -184,7 +178,7 @@ export default function Home() {
             layout="intrinsic"
             width={450}
             height={438}
-            style={{ width: "20vw", height: "auto", objectFit: "contain" }}
+            className={styles.hand}
           />
         </div>
         <div id="gameFrame" className={styles.gameFrame} >
@@ -201,13 +195,13 @@ export default function Home() {
                   key={bang.id}
                   className={styles.bangMarker}
                   style={{
-                    left: bang.x - 103,
-                    top: bang.y - 103,
+                    left: bang.x - 60,
+                    top: bang.y - 60,
                     transform: `rotate(${bang.rotation}deg)`,
                     ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
                   }}
                 >
-                  <Image src={"/bang.svg"} height={206} width={206} alt="bang" /> {/* Updated to SVG */}
+                  <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
                 </div>
               ))}
             </>

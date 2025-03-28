@@ -200,3 +200,41 @@
     flex-direction: column-reverse;
   }
 }
+.handWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 50%;
+  aspect-ratio: 473.95/461;
+  transition: transform ease-in 200ms;
+}
+.hand {
+  width: 100%;
+  height: 100%;
+  margin-left: 10%;
+  margin-top: 10%;
+  object-fit: contain;
+}
+@media screen and (max-width: 599px) {
+  .handWrapper {
+    right: none;
+    left: 50%;
+
+  }
+  .hand {
+    margin-left: 10%;
+    margin-top: 0%;
+  }
+}
+@media screen and (max-width: 599px) {
+  .handWrapper {
+
+    bottom: none;
+    top: 60%;
+  }
+  .hand {
+    margin-left: 10%;
+    margin-top: 0%;
+  }
+}
