@@ -21,6 +21,10 @@
   padding: 0px 32px;
   z-index: 400;
 }
+.pageContainer {
+  position: relative;
+  min-height: calc(100svh - 71px - 32px);
+}
 .header__content {
   width: 100%;
   max-width: 1800px;
@@ -147,6 +151,10 @@
     padding: 0px 16px;
     z-index: 400;
   }
+  .pageContainer {
+    position: relative;
+    min-height: calc(100svh - 65px - 32px);
+  }
   .header__content--left {
     gap: 15px;
   }
@@ -201,6 +209,21 @@
     display: none;
   }
 }
-.pageContainer {
-  position: relative;
+
+
+.ticker {
+  width: 100%;
+  background-color: #8b1910;
+  height: 32px;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ede1cc;
+  font-size: 17px;
+  line-height: 21px;
+  white-space: nowrap;
+  font-family: var(--font-overpass);
+  font-weight: 400;
+  z-index: 400;
 }

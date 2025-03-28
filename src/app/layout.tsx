@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#EDE1CC" }}>
       <head></head>
-      <body className={` ${overpass.variable}`} style={{ margin: "0px", cursor: "none" }}>
+      <body className={` ${overpass.variable}`} style={{ margin: "0px", cursor: "none", position: "relative" }}>
         <CursorFollower /> {/* Add this component */}
         <header className={"header"}>
           <div className={"header__content"}>
@@ -83,6 +83,9 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <div className={"ticker"}>
+          <span>RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT</span>
+        </div>
       </body>
     </html >
   );
