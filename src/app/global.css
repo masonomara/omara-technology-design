@@ -24,7 +24,7 @@
 }
 .pageContainer {
   position: relative;
-  min-height: calc(100svh - 71px - 32px);
+  min-height: calc(100svh - 71px - 30px);
 }
 .header__content {
   width: 100%;
@@ -154,7 +154,7 @@
   }
   .pageContainer {
     position: relative;
-    min-height: calc(100svh - 65px - 32px);
+    min-height: calc(100svh - 65px - 30px);
   }
   .header__content--left {
     gap: 15px;
@@ -232,7 +232,7 @@
   max-width: 100%;
   overflow: hidden;
   background-color: #8b1910;
-  height: 32px;
+  height: 30px;
 }
 
 .marquee {
@@ -251,8 +251,8 @@
 .marquee p {
   display: inline-block;
   color: #ede1cc;
-  font-size: 17px;
-  line-height: 37px;
+  font-size: 16px;
+  line-height: 35px;
   white-space: nowrap;
   font-family: var(--font-overpass);
   font-weight: 400;
@@ -264,8 +264,8 @@
   font-family: var(--font-overpass);
   font-weight: 800;
   text-transform: uppercase;
-  margin-left: 17px;
-  margin-right: 8px;
+  margin-left: 32px;
+  margin-right: 4px;
 }
 
 
