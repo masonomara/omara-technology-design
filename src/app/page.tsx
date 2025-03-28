@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
-import Image from "next/image";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -15,7 +15,8 @@ interface LeaderboardEntry {
   score: number;
 }
 
-const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"]; // Changed PNG to SVG
+const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
+const badWords = ["FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "FUCK", "KKK", "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH"];
 
 export default function Home() {
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number; rotation: number }[]>([]);
@@ -27,23 +28,19 @@ export default function Home() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
   const [enemyHit, setEnemyHit] = useState(false);
-  const [handImage, setHandImage] = useState("/thumbsUp.svg"); // Changed PNG to SVG
+  const [handImage, setHandImage] = useState("/thumbsUp.svg");
 
-  // Inside the component:
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     if (currentEnemy >= 9 && userScoreRef.current) {
       userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  }, [currentEnemy]); // Runs only when the game ends and leaderboard appears
-
-  const badWords = ["FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "FUCK", "KKK", "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH"];
+  }, [currentEnemy]);
 
   const containsBadWord = (nickname: string) =>
     badWords.some((word) => nickname.includes(word));
 
-  // This effect is for DOM manipulation related to the "bang" markers
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrameWrapper");
     const handleClick = (event: MouseEvent) => {
@@ -57,9 +54,9 @@ export default function Home() {
         ...prev,
         { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
       ]);
-      setHandImage("/thumbsDown.svg"); // Changed PNG to SVG
+      setHandImage("/thumbsDown.svg");
       setTimeout(() => {
-        setHandImage("/thumbsUp.svg"); // Changed PNG to SVG
+        setHandImage("/thumbsUp.svg");
       }, 250);
 
       setTimeout(() => {
