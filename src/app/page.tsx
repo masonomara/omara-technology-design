@@ -32,24 +32,25 @@ export default function Home() {
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
+  // autoscrolls to the user's position on the leaderboard
   useEffect(() => {
     if (currentEnemy >= 9 && userScoreRef.current) {
       userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [currentEnemy]);
 
+  // checks if a user added a bad word
   const containsBadWord = (nickname: string) =>
     badWords.some((word) => nickname.includes(word));
 
+  // adds the hand change and bang effect whenever a user clicks the frame and where the user clicks the frame
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrameWrapper");
     const handleClick = (event: MouseEvent) => {
       if (!gameFrame) return;
-
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
-
       setBangs((prev) => [
         ...prev,
         { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
@@ -58,17 +59,15 @@ export default function Home() {
       setTimeout(() => {
         setHandImage("/thumbsUp.svg");
       }, 250);
-
       setTimeout(() => {
         setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
       }, 250);
     };
-
     gameFrame?.addEventListener("click", handleClick);
     return () => gameFrame?.removeEventListener("click", handleClick);
   }, []);
 
-
+// fetches the leaderboard from supabase in order of the player's score
   useEffect(() => {
     const fetchLeaderboard = async () => {
       const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
@@ -85,30 +84,26 @@ export default function Home() {
     fetchLeaderboard();
   }, [score, nickname]);
 
+  // positions the enemies to shoot
   useEffect(() => {
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
       const enemy = document.getElementById(`enemy${currentEnemy}`);
       const handWrapper = document.querySelector("." + styles.handWrapper);
       if (!gameFrame || !enemy || !handWrapper) return;
-
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
       const handRect = handWrapper.getBoundingClientRect();
-
       let enemyX, enemyY;
       let overlap;
-
       do {
         enemyX = Math.random() * (frameWidth - 67);
         enemyY = Math.random() * (frameHeight - 120);
-
         overlap =
           enemyX < handRect.right &&
           enemyX + 67 > handRect.left &&
           enemyY < handRect.bottom &&
           enemyY + 120 > handRect.top;
       } while (overlap);
-
       enemy.style.position = "absolute";
       enemy.style.width = "clamp(51px, 9.7vw, 67px)";
       enemy.style.height = "clamp(91px, 17.3vw, 120px)";
@@ -119,25 +114,22 @@ export default function Home() {
       enemy.style.top = `${enemyY}px`;
       setSpawnTime(performance.now());
     };
-
     if (currentEnemy < 9) positionEnemy();
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
   }, [currentEnemy]);
 
+  // hits the enemy, then goes to the enxt enemy, then scores the user on how they hit the enemy, and then adjsuts the score
   function iShoot(event: React.MouseEvent) {
     setEnemyHit(true);
-
     setTimeout(() => {
       setEnemyHit(false);
       setCurrentEnemy((prev) => prev + 1);
     }, 500);
-
     const enemy = event.currentTarget as HTMLElement;
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
-
     const reactionTime = performance.now() - spawnTime;
     const enemyRect = enemy.getBoundingClientRect();
     const enemyCenterX = enemyRect.left + enemyRect.width / 2;
@@ -148,10 +140,10 @@ export default function Home() {
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67);
-
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
+// checks if a user submitted a bad word, then allows them to submit their score
   async function submitScore() {
     if (containsBadWord(nickname) && !warning) {
       setWarning("Your nickname contains a bad word. Please consider a different name.");
@@ -163,6 +155,7 @@ export default function Home() {
     else setSubmitted(true);
   }
 
+  // allows the user to restart the game
   function restartGame() {
     setCurrentEnemy(0);
     setScore(0);
