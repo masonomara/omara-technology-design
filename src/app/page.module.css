@@ -52,6 +52,7 @@
 .scoreWrapper {
   bottom: 2.5vh;
   left: 2.5vw;
+  gap: 3px;
   justify-content: center;
   align-items: baseline;
   display: flex;
