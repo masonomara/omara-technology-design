@@ -242,6 +242,11 @@
   animation: marquee 10s linear infinite;
   background-color: #8b1910;
 }
+@media screen and (max-width: 799px) {
+  .marquee {
+    animation: marquee 20s linear infinite;
+  } 
+}
 
 .marquee p {
   display: inline-block;
