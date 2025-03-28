@@ -83,8 +83,19 @@ export default function RootLayout({
           </div>
         </header>
         {children}
-        <div className={"ticker"}>
-          <span>RANDOM TEXT RANDOM TEXT RANDOM TEXT RANDOM TEXT</span>
+        <div className={"wrapper"}>
+          <div className={"marquee"}>
+            <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
+            <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
+            <p><span className={"marqueeTitle"}>FOCUSES</span>
+               Mobile Apps    Websites
+              Ecommerce    Software</p>
+            <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
+            <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
+            <p><span className={"marqueeTitle"}>FOCUSES</span>
+               Mobile Apps    Websites
+              Ecommerce    Software</p>
+          </div>
         </div>
       </body>
     </html >

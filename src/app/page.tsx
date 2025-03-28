@@ -163,7 +163,9 @@ export default function Home() {
 
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
-          <div className={styles.score}>{score}</div><div className={styles.scoreDetails}>points</div>
+          <div className={styles.score}>{score}<span className={styles.scoreDetails}>points</span></div>
+          <div className={styles.cans}>{currentEnemy}/9<span className={styles.scoreDetails}>CANS</span></div>
+
         </div>
 
         <div
