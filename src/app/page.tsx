@@ -38,7 +38,7 @@ export default function Home() {
     }
   }, [currentEnemy]); // Runs only when the game ends and leaderboard appears
 
-  const badWords = ["FAG", "FCK", "FUK", "ASS", "8=D", "DIK", "SHT", "CNT", "KKK"];
+  const badWords = ["FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "FUCK", "KKK", "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH"];
 
   const containsBadWord = (nickname: string) =>
     badWords.some((word) => nickname.includes(word));
@@ -139,7 +139,6 @@ export default function Home() {
   }
 
   async function submitScore() {
-    // if (nickname.length !== 3) return alert("Nickname must be 3 letters!");
     if (containsBadWord(nickname) && !warning) {
       setWarning("Your nickname contains a bad word. Please consider a different name.");
       return;
@@ -187,7 +186,7 @@ export default function Home() {
           />
         </div>
         <div id="gameFrame" className={styles.gameFrame} >
-          {currentEnemy < 9 ? (
+          {currentEnemy < 9 && (
             <>
               <div
                 key={currentEnemy}
@@ -210,54 +209,54 @@ export default function Home() {
                 </div>
               ))}
             </>
-          ) : (
-            <div className={styles.gameOver}>
-              <p>Game Over! 🎯 Final Score: {score}</p>
-              <div className={styles.leaderboard}>
-                <h2>Leaderboard</h2>
-                <div className={styles.leaderboardHeader}>
-                  <span>Rank</span>
-                  <span>Name</span>
-                  <span>Score</span>
-                </div>
-                <ol className={styles.leaderboardList}>
-                  {leaderboard.map((entry, index) => {
-                    const isUser = entry.nickname === nickname && entry.score === score;
-                    return (
-                      <li
-                        key={index}
-                        ref={isUser ? userScoreRef : null} // Attach ref only to the user's score
-                        className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
-                      >
-                        <div className={styles.leaderboardRank}>{index + 1}</div>
-                        <div className={styles.leaderboardName}>{entry.nickname}</div>
-                        <div className={styles.leaderboardScore}>{entry.score}</div>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-
-              {!submitted ? (
-                <>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value.toUpperCase())}
-                  />
-                  {warning && <div className={styles.warning}>{warning}</div>}
-                  <button className={styles.button} onClick={submitScore}>
-                    {warning ? "Submit Anyway" : "Submit Score"}
-                  </button>
-                </>
-              ) : (
-                <p>Score submitted! 🎉</p>
-              )}
-
-              <button onClick={restartGame}>Restart</button>
-            </div>
           )}
+          <div className={styles.gameOver}>
+            <p>Game Over! 🎯 Final Score: {score}</p>
+            <div className={styles.leaderboard}>
+              <h2>Leaderboard</h2>
+              <div className={styles.leaderboardHeader}>
+                <span>Rank</span>
+                <span>Name</span>
+                <span>Score</span>
+              </div>
+              <ol className={styles.leaderboardList}>
+                {leaderboard.map((entry, index) => {
+                  const isUser = entry.nickname === nickname && entry.score === score;
+                  return (
+                    <li
+                      key={index}
+                      ref={isUser ? userScoreRef : null} // Attach ref only to the user's score
+                      className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
+                    >
+                      <div className={styles.leaderboardRank}>{index + 1}</div>
+                      <div className={styles.leaderboardName}>{entry.nickname}</div>
+                      <div className={styles.leaderboardScore}>{entry.score}</div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+
+            {!submitted ? (
+              <>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value.toUpperCase())}
+                />
+                {warning && <div className={styles.warning}>{warning}</div>}
+                <button className={styles.button} onClick={submitScore}>
+                  {warning ? "Submit Anyway" : "Submit Score"}
+                </button>
+              </>
+            ) : (
+              <p>Score submitted! 🎉</p>
+            )}
+
+            <button onClick={restartGame}>Restart</button>
+          </div>
+
         </div>
       </div>
     </div>
