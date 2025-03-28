@@ -27,7 +27,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
-  const [enemyHit, setEnemyHit] = useState(false);
+  const [enemyStates, setEnemyStates] = useState(Array(9).fill(false));
   const [handImage, setHandImage] = useState("/thumbsUp.svg");
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
@@ -40,8 +40,7 @@ export default function Home() {
   }, [currentEnemy]);
 
   // checks if a user added a bad word
-  const containsBadWord = (nickname: string) =>
-    badWords.some((word) => nickname.includes(word));
+  const containsBadWord = (nickname: string) => badWords.some((word) => nickname.includes(word));
 
   // adds the hand change and bang effect whenever a user clicks the frame and where the user clicks the frame
   useEffect(() => {
@@ -51,23 +50,21 @@ export default function Home() {
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
-      setBangs((prev) => [
-        ...prev,
-        { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
-      ]);
+      setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation }]);
       setHandImage("/thumbsDown.svg");
-      setTimeout(() => {
-        setHandImage("/thumbsUp.svg");
-      }, 250);
-      setTimeout(() => {
-        setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
-      }, 250);
+      setTimeout(() => setHandImage("/thumbsUp.svg"), 250);
+      setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
     };
     gameFrame?.addEventListener("click", handleClick);
     return () => gameFrame?.removeEventListener("click", handleClick);
   }, []);
 
-// fetches the leaderboard from supabase in order of the player's score
+  useEffect(() => {
+    setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
+    setSpawnTime(performance.now());
+  }, [currentEnemy]);
+
+  // fetches the leaderboard from supabase in order of the player's score
   useEffect(() => {
     const fetchLeaderboard = async () => {
       const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
@@ -119,14 +116,19 @@ export default function Home() {
     return () => window.removeEventListener("resize", positionEnemy);
   }, [currentEnemy]);
 
-  // hits the enemy, then goes to the enxt enemy, then scores the user on how they hit the enemy, and then adjsuts the score
-  function iShoot(event: React.MouseEvent) {
-    setEnemyHit(true);
-    setTimeout(() => {
-      setEnemyHit(false);
-      setCurrentEnemy((prev) => prev + 1);
-    }, 500);
+  // hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
+  function iShoot(event: React.MouseEvent, index: number) {
+    setEnemyStates((prev) => prev.map((_, i) => (i === index ? false : prev[i])));
+    setCurrentEnemy((prev) => prev + 1);
+
     const enemy = event.currentTarget as HTMLElement;
+    enemy.classList.add(styles.enemyHit);
+
+    // Delay the removal of the enemy by 500ms
+    setTimeout(() => {
+      enemy.classList.remove(styles.enemyHit);
+      enemy.classList.add(styles.hidden);
+    }, 500);
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
@@ -143,7 +145,7 @@ export default function Home() {
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
-// checks if a user submitted a bad word, then allows them to submit their score
+  // checks if a user submitted a bad word, then allows them to submit their score
   async function submitScore() {
     if (containsBadWord(nickname) && !warning) {
       setWarning("Your nickname contains a bad word. Please consider a different name.");
@@ -172,13 +174,9 @@ export default function Home() {
         <div className={styles.scoreWrapper}>
           <div className={styles.score}>{score}<span className={styles.scoreDetails}>points</span></div>
           <div className={styles.cans}>{currentEnemy}/9<span className={styles.scoreDetails}>CANS</span></div>
-
         </div>
 
-        <div
-          className={styles.handWrapper}
-
-        >
+        <div className={styles.handWrapper}>
           <Image
             src={handImage}
             alt="Hand Trigger"
@@ -188,31 +186,30 @@ export default function Home() {
             className={styles.hand}
           />
         </div>
-        <div id="gameFrame" className={styles.gameFrame} >
-          {currentEnemy < 9 && (
-            <>
-              <div
-                key={currentEnemy}
-                id={`enemy${currentEnemy}`}
-                className={`${styles.enemy} ${enemyHit ? styles.enemyHit : ""}`}
-                onMouseDown={iShoot}
-              />
-              {bangs.map((bang) => (
-                <div
-                  key={bang.id}
-                  className={styles.bangMarker}
-                  style={{
-                    left: bang.x - 60,
-                    top: bang.y - 60,
-                    transform: `rotate(${bang.rotation}deg)`,
-                    ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
-                  }}
-                >
-                  <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
-                </div>
-              ))}
-            </>
-          )}
+        <div id="gameFrame" className={styles.gameFrame}>
+          {bangs.map((bang) => (
+            <div
+              key={bang.id}
+              className={styles.bangMarker}
+              style={{
+                left: bang.x - 60,
+                top: bang.y - 60,
+                transform: `rotate(${bang.rotation}deg)`,
+                ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
+              }}
+            >
+              <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
+            </div>
+          ))}
+          {enemyStates.map((isActive, index) => (
+            <div
+              key={index}
+              id={`enemy${index}`}
+              className={`${styles.enemy} ${isActive ? styles.active : styles.hidden}`}
+              onMouseDown={(e) => iShoot(e, index)}
+              style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }}
+            />
+          ))}
           <div className={styles.gameOver}>
             <p>Game Over! 🎯 Final Score: {score}</p>
             <div className={styles.leaderboard}>
