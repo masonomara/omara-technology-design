@@ -50,8 +50,8 @@ export default function Home() {
       if (!gameFrame) return;
 
       const rect = gameFrame.getBoundingClientRect();
-      const bangId = Date.now() + Math.random(); // Ensures uniqueness
-      const rotation = Math.random() * 20 - 10; // Random rotation
+      const bangId = Date.now() + Math.random();
+      const rotation = Math.random() * 20 - 10;
 
       setBangs((prev) => [
         ...prev,
@@ -172,19 +172,18 @@ export default function Home() {
           style={{
             position: "absolute",
             bottom: "-5vh",
-            // right: "-7vw",
             right: "-7vw",
-            width: "37vw", // Width is 37% of viewport height
-            height: "auto", // Height adjusts automatically
+            width: "37vw",
+            height: "auto",
             transition: "transform ease-in 200ms",
           }}
         >
           <Image
             src={handImage}
             alt="Hand Trigger"
-            layout="intrinsic" // Keeps the aspect ratio
-            width={500} // Placeholder value, can be any number
-            height={500} // Placeholder value, will be overridden by intrinsic layout
+            layout="intrinsic"
+            width={500}
+            height={500}
           />
         </div>
         <div id="gameFrame" className={styles.gameFrame} >
@@ -227,7 +226,7 @@ export default function Home() {
                   return (
                     <li
                       key={index}
-                      ref={isUser ? userScoreRef : null} // Attach ref only to the user's score
+                      ref={isUser ? userScoreRef : null}
                       className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
                     >
                       <div className={styles.leaderboardRank}>{index + 1}</div>
