@@ -101,7 +101,6 @@
     font-size: clamp(30px, 6.2vw, 44px);
     font-size: clamp(40px, 8.3vw, 59px);
     font-size: clamp(35px, 7.2vw, 52px);
-
   }
   .scoreDetails {
     margin-left: 2px;
@@ -157,8 +156,6 @@
   height: 120px;
   pointer-events: none;
   z-index: 100;
-  /* background-image: url("/bang.png");
-  background-size: cover; */
   position: absolute;
   animation: bangAppear 0.25s ease-out;
 }
@@ -200,6 +197,6 @@
     bottom: 8px;
     gap: 5px;
     display: flex;
-    flex-direction: column-reverse
+    flex-direction: column-reverse;
   }
 }

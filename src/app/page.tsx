@@ -15,7 +15,7 @@ interface LeaderboardEntry {
   score: number;
 }
 
-const enemyImages = ["/can1.svg", "/can2.svg", "/can3.svg"]; // Changed PNG to SVG
+const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"]; // Changed PNG to SVG
 
 export default function Home() {
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number; rotation: number }[]>([]);
@@ -57,9 +57,9 @@ export default function Home() {
         ...prev,
         { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
       ]);
-      setHandImage("/handTriggerDown.svg"); // Changed PNG to SVG
+      setHandImage("/handDown.svg"); // Changed PNG to SVG
       setTimeout(() => {
-        setHandImage("/handTriggerUp.svg"); // Changed PNG to SVG
+        setHandImage("/handUp.svg"); // Changed PNG to SVG
       }, 250);
 
       setTimeout(() => {
@@ -96,13 +96,13 @@ export default function Home() {
 
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
       enemy.style.position = "absolute";
-      enemy.style.width = "70px";
-      enemy.style.height = "120px";
+      enemy.style.width = "84px";
+      enemy.style.height = "150px";
       enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`; // Using SVG
       enemy.style.backgroundSize = "cover";
       enemy.style.backgroundPosition = "center";
-      enemy.style.left = `${Math.random() * (frameWidth - 70)}px`;
-      enemy.style.top = `${Math.random() * (frameHeight - 120)}px`;
+      enemy.style.left = `${Math.random() * (frameWidth - 84)}px`;
+      enemy.style.top = `${Math.random() * (frameHeight - 150)}px`;
       setSpawnTime(performance.now());
     };
 
@@ -182,8 +182,8 @@ export default function Home() {
             src={handImage}
             alt="Hand Trigger"
             layout="intrinsic"
-            width={500}
-            height={500}
+            width={450}
+            height={438}
             style={{ width: "20vw", height: "auto", objectFit: "contain" }}
           />
         </div>
@@ -201,13 +201,13 @@ export default function Home() {
                   key={bang.id}
                   className={styles.bangMarker}
                   style={{
-                    left: bang.x - 60,
-                    top: bang.y - 60,
+                    left: bang.x - 103,
+                    top: bang.y - 103,
                     transform: `rotate(${bang.rotation}deg)`,
                     ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
                   }}
                 >
-                  <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
+                  <Image src={"/bang.svg"} height={206} width={206} alt="bang" /> {/* Updated to SVG */}
                 </div>
               ))}
             </>

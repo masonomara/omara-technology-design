@@ -37,8 +37,8 @@ export default function RootLayout({
           <div className={"header__content"}>
             <div className={"header__content--left"}>
               <div className={"header__logoWrapper"}>
-                <Image className={"header__logo--desktop"} src="/monogramText.png" width={158} height={51} alt="Logo" />
-                <Image className={"header__logo--mobile"} src="/monogramText.png" width={139} height={45} alt="Logo" />
+                <Image className={"header__logo--desktop"} src="/monogramText.svg" width={158} height={51} alt="Logo" />
+                <Image className={"header__logo--mobile"} src="/monogramText.svg" width={140} height={45} alt="Logo" />
               </div>
               <div className={"header__textContainer"}>
                 <div id={"textAbout"} className={"header__textWrapper"}>
