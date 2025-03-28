@@ -30,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#EDE1CC" }}>
-      <head></head>
+      <head><meta name="apple-mobile-web-app-title" content="O'Mara" />
+
+      </head>
       <body className={` ${overpass.variable}`} style={{ margin: "0px", cursor: "none", position: "relative" }}>
         <CursorFollower /> {/* Add this component */}
         <header className={"header"}>
@@ -88,12 +90,12 @@ export default function RootLayout({
             <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
             <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
             <p><span className={"marqueeTitle"}>FOCUSES</span>
-               Mobile Apps    Websites
+              Mobile Apps    Websites
               Ecommerce    Software</p>
             <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
             <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
             <p><span className={"marqueeTitle"}>FOCUSES</span>
-               Mobile Apps    Websites
+              Mobile Apps    Websites
               Ecommerce    Software</p>
           </div>
         </div>
