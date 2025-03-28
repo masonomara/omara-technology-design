@@ -92,17 +92,34 @@ export default function Home() {
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
       const enemy = document.getElementById(`enemy${currentEnemy}`);
-      if (!gameFrame || !enemy) return;
+      const handWrapper = document.querySelector("." + styles.handWrapper);
+      if (!gameFrame || !enemy || !handWrapper) return;
 
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
+      const handRect = handWrapper.getBoundingClientRect();
+
+      let enemyX, enemyY;
+      let overlap;
+
+      do {
+        enemyX = Math.random() * (frameWidth - 67);
+        enemyY = Math.random() * (frameHeight - 120);
+
+        overlap =
+          enemyX < handRect.right &&
+          enemyX + 67 > handRect.left &&
+          enemyY < handRect.bottom &&
+          enemyY + 120 > handRect.top;
+      } while (overlap);
+
       enemy.style.position = "absolute";
       enemy.style.width = "clamp(51px, 9.7vw, 67px)";
       enemy.style.height = "clamp(91px, 17.3vw, 120px)";
-      enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`; // Using SVG
+      enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`;
       enemy.style.backgroundSize = "contain";
       enemy.style.backgroundPosition = "center";
-      enemy.style.left = `${Math.random() * (frameWidth - 67)}px`;
-      enemy.style.top = `${Math.random() * (frameHeight - 120)}px`;
+      enemy.style.left = `${enemyX}px`;
+      enemy.style.top = `${enemyY}px`;
       setSpawnTime(performance.now());
     };
 
