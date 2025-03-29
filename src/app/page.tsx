@@ -46,20 +46,26 @@ export default function Home() {
   // adds the hand change and bang effect whenever a user clicks the frame and where the user clicks the frame
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrameWrapper");
+    if (!gameFrame) return;
+
     const handleClick = (event: MouseEvent) => {
-      if (!gameFrame) return;
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
+
       setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation }]);
       setHandImage("/thumbsDown.svg");
       setTimeout(() => setHandImage("/thumbsUp.svg"), 250);
-      setTimeout(() => setBangs((prev) => prev.filter((bang) => bang.id !== bangId)), 250);
+      setTimeout(() => {
+        setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
+      }, 250);
     };
-    gameFrame?.addEventListener("click", handleClick);
-    return () => gameFrame?.removeEventListener("click", handleClick);
+
+    gameFrame.addEventListener("click", handleClick);
+    return () => gameFrame.removeEventListener("click", handleClick);
   }, []);
 
+  // NEEDS FIX spawns an enemy
   useEffect(() => {
     if (gameAction) {
       setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
@@ -68,23 +74,23 @@ export default function Home() {
   }, [currentEnemy, gameAction]);
 
   // fetches the leaderboard from supabase in order of the player's score
-  useEffect(() => {
-    const fetchLeaderboard = async () => {
-      const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
-      if (error) {
-        console.error("Error fetching leaderboard:", error);
-      } else {
-        if (score > 0) {
-          data.push({ nickname, score });
-          data.sort((a, b) => b.score - a.score);
-        }
-        setLeaderboard(data);
+
+  async function fetchLeaderboard() {
+    const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
+    if (!error) {
+      if (score > 0) {
+        data.push({ nickname, score });
+        data.sort((a, b) => b.score - a.score);
       }
-    };
+      setLeaderboard(data);
+    }
+  }
+
+  useEffect(() => {
     fetchLeaderboard();
   }, [score, nickname]);
 
-  // positions the enemies to shoot
+  // NEEDS FIX positions the enemies to shoot
   useEffect(() => {
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
@@ -124,7 +130,7 @@ export default function Home() {
     return () => window.removeEventListener("resize", positionEnemy);
   }, [gameAction, currentEnemy]);
 
-  // hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
+  // NEEDS FIX hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
   function iShoot(event: React.MouseEvent, index: number) {
     setEnemyStates((prev) => prev.map((_, i) => (i === index ? false : prev[i])));
     setCurrentEnemy((prev) => prev + 1);
@@ -208,7 +214,6 @@ export default function Home() {
             {currentEnemy}/9<span className={styles.scoreDetails}>CANS</span>
           </div>
         </div>
-
         <div className={styles.handWrapper}>
           <Image
             src={handImage}
@@ -234,6 +239,7 @@ export default function Home() {
               <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
             </div>
           ))}
+
           {enemyStates.map((isActive, index) => (
             <div
               key={index}
@@ -244,7 +250,6 @@ export default function Home() {
             />
           ))}
 
-          {/* Show leaderboard and submit score after all enemies are hit */}
           {currentEnemy === 9 && (
             <div className={styles.gameOver}>
               <p>Game Over! 🎯 Final Score: {score}</p>
