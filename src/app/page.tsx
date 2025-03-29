@@ -88,6 +88,7 @@ export default function Home() {
     if (!gameFrame) return;
 
     const handleClick = (event: MouseEvent) => {
+      if (!gameAction) return; // Prevents clicks before game starts
       console.log("User clicked on game frame at:", event.clientX, event.clientY);
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
@@ -102,13 +103,13 @@ export default function Home() {
 
     gameFrame.addEventListener("click", handleClick);
     return () => gameFrame.removeEventListener("click", handleClick);
-  }, []);
+  }, [gameAction]);
 
 
 
   // NEEDS FIX spawns an enemy
   useEffect(() => {
-    if (gameAction) {
+    if (gameAction && currentEnemy < 9) {
       setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
       setSpawnTime(performance.now());
     }
@@ -118,18 +119,22 @@ export default function Home() {
 
   // NEEDS FIX positions the enemies to shoot
   useEffect(() => {
+    if (!gameAction || currentEnemy >= 9) return;
+
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
       const enemy = document.getElementById(`enemy${currentEnemy}`);
-      if (enemy) {
-        enemy.classList.remove(styles.upcomingEnemy);
-      }
+      if (!gameFrame || !enemy) return;
+
+      enemy.classList.remove(styles.upcomingEnemy);
       const handWrapper = document.querySelector("." + styles.handWrapper);
-      if (!gameFrame || !enemy || !handWrapper) return;
+      const scoreWrapper = document.querySelector("." + styles.scoreWrapper);
+
+      if (!gameFrame || !enemy || !handWrapper || !scoreWrapper) return;
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
       const handRect = handWrapper.getBoundingClientRect();
-      let enemyX, enemyY;
-      let overlap;
+      const scoreRect = scoreWrapper.getBoundingClientRect();
+      let enemyX, enemyY, overlap;
       do {
         enemyX = Math.random() * (frameWidth - 67);
         enemyY = Math.random() * (frameHeight - 120);
@@ -137,21 +142,28 @@ export default function Home() {
           enemyX < handRect.right &&
           enemyX + 67 > handRect.left &&
           enemyY < handRect.bottom &&
-          enemyY + 120 > handRect.top;
+          enemyY + 120 > handRect.top &&
+          enemyX < scoreRect.right &&
+          enemyX + 67 > scoreRect.left &&
+          enemyY < scoreRect.bottom &&
+          enemyY + 120 > scoreRect.top;
       } while (overlap);
-      enemy.style.display = "flex"
-      enemy.style.position = "absolute";
-      enemy.style.width = "clamp(51px, 9.7vw, 67px)";
-      enemy.style.height = "clamp(91px, 17.3vw, 120px)";
-      enemy.style.backgroundImage = `url(${enemyImages[currentEnemy % enemyImages.length]})`;
-      enemy.style.backgroundSize = "contain";
-      enemy.style.backgroundPosition = "center";
-      enemy.style.left = `${enemyX}px`;
-      enemy.style.top = `${enemyY}px`;
+
+      Object.assign(enemy.style, {
+        display: "flex",
+        position: "absolute",
+        width: "clamp(51px, 9.7vw, 67px)",
+        height: "clamp(91px, 17.3vw, 120px)",
+        backgroundImage: `url(${enemyImages[currentEnemy % enemyImages.length]})`,
+        backgroundSize: "contain",
+        left: `${enemyX}px`,
+        top: `${enemyY}px`,
+      });
+
       setSpawnTime(performance.now());
     };
 
-    if (gameAction && currentEnemy < 9) positionEnemy();
+    positionEnemy();
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
   }, [gameAction, currentEnemy]);
@@ -219,6 +231,7 @@ export default function Home() {
   // needs fix - starts game
   function startGame() {
     setGameAction(true);
+    setCurrentEnemy(0);
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
 
