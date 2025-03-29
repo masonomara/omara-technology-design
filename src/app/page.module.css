@@ -8,39 +8,14 @@
   width: calc(100%);
   height: calc(100svh - 71px - 30px);
   overflow: hidden;
-  /* border: 1px solid green; */
+}
+@media screen and (max-width: 799px) {
+  .gameFrameWrapper {
+    height: calc(100svh - 65px - 30px);
+  }
 }
 
-.gameFrame {
-  width: calc(100%);
-  height: calc(100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1800px;
-  /* border: 1px solid blue; */
-}
-.enemy {
-  height: 120px;
-  width: 70px;
-  background-size: cover;
-  background-position: center;
-  display: none;
-}
-.deadEnemy {
-  height: 120px;
-  width: 70px;
-  background-size: cover;
-  background-position: center;
-  pointer-events: none;
-}
-.gameOver {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% - 30px);
-}
+/* Score */
 .scoreWrapper {
   bottom: 16px;
   left: 32px;
@@ -85,6 +60,13 @@
   letter-spacing: 0;
 }
 @media screen and (max-width: 799px) {
+  .scoreWrapper {
+    left: 16px;
+    bottom: 8px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
   .score {
     font-size: 68px;
   }
@@ -109,6 +91,122 @@
     font-size: clamp(14px, 2.9vw, 21px);
   }
 }
+
+/* Hand */
+.handWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 50%;
+  aspect-ratio: 473.95/461;
+  transition: transform ease-in 200ms;
+  pointer-events: none;
+}
+.hand {
+  width: 100%;
+  height: 100%;
+  margin-left: 10%;
+  margin-top: 10%;
+  object-fit: contain;
+}
+@media screen and (max-width: 599px) {
+  .handWrapper {
+    right: none;
+    left: 50%;
+  }
+  .hand {
+    margin-left: 10%;
+    margin-top: 0%;
+  }
+}
+@media screen and (max-width: 599px) {
+  .handWrapper {
+    bottom: none;
+    top: 60%;
+  }
+  .hand {
+    margin-left: 10%;
+    margin-top: 0%;
+  }
+}
+
+/* Game */
+.gameFrame {
+  width: calc(100%);
+  height: calc(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1800px;
+}
+.enemy {
+  height: 120px;
+  width: 70px;
+  background-size: cover;
+  background-position: center;
+  display: none;
+}
+.deadEnemy {
+  height: 120px;
+  width: 70px;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+.bangMarker {
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 100;
+  position: absolute;
+  animation: bangAppear 0.25s ease-out;
+}
+
+@keyframes bangAnimation {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+@keyframes bangAppear {
+  0% {
+    transform: scale(0) rotate(var(--rotation));
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.15) rotate(var(--rotation));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(var(--rotation));
+  }
+}
+#gameFrameWrapper img {
+  width: 100% !important;
+  height: 100% !important;
+}
+.hidden,
+.upcomingEnemy {
+  display: none;
+}
+.active {
+  display: flex;
+}
+
+/* leaderboard */
+.gameOver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 30px);
+}
+
 .leaderboard {
   text-align: center;
   margin-top: 20px;
@@ -151,100 +249,4 @@
 }
 .highlight {
   background-color: #8b191022;
-}
-
-.bangMarker {
-  width: 120px;
-  height: 120px;
-  pointer-events: none;
-  z-index: 100;
-  position: absolute;
-  animation: bangAppear 0.25s ease-out;
-}
-
-@keyframes bangAnimation {
-  0% {
-    transform: scale(1) translate(-50%, -50%);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2) translate(-50%, -50%);
-    opacity: 0;
-  }
-}
-@keyframes bangAppear {
-  0% {
-    transform: scale(0) rotate(var(--rotation));
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.15) rotate(var(--rotation));
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) rotate(var(--rotation));
-  }
-}
-
-#gameFrameWrapper img {
-  width: 100% !important;
-  height: 100% !important;
-}
-@media screen and (max-width: 799px) {
-  .gameFrameWrapper {
-    height: calc(100svh - 65px - 30px);
-  }
-  .scoreWrapper {
-    left: 16px;
-    bottom: 8px;
-    gap: 5px;
-    display: flex;
-    flex-direction: column-reverse;
-  }
-}
-.handWrapper {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: auto;
-  height: 50%;
-  aspect-ratio: 473.95/461;
-  transition: transform ease-in 200ms;
-  pointer-events: none;
-
-}
-.hand {
-  width: 100%;
-  height: 100%;
-  margin-left: 10%;
-  margin-top: 10%;
-  object-fit: contain;
-}
-@media screen and (max-width: 599px) {
-  .handWrapper {
-    right: none;
-    left: 50%;
-  }
-  .hand {
-    margin-left: 10%;
-    margin-top: 0%;
-  }
-}
-@media screen and (max-width: 599px) {
-  .handWrapper {
-    bottom: none;
-    top: 60%;
-  }
-  .hand {
-    margin-left: 10%;
-    margin-top: 0%;
-  }
-}
-
-.hidden,
-.upcomingEnemy {
-  display: none;
-}
-.active {
-  display: flex;
 }
