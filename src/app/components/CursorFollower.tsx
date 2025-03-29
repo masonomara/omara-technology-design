@@ -5,15 +5,31 @@ import { useEffect, useState } from "react";
 const CursorFollower = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile(); // Initial check
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return; // Don't run the effect on mobile devices
+
     const moveCursor = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === "A" || target.tagName === "BUTTON" || target.tagName === "INPUT") {
+      if (["A", "BUTTON", "INPUT"].includes(target.tagName)) {
         setIsHovering(true);
       }
     };
@@ -31,7 +47,9 @@ const CursorFollower = () => {
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []);
+  }, [isMobile]); // Re-run effect if isMobile changes
+
+  if (isMobile) return null; // Don't render on mobile
 
   return (
     <div
@@ -39,9 +57,9 @@ const CursorFollower = () => {
         position: "fixed",
         top: position.y,
         left: position.x,
-        width: isHovering ? "48px" : "16px",  // Increase size on hover
-        height: isHovering ? "48px" : "16px",
-        backgroundColor: "#8b191022",
+        width: isHovering ? "32px" : "16px",
+        height: isHovering ? "32px" : "16px",
+        backgroundColor: isHovering ? "rgba(139, 25, 16, 1)" : "rgba(139, 25, 16, 0.25)",
         borderRadius: "50%",
         pointerEvents: "none",
         transform: "translate(-50%, -50%)",

@@ -6,13 +6,6 @@ import './global.css'
 import { Analytics } from "@vercel/analytics/react"
 
 
-
-// const archivo = Archivo({
-//   subsets: ["latin"],
-//   display: "swap",
-//   variable: '--font-archivo',
-// });
-
 const overpass = Overpass({
   subsets: ["latin"],
   display: "swap",
