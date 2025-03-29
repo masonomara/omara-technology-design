@@ -108,6 +108,7 @@ export default function Home() {
           enemyY < handRect.bottom &&
           enemyY + 120 > handRect.top;
       } while (overlap);
+      enemy.style.display = "flex"
       enemy.style.position = "absolute";
       enemy.style.width = "clamp(51px, 9.7vw, 67px)";
       enemy.style.height = "clamp(91px, 17.3vw, 120px)";
@@ -184,6 +185,7 @@ export default function Home() {
       enemy.style.opacity = "";
       enemy.style.left = "";
       enemy.style.top = "";
+      enemy.style.display = 'none';
       enemy.classList.remove(styles.enemyHit);
       enemy.classList.remove(styles.hidden);
       enemy.classList.remove(styles.active);

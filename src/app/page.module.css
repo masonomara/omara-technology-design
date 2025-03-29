@@ -25,6 +25,7 @@
   width: 70px;
   background-size: cover;
   background-position: center;
+  display: none;
 }
 .deadEnemy {
   height: 120px;
@@ -208,6 +209,8 @@
   height: 50%;
   aspect-ratio: 473.95/461;
   transition: transform ease-in 200ms;
+  pointer-events: none;
+
 }
 .hand {
   width: 100%;
