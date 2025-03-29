@@ -3,6 +3,8 @@ import { Overpass } from "next/font/google";
 import Image from "next/image";
 import CursorFollower from "./components/CursorFollower";
 import './global.css'
+import { Analytics } from "@vercel/analytics/react"
+
 
 
 // const archivo = Archivo({
