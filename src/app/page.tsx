@@ -202,8 +202,12 @@ export default function Home() {
     <div className={"pageContainer"}>
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
-          <div className={styles.score}>{score}<span className={styles.scoreDetails}>points</span></div>
-          <div className={styles.cans}>{currentEnemy}/9<span className={styles.scoreDetails}>CANS</span></div>
+          <div className={`${styles.score} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""}`}>
+            {score}<span className={styles.scoreDetails}>points</span>
+          </div>
+          <div className={`${styles.cans} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""}`}>
+            {currentEnemy}/9<span className={styles.scoreDetails}>CANS</span>
+          </div>
         </div>
 
         <div className={styles.handWrapper}>
@@ -213,7 +217,7 @@ export default function Home() {
             layout="intrinsic"
             width={450}
             height={438}
-            className={styles.hand}
+            className={`${styles.hand} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""}`}
           />
         </div>
         <div id="gameFrame" className={styles.gameFrame}>
@@ -242,54 +246,64 @@ export default function Home() {
           ))}
           <div className={styles.gameOver}>
             <p>Game Over! 🎯 Final Score: {score}</p>
-            <div className={styles.leaderboard}>
-              <h2>Leaderboard</h2>
-              <div className={styles.leaderboardHeader}>
-                <span>Rank</span>
-                <span>Name</span>
-                <span>Score</span>
-              </div>
-              <ol className={styles.leaderboardList}>
-                {leaderboard.map((entry, index) => {
-                  const isUser = entry.nickname === nickname && entry.score === score;
-                  return (
-                    <li
-                      key={index}
-                      ref={isUser ? userScoreRef : null}
-                      className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
-                    >
-                      <div className={styles.leaderboardRank}>{index + 1}</div>
-                      <div className={styles.leaderboardName}>{entry.nickname}</div>
-                      <div className={styles.leaderboardScore}>{entry.score}</div>
-                    </li>
-                  );
-                })}
-              </ol>
-            </div>
 
-            {!submitted ? (
-              <>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value.toUpperCase())}
-                />
-                {warning && <div className={styles.warning}>{warning}</div>}
-                <button className={styles.button} onClick={submitScore}>
-                  {warning ? "Submit Anyway" : "Submit Score"}
-                </button>
-              </>
-            ) : (
-              <p>Score submitted! 🎉</p>
+            {/* Show leaderboard if all 9 enemies are shot */}
+            {currentEnemy === 9 && (
+              <div className={styles.leaderboard}>
+                <h2>Leaderboard</h2>
+                <div className={styles.leaderboardHeader}>
+                  <span>Rank</span>
+                  <span>Name</span>
+                  <span>Score</span>
+                </div>
+                <ol className={styles.leaderboardList}>
+                  {leaderboard.map((entry, index) => {
+                    const isUser = entry.nickname === nickname && entry.score === score;
+                    return (
+                      <li
+                        key={index}
+                        ref={isUser ? userScoreRef : null}
+                        className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
+                      >
+                        <div className={styles.leaderboardRank}>{index + 1}</div>
+                        <div className={styles.leaderboardName}>{entry.nickname}</div>
+                        <div className={styles.leaderboardScore}>{entry.score}</div>
+                      </li>
+                    );
+                  })}
+                </ol>
+                <>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value.toUpperCase())}
+                  />
+                  {warning && <div className={styles.warning}>{warning}</div>}
+                  <button className={styles.button} onClick={submitScore}>
+                    {warning ? "Submit Anyway" : "Submit Score"}
+                  </button>
+                </>
+              </div>
             )}
 
+
+
+            {/* If score has been submitted, show confirmation */}
+            {submitted && <p>Score submitted! 🎉</p>}
+
+            {/* Restart button */}
             <button onClick={restartGame}>Restart</button>
+
+            {/* Show Start Game button only if game hasn't started */}
             {!gameAction && (
-              <button className={styles.button} onClick={startGame}>Start Game</button> // Add Start Game button
+              <button className={styles.button} onClick={startGame}>
+                Start Game
+              </button>
             )}
           </div>
         </div>
+
       </div>
     </div>
   );
