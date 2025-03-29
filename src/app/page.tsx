@@ -31,7 +31,6 @@ export default function Home() {
   const [handImage, setHandImage] = useState("/thumbsUp.svg");
   const [gameAction, setGameAction] = useState(false);
 
-
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
   // autoscrolls to the user's position on the leaderboard
@@ -83,7 +82,7 @@ export default function Home() {
       }
     };
     fetchLeaderboard();
-  }, [score]);
+  }, [score, nickname]);
 
   // positions the enemies to shoot
   useEffect(() => {
@@ -244,11 +243,12 @@ export default function Home() {
               style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }}
             />
           ))}
-          <div className={styles.gameOver}>
-            <p>Game Over! 🎯 Final Score: {score}</p>
 
-            {/* Show leaderboard if all 9 enemies are shot */}
-            {currentEnemy === 9 && (
+          {/* Show leaderboard and submit score after all enemies are hit */}
+          {currentEnemy === 9 && (
+            <div className={styles.gameOver}>
+              <p>Game Over! 🎯 Final Score: {score}</p>
+
               <div className={styles.leaderboard}>
                 <h2>Leaderboard</h2>
                 <div className={styles.leaderboardHeader}>
@@ -272,38 +272,29 @@ export default function Home() {
                     );
                   })}
                 </ol>
-                <>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value.toUpperCase())}
-                  />
-                  {warning && <div className={styles.warning}>{warning}</div>}
-                  <button className={styles.button} onClick={submitScore}>
+
+                {submitted ? (<p>Score submitted! 🎉</p>) : (<><input
+                  type="text"
+                  placeholder="Your Name"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value.toUpperCase())}
+                />
+                  {warning && <div className={styles.warning}>{warning}</div>} <button className={styles.button} onClick={submitScore}>
                     {warning ? "Submit Anyway" : "Submit Score"}
-                  </button>
-                </>
+                  </button></>)}
+
+                <button onClick={restartGame}>Restart</button>
               </div>
-            )}
-
-
-
-            {/* If score has been submitted, show confirmation */}
-            {submitted && <p>Score submitted! 🎉</p>}
-
-            {/* Restart button */}
-            <button onClick={restartGame}>Restart</button>
-
-            {/* Show Start Game button only if game hasn't started */}
-            {!gameAction && (
-              <button className={styles.button} onClick={startGame}>
-                Start Game
-              </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
+        {/* Show Start Game button only if game hasn't started */}
+        {!gameAction && (
+          <button className={styles.button} onClick={startGame}>
+            Start Game
+          </button>
+        )}
       </div>
     </div>
   );
