@@ -28,7 +28,7 @@ export default function RootLayout({
       <head><meta name="apple-mobile-web-app-title" content="O'Mara" />
 
       </head>
-      <body className={` ${overpass.variable}`} style={{ margin: "0px", cursor: "none", position: "relative" }}>
+      <body className={` ${overpass.variable}`} style={{ margin: "0px", position: "relative" }}>
         <CursorFollower /> {/* Add this component */}
         <header className={"header"}>
           <div className={"header__content"}>

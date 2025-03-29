@@ -32,9 +32,19 @@ export default function Home() {
   const [warning, setWarning] = useState<string>("");
   const [enemyStates, setEnemyStates] = useState(Array(9).fill(false));
   const [handImage, setHandImage] = useState("/thumbsUp.svg");
+  const [gameStart, setGameStart] = useState(false);
   const [gameAction, setGameAction] = useState(false);
+  const [gameEnd, setGameEnd] = useState(false);
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
+
+
+  useEffect(() => {
+    if (gameEnd && userScoreRef.current) {
+      userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [gameEnd]);
+
 
   // Auto-scroll to user's leaderboard position when game ends
   useEffect(() => {
@@ -171,7 +181,14 @@ export default function Home() {
   // NEEDS FIX hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
   function iShoot(event: React.MouseEvent, index: number) {
     setEnemyStates((prev) => prev.map((_, i) => (i === index ? false : prev[i])));
-    setCurrentEnemy((prev) => prev + 1);
+    setCurrentEnemy((prev) => {
+      const newEnemy = prev + 1;
+      if (newEnemy >= 9) {
+        setGameAction(false);
+        setGameEnd(true);
+      }
+      return newEnemy;
+    });
 
     const enemy = event.currentTarget as HTMLElement;
     enemy.classList.add(styles.enemyHit);
@@ -211,6 +228,7 @@ export default function Home() {
     setBangs([]);
     setHandImage("/thumbsUp.svg");
     setGameAction(true);
+    setGameEnd(false);
     setEnemyStates(Array(9).fill(false));
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
     const allEnemies: NodeListOf<HTMLElement> = document.querySelectorAll(`.${styles.enemy}`);
@@ -230,7 +248,9 @@ export default function Home() {
 
   // needs fix - starts game
   function startGame() {
+    setGameStart(true)
     setGameAction(true);
+    setGameEnd(false);
     setCurrentEnemy(0);
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
@@ -239,23 +259,20 @@ export default function Home() {
     <div className={"pageContainer"}>
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
-          <div className={`${styles.score} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""}`}>
-            {score}<span className={styles.scoreDetails}>points</span>
-          </div>
-          <div className={`${styles.cans} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""}`}>
-            {currentEnemy}/9<span className={styles.scoreDetails}>CANS</span>
-          </div>
+          <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""}`}>{score}<span className={styles.scoreDetails}>points</span></div>
+          <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""}`}>{currentEnemy}/9<span className={styles.scoreDetails}>CANS</span></div>
         </div>
-        <div className={styles.handWrapper}>
+        <div className={`${styles.handWrapper} ${gameAction ? styles.handWrapperActive : ""}`}>
           <Image
             src={handImage}
             alt="Hand Trigger"
             layout="intrinsic"
             width={450}
             height={438}
-            className={`${styles.hand} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""}`}
+            className={`${styles.hand} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""} ${handImage === "/thumbsDown.svg" ? styles.thumbsDown : ""}`}
           />
         </div>
+
         <div id="gameFrame" className={styles.gameFrame}>
           {bangs.map((bang) => (
             <div
@@ -273,16 +290,10 @@ export default function Home() {
           ))}
 
           {enemyStates.map((isActive, index) => (
-            <div
-              key={index}
-              id={`enemy${index}`}
-              className={`${styles.enemy}`}
-              onMouseDown={(e) => iShoot(e, index)}
-              style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }}
-            />
+            <div key={index} id={`enemy${index}`} className={`${styles.enemy}`} onMouseDown={(e) => iShoot(e, index)} style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }} />
           ))}
 
-          {currentEnemy === 9 && (
+          {gameEnd && (
             <div className={styles.gameOver}>
               <p>Game Over! 🎯 Final Score: {score}</p>
 
@@ -312,7 +323,7 @@ export default function Home() {
 
                 {submitted ? (<p>Score submitted! 🎉</p>) : (<><input
                   type="text"
-                  placeholder="Your Name"
+                  placeholder="Nickname"
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value.toUpperCase())}
                 />
@@ -327,7 +338,7 @@ export default function Home() {
         </div>
 
         {/* Show Start Game button only if game hasn't started */}
-        {!gameAction && (
+        {!gameStart && (
           <button className={styles.button} onClick={startGame}>
             Start Game
           </button>

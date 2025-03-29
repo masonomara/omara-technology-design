@@ -102,6 +102,20 @@
   aspect-ratio: 473.95/461;
   transition: transform ease-in 200ms;
   pointer-events: none;
+  transform: rotate(-45deg);
+  transform: translateY(100%);
+}
+.handWrapperActive {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 50%;
+  aspect-ratio: 473.95/461;
+  transition: transform ease-in 200ms;
+  pointer-events: none;
+  transform: rotate(0deg);
+  transform: translateY(0%);
 }
 .hand {
   width: 100%;
@@ -110,8 +124,16 @@
   margin-top: 10%;
   object-fit: contain;
 }
+.thumbsDown {
+  transform: rotate(.5deg);
+  transition: transform cubic-bezier(.3,8,.55,8) 150ms;
+}
 @media screen and (max-width: 599px) {
   .handWrapper {
+    right: none;
+    left: 50%;
+  }
+  .handWrapperActive {
     right: none;
     left: 50%;
   }
@@ -122,6 +144,10 @@
 }
 @media screen and (max-width: 599px) {
   .handWrapper {
+    bottom: none;
+    top: 60%;
+  }
+  .handWrapperActive {
     bottom: none;
     top: 60%;
   }
@@ -204,7 +230,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: calc(100% - 30px);
+  width: calc(100% - 160px);
+  height: calc(100% - 160px);
+  padding: 48px;
+  border: 1px solid #8b1910;
+  z-index: 4000;
+  background-color: #ede1cc;
 }
 
 .leaderboard {

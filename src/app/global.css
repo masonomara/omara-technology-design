@@ -6,8 +6,23 @@
   --font-radio: "Radio Canada", sans-serif;
 }
 
-* {
-  cursor: none !important;
+.cursorFollower {
+  display: none;
+}
+
+@media screen and (min-width: 769px) {
+  * {
+    cursor: none !important;
+  }
+  .cursorFollower {
+    display: flex;
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, transform 0.1s ease-out;
+    z-index: 1000;
+  }
 }
 
 .header {
@@ -245,7 +260,7 @@
 @media screen and (max-width: 799px) {
   .marquee {
     animation: marquee 20s linear infinite;
-  } 
+  }
 }
 
 .marquee p {
@@ -267,7 +282,6 @@
   margin-left: 32px;
   margin-right: 4px;
 }
-
 
 @keyframes marquee {
   0% {
