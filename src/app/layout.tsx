@@ -87,6 +87,8 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <Analytics />
+
         <div className={"wrapper"}>
           <div className={"marquee"}>
             <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
