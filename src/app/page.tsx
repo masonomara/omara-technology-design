@@ -5,6 +5,7 @@ import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./page.module.css";
 
+// Initialize Supabase client with environment variables
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -15,10 +16,12 @@ interface LeaderboardEntry {
   score: number;
 }
 
+// Enemy images and bad words list for filtering nicknames
 const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
 const badWords = ["FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "FUCK", "KKK", "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH"];
 
 export default function Home() {
+  // State variables for game logic
   const [bangs, setBangs] = useState<{ x: number; y: number; id: number; rotation: number }[]>([]);
   const [currentEnemy, setCurrentEnemy] = useState(0);
   const [score, setScore] = useState(0);
@@ -33,26 +36,62 @@ export default function Home() {
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
-  // autoscrolls to the user's position on the leaderboard
+  // Auto-scroll to user's leaderboard position when game ends
   useEffect(() => {
     if (currentEnemy >= 9 && userScoreRef.current) {
+      console.log("Scrolling to user score...");
       userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [currentEnemy]);
 
-  // checks if a user added a bad word
-  const containsBadWord = (nickname: string) => badWords.some((word) => nickname.includes(word));
+  // Function to check if a nickname contains banned words
+  const containsBadWord = (nickname: string) => {
+    return badWords.some((word) => nickname.includes(word));
+  };
 
-  // adds the hand change and bang effect whenever a user clicks the frame and where the user clicks the frame
+  // Fetch leaderboard from Supabase, sort by highest score
+  async function fetchLeaderboard() {
+    console.log("Fetching leaderboard...");
+    const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
+    if (!error) {
+      if (score > 0) {
+        data.push({ nickname, score });
+        data.sort((a, b) => b.score - a.score);
+      }
+      setLeaderboard(data);
+      console.log("Leaderboard updated", data);
+    } else {
+      console.error("Error fetching leaderboard:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchLeaderboard();
+  }, [score, nickname]);
+
+  async function submitScore() {
+    if (containsBadWord(nickname) && !warning) {
+      setWarning("Your nickname contains a bad word. Please consider a different name.");
+      return;
+    }
+    setWarning("");
+    console.log("Submitting score for", nickname);
+    const { error } = await supabase.from("scores").insert([{ nickname, score }]);
+    if (error) alert("Error submitting score: " + error.message);
+    else setSubmitted(true);
+  }
+
+
+  // Handles user clicking on the game frame
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrameWrapper");
     if (!gameFrame) return;
 
     const handleClick = (event: MouseEvent) => {
+      console.log("User clicked on game frame at:", event.clientX, event.clientY);
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
-
       setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation }]);
       setHandImage("/thumbsDown.svg");
       setTimeout(() => setHandImage("/thumbsUp.svg"), 250);
@@ -65,6 +104,8 @@ export default function Home() {
     return () => gameFrame.removeEventListener("click", handleClick);
   }, []);
 
+
+
   // NEEDS FIX spawns an enemy
   useEffect(() => {
     if (gameAction) {
@@ -73,22 +114,7 @@ export default function Home() {
     }
   }, [currentEnemy, gameAction]);
 
-  // fetches the leaderboard from supabase in order of the player's score
 
-  async function fetchLeaderboard() {
-    const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
-    if (!error) {
-      if (score > 0) {
-        data.push({ nickname, score });
-        data.sort((a, b) => b.score - a.score);
-      }
-      setLeaderboard(data);
-    }
-  }
-
-  useEffect(() => {
-    fetchLeaderboard();
-  }, [score, nickname]);
 
   // NEEDS FIX positions the enemies to shoot
   useEffect(() => {
@@ -160,17 +186,9 @@ export default function Home() {
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
-  async function submitScore() {
-    if (containsBadWord(nickname) && !warning) {
-      setWarning("Your nickname contains a bad word. Please consider a different name.");
-      return;
-    }
-    setWarning("");
-    const { error } = await supabase.from("scores").insert([{ nickname, score }]);
-    if (error) alert("Error submitting score: " + error.message);
-    else setSubmitted(true);
-  }
 
+
+  // needs fix - restarts game
   function restartGame() {
     setCurrentEnemy(0);
     setScore(0);
@@ -198,6 +216,7 @@ export default function Home() {
     });
   }
 
+  // needs fix - starts game
   function startGame() {
     setGameAction(true);
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
