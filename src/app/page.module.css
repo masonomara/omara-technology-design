@@ -184,7 +184,7 @@
   width: 120px;
   height: 120px;
   pointer-events: none;
-  z-index: 100;
+  z-index: 250;
   position: absolute;
   animation: bangAppear 0.25s ease-out;
 }
@@ -234,7 +234,7 @@
   height: calc(100% - 160px);
   padding: 48px;
   border: 1px solid #8b1910;
-  z-index: 4000;
+  z-index: 400;
   background-color: #ede1cc;
 }
 
