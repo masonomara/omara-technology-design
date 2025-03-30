@@ -125,8 +125,8 @@
   object-fit: contain;
 }
 .thumbsDown {
-  transform: rotate(.5deg);
-  transition: transform cubic-bezier(.3,8,.55,8) 150ms;
+  transform: rotate(0.5deg);
+  transition: transform cubic-bezier(0.3, 8, 0.55, 8) 150ms;
 }
 @media screen and (max-width: 599px) {
   .handWrapper {
@@ -224,6 +224,53 @@
   display: flex;
 }
 
+/* start */
+.startContainer {
+  padding: 32px 24px;
+  border: 2px solid #8b1910;
+  border-radius: 16px;
+  max-width: 365px;
+  width: calc(100% - 48px - 64px);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.startTopWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.startLogo {
+  width: 100%;
+  max-width: 336px;
+  height: 100%;
+  object-fit: contain;
+}
+.startDescription {
+  font-size: clamp(16px, 4.5vw, 20px);
+  line-height: 1.29em;
+  font-family: var(--font-overpass);
+  color: #8b1910;
+  font-weight: 400;
+  margin-top: 0.8em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.startDivider {
+  height: 1px;
+  width: 100%;
+  background-color: #8b1910;
+}
+.startButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 13.6px;
+  margin-top: 17px;
+}
+
 /* leaderboard */
 .gameOver {
   display: flex;
@@ -265,7 +312,7 @@
   padding: 5px 0;
   border-bottom: 1px solid #8b1910;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 800;
   font-style: italic;
   width: 100%;
 }
@@ -280,4 +327,18 @@
 }
 .highlight {
   background-color: #8b191022;
+}
+
+.primaryButton {
+  height: 48px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 19.2px;
+  border: none;
+  background-color: #8b1910;
+
+  color: #ede1cc;
 }

@@ -6,6 +6,12 @@
   --font-radio: "Radio Canada", sans-serif;
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 .cursorFollower {
   display: none;
 }
@@ -270,14 +276,14 @@
   line-height: 35px;
   white-space: nowrap;
   font-family: var(--font-overpass);
-  font-weight: 400;
+  font-weight: 500;
   margin: 0px;
 }
 .marqueeTitle {
   display: inline-block;
   color: #ede1cc;
   font-family: var(--font-overpass);
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   margin-left: 32px;
   margin-right: 4px;

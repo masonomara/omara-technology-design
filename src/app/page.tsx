@@ -201,6 +201,7 @@ export default function Home() {
     enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
+    enemy.style.pointerEvents = "none";
 
     const reactionTime = performance.now() - spawnTime;
     const enemyRect = enemy.getBoundingClientRect();
@@ -236,6 +237,7 @@ export default function Home() {
       enemy.style.transition = "";
       enemy.style.transform = "";
       enemy.style.opacity = "";
+      enemy.style.pointerEvents = "";
       enemy.style.left = "";
       enemy.style.top = "";
       enemy.style.display = 'none';
@@ -292,7 +294,29 @@ export default function Home() {
           {enemyStates.map((isActive, index) => (
             <div key={index} id={`enemy${index}`} className={`${styles.enemy}`} onMouseDown={(e) => iShoot(e, index)} style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }} />
           ))}
+          {/* Show Start Game button only if game hasn't started */}
+          {!gameStart && (
+            <div className={styles.startContainer}>
+              <div className={styles.startTopWrapper}>
+                <Image src={"/wordmark.svg"} height={167} width={463} alt="bang" className={`${styles.startLogo}`}
+                />
 
+
+                <p className={styles.startDescription}>Engaging and intuitive digital product strategy, design, and development</p>
+              </div>
+              <div className={styles.startDivider} />
+              <div className={styles.startButtonWrapper}>
+                <button className={styles.primaryButton} onClick={startGame}>
+                  <p>Start</p>
+                </button>
+                <button className={styles.secondaryButton} onClick={startGame}>
+                  <p>Connect</p>
+                </button>
+              </div>
+
+            </div>
+
+          )}
           {gameEnd && (
             <div className={styles.gameOver}>
               <p>Game Over! 🎯 Final Score: {score}</p>
@@ -337,12 +361,7 @@ export default function Home() {
           )}
         </div>
 
-        {/* Show Start Game button only if game hasn't started */}
-        {!gameStart && (
-          <button className={styles.button} onClick={startGame}>
-            Start Game
-          </button>
-        )}
+
       </div>
     </div>
   );
