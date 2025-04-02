@@ -117,7 +117,7 @@ export default function Home() {
 
 
 
-  // NEEDS FIX spawns an enemy
+  // Spawns an enemy
   useEffect(() => {
     if (gameAction && currentEnemy < 9) {
       setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
@@ -127,7 +127,7 @@ export default function Home() {
 
 
 
-  // NEEDS FIX positions the enemies to shoot
+  // Positions the enemies to shoot
   useEffect(() => {
     if (!gameAction || currentEnemy >= 9) return;
 
@@ -178,7 +178,7 @@ export default function Home() {
     return () => window.removeEventListener("resize", positionEnemy);
   }, [gameAction, currentEnemy]);
 
-  // NEEDS FIX hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
+  // Hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
   function iShoot(event: React.MouseEvent, index: number) {
     setEnemyStates((prev) => prev.map((_, i) => (i === index ? false : prev[i])));
     setCurrentEnemy((prev) => {
@@ -216,9 +216,7 @@ export default function Home() {
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
-
-
-  // needs fix - restarts game
+  // Restarts game
   function restartGame() {
     setCurrentEnemy(0);
     setScore(0);
@@ -248,9 +246,9 @@ export default function Home() {
     });
   }
 
-  // needs fix - starts game
+  // Starts game
   function startGame() {
-    setGameStart(true)
+    setGameStart(true);
     setGameAction(true);
     setGameEnd(false);
     setCurrentEnemy(0);
@@ -258,12 +256,19 @@ export default function Home() {
   }
 
   return (
-    <div className={"pageContainer"}>
+    <div className="pageContainer">
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
-          <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""}`}>{score}<span className={styles.scoreDetails}>points</span></div>
-          <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""}`}>{currentEnemy}/9<span className={styles.scoreDetails}>CANS</span></div>
+          <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""}`}>
+            {score}
+            <span className={styles.scoreDetails}>points</span>
+          </div>
+          <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""}`}>
+            {currentEnemy}/9
+            <span className={styles.scoreDetails}>CANS</span>
+          </div>
         </div>
+
         <div className={`${styles.handWrapper} ${gameAction ? styles.handWrapperActive : ""}`}>
           <Image
             src={handImage}
@@ -284,45 +289,51 @@ export default function Home() {
                 left: bang.x - 60,
                 top: bang.y - 60,
                 transform: `rotate(${bang.rotation}deg)`,
-                ...({ "--rotation": `${bang.rotation}deg` } as React.CSSProperties),
+                "--rotation": `${bang.rotation}deg`,
               }}
             >
-              <Image src={"/bang.svg"} height={120} width={120} alt="bang" /> {/* Updated to SVG */}
+              <Image src="/bang.svg" height={120} width={120} alt="bang" />
             </div>
           ))}
 
           {enemyStates.map((isActive, index) => (
-            <div key={index} id={`enemy${index}`} className={`${styles.enemy}`} onMouseDown={(e) => iShoot(e, index)} style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }} />
+            <div
+              key={index}
+              id={`enemy${index}`}
+              className={styles.enemy}
+              onMouseDown={(e) => iShoot(e, index)}
+              style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }}
+            />
           ))}
+
           {/* Show Start Game button only if game hasn't started */}
           {!gameStart && (
             <div className={styles.startContainer}>
               <div className={styles.startTopWrapper}>
-                <Image src={"/wordmark.svg"} height={167} width={463} alt="bang" className={`${styles.startLogo}`}
-                />
-
-
-                <p className={styles.startDescription}>Engaging and intuitive digital product strategy, design, and development</p>
+                <Image src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
+                <p className={styles.startDescription}>
+                  Fractional business & digital product strategy, design, and development
+                </p>
               </div>
               <div className={styles.startDivider} />
               <div className={styles.startButtonWrapper}>
                 <button className={styles.primaryButton} onClick={startGame}>
                   <p>Start</p>
+                  <Image src="/tanArrow.svg" height={11.4} width={7.03} alt="start" />
                 </button>
                 <button className={styles.secondaryButton} onClick={startGame}>
-                  <p>Connect</p>
+                  <p>Contact</p>
+                  <Image src="/redArrow.svg" height={11.4} width={7.03} alt="start" />
+
                 </button>
               </div>
-
             </div>
-
           )}
+
           {gameEnd && (
             <div className={styles.gameOver}>
-              <p>Game Over! 🎯 Final Score: {score}</p>
-
-              <div className={styles.leaderboard}>
-                <h2>Leaderboard</h2>
+              <p>New High Score! {score}</p>
+              <div className={styles.leaderboardWrapper}>
                 <div className={styles.leaderboardHeader}>
                   <span>Rank</span>
                   <span>Name</span>
@@ -344,24 +355,32 @@ export default function Home() {
                     );
                   })}
                 </ol>
-
-                {submitted ? (<p>Score submitted! 🎉</p>) : (<><input
-                  type="text"
-                  placeholder="Nickname"
-                  value={nickname}
-                  onChange={(e) => setNickname(e.target.value.toUpperCase())}
-                />
-                  {warning && <div className={styles.warning}>{warning}</div>} <button className={styles.button} onClick={submitScore}>
-                    {warning ? "Submit Anyway" : "Submit Score"}
-                  </button></>)}
-
-                <button onClick={restartGame}>Restart</button>
+                {submitted ? (
+                  <p>Score submitted! 🎉</p>
+                ) : (
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Nickname"
+                      value={nickname}
+                      onChange={(e) => setNickname(e.target.value.toUpperCase())}
+                    />
+                    {warning && <div className={styles.warning}>{warning}</div>}
+                    <div className={styles.startButtonWrapper}>
+                      <button className={styles.primaryButton} onClick={submitScore}>
+                        <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
+                        <Image src="/tanArrow.svg" height={11.4} width={7.03} alt={warning ? "Submit Anyway" : "Submit Score"} />
+                      </button>
+                      <button onClick={restartGame} className={styles.secondaryButton}>
+                        <p>Restart</p>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
         </div>
-
-
       </div>
     </div>
   );

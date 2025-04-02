@@ -40,7 +40,7 @@ export default function RootLayout({
               <div className={"header__textContainer"}>
                 <div id={"textAbout"} className={"header__textWrapper"}>
                   <div className={"header__textTitle"}>Technology Consulting Firm</div>
-                  <div className={"header__textBody"}>Engaging and intuitive digital product</div>
+                  <div className={"header__textBody"}>Fractional business & digital product</div>
                   <div className={"header__textBody"}>strategy, design, and development.</div>
                 </div>
                 <div id={"textWhere"} className={"header__textWrapper"}>
@@ -84,12 +84,12 @@ export default function RootLayout({
 
         <div className={"wrapper"}>
           <div className={"marquee"}>
-            <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
+            <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & digital product strategy, design, and development.</p>
             <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
             <p><span className={"marqueeTitle"}>FOCUSES</span>
               Mobile Apps    Websites
               Ecommerce    Software</p>
-            <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span> Engaging and intuitive digital product strategy, design, and development.</p>
+            <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & digital product strategy, design, and development.</p>
             <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
             <p><span className={"marqueeTitle"}>FOCUSES</span>
               Mobile Apps    Websites
