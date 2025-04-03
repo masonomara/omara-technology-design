@@ -51,7 +51,7 @@ export default function RootLayout({
                 <div id={"textFocuses"} className={"header__textWrapper"}>
                   <div className={"header__textTitle"}>Focuses</div>
                   <div className={"header__textBody"}>Mobile Apps&nbsp;&nbsp;&nbsp;&nbsp;Websites</div>
-                  <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Software</div>
+                  <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Systems</div>
                 </div>
               </div>
             </div>
@@ -88,12 +88,12 @@ export default function RootLayout({
             <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
             <p><span className={"marqueeTitle"}>FOCUSES</span>
               Mobile Apps    Websites
-              Ecommerce    Software</p>
+              Ecommerce    Systems</p>
             <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & digital product strategy, design, and development.</p>
             <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
             <p><span className={"marqueeTitle"}>FOCUSES</span>
               Mobile Apps    Websites
-              Ecommerce    Software</p>
+              Ecommerce    Systems</p>
           </div>
         </div>
       </body>
