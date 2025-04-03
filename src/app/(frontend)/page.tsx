@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./../page.module.css";
@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   // Fetch leaderboard from Supabase, sort by highest score
-  async function fetchLeaderboard() {
+  const fetchLeaderboard = useCallback(async () => {
     console.log("Fetching leaderboard...");
     const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
     if (!error) {
@@ -73,11 +73,11 @@ export default function Home() {
     } else {
       console.error("Error fetching leaderboard:", error);
     }
-  }
+  }, [score, nickname]); // Dependency array
 
   useEffect(() => {
     fetchLeaderboard();
-  }, [score, nickname]);
+  }, [fetchLeaderboard]); // Now it’s properly memoized and used
 
   async function submitScore() {
     if (containsBadWord(nickname) && !warning) {
