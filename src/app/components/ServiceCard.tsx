@@ -1,12 +1,12 @@
 import { Author } from './Author'
 import { Categories } from './Categories'
-import { POSTS_QUERYResult } from '@/sanity/types'
+import { SERVICES_QUERYResult } from '@/sanity/types'
 import { PublishedAt } from './PublishedAt'
 import { urlFor } from '@/sanity/lib/image'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export function PostCard(props: POSTS_QUERYResult[0]) {
+export function ServiceCard(props: SERVICES_QUERYResult[0]) {
   const { title, author, mainImage, publishedAt, categories } = props
 
   return (

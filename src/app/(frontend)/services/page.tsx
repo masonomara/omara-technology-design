@@ -1,16 +1,17 @@
+import { ServiceCard } from "@/app/components/ServiceCard";
 import { sanityFetch } from "@/sanity/lib/live";
-import { POSTS_QUERY } from "@/sanity/lib/queries";
-import { PostCard } from "@/app/components/PostCard";
+import { SERVICES_QUERY } from "@/sanity/lib/queries";
+
 
 export default async function Page() {
-  const { data: posts } = await sanityFetch({ query: POSTS_QUERY });
+  const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
 
   return (
     <main>
-      <h1>Post Index</h1>
+      <h1>Service Index</h1>
       <ul>
-        {posts.map((post) => (
-          <PostCard key={post._id} {...post} />
+        {services.map((service) => (
+          <ServiceCard key={service._id} {...service} />
         ))}
       </ul>
     </main>

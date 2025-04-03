@@ -1,8 +1,8 @@
-import { POST_QUERYResult } from '@/sanity/types'
+import { SERVICE_QUERYResult } from '@/sanity/types'
 import dayjs from 'dayjs'
 
 type PublishedAtProps = {
-  publishedAt: NonNullable<POST_QUERYResult>['publishedAt']
+  publishedAt: NonNullable<SERVICE_QUERYResult>['publishedAt']
 }
 
 export function PublishedAt({ publishedAt }: PublishedAtProps) {

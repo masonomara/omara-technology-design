@@ -2,13 +2,13 @@ import { Author } from "./Author";
 import { Categories } from "./Categories";
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
-import { POST_QUERYResult } from "@/sanity/types";
+import { SERVICE_QUERYResult } from "@/sanity/types";
 import { PublishedAt } from "./PublishedAt";
 import { Title } from "./Title";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 
-export function Post(props: NonNullable<POST_QUERYResult>) {
+export function Service(props: NonNullable<SERVICE_QUERYResult>) {
   const { title, author, mainImage, body, publishedAt, categories } = props;
 
   return (

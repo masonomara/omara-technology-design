@@ -5,8 +5,8 @@ import {
 
 export const resolve: PresentationPluginOptions["resolve"] = {
   locations: {
-    // Add more locations for other post types
-    post: defineLocations({
+    // Add more locations for other service types
+    service: defineLocations({
       select: {
         title: "title",
         slug: "slug.current",
