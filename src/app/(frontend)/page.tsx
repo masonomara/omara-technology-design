@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
-import styles from "./page.module.css";
+import styles from "./../page.module.css";
 
 // Initialize Supabase client with environment variables
 const supabase = createClient(
@@ -313,6 +313,9 @@ export default function Home() {
                 <Image src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
                 <p className={styles.startDescription}>
                   Fractional business & digital product strategy, design, and development
+                </p>
+                <p className={styles.startDescription}>
+                  Work index
                 </p>
               </div>
               <div className={styles.startDivider} />
