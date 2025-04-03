@@ -289,8 +289,9 @@ export default function Home() {
                 left: bang.x - 60,
                 top: bang.y - 60,
                 transform: `rotate(${bang.rotation}deg)`,
-                ["--rotation" as any]: `${bang.rotation}deg`,
-              }}
+                "--rotation": `${bang.rotation}deg`,
+              } as React.CSSProperties
+              }
             >
               <Image src="/bang.svg" height={120} width={120} alt="bang" />
             </div>
@@ -385,6 +386,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </div>
+    </div >
   );
 }
