@@ -21,6 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#EDE1CC" }}>
+      <head><meta name="apple-mobile-web-app-title" content="O'Mara" />
+      </head>
       <body className={` ${overpass.variable}`} style={{ margin: "0px", position: "relative" }}>
         {children}</body>
     </html>

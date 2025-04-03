@@ -24,9 +24,7 @@ export default async function RootLayout({
 }>) {
   return (
     <section>
-      <head><meta name="apple-mobile-web-app-title" content="O'Mara" />
 
-      </head>
       <CursorFollower /> {/* Add this component */}
       <header className={"header"}>
         <div className={"header__content"}>
