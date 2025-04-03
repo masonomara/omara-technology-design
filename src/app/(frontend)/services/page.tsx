@@ -11,7 +11,7 @@ export default async function Page() {
       <ul>
         {posts.map((post) => (
           <li key={post._id}>
-            <Link href={`/posts/${post?.slug?.current}`}
+            <Link href={`/services/${post?.slug?.current}`}
             >
               {post?.title}
             </Link>
