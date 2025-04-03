@@ -1,29 +1,16 @@
-import Link from "next/link";
 import { sanityFetch } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
-
-// Define a type for the Post
-interface Post {
-  _id: string;
-  title: string;
-  slug: {
-    current: string;
-  };
-}
+import { PostCard } from "@/app/components/PostCard";
 
 export default async function Page() {
-  const { data: posts }: { data: Post[] } = await sanityFetch({ query: POSTS_QUERY });
+  const { data: posts } = await sanityFetch({ query: POSTS_QUERY });
 
   return (
     <main>
       <h1>Post Index</h1>
       <ul>
         {posts.map((post) => (
-          <li key={post._id}>
-            <Link href={`/services/${post?.slug?.current}`}>
-              {post?.title}
-            </Link>
-          </li>
+          <PostCard key={post._id} {...post} />
         ))}
       </ul>
     </main>

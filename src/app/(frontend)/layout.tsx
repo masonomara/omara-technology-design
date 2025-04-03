@@ -5,6 +5,7 @@ import CursorFollower from "./../components/CursorFollower";
 import './../globals.css'
 import { Analytics } from "@vercel/analytics/react"
 import { SanityLive } from "@/sanity/lib/live";
+import Link from "next/link";
 
 
 const overpass = Overpass({
@@ -67,9 +68,9 @@ export default function RootLayout({
                 <div id={"work"} className={"header__menuOption"}>
                   <span>Work</span>
                 </div>
-                <div id={"services"} className={"header__menuOption"}>
+                <Link id={"services"} className={"header__menuOption"} href="/services" target="_top">
                   <span>Services</span>
-                </div>
+                </Link>
                 <div id={"about"} className={"header__menuOption"}>
                   <span>About</span>
                 </div>
