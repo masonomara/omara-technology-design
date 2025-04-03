@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { draftMode } from "next/headers";
 import CursorFollower from "./../components/CursorFollower";
 import './../globals.css'
 import { Analytics } from "@vercel/analytics/react"
 import { SanityLive } from "@/sanity/lib/live";
 import Link from "next/link";
+import { DisableDraftMode } from "../components/DisableDraftMode";
+import { VisualEditing } from "next-sanity";
 
 
 
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
     "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, E-Commerce",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -76,6 +79,12 @@ export default function RootLayout({
       </header>
       {children}
       <SanityLive />
+      {(await draftMode()).isEnabled && (
+        <>
+          <DisableDraftMode />
+          <VisualEditing />
+        </>
+      )}
       <Analytics />
 
       <div className={"wrapper"}>
