@@ -7,7 +7,7 @@ import { PublishedAt } from "./PublishedAt";
 import { Title } from "./Title";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
-import { RelatedServices } from "./RelatedPosts";
+import { RelatedServices } from "./RelatedServices";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
   const { _id, title, author, mainImage, body, publishedAt, categories, relatedServices } = props;
