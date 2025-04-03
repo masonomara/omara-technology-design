@@ -7,9 +7,10 @@ import { PublishedAt } from "./PublishedAt";
 import { Title } from "./Title";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
+import { RelatedServices } from "./RelatedPosts";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
-  const { title, author, mainImage, body, publishedAt, categories } = props;
+  const { _id, title, author, mainImage, body, publishedAt, categories, relatedServices } = props;
 
   return (
     <article>
@@ -34,6 +35,11 @@ export function Service(props: NonNullable<SERVICE_QUERYResult>) {
       {body ? (
         <div>
           <PortableText value={body} components={components} />
+          <RelatedServices
+            relatedServices={relatedServices}
+            documentId={_id}
+            documentType="service"
+          />
         </div>
       ) : null}
     </article>
