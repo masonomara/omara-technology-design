@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
 import Image from "next/image";
 import CursorFollower from "./../components/CursorFollower";
-import './../global.css'
+import './../globals.css'
 import { Analytics } from "@vercel/analytics/react"
 import { SanityLive } from "@/sanity/lib/live";
 
