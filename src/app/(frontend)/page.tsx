@@ -36,7 +36,7 @@ export default function Home() {
   const [gameAction, setGameAction] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
 
-  const [gameStartTime, setGameStartTime] = useState(0);
+  const [gameStartTime] = useState(0);
   const [gameEndTime, setGameEndTime] = useState(0);
   const [shotsTaken, setShotsTaken] = useState(0);
   const [successfulHits, setSuccessfulHits] = useState(0);
