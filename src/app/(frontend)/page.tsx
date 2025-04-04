@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./../page.module.css";
+import { v4 as uuidv4 } from "uuid";
+
 
 // Initialize Supabase client with environment variables
 const supabase = createClient(
@@ -14,6 +16,7 @@ const supabase = createClient(
 interface LeaderboardEntry {
   nickname: string;
   score: number;
+  user_id: string;
 }
 
 // Enemy images and bad words list for filtering nicknames
@@ -40,6 +43,16 @@ export default function Home() {
   const [gameEndTime, setGameEndTime] = useState(0);
   const [shotsTaken, setShotsTaken] = useState(0);
   const [successfulHits, setSuccessfulHits] = useState(0);
+  const [userId, setUserId] = useState<string>("");
+
+  useEffect(() => {
+    let storedId = localStorage.getItem("userId");
+    if (!storedId) {
+      storedId = uuidv4();
+      localStorage.setItem("userId", storedId);
+    }
+    setUserId(storedId);
+  }, []);
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
@@ -85,16 +98,24 @@ export default function Home() {
   }, [fetchLeaderboard]);
 
   async function submitScore() {
+    if (!nickname.trim()) {
+      setWarning("Please enter a nickname before submitting.");
+      return;
+    }
+
     if (containsBadWord(nickname) && !warning) {
       setWarning("Your nickname contains a bad word. Please consider a different name.");
       return;
     }
+
     setWarning("");
     console.log("Submitting score for", nickname);
-    const { error } = await supabase.from("scores").insert([{ nickname, score }]);
+    const { error } = await supabase.from("scores").insert([{ nickname, score, user_id: userId }]);
     if (error) alert("Error submitting score: " + error.message);
     else setSubmitted(true);
   }
+
+
 
 
   // Handles user clicking on the game frame
@@ -399,7 +420,7 @@ export default function Home() {
                 </div>
                 <ol className={styles.leaderboardList}>
                   {leaderboard.map((entry, index) => {
-                    const isUser = entry.nickname === nickname && entry.score === score;
+                    const isUser = entry.user_id === userId;
                     return (
                       <li
                         key={index}
@@ -421,8 +442,10 @@ export default function Home() {
                       type="text"
                       placeholder="Nickname"
                       value={nickname}
-                      onChange={(e) => setNickname(e.target.value.toUpperCase())}
-                    />
+                      onChange={(e) => {
+                        setNickname(e.target.value.toUpperCase());
+                        if (warning) setWarning("");
+                      }} />
                     {warning && <div className={styles.warning}>{warning}</div>}
                     <div className={styles.startButtonWrapper}>
                       <button className={styles.primaryButton} onClick={submitScore}>

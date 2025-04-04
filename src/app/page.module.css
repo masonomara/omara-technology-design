@@ -537,7 +537,7 @@
 .videoWrapper {
   position: absolute;
   width: 100%;
-  height: calc(100% - 1px);
+  height: 100%;
   top: 0px;
   left: 0px;
   z-index: -50;
