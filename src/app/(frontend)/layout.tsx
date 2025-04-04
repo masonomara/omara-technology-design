@@ -29,10 +29,10 @@ export default async function RootLayout({
       <header className={"header"}>
         <div className={"header__content"}>
           <div className={"header__content--left"}>
-            <div className={"header__logoWrapper"}>
+            <Link href="/" target="_top" className={"header__logoWrapper"}>
               <Image className={"header__logo--desktop"} src="/monogramText.svg" width={158} height={51} alt="Logo" />
               <Image className={"header__logo--mobile"} src="/monogramText.svg" width={140} height={45} alt="Logo" />
-            </div>
+            </Link>
             <div className={"header__textContainer"}>
               <div id={"textAbout"} className={"header__textWrapper"}>
                 <div className={"header__textTitle"}>Technology Consulting Firm</div>
@@ -53,24 +53,24 @@ export default async function RootLayout({
           </div>
           <div className={"header__content--right"}>
             <div className={"header__menuWrapper"}>
-              <div id={"home"} className={"header__menuOption"}>
+              <Link id={"home"} className={"header__menuOption"} href="/services" target="_top">
                 <span>Home</span>
-              </div>
-              <div id={"menu"} className={"header__menuOption"}>
+              </Link>
+              <Link id={"menu"} className={"header__menuOption"} href="/services" target="_top">
                 <span>Menu</span>
-              </div>
-              <div id={"work"} className={"header__menuOption"}>
+              </Link>
+              <Link id={"work"} className={"header__menuOption"} href="/services" target="_top">
                 <span>Work</span>
-              </div>
+              </Link>
               <Link id={"services"} className={"header__menuOption"} href="/services" target="_top">
                 <span>Services</span>
               </Link>
-              <div id={"about"} className={"header__menuOption"}>
+              <Link id={"about"} className={"header__menuOption"} href="/services" target="_top">
                 <span>About</span>
-              </div>
-              <div id={"contact"} className={"header__menuOption"}>
+              </Link>
+              <Link id={"contact"} className={"header__menuOption"} href="/services" target="_top">
                 <span>Contact</span>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

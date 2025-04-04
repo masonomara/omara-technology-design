@@ -15,6 +15,31 @@
   }
 }
 
+.handWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 50%;
+  aspect-ratio: 473.95/461;
+  transition: transform ease-in 200ms;
+  pointer-events: none;
+  transform: rotate(-45deg);
+  transform: translateY(100%);
+}
+.handWrapperActive {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 50%;
+  aspect-ratio: 473.95/461;
+  transition: transform ease-in 200ms;
+  pointer-events: none;
+  transform: rotate(0deg);
+  transform: translateY(0%);
+}
+
 /* Score */
 .scoreWrapper {
   bottom: 16px;
@@ -26,12 +51,32 @@
   flex-direction: row;
   position: absolute;
   pointer-events: none;
+  transition: transform ease-in 200ms;
+  pointer-events: none;
+  transform: rotate(45deg);
+  transform: translateY(calc(100% + 16px));
+}
+.scoreWrapperActive {
+  bottom: 16px;
+  left: 32px;
+  justify-content: center;
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  pointer-events: none;
+  transition: transform ease-in 200ms;
+  pointer-events: none;
+  transform: rotate(0deg);
+  transform: translateY(0%);
 }
 .score {
   font-size: 77px;
   pointer-events: none;
   color: #8b1910;
-  font-variation-settings: "wdth" 80, "wght" 600;
+  font-variation-settings:
+    "wdth" 80,
+    "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   letter-spacing: -0.03em;
@@ -41,7 +86,9 @@
   font-size: 58px;
   pointer-events: none;
   color: #8b1910;
-  font-variation-settings: "wdth" 80, "wght" 600;
+  font-variation-settings:
+    "wdth" 80,
+    "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   letter-spacing: -0.03em;
@@ -51,7 +98,9 @@
   font-size: 27px;
   pointer-events: none;
   color: #8b1910;
-  font-variation-settings: "wdth" 100, "wght" 800;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800;
   font-family: var(--font-overpass);
   text-transform: uppercase;
   font-style: italic;
@@ -226,9 +275,9 @@
 
 /* start */
 .startContainer {
-  padding: 32px 24px;
-  border: 2px solid #8b1910;
-  border-radius: 16px;
+  padding: 32px 48px;
+  border: 1px solid #8b1910;
+  /* border-radius: 16px; */
   max-width: 412px;
   width: calc(100% - 48px - 64px);
   height: fit-content;
@@ -250,15 +299,15 @@
   object-fit: contain;
 }
 .startDescription {
-  font-size: 17px;
-  line-height: 1.29em;
+  font-size: 16px;
+  line-height: 19px;
   font-family: var(--font-overpass);
   color: #8b1910;
   font-weight: 800;
-  margin-top: 1.4em;
+  margin-top: 25.6px;
   text-transform: uppercase;
-
-  margin-bottom: 1.4em;
+  /* margin-bottom: 1.4em; */
+  margin-bottom: 0px;
   text-align: center;
 }
 .startDivider {
@@ -269,51 +318,65 @@
 .startButtonWrapper {
   display: flex;
   flex-direction: column;
-  gap: 13.6px;
-  margin-top: 24px;
-
-  width: 100%;
+  gap: 10px;
+  margin-top:   38.4px;
+  width: 300px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 .primaryButton {
-  height: 48px;
-  font-size: 19px;
+  height: 24px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
   border-radius: 19.2px;
   border: none;
-  background-color: #8b1910;
-  color: #ede1cc;
+  background-color: transparent;
+  color: #8b1910;
   width: 100%;
   max-width: 450px;
-  font-variation-settings: "wdth" 80, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   gap: 7px;
+  text-decoration: underline !important;
+  /* text-decoration-color: transparent !important; */
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3.2px !important;
+  transition: 100ms ease-out all;
 }
 .secondaryButton {
   height: 48px;
-  font-size: 19px;
+  font-size: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
   border-radius: 19.2px;
-  border: 1.5px solid #8b1910;
+  border: 1px solid #8b1910;
   color: #8b1910;
   background-color: #ede1cc;
   width: 100%;
   max-width: 450px;
-  font-variation-settings: "wdth" 80, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   gap: 7px;
+  text-decoration: underline !important;
+  text-decoration-color: transparent !important;
+  text-decoration-thickness: 3.24px !important;
+  text-underline-offset: 3.18px !important;
+  transition: 100ms ease-out all;
 }
 
 /* leaderboard */

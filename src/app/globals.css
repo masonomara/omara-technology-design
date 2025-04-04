@@ -26,7 +26,10 @@
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease, transform 0.1s ease-out;
+    transition:
+      width 0.2s ease,
+      height 0.2s ease,
+      transform 0.1s ease-out;
     z-index: 1000;
   }
 }
@@ -76,6 +79,10 @@
 }
 .header__logo--mobile {
   display: none;
+  pointer-events: none;
+}
+.header__logo--desktop {
+  pointer-events: none;
 }
 .header__textContainer {
   display: flex;
@@ -91,7 +98,7 @@
   align-items: flex-start;
 }
 .header__textTitle {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 17px;
   white-space: nowrap;
   font-family: var(--font-overpass);
@@ -100,9 +107,10 @@
   text-transform: uppercase;
 }
 .header__textBody {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 17px;
   white-space: nowrap;
+  font-weight: 500;
   font-family: var(--font-overpass);
   color: #8b1910;
 }
@@ -117,22 +125,36 @@
   background-color: #ede1cc;
   padding: 0px 5px;
   border-radius: 4px;
+  text-decoration: none !important;
 }
 .header__menuOption span {
   color: #8b1910;
-  font-size: 51px;
-  font-variation-settings: "wdth" 80, "wght" 600;
+  font-size: 54px;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
   font-family: var(--font-radio);
   text-transform: uppercase;
   letter-spacing: -0.03em;
   line-height: 54px;
+  /* color: #ede1cc; */
+  text-decoration: underline !important;
+  text-decoration-color: transparent !important;
+  text-decoration-thickness: 3.24px !important;
+  text-underline-offset: 3.18px !important;
+  transition: 100ms ease-out all;
 }
 .header__menuOption:hover {
-  background-color: #8b1910;
-  border-radius: 3px;
+  /* background-color: #8b1910;
+  border-radius: 3px; */
 }
 .header__menuOption:hover span {
-  color: #ede1cc;
+  /* color: #ede1cc; */
+  text-decoration-color: #8b1910 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 3.24px !important;
+  text-underline-offset: 5.18px !important;
+  transition: 100ms ease-in all;
 }
 #menu {
   display: none;
@@ -260,12 +282,12 @@
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  animation: marquee 10s linear infinite;
+  animation: marquee 20s linear infinite;
   background-color: #8b1910;
 }
 @media screen and (max-width: 799px) {
   .marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 40s linear infinite;
   }
 }
 
@@ -283,7 +305,7 @@
   display: inline-block;
   color: #ede1cc;
   font-family: var(--font-overpass);
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
   margin-left: 32px;
   margin-right: 4px;
