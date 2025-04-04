@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { HelpCircleIcon } from "@sanity/icons";
 
 export const faqsType = defineType({
   name: "faq",
@@ -14,4 +15,16 @@ export const faqsType = defineType({
       type: "blockContent",
     }),
   ],
+  icon: HelpCircleIcon,
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare({ title }) {
+      return {
+        title,
+        subtitle: "FAQs",
+      };
+    },
+  },
 });

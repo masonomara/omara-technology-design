@@ -259,11 +259,11 @@ export default function Home() {
     <div className="pageContainer">
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
-          <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""}`}>
+          <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveOne : ""}`}>
             {score}
             <span className={styles.scoreDetails}>points</span>
           </div>
-          <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""}`}>
+          <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveTwo : ""}`}>
             {currentEnemy}/9
             <span className={styles.scoreDetails}>CANS</span>
           </div>
@@ -315,18 +315,15 @@ export default function Home() {
                 <p className={styles.startDescription}>
                   Fractional business & digital product strategy, design, and development
                 </p>
-                <p className={styles.startDescription}>
-                  Work index
-                </p>
               </div>
-              <div className={styles.startDivider} />
+              {/* <div className={styles.startDivider} /> */}
               <div className={styles.startButtonWrapper}>
                 <button className={styles.primaryButton} onClick={startGame}>
-                  <p>Start</p>
+                  <p>Start Game</p>
                   <Image src="/tanArrow.svg" height={11.4} width={7.03} alt="start" />
                 </button>
                 <button className={styles.secondaryButton} onClick={startGame}>
-                  <p>Contact</p>
+                  <p>Contact US</p>
                   <Image src="/redArrow.svg" height={11.4} width={7.03} alt="start" />
 
                 </button>

@@ -15,8 +15,12 @@ const CursorFollower = () => {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (["A", "BUTTON", "INPUT"].includes(target.tagName)) {
+
+      // Traverse the DOM from the target element upwards to check if it's inside the parent
+      if (["A", "BUTTON", "INPUT"].includes(target.tagName) || target.closest("a, button, input")) {
         setIsHovering(true);
+      } else {
+        setIsHovering(false);
       }
     };
 
@@ -45,7 +49,7 @@ const CursorFollower = () => {
         left: position.x,
         width: isHovering ? "32px" : "16px",
         height: isHovering ? "32px" : "16px",
-        backgroundColor: isHovering ? "rgba(139, 25, 16, 1)" : "rgba(139, 25, 16, 0.25)",
+        backgroundColor: isHovering ? "rgba(139, 25, 16, .6)" : "rgba(139, 25, 16, 0.25)",
 
       }}
     />
