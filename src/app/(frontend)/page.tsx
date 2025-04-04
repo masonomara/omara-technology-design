@@ -58,8 +58,11 @@ export default function Home() {
 
 
   useEffect(() => {
-    if (gameEnd && userScoreRef.current) {
-      userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (gameEnd) {
+      setTimeout(() => {
+        console.log("Scrolling to user score...");
+        userScoreRef?.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100); // Optional delay
     }
   }, [gameEnd]);
 
@@ -379,40 +382,41 @@ export default function Home() {
 
           {gameStart &&
             <div className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}>
-              <span className={styles.trophyScore}>{score}<span className={styles.scoreDetails}>points!</span></span>
-              <div className={styles.statsContainer}>
-                <div className={styles.statsWrapper}>
-                  <span className={styles.statsTitle} >{timeTaken} seconds</span>
+              <div className={styles.leaderboardContainer}>
+
+                <span className={styles.trophyScore}>{score}<span className={styles.scoreDetails}>points!</span></span>
+                <div className={styles.statsContainer}>
+                  <div className={styles.statsWrapper}>
+                    <span className={styles.statsTitle} >{timeTaken} seconds</span>
+                  </div>
+                  <div className={styles.statsDivider} />
+                  <div className={styles.statsWrapper}>
+                    <span className={styles.statsTitle}>{accuracy}% accuracy</span>
+                  </div>
+                  <div className={styles.statsDivider} />
+                  <div className={styles.statsWrapper}>
+                    <span className={styles.statsTitle}>
+                      {(() => {
+                        const totalEntries = leaderboard.length;
+                        const userRank = leaderboard.findIndex(entry => entry.score === score);
+
+                        if (userRank === -1) return "Rank not available";
+
+                        const rankPercentage = (userRank / totalEntries) * 100;
+
+                        if (rankPercentage <= 0.01) return "Top 0.01%";
+                        if (rankPercentage <= 0.1) return "Top 0.1%";
+                        if (rankPercentage <= 1) return "Top 1%";
+                        if (rankPercentage <= 5) return "Top 5%";
+                        if (rankPercentage <= 10) return "Top 10%";
+                        if (rankPercentage <= 25) return "Top 25%";
+                        if (rankPercentage <= 50) return "Top 50%";
+                        return "Bottom 50%";
+                      })()}
+                    </span>
+                  </div>
                 </div>
-                <div className={styles.statsDivider} />
-                <div className={styles.statsWrapper}>
-                  <span className={styles.statsTitle}>{accuracy}% accuracy</span>
-                </div>
-                <div className={styles.statsDivider} />
-                <div className={styles.statsWrapper}>
-                  <span className={styles.statsTitle}>
-                    {(() => {
-                      const totalEntries = leaderboard.length;
-                      const userRank = leaderboard.findIndex(entry => entry.nickname === nickname && entry.score === score);
 
-                      if (userRank === -1) return "Rank not available"; // in case the user is not found
-
-                      const rankPercentage = (userRank / totalEntries) * 100; // user's rank percentage
-
-                      if (rankPercentage <= 0.01) return "Top 0.01%";
-                      if (rankPercentage <= 0.1) return "Top 0.1%";
-                      if (rankPercentage <= 1) return "Top 1%";
-                      if (rankPercentage <= 5) return "Top 5%";
-                      if (rankPercentage <= 10) return "Top 10%";
-                      if (rankPercentage <= 25) return "Top 25%";
-                      if (rankPercentage <= 50) return "Top 50%";
-                      return "Bottom 50%";
-                    })()}
-                  </span>
-                </div>
-              </div>
-
-              <div className={styles.leaderboardWrapper}>
                 <div className={styles.leaderboardHeader}>
                   <span>Rank</span>
                   <span>Name</span>
@@ -420,7 +424,7 @@ export default function Home() {
                 </div>
                 <ol className={styles.leaderboardList}>
                   {leaderboard.map((entry, index) => {
-                    const isUser = entry.user_id === userId;
+                    const isUser = entry.score === score;
                     return (
                       <li
                         key={index}
@@ -437,28 +441,29 @@ export default function Home() {
                 {submitted ? (
                   <p>Score submitted! 🎉</p>
                 ) : (
-                  <div>
+                  <>
                     <input
                       type="text"
                       placeholder="Nickname"
+                      className={styles.input}
                       value={nickname}
                       onChange={(e) => {
                         setNickname(e.target.value.toUpperCase());
                         if (warning) setWarning("");
                       }} />
-                    {warning && <div className={styles.warning}>{warning}</div>}
+                    {warning ? (<div className={styles.warning}>{warning}</div>) : (<div className={styles.warning}>Enter your nickname</div>)}
                     <div className={styles.startButtonWrapper}>
                       <button className={styles.primaryButton} onClick={submitScore}>
                         <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
-                        {/* <Image src="/tanArrow.svg" height={11.4} width={7.03} alt={warning ? "Submit Anyway" : "Submit Score"} /> */}
                       </button>
                       <button onClick={restartGame} className={styles.primaryButton}>
                         <p>Restart Game</p>
                       </button>
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
+
             </div>
           }
         </div>
