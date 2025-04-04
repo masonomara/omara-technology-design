@@ -36,6 +36,11 @@ export default function Home() {
   const [gameAction, setGameAction] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
 
+  const [gameStartTime, setGameStartTime] = useState(0);
+  const [gameEndTime, setGameEndTime] = useState(0);
+  const [shotsTaken, setShotsTaken] = useState(0);
+  const [successfulHits, setSuccessfulHits] = useState(0);
+
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
 
@@ -73,11 +78,11 @@ export default function Home() {
     } else {
       console.error("Error fetching leaderboard:", error);
     }
-  }, [score, nickname]); // Dependency array
+  }, [score, nickname]);
 
   useEffect(() => {
     fetchLeaderboard();
-  }, [fetchLeaderboard]); // Now it’s properly memoized and used
+  }, [fetchLeaderboard]);
 
   async function submitScore() {
     if (containsBadWord(nickname) && !warning) {
@@ -179,13 +184,15 @@ export default function Home() {
   }, [gameAction, currentEnemy]);
 
   // Hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
-  function iShoot(event: React.MouseEvent, index: number) {
+  const iShoot = (event: React.MouseEvent, index: number) => {
+    setShotsTaken(prev => prev + 1); // Increment shots taken
     setEnemyStates((prev) => prev.map((_, i) => (i === index ? false : prev[i])));
     setCurrentEnemy((prev) => {
       const newEnemy = prev + 1;
       if (newEnemy >= 9) {
         setGameAction(false);
         setGameEnd(true);
+        setGameEndTime(performance.now()); // Game ends, record the end time
       }
       return newEnemy;
     });
@@ -198,7 +205,7 @@ export default function Home() {
       enemy.classList.add(styles.hidden);
     }, 500);
 
-    enemy.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
+    enemy.style.transition = "transform 0.5s cubic-bezier(0,0.66,.66,1), opacity 0.5s linear";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
     enemy.style.pointerEvents = "none";
@@ -213,6 +220,10 @@ export default function Home() {
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67);
+    const hitSuccess = accuracyScore > 30; // if accuracy is greater than 30, it's considered a hit
+    if (hitSuccess) {
+      setSuccessfulHits(prev => prev + 1); // Increment successful hits
+    }
     setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
   }
 
@@ -255,13 +266,16 @@ export default function Home() {
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
 
+  const timeTaken = gameEndTime ? ((gameEndTime - gameStartTime) / 1000).toFixed(0) : "0"; // Time in seconds
+  const accuracy = shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0"; // Accuracy as a percentage
+
   return (
     <div className="pageContainer">
       <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
         <div className={styles.scoreWrapper}>
           <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveOne : ""}`}>
             {score}
-            <span className={styles.scoreDetails}>points</span>
+            <span className={styles.scoreDetails}>POINTS</span>
           </div>
           <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveTwo : ""}`}>
             {currentEnemy}/9
@@ -308,8 +322,8 @@ export default function Home() {
           ))}
 
           {/* Show Start Game button only if game hasn't started */}
-          {!gameStart && (
-            <div className={styles.startContainer}>
+          {!gameEnd &&
+            (<div className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
               <div className={styles.startTopWrapper}>
                 <Image src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
                 <p className={styles.startDescription}>
@@ -328,12 +342,55 @@ export default function Home() {
 
                 </button>
               </div>
-            </div>
-          )}
+            </div>)
+          }
 
-          {gameEnd && (
-            <div className={styles.gameOver}>
-              <p>New High Score! {score}</p>
+
+          <div className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""}`}>
+            <div className={styles.videoScreenOverlay} />
+            <div className={styles.videoMultiplyOverlay} />
+            <video width="320" height="240" autoPlay muted playsInline loop preload="none" className={styles.videoSource}>
+              <source src="/mason.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+
+          {gameStart &&
+            <div className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}>
+              <span className={styles.trophyScore}>{score}<span className={styles.scoreDetails}>points!</span></span>
+              <div className={styles.statsContainer}>
+                <div className={styles.statsWrapper}>
+                  <span className={styles.statsTitle} >{timeTaken} seconds</span>
+                </div>
+                <div className={styles.statsDivider} />
+                <div className={styles.statsWrapper}>
+                  <span className={styles.statsTitle}>{accuracy}% accuracy</span>
+                </div>
+                <div className={styles.statsDivider} />
+                <div className={styles.statsWrapper}>
+                  <span className={styles.statsTitle}>
+                    {(() => {
+                      const totalEntries = leaderboard.length;
+                      const userRank = leaderboard.findIndex(entry => entry.nickname === nickname && entry.score === score);
+
+                      if (userRank === -1) return "Rank not available"; // in case the user is not found
+
+                      const rankPercentage = (userRank / totalEntries) * 100; // user's rank percentage
+
+                      if (rankPercentage <= 0.01) return "Top 0.01%";
+                      if (rankPercentage <= 0.1) return "Top 0.1%";
+                      if (rankPercentage <= 1) return "Top 1%";
+                      if (rankPercentage <= 5) return "Top 5%";
+                      if (rankPercentage <= 10) return "Top 10%";
+                      if (rankPercentage <= 25) return "Top 25%";
+                      if (rankPercentage <= 50) return "Top 50%";
+                      return "Bottom 50%";
+                    })()}
+                  </span>
+                </div>
+              </div>
+
               <div className={styles.leaderboardWrapper}>
                 <div className={styles.leaderboardHeader}>
                   <span>Rank</span>
@@ -370,17 +427,17 @@ export default function Home() {
                     <div className={styles.startButtonWrapper}>
                       <button className={styles.primaryButton} onClick={submitScore}>
                         <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
-                        <Image src="/tanArrow.svg" height={11.4} width={7.03} alt={warning ? "Submit Anyway" : "Submit Score"} />
+                        {/* <Image src="/tanArrow.svg" height={11.4} width={7.03} alt={warning ? "Submit Anyway" : "Submit Score"} /> */}
                       </button>
-                      <button onClick={restartGame} className={styles.secondaryButton}>
-                        <p>Restart</p>
+                      <button onClick={restartGame} className={styles.primaryButton}>
+                        <p>Restart Game</p>
                       </button>
                     </div>
                   </div>
                 )}
               </div>
             </div>
-          )}
+          }
         </div>
       </div>
     </div >
