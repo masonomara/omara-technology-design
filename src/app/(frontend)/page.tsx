@@ -452,7 +452,7 @@ export default function Home() {
                         if (warning) setWarning("");
                       }} />
                     {warning ? (<div className={styles.warning}>{warning}</div>) : (<div className={styles.warning}>Enter your nickname</div>)}
-                    <div className={styles.startButtonWrapper}>
+                    <div className={styles.endButtonWrapper}>
                       <button className={styles.primaryButton} onClick={submitScore}>
                         <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
                       </button>
