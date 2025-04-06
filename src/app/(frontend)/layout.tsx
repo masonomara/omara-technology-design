@@ -36,7 +36,7 @@ export default async function RootLayout({
             <div className={"header__textContainer"}>
               <div id={"textAbout"} className={"header__textWrapper"}>
                 <div className={"header__textTitle"}>Technology Consulting Firm</div>
-                <div className={"header__textBody"}>Fractional business & digital product</div>
+                <div className={"header__textBody"}>Fractional business & technology</div>
                 <div className={"header__textBody"}>strategy, design, and development.</div>
               </div>
               <div id={"textWhere"} className={"header__textWrapper"}>
@@ -47,7 +47,7 @@ export default async function RootLayout({
               <div id={"textFocuses"} className={"header__textWrapper"}>
                 <div className={"header__textTitle"}>Focuses</div>
                 <div className={"header__textBody"}>Mobile Apps&nbsp;&nbsp;&nbsp;&nbsp;Websites</div>
-                <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Systems</div>
+                <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Digital Systems</div>
               </div>
             </div>
           </div>
@@ -87,16 +87,16 @@ export default async function RootLayout({
 
       <div className={"wrapper"}>
         <div className={"marquee"}>
-          <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & digital product strategy, design, and development.</p>
+          <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & technology strategy, design, and development.</p>
           <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
           <p><span className={"marqueeTitle"}>FOCUSES</span>
             Mobile Apps    Websites
-            Ecommerce    Systems</p>
-          <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & digital product strategy, design, and development.</p>
+            Ecommerce    Digital Systems</p>
+          <p><span className={"marqueeTitle"}>TECHNOLOGY CONSULTING FIRM</span>Fractional business & technology strategy, design, and development.</p>
           <p><span className={"marqueeTitle"}>WHERE</span> 1301 Corlies Ave Suite 2D, Asbury Park, NJ 07712</p>
           <p><span className={"marqueeTitle"}>FOCUSES</span>
             Mobile Apps    Websites
-            Ecommerce    Systems</p>
+            Ecommerce    Digital Systems</p>
         </div>
       </div>
 

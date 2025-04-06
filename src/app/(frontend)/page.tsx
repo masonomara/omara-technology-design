@@ -351,7 +351,7 @@ export default function Home() {
               <div className={styles.startTopWrapper}>
                 <Image src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
                 <p className={styles.startDescription}>
-                  Fractional business & digital product strategy, design, and development
+                  Fractional business & technology strategy, design, and development
                 </p>
               </div>
               {/* <div className={styles.startDivider} /> */}
