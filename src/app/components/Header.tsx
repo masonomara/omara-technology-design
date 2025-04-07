@@ -1,22 +1,16 @@
 // components/Header.tsx
 'use client';
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useMenu } from "../context/MenuContext";
 
-interface HeaderProps {
-  setFooterState?: (state: any) => void;
-}
+export default function Header() {
+  const { menuOpen, setMenuOpen } = useMenu();
 
-export default function Header({ setFooterState }: HeaderProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Example of header interaction affecting footer
-  const handleMenuItemClick = (section: string) => {
-    if (setFooterState) {
-      setFooterState({ activeSection: section });
-    }
+  // Toggle menu and update state
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -47,22 +41,28 @@ export default function Header({ setFooterState }: HeaderProps) {
         </div>
         <div className={"header__content--right"}>
           <div className={"header__menuWrapper"}>
-            <Link id={"home"} className={"header__menuOption"} href="/services" target="_top" onClick={() => handleMenuItemClick('home')}>
+            <Link id={"home"} className={"header__menuOption"} href="/" target="_top">
               <span>Home</span>
             </Link>
-            <div id={"menu"} className={"header__menuOption"} onClick={() => handleMenuItemClick('menu')}>
+            <div
+              id={"menu"}
+              className={`header__menuOption`}
+              onClick={() => {
+                toggleMenu();
+              }}
+            >
               <span>Menu</span>
             </div>
-            <Link id={"work"} className={"header__menuOption"} href="/services" target="_top" onClick={() => handleMenuItemClick('work')}>
+            <Link id={"work"} className={"header__menuOption"} href="/work" target="_top">
               <span>Work</span>
             </Link>
-            <Link id={"services"} className={"header__menuOption"} href="/services" target="_top" onClick={() => handleMenuItemClick('services')}>
+            <Link id={"services"} className={"header__menuOption"} href="/services" target="_top">
               <span>Services</span>
             </Link>
-            <Link id={"about"} className={"header__menuOption"} href="/services" target="_top" onClick={() => handleMenuItemClick('about')}>
+            <Link id={"about"} className={"header__menuOption"} href="/about" target="_top">
               <span>About</span>
             </Link>
-            <Link id={"contact"} className={"header__menuOption"} href="/services" target="_top" onClick={() => handleMenuItemClick('contact')}>
+            <Link id={"contact"} className={"header__menuOption"} href="/contact" target="_top">
               <span>Contact</span>
             </Link>
           </div>

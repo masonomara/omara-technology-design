@@ -314,43 +314,6 @@
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
-/* .primaryButton:hover {
-  animation: underlineBounceForth 300ms cubic-bezier(0.33, 0, 0.66, 1.33)
-    forwards;
-} */
-
-/* .primaryButton:not(:hover) {
-  animation: underlineBounceBack 250ms cubic-bezier(0.33, 0, 0.66, 1) forwards;
-} */
-
-/* @keyframes underlineBounceForth {
-  0% {
-    text-underline-offset: 3.2px;
-  }
-  40% {
-    text-underline-offset: 5.6px;
-  }
-
-  100% {
-    text-underline-offset: 4.8px;
-  }
-}
-
-@keyframes underlineBounceBack {
-  0% {
-    text-underline-offset: 4.5px;
-  }
-  40% {
-    text-underline-offset: 2.8px;
-  }
-  70% {
-    text-underline-offset: 3.4px;
-  }
-  100% {
-    text-underline-offset: 3.2px;
-  }
-} */
-
 .secondaryButton {
   height: 48px;
   font-size: 21px;
