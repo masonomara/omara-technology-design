@@ -1,7 +1,7 @@
 /* Global layout and game container */
 .gameFrameWrapper {
   position: absolute;
-  top: 0;
+  top: 71px;
   left: 0;
   display: flex;
   align-items: center;
@@ -28,6 +28,7 @@
 /* Media queries for gameFrameWrapper */
 @media screen and (max-width: 799px) {
   .gameFrameWrapper {
+    top: 65px;
     height: calc(100svh - 65px - 30px);
   }
 }
@@ -359,7 +360,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #ede1cc;
   opacity: 1;
   padding: 48px;
@@ -416,7 +417,7 @@
   min-height: 120px;
   overflow-y: scroll;
   margin: 0;
-  max-height: 33vh;
+  max-height: 22vh;
   width: 100%;
   border-bottom: 1px solid #8b1910;
 }

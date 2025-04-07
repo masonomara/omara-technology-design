@@ -7,7 +7,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { SanityLive } from "@/sanity/lib/live";
 import { DisableDraftMode } from "../components/DisableDraftMode";
 import { VisualEditing } from "next-sanity";
-import LayoutClient from "../components/LayoutClient";
+import { MenuProvider } from "../context/MenuContext";
+import Header from "../components/Header";
+import Marquee from "../components/Marquee";
 
 export const metadata: Metadata = {
   title: "O'Mara Technology & Design",
@@ -21,19 +23,21 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section>
-      <CursorFollower /> {/* Add this component */}
-      <LayoutClient>
+    <>
+      <MenuProvider>
+        <CursorFollower />
+        <Header />
         {children}
-      </LayoutClient>
-      <SanityLive />
-      {(await draftMode()).isEnabled && (
-        <>
-          <DisableDraftMode />
-          <VisualEditing />
-        </>
-      )}
-      <Analytics />
-    </section>
+        <Marquee />
+        <SanityLive />
+        {(await draftMode()).isEnabled && (
+          <>
+            <DisableDraftMode />
+            <VisualEditing />
+          </>
+        )}
+        <Analytics />
+      </MenuProvider>
+    </>
   );
 }

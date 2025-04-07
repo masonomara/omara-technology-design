@@ -1,25 +1,46 @@
+import Link from 'next/link'
 import React from 'react'
+import styles from '../../styles/contact.module.css'
 
 export default function Contacts() {
   return (
-    <div>
-      <div style={{ fontFamily: "serif" }}>Contact</div>
-      <div style={{ fontFamily: "sans-serif" }}>To work with O‘Mara Tech & Design as a client, press here</div>
-      <div>
-        <div>
-          For press Inquiries
+    <div className="standardPageContainer">
+      <div className={styles.contactWrapper}>
+
+
+        <h1 className={styles.title}>Contact</h1>
+        <div className={styles.buttonsWrapper}>
+
+
+          <Link href="mailto:contact@omaratechnologydesign.com" target="_blank" className={`${styles.buttonBorder} ${styles.mainButton}`}>
+            <div className={styles.buttonContent}>
+              <div className={styles.buttonHeading}>Let's Get Started</div>
+              <div className={styles.buttonSubheading}>Work with O'Mara Technology & Design</div>
+            </div>
+            <div className={styles.buttonArrow}>
+              Arrow
+            </div>
+          </Link>
+
+          <div className={styles.subButtonsWrapper}>
+            <Link href="mailto:contact@omaratechnologydesign.com" target="_blank" className={`${styles.buttonBorder} ${styles.subButton}`}>
+              Press Inquiries
+            </Link>
+            <Link href="mailto:contact@omaratechnologydesign.com" target="_blank" className={`${styles.buttonBorder} ${styles.subButton}`}>
+              Join Our Team
+            </Link>
+            <Link href="mailto:contact@omaratechnologydesign.com" target="_blank" className={`${styles.buttonBorder} ${styles.subButton}`}>
+              General Inquiries
+            </Link>
+          </div>
         </div>
-        <div>
-          For job inquiries
+
+        <div className={styles.emailInfo}>
+          Online forms aren't your thing? Feel free to email <Link className={styles.emailLink} href="mailto:contact@omaratechnologydesign.com" target="_blank">contact@omaratechnologydesign.com</Link>.
         </div>
-        <div>
-          For other inquiries
-        </div>
-        <div>
-          Or if contact forms arent your thing, jsut email mason@omaratechnologydesign.com
-        </div>
-        <div style={{ fontFamily: "serif" }}>
-          O‘Mara Technology & Design
+
+        <div className={styles.companyTitle}>
+          O'Mara Technology & Design
         </div>
       </div>
     </div>
