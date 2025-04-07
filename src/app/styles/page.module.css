@@ -90,7 +90,7 @@
 .score {
   font-size: 77px;
   pointer-events: none;
-  color: #8b1910;
+  color: #971B11;
   font-variation-settings:
     "wdth" 75,
     "wght" 600;
@@ -107,7 +107,7 @@
 .trophyScore {
   font-size: 58px;
   pointer-events: none;
-  color: #8b1910;
+  color: #971B11;
   font-variation-settings:
     "wdth" 75,
     "wght" 600;
@@ -139,7 +139,7 @@
 .scoreDetails {
   font-size: 27px;
   pointer-events: none;
-  color: #8b1910;
+  color: #971B11;
   font-variation-settings:
     "wdth" 100,
     "wght" 800;
@@ -215,7 +215,7 @@
 /* Start screen */
 .startContainer {
   padding: 48px;
-  border: 1px solid #8b1910;
+  border: 1px solid #971B11;
   max-width: 412px;
   width: calc(100% - 96px - 64px);
   height: fit-content;
@@ -223,7 +223,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ede1cc;
+  background-color: #FAE6D0;
   opacity: 1;
   position: absolute;
   top: 50%;
@@ -255,7 +255,7 @@
   font-size: 21px;
   line-height: 25px;
   font-family: var(--font-overpass);
-  color: #8b1910;
+  color: #971B11;
   font-weight: 800;
   margin-top: 33.13px;
   text-transform: uppercase;
@@ -266,7 +266,7 @@
 .startDivider {
   height: 1px;
   width: 100%;
-  background-color: #8b1910;
+  background-color: #971B11;
 }
 
 /* Button styles */
@@ -291,7 +291,7 @@
   border-radius: 19.2px;
   border: none;
   background-color: transparent;
-  color: #8b1910;
+  color: #971B11;
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
@@ -323,9 +323,9 @@
   justify-content: center;
   gap: 7px;
   border-radius: 19.2px;
-  border: 1px solid #8b1910;
-  color: #8b1910;
-  background-color: #ede1cc;
+  border: 1px solid #971B11;
+  color: #971B11;
+  background-color: #FAE6D0;
   width: 100%;
   max-width: 450px;
   font-variation-settings:
@@ -346,7 +346,7 @@
   font-size: 12px;
   line-height: 15px;
   opacity: 1;
-  color: #8b1910;
+  color: #971B11;
   margin-top: 4.8px;
   text-align: center;
   height: 15px;
@@ -354,14 +354,14 @@
 
 /* Game over & Leaderboard */
 .gameOver {
-  border: 1px solid #8b1910;
+  border: 1px solid #971B11;
   max-width: 412px;
   height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #ede1cc;
+  background-color: #FAE6D0;
   opacity: 1;
   padding: 48px;
   width: calc(100% - 96px - 64px);
@@ -389,13 +389,13 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  color: #8b1910;
+  color: #971B11;
 }
 
 .leaderboardHeader {
   display: grid;
   grid-template-columns: 1fr 3fr 2fr;
-  border-bottom: 1px solid #8b1910;
+  border-bottom: 1px solid #971B11;
   margin-bottom: 0;
   width: 100%;
   font-size: 14px;
@@ -419,7 +419,7 @@
   margin: 0;
   max-height: 22vh;
   width: 100%;
-  border-bottom: 1px solid #8b1910;
+  border-bottom: 1px solid #971B11;
 }
 
 .leaderboardEntry {
@@ -427,7 +427,7 @@
   grid-template-columns: 1fr 3fr 2fr;
   justify-content: flex-start;
   padding: 5px 0 1px;
-  border-bottom: 1px solid #8b1910;
+  border-bottom: 1px solid #971B11;
   font-size: 24px;
   line-height: 29px;
   font-weight: 800;
@@ -462,7 +462,7 @@
 }
 
 .highlight {
-  background-color: #8b191022;
+  background-color: #971B1122;
 }
 
 /* Video elements */
@@ -491,7 +491,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #ede1cc;
+  background-color: #FAE6D0;
   mix-blend-mode: screen;
   opacity: 50%;
 }
@@ -502,7 +502,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #ede1cc;
+  background-color: #FAE6D0;
   mix-blend-mode: multiply;
 }
 
@@ -529,7 +529,7 @@
 .statsDivider {
   width: 1px;
   min-width: 1px;
-  background-color: #8b1910;
+  background-color: #971B11;
 }
 
 .statsWrapper {
@@ -545,7 +545,7 @@
   font-weight: 800;
   font-family: var(--font-overpass);
   text-transform: uppercase;
-  color: #8b1910;
+  color: #971B11;
   text-align: center;
 }
 
@@ -554,16 +554,16 @@
   line-height: 17px;
   font-weight: 500;
   font-family: var(--font-overpass);
-  color: #8b1910;
+  color: #971B11;
 }
 
 .input {
-  border: 1.5px solid #8b1910;
-  border-bottom: 2px solid #8b1910;
+  border: 1.5px solid #971B11;
+  border-bottom: 2px solid #971B11;
   background: transparent;
   font-size: 16px;
   margin-top: 25.6px;
-  color: #8b1910;
+  color: #971B11;
   font-family: var(--font-overpass);
   font-weight: 500 !important;
   height: 24px;
@@ -575,15 +575,15 @@
 }
 
 .input::placeholder {
-  color: #8b191099;
+  color: #971B1199;
   font-weight: 500;
   text-transform: uppercase;
 }
 
 .input:focus {
   stroke: none;
-  border: 1.5px solid #8b1910;
-  border-bottom: 2px solid #8b1910;
+  border: 1.5px solid #971B11;
+  border-bottom: 2px solid #971B11;
   box-shadow: none;
   outline: none;
 }

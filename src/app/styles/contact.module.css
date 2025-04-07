@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 90px;
   font-family: var(--font-rallingtonSerif);
-  color: #8b1910;
+  color: #971B11;
   margin-top: 72px;
   font-weight: 400;
 }
@@ -20,13 +20,13 @@
   text-align: center;
   font-size: 60px;
   font-family: var(--font-rallingtonSerif);
-  color: #8b1910;
+  color: #971B11;
   margin-top: .8em;
   font-weight: 400;
   margin-bottom: .8em;
 }
 .buttonBorder {
-  border: 1px solid #8b1910;
+  border: 1px solid #971B11;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -50,7 +50,7 @@
 .mainButton {
   padding: 24px 18px;
   width: calc(100% - 36px);
-  color: #8b1910;
+  color: #971B11;
 }
 .buttonHeading {
   font-size: 29px;
@@ -72,7 +72,7 @@
   border-radius: 19.2px;
   border: none;
   background-color: transparent; */
-  color: #8b1910;
+  color: #971B11;
   /* width: 100%;
   max-width: 450px; */
   white-space: nowrap;

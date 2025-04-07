@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" style={{ margin: "0px", backgroundColor: "#EDE1CC" }}>
+    <html lang="en" style={{ margin: "0px", backgroundColor: "#FAE6D0" }}>
       <head><meta name="apple-mobile-web-app-title" content="O'Mara" />
       </head>
       <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
