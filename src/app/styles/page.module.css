@@ -565,7 +565,6 @@
 .statsDivider {
   width: 1px;
   min-width: 1px;
-  height: 100%;
   background-color: #8b1910;
 }
 
@@ -669,7 +668,7 @@
   }
 
   .cans {
-    transform: translateY(calc(200% + 16px));
+    transform: translateY(calc(300% + 16px));
   }
 
   .scoreWrapperActiveTwo {
