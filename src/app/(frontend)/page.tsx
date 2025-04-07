@@ -39,7 +39,7 @@ export default function Home() {
   const [gameAction, setGameAction] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
 
-  const [gameStartTime] = useState(0);
+  const [gameStartTime, setGameStartTime] = useState(0);
   const [gameEndTime, setGameEndTime] = useState(0);
   const [shotsTaken, setShotsTaken] = useState(0);
   const [successfulHits, setSuccessfulHits] = useState(0);
@@ -262,6 +262,7 @@ export default function Home() {
     setBangs([]);
     setHandImage("/thumbsUp.svg");
     setGameAction(true);
+    setGameStartTime(performance.now()); // Add this line to record new start time
     setGameEnd(false);
     setEnemyStates(Array(9).fill(false));
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
@@ -287,6 +288,7 @@ export default function Home() {
     setGameAction(true);
     setGameEnd(false);
     setCurrentEnemy(0);
+    setGameStartTime(performance.now()); // Add this line to record start time
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
 
