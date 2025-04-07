@@ -160,7 +160,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1701px) {
+@media screen and (max-width: 1775px) {
   #menu {
     display: flex;
   }
@@ -169,27 +169,27 @@
     display: none;
   }
 }
-@media screen and (max-width: 1536px) {
+@media screen and (max-width: 1608px) {
   #services {
     display: none;
   }
 }
-@media screen and (max-width: 1306px) {
+@media screen and (max-width: 1375px) {
   #work {
     display: none;
   }
 }
-@media screen and (max-width: 1154px) {
+@media screen and (max-width: 1221px) {
   #textWhere {
     display: none;
   }
 }
-@media screen and (max-width: 985px) {
+@media screen and (max-width: 1039px) {
   #textFocuses {
     display: none;
   }
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 832px) {
   .header {
     height: 64px;
     padding: 0px 16px;
