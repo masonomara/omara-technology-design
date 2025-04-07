@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
-import styles from "./../page.module.css";
+import styles from "./../styles/page.module.css";
 import { v4 as uuidv4 } from "uuid";
 
 
