@@ -4,7 +4,7 @@ export default function Contacts() {
   return (
     <div>
       <div style={{ fontFamily: "serif" }}>Contact</div>
-      <div style={{ fontFamily: "sans-serif" }}>To work with O'Mara Tech & Design as a client, press here</div>
+      <div style={{ fontFamily: "sans-serif" }}>To work with O‘Mara Tech & Design as a client, press here</div>
       <div>
         <div>
           For press Inquiries
@@ -19,7 +19,7 @@ export default function Contacts() {
           Or if contact forms arent your thing, jsut email mason@omaratechnologydesign.com
         </div>
         <div style={{ fontFamily: "serif" }}>
-          O'Mara Technology & Design
+          O‘Mara Technology & Design
         </div>
       </div>
     </div>
