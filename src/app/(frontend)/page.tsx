@@ -243,12 +243,12 @@ export default function Home() {
     );
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
-    const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67);
+    const speedScore = (Math.max(0, (1 - reactionTime / 2000) * 67) * 1.5);
     const hitSuccess = accuracyScore > 30; // if accuracy is greater than 30, it's considered a hit
     if (hitSuccess) {
       setSuccessfulHits(prev => prev + 1); // Increment successful hits
     }
-    setScore((prev) => prev + Math.round((accuracyScore + speedScore) * 10));
+    setScore((prev) => prev + Math.round(((accuracyScore * 1.5) + speedScore) * 10));
   }
 
   // Restarts game
