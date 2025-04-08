@@ -1,0 +1,130 @@
+/* Contact Form Styling */
+.contactFormWrapper {
+  width: 75vw;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formField label {
+  font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-size: 16px;
+  color: #971b11;
+  margin-bottom: 8px;
+}
+
+.formField input[type="text"],
+.formField input[type="email"],
+.formField input[type="url"] {
+  font-family: var(--font-overpass);
+  border: 2px solid #971b11;
+  background-color: transparent;
+  padding: 12px;
+  font-size: 16px;
+  color: #971b11;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+}
+
+.formField input:focus {
+  outline: none;
+  background-color: rgba(151, 27, 17, 0.08);
+}
+
+.formField p {
+  font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-size: 16px;
+  color: #971b11;
+  margin-bottom: 12px;
+}
+
+.checkboxGroup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxItem input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #971b11;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkboxItem input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #971b11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkboxItem label {
+  font-family: var(--font-overpass);
+  color: #971b11;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.submitButton {
+  font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  background-color: transparent;
+  border: 2px solid #971b11;
+  color: #971b11;
+  padding: 12px 24px;
+  font-size: 19px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  align-self: center;
+}
+
+.submitButton:hover {
+  background-color: rgba(151, 27, 17, 0.08);
+}
+
+/* Media Queries */
+@media screen and (max-width: 799px) {
+  .contactFormWrapper {
+    width: calc(100% - 32px);
+  }
+  
+  .checkboxGroup {
+    grid-template-columns: 1fr;
+  }
+}
