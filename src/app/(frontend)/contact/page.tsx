@@ -13,8 +13,8 @@ export default function Contacts() {
 
         <div className={styles.buttonsWrapper}>
           <Link
-            href={`mailto:${emailAddress}`}
-            target="_blank"
+            href={`/contact/clients`}
+            target="_top"
             className={`${styles.buttonBorder} ${styles.mainButton}`}
           >
             <div className={styles.buttonHeading}>
@@ -26,8 +26,8 @@ export default function Contacts() {
 
           <div className={styles.subButtonsWrapper}>
             <Link
-              href={`mailto:${emailAddress}`}
-              target="_blank"
+              href={`/contact/press`}
+              target="_top"
               className={`${styles.buttonBorder} ${styles.subButton}`}
             >
               For Press Inquiries
@@ -36,8 +36,8 @@ export default function Contacts() {
             </Link>
 
             <Link
-              href={`mailto:${emailAddress}`}
-              target="_blank"
+              href={`/contact/jobs`}
+              target="_top"
               className={`${styles.buttonBorder} ${styles.subButton}`}
             >
               FOR JOB INQUIRIES
@@ -46,8 +46,8 @@ export default function Contacts() {
             </Link>
 
             <Link
-              href={`mailto:${emailAddress}`}
-              target="_blank"
+              href={`/contact/general`}
+              target="_top"
               className={`${styles.buttonBorder} ${styles.subButton}`}
             >
               FOR GENERAL INQUIRIES
