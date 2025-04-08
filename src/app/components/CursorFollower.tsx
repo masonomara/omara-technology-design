@@ -1,86 +1,95 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const CursorFollower = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isMenuActive, setIsMenuActive] = useState(false); // New state for menuActive
+  const [cursorState, setCursorState] = useState({
+    isHovering: false,
+    isMenuActive: false
+  });
+
+  // Memoize event handlers to prevent unnecessary re-renders
+  const moveCursor = useCallback((e: MouseEvent) => {
+    // Use requestAnimationFrame for smoother performance
+    requestAnimationFrame(() => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    });
+  }, []);
+
+  const handleMouseOver = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+
+    // Check for menu active state
+    let isOverMenuActive = false;
+    let isHovering = false;
+    let currentElement: HTMLElement | null = target;
+
+    // Single traversal through the DOM hierarchy
+    while (currentElement) {
+      // Menu active check
+      if (currentElement.id === 'menuActive') {
+        isOverMenuActive = true;
+      }
+
+      // Interactive element check
+      if (!isHovering && (
+        ["A", "BUTTON", "INPUT"].includes(currentElement.tagName) ||
+        currentElement.hasAttribute('onclick') ||
+        currentElement.onclick !== null ||
+        currentElement.getAttribute('role') === 'button' ||
+        currentElement.id === 'menu'
+      )) {
+        isHovering = true;
+      }
+
+      currentElement = currentElement.parentElement;
+    }
+
+    setCursorState({ isHovering, isMenuActive: isOverMenuActive });
+  }, []);
+
+  const handleMouseOut = useCallback(() => {
+    setCursorState({ isHovering: false, isMenuActive: false });
+  }, []);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-
-      // First check specifically for menuActive ID
-      let isOverMenuActive = false;
-      let currentElement: HTMLElement | null = target;
-      while (currentElement) {
-        if (currentElement.id === 'menuActive') {
-          isOverMenuActive = true;
-          break;
-        }
-        currentElement = currentElement.parentElement;
-      }
-      setIsMenuActive(isOverMenuActive);
-
-      // Reset current element to check for other interactive elements
-      currentElement = target;
-      while (currentElement) {
-        // Check for onClick attribute or event
-        const hasOnClick = currentElement.hasAttribute('onclick') ||
-          currentElement.onclick !== null ||
-          currentElement.getAttribute('role') === 'button';
-
-        // Check for id="menu"
-        const hasMenuId = currentElement.id === 'menu';
-
-        if (["A", "BUTTON", "INPUT"].includes(currentElement.tagName) ||
-          currentElement.closest("a, button, input") ||
-          hasOnClick ||
-          hasMenuId) {
-          setIsHovering(true);
-          return;
-        }
-
-        currentElement = currentElement.parentElement;
-      }
-
-      setIsHovering(false);
-    };
-
-    const handleMouseOut = () => {
-      setIsHovering(false);
-      setIsMenuActive(false);
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("mouseout", handleMouseOut);
+    // Passive: true improves performance for scroll/touch events
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    window.addEventListener("mouseover", handleMouseOver, { passive: true });
+    window.addEventListener("mouseout", handleMouseOut, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []);
+  }, [moveCursor, handleMouseOver, handleMouseOut]);
+
+  const { isHovering, isMenuActive } = cursorState;
+
+  // Prepare styles outside the render to reduce calculations
+  const backgroundColor = isMenuActive
+    ? isHovering ? "rgba(250, 230, 208, 0.6)" : "rgba(250, 230, 208, 0.25)"
+    : isHovering ? "rgba(151, 27, 17, .6)" : "rgba(151, 27, 17, 0.25)";
+
+  const size = isHovering ? "32px" : "16px";
 
   return (
     <div
-      className={"cursorFollower"}
+      className="cursorFollower"
       style={{
+        position: 'fixed', // Add position fixed for better performance
         top: position.y,
         left: position.x,
-        width: isHovering ? "32px" : "16px",
-        height: isHovering ? "32px" : "16px",
-        backgroundColor: isMenuActive
-          ? isHovering ?  "rgba(237, 225, 204, 0.6)" : "rgba(237, 225, 204, 0.25)"
-          : isHovering
-            ? "rgba(139, 25, 16, .6)"
-            : "rgba(139, 25, 16, 0.25)",
+        width: size,
+        height: size,
+        backgroundColor,
+        transform: 'translate(-50%, -50%)', // Center the cursor
+        pointerEvents: 'none', // Ensure it doesn't interfere with clicks
+        transition: 'width 0.2s, height 0.2s, background-color 0.2s', // Smooth transitions
+        zIndex: 9999, // Make sure it's on top
+        borderRadius: '50%', // Circular cursor
       }}
     />
   );

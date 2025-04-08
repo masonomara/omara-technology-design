@@ -15,9 +15,9 @@ const overpass = Overpass({
 });
 
 const rallingtonSerif = localFont({
-  src: '../../public/fonts/RallingtonSerif.woff2', // Note the path adjustment
+  src: '../../public/fonts/RallingtonSerif.woff2',
   display: 'swap',
-  variable: '--font-rallingtonSerif', // Add a CSS variable name
+  variable: '--font-rallingtonSerif',
 })
 
 export default function RootLayout({

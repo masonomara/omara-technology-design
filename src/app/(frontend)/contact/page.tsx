@@ -13,13 +13,11 @@ export default function Contacts() {
 
 
           <Link href="mailto:contact@omaratechnologydesign.com" target="_blank" className={`${styles.buttonBorder} ${styles.mainButton}`}>
-            <div className={styles.buttonContent}>
-              <div className={styles.buttonHeading}>Let's Get Started</div>
-              <div className={styles.buttonSubheading}>Work with O'Mara Technology & Design</div>
-            </div>
-            <div className={styles.buttonArrow}>
-              Arrow
-            </div>
+
+            <div className={styles.buttonHeading}>Let's Get Started</div>
+            <div className={styles.buttonSubheading}>Work with O'Mara Technology & Design</div>
+
+
           </Link>
 
           <div className={styles.subButtonsWrapper}>
@@ -33,11 +31,12 @@ export default function Contacts() {
               General Inquiries
             </Link>
           </div>
+          <div className={styles.emailInfo}>
+            Online forms aren't your thing? Feel free to email <Link className={styles.emailLink} href="mailto:contact@omaratechnologydesign.com" target="_blank">contact@omaratechnologydesign.com</Link>.
+          </div>
         </div>
 
-        <div className={styles.emailInfo}>
-          Online forms aren't your thing? Feel free to email <Link className={styles.emailLink} href="mailto:contact@omaratechnologydesign.com" target="_blank">contact@omaratechnologydesign.com</Link>.
-        </div>
+
 
         <div className={styles.companyTitle}>
           O'Mara Technology & Design
