@@ -1,12 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from '../../../styles/subcontact.module.css'
+import Image from 'next/image'
 
 export default function ClientInquiries() {
   const emailAddress = 'contact@omaratechnologydesign.com'
 
   return (
     <div className="standardPageContainer">
+      <Link className={styles.backWrapper} href="/contact" target="_top">
+        <Image className={styles.backArrow} src="/redArrow.svg" height={120} width={120} alt="back" />
+      </Link>
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Client Inquiries</h1>
         <p className={styles.subtitle}>
@@ -70,7 +74,7 @@ export default function ClientInquiries() {
 
             <div className={styles.formField}>
               <p>Please indicate which services you are interested in:</p>
-              
+
               {/* Leadership & Strategy Section */}
               <div className={styles.serviceCategory}>
                 <h3>Leadership & Strategy</h3>
@@ -85,7 +89,7 @@ export default function ClientInquiries() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Design Section */}
               <div className={styles.serviceCategory}>
                 <h3>Design</h3>
@@ -108,7 +112,7 @@ export default function ClientInquiries() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Development Section */}
               <div className={styles.serviceCategory}>
                 <h3>Development</h3>
@@ -131,7 +135,7 @@ export default function ClientInquiries() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Other Section */}
               <div className={styles.serviceCategory}>
                 <h3>Other</h3>

@@ -1,12 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from '../../../styles/subcontact.module.css'
+import Image from 'next/image'
 
 export default function PressInquiries() {
   const emailAddress = 'contact@omaratechnologydesign.com'
 
   return (
     <div className="standardPageContainer">
+      <Link className={styles.backWrapper} href="/contact" target="_top">
+        <Image className={styles.backArrow} src="/redArrow.svg" height={120} width={120} alt="back" />
+      </Link>
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Press Inquiries</h1>
         <p className={styles.subtitle}>
@@ -49,7 +53,7 @@ export default function PressInquiries() {
             </div>
 
             <div className={styles.formField}>
-            <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>              <textarea
+              <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>              <textarea
                 id="additionalDetails"
                 name="additionalDetails"
                 rows={4}

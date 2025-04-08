@@ -1,12 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from '../../../styles/subcontact.module.css'
+import Image from 'next/image'
 
 export default function GeneralInquiries() {
   const emailAddress = 'contact@omaratechnologydesign.com'
 
   return (
     <div className="standardPageContainer">
+      <Link className={styles.backWrapper} href="/contact" target="_top">
+        <Image className={styles.backArrow} src="/redArrow.svg" height={120} width={120} alt="back" />
+      </Link>
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>General Inquiries</h1>
         <p className={styles.subtitle}>
