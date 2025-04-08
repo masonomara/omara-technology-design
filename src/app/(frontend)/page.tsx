@@ -360,11 +360,9 @@ export default function Home() {
               <div className={styles.startButtonWrapper}>
                 <button className={styles.primaryButton} onClick={startGame}>
                   <p>Start Game</p>
-                  {/* <Image src="/redArrow.svg" height={11.4} width={7.03} alt="start" /> */}
                 </button>
                 <button className={styles.primaryButton} onClick={startGame}>
                   <p>Contact US</p>
-                  {/* <Image src="/redArrow.svg" height={11.4} width={7.03} alt="start" /> */}
 
                 </button>
               </div>

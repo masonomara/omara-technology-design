@@ -225,6 +225,13 @@
     padding: 0px 16px;
     width: calc(100% - 32px);
   }
+  .standardPageContainer {
+    padding: 16px;
+    padding-top: calc(65px);
+    padding-bottom: calc(30px);
+    width: calc(100% - 32px);
+    min-height: calc(100svh - 65px - 30px);
+  }
   .pageContainer {
     position: relative;
   }
