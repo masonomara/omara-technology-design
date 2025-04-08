@@ -13,10 +13,6 @@ export default function ClientInquiries() {
       </Link>
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Client Inquiries</h1>
-        <p className={styles.subtitle}>
-          O’Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
-          <br />
-          Our focuses include mobile apps, websites, ecommerce, or any digital system. If you’re interested in any of these services or more, please fill out the form below.</p>
         <div className={styles.emailInfo}>
           Online forms not your thing? Feel free to email{' '}
           <Link
@@ -27,6 +23,14 @@ export default function ClientInquiries() {
             {emailAddress}
           </Link>
         </div>
+        <p className={styles.subtitle}>
+          O’Mara Technology & Design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
+          
+          </p><p className={styles.subtitle}>
+
+          Our focuses include mobile apps, websites, ecommerce, or any digital system. If you’re interested in any of these services or more, please fill out the form below.
+        </p>
+
 
         <div className={styles.contactFormWrapper}>
           <form className={styles.contactForm}>
@@ -72,11 +76,11 @@ export default function ClientInquiries() {
               />
             </div>
 
-            <div className={styles.formField}>
+            <div className={styles.formField} style={{ gridColumn: "span 2" }}>
               <p>Please indicate which services you are interested in:</p>
 
               {/* Leadership & Strategy Section */}
-              <div className={styles.serviceCategory}>
+              <div className={styles.serviceCategory} style={{ gridColumn: "span 2" }}>
                 <h3>Leadership & Strategy</h3>
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxItem}>
@@ -91,7 +95,7 @@ export default function ClientInquiries() {
               </div>
 
               {/* Design Section */}
-              <div className={styles.serviceCategory}>
+              <div className={styles.serviceCategory} style={{ gridColumn: "span 2" }}>
                 <h3>Design</h3>
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxItem}>
@@ -114,7 +118,7 @@ export default function ClientInquiries() {
               </div>
 
               {/* Development Section */}
-              <div className={styles.serviceCategory}>
+              <div className={styles.serviceCategory} style={{ gridColumn: "span 2" }}>
                 <h3>Development</h3>
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxItem}>
@@ -137,7 +141,7 @@ export default function ClientInquiries() {
               </div>
 
               {/* Other Section */}
-              <div className={styles.serviceCategory}>
+              <div className={styles.serviceCategory} style={{ gridColumn: "span 2" }}>
                 <h3>Other</h3>
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxItem}>
@@ -156,7 +160,7 @@ export default function ClientInquiries() {
               </div>
             </div>
 
-            <div className={styles.formField}>
+            <div className={styles.formField} style={{ gridColumn: "span 2" }}>
               <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>
               <textarea
                 id="additionalDetails"
