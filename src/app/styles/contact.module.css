@@ -1,3 +1,4 @@
+/* Layout Container */
 .contactWrapper {
   min-height: calc(100svh - 71px - 30px);
   display: flex;
@@ -10,6 +11,7 @@
   height: fit-content;
 }
 
+/* Typography */
 .title {
   width: 100%;
   text-align: center;
@@ -31,17 +33,23 @@
   margin-bottom: calc(80% / (208 / 12));
   margin-top: calc(80% / (208 / 12));
 }
+
+/* Company Title Images */
 .companyTitleImage {
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
+
 .companyTitleImageCondensed {
   display: none;
 }
+
 .companyTitleImageSuperCondensed {
   display: none;
 }
+
+/* Button Styles */
 .buttonBorder {
   outline: 2px solid #971b11;
   display: flex;
@@ -60,6 +68,7 @@
   outline-offset: 1.2px;
   outline: 2.4px solid #971b11;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  background-color: rgba(151, 27, 17, 0.08);
 }
 
 .buttonsWrapper {
@@ -72,7 +81,6 @@
   gap: 16px;
   flex: 1;
   margin-top: 23px;
-  /* margin-bottom: 23px; */
 }
 
 .subButtonsWrapper {
@@ -91,9 +99,7 @@
 .buttonHeading {
   font-size: 29px;
   line-height: 117%;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: "wdth" 75, "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -108,22 +114,19 @@
   align-items: center;
   justify-content: center;
   color: #971b11;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: "wdth" 75, "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
   letter-spacing: -0.03em;
   text-align: center;
 }
 
+/* Email Info */
 .emailInfo {
   margin-top: 0.8em;
   font-size: 19px;
   line-height: 123%;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: "wdth" 75, "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -136,82 +139,85 @@
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  background-color: #FAE6D0;
 }
 
 .emailInfo a:hover {
   text-decoration-thickness: 2px !important;
   text-underline-offset: 4.8px !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+
 }
+
+/* Media Queries */
 @media screen and (max-width: 832px) {
+  .contactWrapper {
+    min-height: calc(100svh - 65px - 30px);
+  }
+
+}
+
+@media screen and (max-width: 799px) {
   .companyTitleImage {
     display: none;
   }
+  
   .companyTitleImageCondensed {
     height: 100%;
     object-fit: contain;
     width: 100%;
     display: flex;
   }
+  
   .companyTitle {
     aspect-ratio: 142 / 24;
-  }
-  .companyTitle {
-    margin-bottom: calc(80% / (142 / 24));
-    margin-top: calc(80% / (142 / 24));
-  }
-}
-@media screen and (max-width: 832px) {
-  .contactWrapper {
-    min-height: calc(100svh - 65px - 30px);
-  }
-}
-@media screen and (max-width: 799px) {
-
-  .buttonHeading {
+    margin-bottom: calc(60% / (142 / 24));
+    margin-top: calc(60% / (142 / 24));
+  }  .buttonHeading {
     font-size: 23px;
     line-height: 121%;
-    font-variation-settings:
-      "wdth" 75,
-      "wght" 700;
-    font-family: var(--font-radio);
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    text-align: center;
   }
+  
   .subButton {
     width: calc(100% - 14px);
   }
-.buttonsWrapper {
-  width: 100%;
-}
+  
+  .buttonsWrapper {
+    width: calc(100% - 32px);
+  }
+  
   .emailInfo {
     font-size: 17px;
     line-height: 124%;
   }
 }
-@media screen and (max-width: 725px) {
+
+@media screen and (max-width: 599px) {
   .subButtonsWrapper {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 }
+
 @media screen and (max-width: 349px) {
   .companyTitleImage {
     display: none;
   }
+  
   .companyTitleImageCondensed {
     display: none;
   }
+  
   .companyTitleImageSuperCondensed {
     height: 100%;
     object-fit: contain;
     width: 100%;
     display: flex;
   }
+  
   .companyTitle {
-    margin-bottom: calc(80% / (142 / 24));
-    margin-top: calc(80% / (142 / 24));
+    margin-bottom: calc(60% / (142 / 24));
+    margin-top: calc(60% / (142 / 24));
   }
 }
