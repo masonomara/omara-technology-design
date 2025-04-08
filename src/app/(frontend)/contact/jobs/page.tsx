@@ -13,10 +13,6 @@ export default function JobInquiries() {
       </Link>
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Job Inquiries</h1>
-        <p className={styles.subtitle}>
-          O’Mara Technology & Design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
-          <br />
-          We’re always looking for talented individuals to join our team of technology consultants and creative professionals. If you are interested, please fill out the form below.</p>
         <div className={styles.emailInfo}>
           Online forms not your thing? Feel free to email{' '}
           <Link
@@ -27,6 +23,13 @@ export default function JobInquiries() {
             {emailAddress}
           </Link>
         </div>
+        <p className={styles.subtitle}>
+          O’Mara Technology & Design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
+          </p>
+          <p className={styles.subtitle}>
+          We’re always looking for talented individuals to join our team of technology consultants and creative professionals. If you are interested, please fill out the form below.
+          </p>
+       
 
         <div className={styles.contactFormWrapper}>
           <form className={styles.contactForm}>
