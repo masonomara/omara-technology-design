@@ -1,16 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
-import styles from '../../../styles/contact.module.css'
+import styles from '../../../styles/subcontact.module.css'
 
 export default function ClientInquiries() {
   const emailAddress = 'contact@omaratechnologydesign.com'
-  
+
   return (
     <div className="standardPageContainer">
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Client Inquiries</h1>
-        <p className={styles.subtitle}>O'Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
-        <br />Our focuses include mobile apps, websites, ecommerce, or any digital system.</p>
+        <p className={styles.subtitle}>
+          O'Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
+          <br />
+          Our focuses include mobile apps, websites, ecommerce, or any digital system. If you're interested in any of these services or more, please fill out the form below.</p>
         <div className={styles.emailInfo}>
           Online forms not your thing? Feel free to email{' '}
           <Link
@@ -21,48 +23,48 @@ export default function ClientInquiries() {
             {emailAddress}
           </Link>
         </div>
-        
+
         <div className={styles.contactFormWrapper}>
           <form className={styles.contactForm}>
             <div className={styles.formField}>
-              <label htmlFor="name">Name*</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                required 
+              <label className={styles.label} htmlFor="name">Name*</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
               />
             </div>
-            
+
             <div className={styles.formField}>
-              <label htmlFor="company">Company*</label>
-              <input 
-                type="text" 
-                id="company" 
-                name="company" 
-                required 
+              <label className={styles.label} htmlFor="company">Company*</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                required
               />
             </div>
-            
+
             <div className={styles.formField}>
-              <label htmlFor="email">Company Email*</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                required 
+              <label className={styles.label} htmlFor="email">Company Email*</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
               />
             </div>
-            
+
             <div className={styles.formField}>
-              <label htmlFor="currentUrl">Current URL</label>
-              <input 
-                type="url" 
-                id="currentUrl" 
-                name="currentUrl" 
+              <label className={styles.label} htmlFor="currentUrl">Current URL</label>
+              <input
+                type="url"
+                id="currentUrl"
+                name="currentUrl"
               />
             </div>
-            
+
             <div className={styles.formField}>
               <p>Please indicate which services you are interested in:</p>
               <div className={styles.checkboxGroup}>
@@ -108,17 +110,17 @@ export default function ClientInquiries() {
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.formField}>
-              <label htmlFor="additionalInfo">Anything specific you'd like to share? (optional)</label>
-              <textarea 
-                id="additionalInfo" 
-                name="additionalInfo" 
+              <label className={styles.label} htmlFor="additionalInfo">Anything specific you'd like to share? (optional)</label>
+              <textarea
+                id="additionalInfo"
+                name="additionalInfo"
                 rows={4}
                 className={styles.textareaInput}
               ></textarea>
             </div>
-            
+
             <button type="submit" className={styles.submitButton}>Submit</button>
           </form>
         </div>
