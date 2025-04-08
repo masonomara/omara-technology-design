@@ -167,19 +167,13 @@
   text-transform: uppercase;
   letter-spacing: -0.03em;
   line-height: 54px;
-  /* color: #FAE6D0; */
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   text-decoration-thickness: 3.24px !important;
   text-underline-offset: 3.18px !important;
   transition: 100ms all cubic-bezier(0.33, 0, 0.66, 1);
 }
-.header__menuOption:hover {
-  /* background-color: #971B11;
-  border-radius: 3px; */
-}
 .header__menuOption:hover span {
-  /* color: #FAE6D0; */
   text-decoration-color: #971b11 !important;
   text-decoration: underline !important;
   text-decoration-thickness: 3.24px !important;
@@ -408,9 +402,6 @@
   transition: width 0.3s ease;
 }
 
-.footer__menuOption:hover::after {
-  width: 100%;
-}
 
 /* Positioning each menu item in a scattered fashion */
 #footerHome {

@@ -117,6 +117,11 @@
 .submitButton:hover {
   background-color: rgba(151, 27, 17, 0.08);
 }
+@media screen and (max-width: 749px) {
+  .submitButton:hover {
+    background-color: #FAE6D0;
+  }
+}
 
 /* Media Queries */
 @media screen and (max-width: 799px) {

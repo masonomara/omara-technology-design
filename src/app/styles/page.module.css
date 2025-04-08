@@ -618,6 +618,13 @@
   }
 }
 
+@media screen and (max-width: 749px) {
+  .primaryButton:hover {
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3.2px !important;
+  }
+}
+
 @media screen and (max-width: 711px) {
   .score {
     font-size: clamp(40px, 8.3vw, 59px);
