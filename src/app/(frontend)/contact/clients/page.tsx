@@ -118,13 +118,13 @@ export default function ClientInquiries() {
             </div>
 
             <div className={styles.formField}>
-              <label className={styles.label} htmlFor="additionalInfo">Anything specific you'd like to share? (optional)</label>
+              <label className={styles.label} htmlFor="additionalDetails">Anything specific you'd like to share? (optional)</label>
               <textarea
-                id="additionalInfo"
-                name="additionalInfo"
+                id="additionalDetails"
+                name="additionalDetails"
                 rows={4}
                 className={styles.textareaInput}
-                placeholder="Any additional details you would liek to share"
+                placeholder="Any additional details you would like to share?"
               ></textarea>
             </div>
 

@@ -49,13 +49,13 @@ export default function PressInquiries() {
             </div>
 
             <div className={styles.formField}>
-              <label className={styles.label} htmlFor="additionalInfo">Details*</label>
+              <label className={styles.label} htmlFor="additionalDetails">Details*</label>
               <textarea
-                id="additionalInfo"
-                name="additionalInfo"
+                id="additionalDetails"
+                name="additionalDetails"
                 rows={4}
                 required
-                placeholder="Any relevant details about your request."
+                placeholder="Any additional details you would like to share?"
                 className={styles.textareaInput}
               ></textarea>
             </div>

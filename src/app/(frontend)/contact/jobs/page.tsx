@@ -73,12 +73,12 @@ export default function JobInquiries() {
 
 
             <div className={styles.formField}>
-              <label className={styles.label} htmlFor="additionalInfo">Why are you interested in working with us?</label>
+              <label className={styles.label} htmlFor="additionalDetails">Why are you interested in working with us?</label>
               <textarea
-                id="additionalInfo"
-                name="additionalInfo"
+                id="additionalDetails"
+                name="additionalDetails"
                 rows={4}
-                placeholder="Anything else you would like to share."
+                placeholder="Any additional details you would like to share?"
                 className={styles.textareaInput}
               ></textarea>
             </div>
