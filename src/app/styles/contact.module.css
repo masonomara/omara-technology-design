@@ -1,5 +1,5 @@
 .contactWrapper {
-  min-height: calc(100svh - 71px - 32px);
+  min-height: calc(100svh - 71px - 30px);
   display: flex;
   width: 100%;
   align-items: center;

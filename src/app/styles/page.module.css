@@ -356,7 +356,8 @@
 .gameOver {
   border: 1px solid #971B11;
   max-width: 412px;
-  height: fit-content;
+  height: 100%;
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -374,6 +375,7 @@
   max-height: calc(100% - 71px - 25px - 96px);
   overflow-y: scroll;
   overflow-x: hidden;
+  padding-bottom: 0px!important;
 }
 
 .gameOverClose {
