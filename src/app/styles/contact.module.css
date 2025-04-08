@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  font-family: var(--font-overpass);
+  color: #971b11;
 }
 .title {
   width: 100%;
@@ -12,8 +14,9 @@
   font-size: 90px;
   font-family: var(--font-rallingtonSerif);
   color: #971b11;
-  margin-top: 72px;
+  margin-top: 0.8em;
   font-weight: 400;
+  margin-bottom: 0px;
 }
 .companyTitle {
   width: 100%;
@@ -47,32 +50,37 @@
   display: flex;
   flex-direction: row;
   gap: 16px;
+  width: 100%;
 }
 .buttonsWrapper {
   width: 75vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
   flex: 1;
 }
 .mainButton {
-  padding: 24px 18px;
-  width: calc(100% - 36px);
+  padding: 23.04px 23.04px;
+  width: calc(100% - 46.08px);
   color: #971b11;
 }
 .buttonHeading {
   font-size: 29px;
-  white-space: nowrap;
+  line-height: 117%;
   font-variation-settings:
     "wdth" 75,
     "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
   letter-spacing: -0.03em;
+  text-align: center;
 }
 .subButton {
-  height: 62.4px;
-  font-size: 24px;
+  font-size: 19px;
+  line-height: 123%;
+  padding: 14.88px 7.44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,16 +91,41 @@
   color: #971b11;
   /* width: 100%;
   max-width: 450px; */
-  white-space: nowrap;
+  /* white-space: nowrap; */
   font-variation-settings:
     "wdth" 75,
     "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
   letter-spacing: -0.03em;
+  text-align: center;
   /* text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
   margin-top: -10px; */
+}
+.emailInfo {
+  margin-top: 0.8em;
+  font-size: 19px;
+  line-height: 123%;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  font-family: var(--font-radio);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+.emailInfo a {
+  color: #971b11;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3.2px !important;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+}
+.emailInfo a:hover {
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4.8px !important;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
