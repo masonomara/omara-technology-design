@@ -32,19 +32,11 @@ export default function ClientInquiries() {
                 type="text"
                 id="name"
                 name="name"
+                placeholder='Name*'
                 required
               />
             </div>
 
-            <div className={styles.formField}>
-              <label className={styles.label} htmlFor="company">Company*</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                required
-              />
-            </div>
 
             <div className={styles.formField}>
               <label className={styles.label} htmlFor="email">Company Email*</label>
@@ -52,7 +44,20 @@ export default function ClientInquiries() {
                 type="email"
                 id="email"
                 name="email"
+                placeholder="Email*"
                 required
+              />
+            </div>
+
+
+            <div className={styles.formField}>
+              <label className={styles.label} htmlFor="company">Company*</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                placeholder='Company'
+                
               />
             </div>
 
@@ -62,6 +67,7 @@ export default function ClientInquiries() {
                 type="url"
                 id="currentUrl"
                 name="currentUrl"
+                placeholder="Current URL"
               />
             </div>
 
@@ -118,6 +124,7 @@ export default function ClientInquiries() {
                 name="additionalInfo"
                 rows={4}
                 className={styles.textareaInput}
+                placeholder="Any additional details you would liek to share"
               ></textarea>
             </div>
 
