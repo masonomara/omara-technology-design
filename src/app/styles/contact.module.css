@@ -17,7 +17,6 @@
   font-family: var(--font-rallingtonSerif);
   color: #971b11;
   margin-top: 0.8em;
-  /* margin-bottom: 0.4em; */
   margin-bottom: 0px;
   font-weight: 400;
 }
@@ -168,13 +167,7 @@
   }
 }
 @media screen and (max-width: 799px) {
-  .buttonBorder {
-    font-size: 17px;
-    line-height: 124%;
-  }
-  /* .buttonsWrapper {
-    width: calc(100% - 32px);
-  } */
+
   .buttonHeading {
     font-size: 23px;
     line-height: 121%;
@@ -187,12 +180,11 @@
     text-align: center;
   }
   .subButton {
-    font-size: 17px;
-    line-height: 124%;
-    padding: 14px 7px;
     width: calc(100% - 14px);
   }
-
+.buttonsWrapper {
+  width: 100%;
+}
   .emailInfo {
     font-size: 17px;
     line-height: 124%;
