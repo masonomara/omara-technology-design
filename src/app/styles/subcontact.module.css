@@ -7,10 +7,10 @@
 }
 
 .contactForm {
-  display: flex;
   flex-direction: column;
   gap: 20px;
   width: 100%;
+   grid-template-columns: 1fr 1fr; display: grid
 }
 
 .formField {
@@ -31,12 +31,16 @@
 
 .formField input[type="text"],
 .formField input[type="email"],
-.formField input[type="url"] {
+.formField input[type="url"],
+.formField input {
   font-family: var(--font-overpass);
   border: 2px solid #971b11;
   background-color: transparent;
   padding: 12px;
   font-size: 16px;
+  font-weight: 500;
+  border-radius: 0px;
+
   color: #971b11;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
@@ -44,6 +48,11 @@
 .formField input:focus {
   outline: none;
   background-color: rgba(151, 27, 17, 0.08);
+}
+
+.formField input::placeholder {
+  color: #971B1199;
+  font-weight: 500;
 }
 
 .formField p {

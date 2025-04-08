@@ -46,12 +46,12 @@ export default function Header() {
             </Link>
             <div
               id={"menu"}
-              className={`header__menuOption`}
+              className={`header__menuOption ${menuOpen ? "header__menuOptionActive" : ""}`}
               onClick={() => {
                 toggleMenu();
               }}
             >
-              <span>Menu</span>
+              <span>{menuOpen ? "Close" : "Menu"}</span>
             </div>
             <Link id={"work"} className={"header__menuOption"} href="/work" target="_top">
               <span>Work</span>
