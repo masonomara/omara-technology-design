@@ -10,7 +10,7 @@ export default function GeneralInquiries() {
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>General Inquiries</h1>
         <p className={styles.subtitle}>
-          O'Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
+          O’Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
           <br />
           For any support, introductions, general interest, getting started on a project, or any other inquiries, please fill out the form below.</p>
         <div className={styles.emailInfo}>
@@ -72,7 +72,7 @@ export default function GeneralInquiries() {
 
 
             <div className={styles.formField}>
-              <label className={styles.label} htmlFor="additionalDetails">Anything specific you'd like to share? (optional)</label>
+              <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>
               <textarea
                 id="additionalDetails"
                 name="additionalDetails"

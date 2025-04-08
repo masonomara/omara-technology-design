@@ -10,9 +10,9 @@ export default function PressInquiries() {
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Press Inquiries</h1>
         <p className={styles.subtitle}>
-          O'Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
+          O’Mara Technology & design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
           <br />
-          For media resources, speaking engagements, interviews, or article requests, please fill out the form below.        </p>
+          For media resources, speaking engagements, interviews, or article requests, please fill out the form below.</p>
         <div className={styles.emailInfo}>
           Online forms not your thing? Feel free to email{' '}
           <Link
@@ -49,8 +49,7 @@ export default function PressInquiries() {
             </div>
 
             <div className={styles.formField}>
-              <label className={styles.label} htmlFor="additionalDetails">Details*</label>
-              <textarea
+            <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>              <textarea
                 id="additionalDetails"
                 name="additionalDetails"
                 rows={4}

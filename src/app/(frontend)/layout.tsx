@@ -12,7 +12,7 @@ import Header from "../components/Header";
 import Marquee from "../components/Marquee";
 
 export const metadata: Metadata = {
-  title: "O'Mara Technology & Design",
+  title: "O’Mara Technology & Design",
   description:
     "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, E-Commerce",
 };

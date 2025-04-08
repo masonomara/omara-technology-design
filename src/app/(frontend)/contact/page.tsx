@@ -69,7 +69,7 @@ export default function Contacts() {
         </div>
 
         <div className={styles.companyTitle}>
-          {/* O'Mara Technology & Design */}
+          {/* O’Mara Technology & Design */}
           <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology & Design" className={styles.companyTitleImage} />
           <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology & Design" className={styles.companyTitleImageCondensed} />
           <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology & Design" className={styles.companyTitleImageSuperCondensed} />

@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import { Overpass } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "O'Mara Technology & Design",
+  title: "O’Mara Technology & Design",
   description:
     "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, E-Commerce",
 };
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#FAE6D0" }}>
-      <head><meta name="apple-mobile-web-app-title" content="O'Mara Technology & Design" />
+      <head><meta name="apple-mobile-web-app-title" content="O’Mara Technology & Design" />
       </head>
       <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
         {children}
