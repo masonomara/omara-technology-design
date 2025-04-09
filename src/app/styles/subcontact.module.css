@@ -74,7 +74,9 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
-   grid-template-columns: 1fr 1fr; display: grid
+   grid-template-columns: 1fr 1fr; display: grid;
+   margin-top: 43px;
+   margin-bottom: 86px;
 }
 
 .formField {
@@ -99,19 +101,20 @@
 .formField input,
 .formField textarea {
   font-family: var(--font-overpass);
-  border: 2px solid #971b11;
+  border: 1px solid #971b11;
   background-color: transparent;
   padding: 16px 12px;
   font-size: 16px;
   font-weight: 500;
   border-radius: 0px;
   color: #971b11;
+  outline: .6px solid #971b11;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
 .formField input:focus,
 .formField textarea:focus {
-  outline: none;
+  outline: 1px solid #971b11;
   background-color: rgba(151, 27, 17, 0.08);
 }
 

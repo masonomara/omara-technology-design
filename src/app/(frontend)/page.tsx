@@ -314,6 +314,7 @@ export default function Home() {
             src={handImage}
             alt="Hand Trigger"
             layout="intrinsic"
+            priority
             width={450}
             height={438}
             className={`${styles.hand} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""} ${handImage === "/thumbsDown.svg" ? styles.thumbsDown : ""}`}
@@ -333,7 +334,7 @@ export default function Home() {
               } as React.CSSProperties
               }
             >
-              <Image src="/bang.svg" height={120} width={120} alt="bang" />
+              <Image src="/bang.svg" priority height={120} width={120} alt="bang" />
             </div>
           ))}
 
@@ -351,7 +352,7 @@ export default function Home() {
           {!gameEnd &&
             (<div className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
               <div className={styles.startTopWrapper}>
-                <Image src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
+                <Image priority src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
                 <p className={styles.startDescription}>
                   Fractional business & technology strategy, design, and development
                 </p>
@@ -369,11 +370,21 @@ export default function Home() {
             </div>)
           }
 
-
           <div className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""}`}>
             <div className={styles.videoScreenOverlay} />
             <div className={styles.videoMultiplyOverlay} />
-            <video width="320" height="240" autoPlay muted playsInline loop preload="none" className={styles.videoSource}>
+            <video
+              width="320"
+              height="240"
+              poster="/mason-poster.jpg"
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="metadata"
+              className={styles.videoSource}
+            >
+              <source src="/mason.webm" type="video/webm" />
               <source src="/mason.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -462,7 +473,7 @@ export default function Home() {
                     </div>
                   </>
 
-                  
+
                 )}
               </div>
 

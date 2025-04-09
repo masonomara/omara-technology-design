@@ -9,9 +9,7 @@ const CursorFollower = () => {
     isMenuActive: false
   });
 
-  // Memoize event handlers to prevent unnecessary re-renders
   const moveCursor = useCallback((e: MouseEvent) => {
-    // Use requestAnimationFrame for smoother performance
     requestAnimationFrame(() => {
       setPosition({ x: e.clientX, y: e.clientY });
     });
