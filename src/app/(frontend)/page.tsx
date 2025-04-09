@@ -46,6 +46,40 @@ export default function Home() {
   const [successfulHits, setSuccessfulHits] = useState(0);
   const [userId, setUserId] = useState<string>("");
 
+  const [showSubscribeScreen, setShowSubscribeScreen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [subscribeToCompany, setSubscribeToCompany] = useState(true);
+  const [subscribeToBlog, setSubscribeToBlog] = useState(true);
+  const [hasShownSubscribe, setHasShownSubscribe] = useState(false);
+
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      alert("Please enter your email address");
+      return;
+    }
+
+    try {
+      // Insert into a new "subscriptions" table instead
+      const { error } = await supabase.from("subscriptions").insert([{
+        user_id: userId,
+        email: email,
+        company_newsletter: subscribeToCompany,
+        personal_blog: subscribeToBlog,
+        created_at: new Date().toISOString()
+      }]);
+
+      if (error) throw error;
+
+      console.log("Subscription data saved successfully");
+      setShowSubscribeScreen(false);
+      restartGame();
+    } catch (err) {
+      console.error("Error submitting subscription:", err);
+      alert("Error saving your subscription. Please try again.");
+    }
+  };
+
   useEffect(() => {
     let storedId = localStorage.getItem("userId");
     if (!storedId) {
@@ -114,9 +148,25 @@ export default function Home() {
 
     setWarning("");
     console.log("Submitting score for", nickname);
-    const { error } = await supabase.from("scores").insert([{ nickname, score, user_id: userId }]);
-    if (error) alert("Error submitting score: " + error.message);
-    else setSubmitted(true);
+
+    // Insert score WITHOUT subscription data initially
+    const { error } = await supabase.from("scores").insert([{
+      nickname,
+      score,
+      user_id: userId
+    }]);
+
+    if (error) {
+      alert("Error submitting score: " + error.message);
+    } else {
+      setSubmitted(true);
+
+      // Show subscribe screen if it hasn't been shown before
+      if (!hasShownSubscribe) {
+        setShowSubscribeScreen(true);
+        setHasShownSubscribe(true);
+      }
+    }
   }
 
 
@@ -254,6 +304,11 @@ export default function Home() {
 
   // Restarts game
   function restartGame() {
+    if (!hasShownSubscribe) {
+      setShowSubscribeScreen(true);
+      setHasShownSubscribe(true);
+      return;
+    }
     setCurrentEnemy(0);
     setScore(0);
     setSubmitted(false);
@@ -365,7 +420,6 @@ export default function Home() {
                 </button>
                 <Link className={styles.primaryButton} href="/contact" target="_top" >
                   <p>Contact US</p>
-
                 </Link>
               </div>
             </div>)
@@ -480,6 +534,63 @@ export default function Home() {
 
             </div>
           }
+
+          {/* Subscribe Screen */}
+          {showSubscribeScreen && (
+            <div className={styles.gameOver}>
+              <div className={styles.leaderboardContainer}>
+                <h2 className={styles.trophyScore}>Having fun?</h2>
+                <p className={styles.statsTitle}>Stay in touch!</p>
+
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className={styles.input}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <div className={styles.checkboxContainer}>
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      checked={subscribeToCompany}
+                      onChange={() => setSubscribeToCompany(!subscribeToCompany)}
+                    />
+                    Subscribe to Omara Technology Design email list
+                  </label>
+
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      checked={subscribeToBlog}
+                      onChange={() => setSubscribeToBlog(!subscribeToBlog)}
+                    />
+                    Subscribe to Mason O‘Mara personal blog newsletter
+                  </label>
+                </div>
+
+                <div className={styles.endButtonWrapper}>
+                  <button
+                    className={styles.primaryButton}
+                    onClick={handleSubscribe}
+                    disabled={!email}
+                  >
+                    <p>SUBMIT EMAIL</p>
+                  </button>
+                  <button
+                    className={styles.primaryButton}
+                    onClick={() => {
+                      setShowSubscribeScreen(false);
+                      restartGame();
+                    }}
+                  >
+                    <p>SKIP SIGNUPS</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div >

@@ -433,7 +433,7 @@
   min-height: 179px;
   overflow-y: scroll;
   margin: 0;
-  max-height: 179px;
+  max-height: 100%;
   width: 100%;
   border-bottom: 1px solid #971b11;
 }
