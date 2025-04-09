@@ -1,7 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import CursorFollower from "../components/CursorFollower";
 import '../globals.css';
 import { Analytics } from "@vercel/analytics/react";
 import { SanityLive } from "@/sanity/lib/live";
