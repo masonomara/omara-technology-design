@@ -5,6 +5,7 @@ import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./../styles/page.module.css";
 import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
 
 
 // Initialize Supabase client with environment variables
@@ -362,10 +363,10 @@ export default function Home() {
                 <button className={styles.primaryButton} onClick={startGame}>
                   <p>Start Game</p>
                 </button>
-                <button className={styles.primaryButton} onClick={startGame}>
+                <Link className={styles.primaryButton} href="/contact" target="_top" >
                   <p>Contact US</p>
 
-                </button>
+                </Link>
               </div>
             </div>)
           }

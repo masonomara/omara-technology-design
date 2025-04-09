@@ -53,8 +53,8 @@ export default function Header() {
             >
               <span>{menuOpen ? "Close" : "Menu"}</span>
             </div>
-            <Link id={"work"} className={"header__menuOption"} href="/work" target="_top">
-              <span>Work</span>
+            <Link id={"portfolio"} className={"header__menuOption"} href="/portfolio" target="_top">
+              <span>Portfolio</span>
             </Link>
             <Link id={"services"} className={"header__menuOption"} href="/services" target="_top">
               <span>Services</span>

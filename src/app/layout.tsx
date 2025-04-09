@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import { Overpass } from "next/font/google";
+import CursorFollower from "./components/CursorFollower";
 
 export const metadata: Metadata = {
   title: "O’Mara Technology & Design",
@@ -30,6 +31,8 @@ export default function RootLayout({
       <head><meta name="apple-mobile-web-app-title" content="O’Mara Technology & Design" />
       </head>
       <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
+      <CursorFollower />
+
         {children}
       </body>
     </html>

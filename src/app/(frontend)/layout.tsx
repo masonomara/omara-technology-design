@@ -25,7 +25,6 @@ export default async function RootLayout({
   return (
     <>
       <MenuProvider>
-        <CursorFollower />
         <Header />
         {children}
         <Marquee />

@@ -36,8 +36,8 @@ export default function Marquee() {
           </span>
         </Link>
 
-        <Link id="footerWork" className="footer__menuOption" href="/work" target="_top">
-          <span className="footer__menuOption__header">Work</span>
+        <Link id="footerPortfolio" className="footer__menuOption" href="/portfolio" target="_top">
+          <span className="footer__menuOption__header">Portfolio</span>
           <span className="footer__menuOption__subheader">
             Flexible and scalable<br />projects and engagements.
           </span>

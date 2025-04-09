@@ -24,7 +24,7 @@ export default function PressInquiries() {
           </Link>
         </div>
         <p className={styles.subtitle}>
-          O’Mara Technology & Design is a technology consulting firm working in fractional or independent business and digital product strategy, design, and development roles.
+          O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
         </p>
         <p className={styles.subtitle}>
           For media resources, speaking engagements, interviews, or article requests, please fill out the form below.</p>

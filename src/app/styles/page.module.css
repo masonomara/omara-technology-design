@@ -253,7 +253,7 @@
 
 .startDescription {
   font-size: 21px;
-  line-height: 25px;
+  line-height: 130%;
   font-family: var(--font-overpass);
   color: #971b11;
   font-weight: 800;
@@ -344,7 +344,7 @@
 .warning {
   font-family: var(--font-overpass);
   font-size: 12px;
-  line-height: 15px;
+  line-height: 130%;
   opacity: 1;
   color: #971b11;
   margin-top: 4.8px;
@@ -401,7 +401,7 @@
   margin-bottom: 0;
   width: 100%;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 130%;
   font-family: var(--font-overpass);
   font-weight: 800;
   text-transform: uppercase;
@@ -431,7 +431,7 @@
   padding: 5px 0 1px;
   border-bottom: 1px solid #971b11;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 130%;
   font-weight: 800;
   font-style: italic;
   width: 100%;
@@ -543,7 +543,7 @@
 
 .statsTitle {
   font-size: 16px;
-  line-height: 19px;
+  line-height: 130%;
   font-weight: 800;
   font-family: var(--font-overpass);
   color: #971b11;
@@ -552,7 +552,7 @@
 
 .statsSubtitle {
   font-size: 14px;
-  line-height: 17px;
+  line-height: 130%;
   font-weight: 500;
   font-family: var(--font-overpass);
   color: #971b11;
@@ -718,7 +718,7 @@
   .leaderboardHeader {
     width: calc(100% + 16px);
     font-size: 12px;
-    line-height: 15px;
+    line-height: 130%;
   }
 
   .leaderboardList {
@@ -727,7 +727,7 @@
 
   .statsTitle {
     font-size: 15px;
-    line-height: 18px;
+    line-height: 130%;
   }
 }
 
@@ -749,7 +749,7 @@
   .startDescription {
     margin-top: 30.12px;
     font-size: 19px;
-    line-height: 22px;
+    line-height: 130%;
     width: calc(100% + 32px);
   }
 
