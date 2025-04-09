@@ -23,7 +23,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
       <MenuProvider>
         <Header />
         {children}
@@ -37,6 +36,6 @@ export default async function RootLayout({
         )}
         <Analytics />
       </MenuProvider>
-    </>
+    
   );
 }

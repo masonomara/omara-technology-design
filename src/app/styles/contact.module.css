@@ -151,7 +151,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 832px) {
+@media screen and (max-width: 699px) {
   .contactWrapper {
     min-height: calc(100svh - 65px - 30px);
   }
@@ -193,7 +193,7 @@
   }
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 699px) {
   .buttonBorder:hover {
     outline-offset: 0px;
     outline: 2px solid #971b11;

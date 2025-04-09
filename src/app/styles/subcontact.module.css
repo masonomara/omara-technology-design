@@ -215,7 +215,7 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 832px) {
+@media screen and (max-width: 699px) {
   .contactWrapper {
     min-height: calc(100svh - 65px - 30px);
   }
@@ -231,7 +231,7 @@
     grid-template-columns: 1fr;
   }
 }
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 699px) {
   .submitButton:hover {
     background-color: #FAE6D0;
   }

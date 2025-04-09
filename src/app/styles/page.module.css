@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1800px;
+  max-width: 1826px;
 }
 
 #gameFrameWrapper img {
@@ -26,7 +26,7 @@
 }
 
 /* Media queries for gameFrameWrapper */
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 699px) {
   .gameFrameWrapper {
     top: 65px;
     height: calc(100svh - 65px - 30px);
@@ -116,6 +116,9 @@
   line-height: 100%;
 }
 
+.trophyScore {
+  padding-top: 40px;
+}
 .cans {
   transform: translateY(calc(100% + 16px));
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
@@ -281,6 +284,12 @@
   width: 320px;
 }
 
+.endButtonWrapper {
+
+    padding-bottom: 40px;
+  
+}
+
 .primaryButton {
   height: 44px;
   font-size: 24px;
@@ -350,6 +359,7 @@
   margin-top: 4.8px;
   text-align: center;
   height: 15px;
+  margin-bottom: -10px;
 }
 
 /* Game over & Leaderboard */
@@ -364,7 +374,6 @@
   justify-content: flex-start;
   background-color: #fae6d0;
   opacity: 1;
-  padding: 48px;
   width: calc(100% - 96px - 64px);
   transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
   transition-delay: 400ms;
@@ -372,10 +381,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: calc(100% - 71px - 25px - 96px);
+  max-height: calc(100% - 71px - 25px - 32px);
   overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: 0px !important;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .gameOverClose {
@@ -412,14 +423,17 @@
 .leaderboardHeader span {
   text-align: left;
 }
+.leaderboardHeader span:last-child {
+  text-align: center;
+}
 
 .leaderboardList {
   padding: 0;
   height: 100%;
-  min-height: 120px;
+  min-height: 179px;
   overflow-y: scroll;
   margin: 0;
-  max-height: 22vh;
+  max-height: 179px;
   width: 100%;
   border-bottom: 1px solid #971b11;
 }
@@ -560,10 +574,10 @@
 
 .input {
   border: 1.5px solid #971b11;
-  border-bottom: 2px solid #971b11;
   background: transparent;
   font-size: 16px;
-  margin-top: 25.6px;
+  margin-top: 37px;
+
   color: #971b11;
   font-family: var(--font-overpass);
   font-weight: 500 !important;
@@ -608,9 +622,10 @@
 
 .input {
   font-family: var(--font-overpass);
-  border: 2px solid #971b11;
+  border: 1px solid #971b11!important;
+  outline: .6px solid #971b11;
   background-color: transparent;
-  padding: 16px 12px;
+  padding: 12px 12px;
   font-size: 16px;
   font-weight: 500;
   color: #971b11;
@@ -620,13 +635,15 @@
 
 .input:focus {
   outline: none;
+  outline: 1px solid #971b11;
   background-color: rgba(151, 27, 17, 0.08);
 }
 
 /* Media queries */
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 699px) {
   .gameOver {
     max-height: calc(100% - 56px - 25px - 80px);
+    height: calc(100% - 56px - 25px - 80px);
   }
 
   .scoreWrapper {
@@ -651,14 +668,14 @@
   }
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 699px) {
   .primaryButton:hover {
     text-decoration-thickness: 2px !important;
     text-underline-offset: 3.2px !important;
   }
 }
 
-@media screen and (max-width: 711px) {
+@media screen and (max-width: 699px) {
   .score {
     font-size: clamp(40px, 8.3vw, 59px);
   }
@@ -683,10 +700,14 @@
   }
 }
 
-@media screen and (max-width: 599px) {
-  .startContainer,
+@media screen and (max-width: 699px) {
+  .startContainer {
+    padding: 40px;
+    width: calc(100% - 80px - 64px);
+  }
+
+
   .gameOver {
-    padding: 40px 40px 48px;
     width: calc(100% - 80px - 64px);
   }
 
@@ -700,9 +721,7 @@
     gap: 28px;
   }
 
-  .endButtonWrapper {
-    margin-bottom: 40px;
-  }
+
 
   .handWrapper,
   .handWrapperActive {
@@ -716,13 +735,13 @@
   }
 
   .leaderboardHeader {
-    width: calc(100% + 16px);
+    width: calc(100%);
     font-size: 12px;
     line-height: 130%;
   }
 
   .leaderboardList {
-    width: calc(100% + 32px);
+    width: calc(100%);
   }
 
   .statsTitle {
@@ -731,7 +750,7 @@
   }
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 699px) {
   .handWrapper,
   .handWrapperActive {
     bottom: auto;
@@ -742,7 +761,6 @@
 @media screen and (max-width: 399px) {
   .startContainer,
   .gameOver {
-    padding: 40px 40px 48px;
     width: calc(100% - 64px - 64px);
   }
 
@@ -750,11 +768,11 @@
     margin-top: 30.12px;
     font-size: 19px;
     line-height: 130%;
-    width: calc(100% + 32px);
+    width: calc(100%);
   }
 
   .leaderboardHeader,
   .leaderboardList {
-    width: calc(100% + 32px);
+    width: calc(100%);
   }
 }
