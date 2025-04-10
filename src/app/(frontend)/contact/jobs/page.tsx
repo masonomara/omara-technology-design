@@ -14,7 +14,7 @@ export default function JobInquiries() {
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Job Inquiries</h1>
         <div className={styles.emailInfo}>
-          Online forms not your thing? Feel free to email{' '}
+          Prefer email?{' '}
           <Link
             className={styles.emailLink}
             href={`mailto:${emailAddress}`}
@@ -80,7 +80,7 @@ export default function JobInquiries() {
 
 
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
-              <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>              <textarea
+              <label className={styles.label} htmlFor="additionalDetails">Anything else you would like to share?</label>              <textarea
                 id="additionalDetails"
                 name="additionalDetails"
                 rows={4}

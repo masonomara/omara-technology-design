@@ -505,7 +505,7 @@ export default function Home() {
                   })}
                 </ol>
                 {submitted ? (
-                  <p>Score submitted! 🎉</p>
+                  <p>Score submitted!</p>
                 ) : (
                   <>
                     <input

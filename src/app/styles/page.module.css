@@ -226,7 +226,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #F9F0E7;
+  background-color: #F8EDE2;
   opacity: 1;
   position: absolute;
   top: 50%;
@@ -334,7 +334,7 @@
   border-radius: 19.2px;
   border: 1px solid #891910;
   color: #891910;
-  background-color: #F9F0E7;
+  background-color: #F8EDE2;
   width: 100%;
   max-width: 450px;
   font-variation-settings:
@@ -372,7 +372,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #F9F0E7;
+  background-color: #F8EDE2;
   opacity: 1;
   width: calc(100% - 96px - 64px);
   transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
@@ -507,7 +507,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #F9F0E7;
+  background-color: #F8EDE2;
   mix-blend-mode: screen;
   opacity: 50%;
 }
@@ -518,7 +518,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #F9F0E7;
+  background-color: #F8EDE2;
   mix-blend-mode: multiply;
 }
 

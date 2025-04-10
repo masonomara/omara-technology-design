@@ -68,7 +68,7 @@ const CursorFollower = () => {
 
   // Prepare styles outside the render to reduce calculations
   const backgroundColor = isMenuActive
-    ? isHovering ? "rgba(250, 230, 208, 0.6)" : "rgba(250, 230, 208, 0.25)"
+    ? isHovering ? "rgba(248, 237, 226, 0.6)" : "rgba(248, 237, 226, 0.25)"
     : isHovering ? "rgba(151, 27, 17, .6)" : "rgba(151, 27, 17, 0.25)";
 
   const size = isHovering ? "32px" : "16px";

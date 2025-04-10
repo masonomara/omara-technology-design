@@ -140,7 +140,7 @@
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: #F9F0E7;
+  background-color: #F8EDE2;
 }
 
 .emailInfo a:hover {
@@ -198,7 +198,7 @@
     outline-offset: 0px;
     outline: 2px solid #891910;
     transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-    background-color: #F9F0E7;
+    background-color: #F8EDE2;
   }
 }
 

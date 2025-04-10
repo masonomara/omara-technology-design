@@ -14,7 +14,7 @@ export default function GeneralInquiries() {
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>General Inquiries</h1>
         <div className={styles.emailInfo}>
-          Online forms not your thing? Feel free to email{' '}
+          Prefer email?{' '}
           <Link
             className={styles.emailLink}
             href={`mailto:${emailAddress}`}
@@ -54,31 +54,8 @@ export default function GeneralInquiries() {
               />
             </div>
 
-            <div className={styles.formField}>
-              <label className={styles.label} htmlFor="company">Company</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                placeholder="Company"
-              />
-            </div>
-
-
-            <div className={styles.formField}>
-              <label className={styles.label} htmlFor="currentUrl">Current URL</label>
-              <input
-                type="url"
-                id="currentUrl"
-                name="currentUrl"
-                placeholder="Currrent URL"
-
-              />
-            </div>
-
-
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
-              <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>
+              <label className={styles.label} htmlFor="additionalDetails">Anything else you would like to share?</label>
               <textarea
                 id="additionalDetails"
                 name="additionalDetails"

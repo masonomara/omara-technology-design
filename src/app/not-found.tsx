@@ -61,7 +61,7 @@ export default function NotFound() {
           </div>
 
           <div className={styles.emailInfo}>
-            Online forms not your thing? Feel free to email{' '}
+            Prefer email?{' '}
             <Link
               className={styles.emailLink}
               href={`mailto:${emailAddress}`}

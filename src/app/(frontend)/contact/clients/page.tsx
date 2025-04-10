@@ -14,7 +14,7 @@ export default function ClientInquiries() {
       <div className={styles.contactWrapper}>
         <h1 className={styles.title}>Client Inquiries</h1>
         <div className={styles.emailInfo}>
-          Online forms not your thing? Feel free to email{' '}
+          Prefer email?{' '}
           <Link
             className={styles.emailLink}
             href={`mailto:${emailAddress}`}
@@ -27,7 +27,7 @@ export default function ClientInquiries() {
           O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
         </p>
         <p className={styles.subtitle}>
-          Our focuses include mobile apps, websites, ecommerce, or any digital system. If you’re interested in any of these services or more, please fill out the form below.
+          Our focuses include mobile apps, websites, Ecommerce, or any digital system. If you’re interested in any of these services or more, please fill out the form below.
         </p>
 
 
@@ -76,11 +76,11 @@ export default function ClientInquiries() {
             </div>
 
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
-              <p>Please indicate which services you are interested in:</p>
+              <p>What services are you looking for?</p>
 
               {/* Leadership & Strategy Section */}
               <div className={styles.serviceCategory} style={{ gridColumn: "span 2" }}>
-                <h3>Leadership & Strategy</h3>
+                <h3>Strategy</h3>
                 <div className={styles.checkboxGroup}>
                   <div className={styles.checkboxItem}>
                     <input type="checkbox" id="fractionalBusinessLeadership" name="services" value="Fractional Business Leadership" />
@@ -106,8 +106,8 @@ export default function ClientInquiries() {
                     <label htmlFor="websiteDesign">Website Design</label>
                   </div>
                   <div className={styles.checkboxItem}>
-                    <input type="checkbox" id="eCommerceDesign" name="services" value="eCommerce Design" />
-                    <label htmlFor="eCommerceDesign">eCommerce Design</label>
+                    <input type="checkbox" id="ecommerceDesign" name="services" value="Ecommerce Design" />
+                    <label htmlFor="ecommerceDesign">Ecommerce Design</label>
                   </div>
                   <div className={styles.checkboxItem}>
                     <input type="checkbox" id="brandIdentity" name="services" value="Brand Identity" />
@@ -129,12 +129,12 @@ export default function ClientInquiries() {
                     <label htmlFor="websiteDevelopment">Website Development</label>
                   </div>
                   <div className={styles.checkboxItem}>
-                    <input type="checkbox" id="eCommerceDevelopment" name="services" value="eCommerce Development" />
-                    <label htmlFor="eCommerceDevelopment">eCommerce Development</label>
+                    <input type="checkbox" id="ecommerceDevelopment" name="services" value="Ecommerce Development" />
+                    <label htmlFor="ecommerceDevelopment">Ecommerce Development</label>
                   </div>
                   <div className={styles.checkboxItem}>
                     <input type="checkbox" id="digitalSystemDevelopment" name="services" value="Digital System Development" />
-                    <label htmlFor="digitalSystemDevelopment">Digital System Development</label>
+                    <label htmlFor="digitalSystemDevelopment">Digital Systems</label>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function ClientInquiries() {
             </div>
 
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
-              <label className={styles.label} htmlFor="additionalDetails">Any additional details you would like to share?</label>
+              <label className={styles.label} htmlFor="additionalDetails">Anything else you would like to share?</label>
               <textarea
                 id="additionalDetails"
                 name="additionalDetails"
