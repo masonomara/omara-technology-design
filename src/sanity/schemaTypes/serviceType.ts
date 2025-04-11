@@ -1,6 +1,5 @@
-// serviceType.ts
 import { DocumentTextIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const serviceType = defineType({
   name: "service",
@@ -8,10 +7,6 @@ export const serviceType = defineType({
   type: "document",
   icon: DocumentTextIcon,
   fields: [
-    defineField({
-      name: "order",
-      type: "number",
-    }),
     defineField({
       name: "title",
       type: "string",
@@ -22,29 +17,39 @@ export const serviceType = defineType({
       options: {
         source: "title",
       },
-      validation: (rule) =>
-        rule.required().error(`Required to generate a page on the website`),
-      hidden: ({document}) => !document?.name,
     }),
     defineField({
-      name: "category",
-      type: "reference",
-      to: [{ type: "category" }],
+      name: "mainImage",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        }),
+      ],
+    }),
+    defineField({
+      name: "categories",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
+    }),
+    defineField({
+      name: "publishedAt",
+      type: "datetime",
     }),
     defineField({
       name: "body",
       type: "blockContent",
     }),
-    defineField({
-      name: "relatedServices",
-      type: "array",
-      of: [{ type: "reference", to: { type: "service" } }],
-    }),
   ],
   preview: {
     select: {
       title: "title",
-      subitle: "category",
+      media: "mainImage",
     },
     prepare(selection) {
       return { ...selection };
