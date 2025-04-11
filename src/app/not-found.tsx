@@ -6,7 +6,7 @@ import { MenuProvider } from './context/MenuContext'
 import Header from './components/Header'
 
 export default function NotFound() {
-  const emailAddress = 'contact@omaratechnologydesign.com'
+  const emailAddress = 'connect@omaratechnologydesign.com'
 
   return (
      <MenuProvider>

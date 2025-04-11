@@ -576,7 +576,7 @@ export default function Home() {
                     onClick={handleSubscribe}
                     disabled={!email}
                   >
-                    <p>SUBMIT EMAIL</p>
+                    <p>SUBSCRIBE</p>
                   </button>
                   <button
                     className={styles.primaryButton}
@@ -585,7 +585,7 @@ export default function Home() {
                       restartGame();
                     }}
                   >
-                    <p>SKIP SIGNUPS</p>
+                    <p>IGNORE</p>
                   </button>
                 </div>
               </div>

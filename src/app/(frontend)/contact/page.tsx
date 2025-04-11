@@ -4,7 +4,7 @@ import styles from '../../styles/contact.module.css'
 import Image from 'next/image'
 
 export default function Contacts() {
-  const emailAddress = 'contact@omaratechnologydesign.com'
+  const emailAddress = 'connect@omaratechnologydesign.com'
 
   return (
     <div className="standardPageContainer">

@@ -4,7 +4,7 @@ import styles from '../../../styles/subcontact.module.css'
 import Image from 'next/image'
 
 export default function PressInquiries() {
-  const emailAddress = 'contact@omaratechnologydesign.com'
+  const emailAddress = 'connect@omaratechnologydesign.com'
 
   return (
     <div className="standardPageContainer">
