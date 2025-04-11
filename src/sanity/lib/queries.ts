@@ -1,24 +1,17 @@
+// queries.ts
 import { defineQuery } from "next-sanity";
 
 export const SERVICES_QUERY =
-  defineQuery(`*[_type == "service" && defined(slug.current)]|order(publishedAt desc)[0...12]{
+  defineQuery(`*[_type == "service" && defined(slug.current)]|order(order asc) {
   _id,
   title,
   slug,
   body,
-  mainImage,
-  publishedAt,
-  "categories": coalesce(
-    categories[]->{
-      _id,
-      slug,
-      title
-    },
-    []
-  ),
-  author->{
-    name,
-    image
+  order,
+  "category": category->{
+    _id,
+    slug,
+    title
   }
 }`);
 
@@ -32,22 +25,14 @@ export const SERVICE_QUERY =
   _id,
   title,
   body,
-  mainImage,
-  publishedAt,
-  "categories": coalesce(
-    categories[]->{
-      _id,
-      slug,
-      title
-    },
-    []
-  ),
-  author->{
-    name,
-    image
+  order,
+  "category": category->{
+    _id,
+    slug,
+    title
   },
   relatedServices[]{
-    _key, // required for drag and drop
-    ...@->{_id, title, slug} // get fields from the referenced service
+    _key,
+    ...@->{_id, title, slug}
   }
 }`);

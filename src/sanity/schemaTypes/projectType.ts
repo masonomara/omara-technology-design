@@ -1,10 +1,10 @@
-// serviceType.ts
+// projectType.ts
 import { DocumentTextIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
-export const serviceType = defineType({
-  name: "service",
-  title: "Service",
+export const projectType = defineType({
+  name: "project",
+  title: "Project",
   type: "document",
   icon: DocumentTextIcon,
   fields: [
@@ -25,26 +25,39 @@ export const serviceType = defineType({
       validation: (rule) =>
         rule.required().error(`Required to generate a page on the website`),
       hidden: ({document}) => !document?.name,
+
     }),
     defineField({
-      name: "category",
-      type: "reference",
-      to: [{ type: "category" }],
+      name: "mainImage",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+          validation: (rule) =>
+            rule.custom((value, context) => {
+              const parent = context?.parent as { asset?: { _ref?: string } };
+
+              return !value && parent?.asset?._ref
+                ? "Alt text is required when an image is present"
+                : true;
+            }),
+        }),
+      ],
     }),
     defineField({
       name: "body",
       type: "blockContent",
     }),
-    defineField({
-      name: "relatedServices",
-      type: "array",
-      of: [{ type: "reference", to: { type: "service" } }],
-    }),
   ],
   preview: {
     select: {
       title: "title",
-      subitle: "category",
+      media: "mainImage",
     },
     prepare(selection) {
       return { ...selection };

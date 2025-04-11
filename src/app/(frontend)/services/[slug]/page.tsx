@@ -1,26 +1,16 @@
-import { Service } from "@/app/components/Service";
-import { sanityFetch } from "@/sanity/lib/live";
-import { SERVICE_QUERY } from "@/sanity/lib/queries";
-import { notFound } from "next/navigation";
+// update your imports
+import { client, sanityFetch } from '@/sanity/lib/client'
+import { SERVICE_QUERY, SERVICES_SLUGS_QUERY } from "@/sanity/lib/queries";
 
-
-export default async function Page({
+const post = await sanityFetch({
+  query: POST_QUERY,
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { data: service } = await sanityFetch({
-    query: SERVICE_QUERY,
-    params: await params,
-  });
+})
+// add this export
+export async function generateStaticParams() {
+  const slugs = await client
+    .withConfig({useCdn: false})
+    .fetch(SERVICES_SLUGS_QUERY);
 
-  if (!service) {
-    notFound();
-  }
-
-  return (
-    <main>
-      <Service {...service} />
-    </main>
-  );
+  return slugs
 }
