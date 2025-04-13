@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React from 'react'
-import styles from '../../styles/contact.module.css'
+import styles from '../../styles/subcontact.module.css'
 import Image from 'next/image'
 import { sendMail } from '@/app/lib/send-mail';
 import { zodResolver } from '@hookform/resolvers/zod';

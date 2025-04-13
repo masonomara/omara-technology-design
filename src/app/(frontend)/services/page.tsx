@@ -5,9 +5,7 @@ import Link from "next/link";
 
 export default async function Page() {
 
-  const { data: services } = await sanityFetch({
-    query: SERVICES_QUERY, tags: ['service', 'category', 'project'],
-  });
+  const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
 
   return (
     <main>

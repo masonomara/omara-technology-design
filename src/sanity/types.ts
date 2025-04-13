@@ -322,6 +322,11 @@ export type SERVICES_QUERYResult = Array<{
     _key: string;
   }> | null;
 }>;
+// Variable: SERVICES_SLUGS_QUERY
+// Query: *[_type == "service" && defined(slug.current)]{   "slug": slug.current}
+export type SERVICES_SLUGS_QUERYResult = Array<{
+  slug: string | null;
+}>;
 // Variable: SERVICE_QUERY
 // Query: *[  _type == "service" &&  slug.current == $slug &&  defined(title) &&  defined(body) &&  defined(category)][0]{  _id,  title,  slug,  body,  category->{_id, title, slug},}
 export type SERVICE_QUERYResult = {
@@ -485,6 +490,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[\n  _type == \"service\" &&\n  defined(title) &&\n  defined(slug.current) &&\n  defined(category) &&\n  defined(body)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  category->{_id, title, slug},\n  body,\n}": SERVICES_QUERYResult;
+    "*[_type == \"service\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": SERVICES_SLUGS_QUERYResult;
     "*[\n  _type == \"service\" &&\n  slug.current == $slug &&\n  defined(title) &&\n  defined(body) &&\n  defined(category)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  category->{_id, title, slug},\n}": SERVICE_QUERYResult;
     "*[\n  _type == \"category\" &&\n  defined(title) &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug\n}": CATEGORIES_QUERYResult;
     "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  slug\n}": CATEGORY_QUERYResult;

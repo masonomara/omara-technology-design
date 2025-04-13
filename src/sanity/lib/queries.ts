@@ -3,10 +3,7 @@ import { defineQuery } from "next-sanity";
 // All Services (only those ready for publishing)
 export const SERVICES_QUERY = defineQuery(`*[
   _type == "service" &&
-  defined(title) &&
-  defined(slug.current) &&
-  defined(category) &&
-  defined(body)
+  defined(slug.current)
 ] | order(order asc) {
   _id,
   title,
@@ -23,10 +20,7 @@ export const SERVICES_SLUGS_QUERY =
 // Single Service by slug
 export const SERVICE_QUERY = defineQuery(`*[
   _type == "service" &&
-  slug.current == $slug &&
-  defined(title) &&
-  defined(body) &&
-  defined(category)
+  slug.current == $slug
 ][0]{
   _id,
   title,
@@ -38,7 +32,6 @@ export const SERVICE_QUERY = defineQuery(`*[
 // All Categories (only those ready for publishing)
 export const CATEGORIES_QUERY = defineQuery(`*[
   _type == "category" &&
-  defined(title) &&
   defined(slug.current)
 ] | order(order asc) {
   _id,
@@ -60,10 +53,7 @@ export const CATEGORY_QUERY = defineQuery(`*[
 // All Projects
 export const PROJECTS_QUERY = defineQuery(`*[
   _type == "project" &&
-  defined(name) &&
   defined(slug.current) &&
-  defined(body) &&
-  defined(image)
 ] | order(order asc) {
   _id,
   name,
