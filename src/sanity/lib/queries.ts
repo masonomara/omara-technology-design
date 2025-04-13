@@ -12,6 +12,9 @@ export const SERVICES_QUERY = defineQuery(`*[
   body,
   "seo": {
     "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
   },
 }`);
 
@@ -23,7 +26,7 @@ export const SERVICES_SLUGS_QUERY =
 // Single Service by slug
 export const SERVICE_QUERY = defineQuery(`*[
   _type == "service" &&
-  slug.current == $slug
+  defined(slug.current)
 ][0]{
   _id,
   title,
@@ -33,6 +36,9 @@ export const SERVICE_QUERY = defineQuery(`*[
   relatedServices->{_id, title, slug},
   "seo": {
     "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
   },
 }`);
 
@@ -46,6 +52,9 @@ export const CATEGORIES_QUERY = defineQuery(`*[
   slug,
   "seo": {
     "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
   },
 }`);
 
@@ -60,6 +69,9 @@ export const CATEGORY_QUERY = defineQuery(`*[
   slug,
   "seo": {
     "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
   },
 }`);
 
@@ -75,6 +87,9 @@ export const PROJECTS_QUERY = defineQuery(`*[
   image,
   "seo": {
     "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
   },
 }`);
 
@@ -93,5 +108,16 @@ export const PROJECT_QUERY = defineQuery(`*[
   image,
   "seo": {
     "title": coalesce(seo.title, title, ""),
+    "description": coalesce(seo.description,  ""),
+    "image": seo.image,
+    "noIndex": seo.noIndex == true
   },
 }`);
+
+export const REDIRECTS_QUERY = defineQuery(`
+  *[_type == "redirect" && isEnabled == true] {
+      source,
+      destination,
+      permanent
+  }
+`);

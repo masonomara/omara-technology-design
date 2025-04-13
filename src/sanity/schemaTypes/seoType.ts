@@ -10,5 +10,18 @@ export const seoType = defineType({
       description: "If provided, this will override the title field",
       type: "string",
     }),
+    defineField({
+      name: "description",
+      type: "text",
+    }),
+    defineField({
+      name: "image",
+      type: "image",
+      options: {hotspot: true}
+    }),
+    defineField({
+      name: "noIndex",
+      type: "boolean",
+    }),
   ],
 });
