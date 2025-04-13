@@ -113,11 +113,3 @@ export const PROJECT_QUERY = defineQuery(`*[
     "noIndex": seo.noIndex == true
   },
 }`);
-
-export const REDIRECTS_QUERY = defineQuery(`
-  *[_type == "redirect" && isEnabled == true] {
-      source,
-      destination,
-      permanent
-  }
-`);

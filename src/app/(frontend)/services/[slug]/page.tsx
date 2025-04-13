@@ -1,7 +1,8 @@
+import { Service } from "@/app/components/Service";
+import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { SERVICE_QUERY } from "@/sanity/lib/queries";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 type RouteProps = {
   params: Promise<{ slug: string }>;
@@ -18,29 +19,39 @@ export async function generateMetadata({
 }: RouteProps): Promise<Metadata> {
   const { data: service } = await getService(params);
 
-  return {
-    title: service.seo.title,
-  };
-}
-
-export default async function Service({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { data: service } = await sanityFetch({
-    query: SERVICE_QUERY,
-    params: await params,
-  });
-
   if (!service) {
-    notFound();
+    return {}
   }
 
-  return (
+  const metadata: Metadata = {
+    title: service.seo.title,
+    description: service.seo.description,
+  };
+
+  if (service.seo.image) {
+    metadata.openGraph = {
+      images: {
+        url: urlFor(service.seo.image).width(1200).height(630).url(),
+        width: 1200,
+        height: 630,
+      },
+    };
+  }
+
+  if (service.seo.noIndex) {
+    metadata.robots = "noindex";
+  }
+
+  return metadata;
+}
+
+export default async function Page({ params }: RouteProps) {
+  const { data: service } = await getService(params);
+
+  return service?.body ? (
     <main>
       <title>{service.seo.title}</title>
       <Service {...service} />
     </main>
-  );
+  ) : null;
 }
