@@ -1,16 +1,26 @@
-// update your imports
-import { client, sanityFetch } from '@/sanity/lib/client'
-import { SERVICE_QUERY, SERVICES_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { Service } from "@/app/components/Service";
+import { sanityFetch } from "@/sanity/lib/live";
+import { SERVICE_QUERY } from "@/sanity/lib/queries";
+import { notFound } from "next/navigation";
 
-const post = await sanityFetch({
-  query: POST_QUERY,
+
+export default async function Page({
   params,
-})
-// add this export
-export async function generateStaticParams() {
-  const slugs = await client
-    .withConfig({useCdn: false})
-    .fetch(SERVICES_SLUGS_QUERY);
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { data: service } = await sanityFetch({
+    query: SERVICE_QUERY,
+    params: await params,
+  });
 
-  return slugs
+  if (!service) {
+    notFound();
+  }
+
+  return (
+    <main>
+      <Service {...service} />
+    </main>
+  );
 }

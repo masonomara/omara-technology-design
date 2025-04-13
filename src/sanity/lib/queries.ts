@@ -1,18 +1,18 @@
-// queries.ts
 import { defineQuery } from "next-sanity";
 
-export const SERVICES_QUERY =
-  defineQuery(`*[_type == "service" && defined(slug.current)]|order(order asc) {
+// All Services (only those ready for publishing)
+export const SERVICES_QUERY = defineQuery(`*[
+  _type == "service" &&
+  defined(title) &&
+  defined(slug.current) &&
+  defined(category) &&
+  defined(body)
+] | order(order asc) {
   _id,
   title,
   slug,
+  category->{_id, title, slug},
   body,
-  order,
-  "category": category->{
-    _id,
-    slug,
-    title
-  }
 }`);
 
 export const SERVICES_SLUGS_QUERY =
@@ -20,19 +20,69 @@ export const SERVICES_SLUGS_QUERY =
   "slug": slug.current
 }`);
 
-export const SERVICE_QUERY =
-  defineQuery(`*[_type == "service" && slug.current == $slug][0]{
+// Single Service by slug
+export const SERVICE_QUERY = defineQuery(`*[
+  _type == "service" &&
+  slug.current == $slug &&
+  defined(title) &&
+  defined(body) &&
+  defined(category)
+][0]{
   _id,
   title,
+  slug,
   body,
-  order,
-  "category": category->{
-    _id,
-    slug,
-    title
-  },
-  relatedServices[]{
-    _key,
-    ...@->{_id, title, slug}
-  }
+  category->{_id, title, slug},
+}`);
+
+// All Categories (only those ready for publishing)
+export const CATEGORIES_QUERY = defineQuery(`*[
+  _type == "category" &&
+  defined(title) &&
+  defined(slug.current)
+] | order(order asc) {
+  _id,
+  title,
+  slug
+}`);
+
+// Single Category by slug
+export const CATEGORY_QUERY = defineQuery(`*[
+  _type == "category" &&
+  slug.current == $slug &&
+  defined(title)
+][0]{
+  _id,
+  title,
+  slug
+}`);
+
+// All Projects
+export const PROJECTS_QUERY = defineQuery(`*[
+  _type == "project" &&
+  defined(name) &&
+  defined(slug.current) &&
+  defined(body) &&
+  defined(image)
+] | order(order asc) {
+  _id,
+  name,
+  slug,
+  body,
+  image
+}`);
+
+// Single Project by slug
+export const PROJECT_QUERY = defineQuery(`*[
+  _type == "project" &&
+  slug.current == $slug &&
+  defined(name) &&
+  defined(body) &&
+  defined(image)
+][0]{
+  _id,
+  name,
+  slug,
+  body,
+  image
 }`);

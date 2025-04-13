@@ -5,16 +5,15 @@ import Link from "next/link";
 
 export default async function Page() {
 
-  console.log("Fetching services with query:", SERVICES_QUERY);
-  const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
-
-  console.log("Fetched services:", services);
+  const { data: services } = await sanityFetch({
+    query: SERVICES_QUERY, tags: ['service', 'category', 'project'],
+  });
 
   return (
     <main>
       <h1>Service Index</h1>
       <ul>
-        {services.map((service) => (
+        {services.map((service: any) => (
           <li key={service._id}>
             <Link
               className="block p-4 hover:text-blue-500"

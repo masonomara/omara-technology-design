@@ -1,5 +1,5 @@
 import { UserIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const projectType = defineType({
   name: "project",
@@ -7,6 +7,10 @@ export const projectType = defineType({
   type: "document",
   icon: UserIcon,
   fields: [
+    defineField({
+      name: "order",
+      type: "string",
+    }),
     defineField({
       name: "name",
       type: "string",
@@ -26,15 +30,8 @@ export const projectType = defineType({
       },
     }),
     defineField({
-      name: "bio",
-      type: "array",
-      of: [
-        defineArrayMember({
-          type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
-          lists: [],
-        }),
-      ],
+      name: "body",
+      type: "blockContent",
     }),
   ],
   preview: {
