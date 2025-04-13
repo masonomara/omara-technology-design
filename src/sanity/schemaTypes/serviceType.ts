@@ -22,6 +22,7 @@ export const serviceType = defineType({
       options: {
         source: "title",
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "category",
@@ -31,6 +32,15 @@ export const serviceType = defineType({
     defineField({
       name: "body",
       type: "blockContent",
+    }),
+    defineField({
+      name: "relatedServices",
+      type: "array",
+      of: [{ type: "reference", to: { type: "service" } }],
+    }),
+    defineField({
+      name: "seo",
+      type: "seo",
     }),
   ],
   preview: {

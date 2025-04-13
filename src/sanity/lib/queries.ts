@@ -10,6 +10,7 @@ export const SERVICES_QUERY = defineQuery(`*[
   slug,
   category->{_id, title, slug},
   body,
+  seo
 }`);
 
 export const SERVICES_SLUGS_QUERY =
@@ -27,6 +28,8 @@ export const SERVICE_QUERY = defineQuery(`*[
   slug,
   body,
   category->{_id, title, slug},
+  relatedServices->{_id, title, slug},
+  seo
 }`);
 
 // All Categories (only those ready for publishing)
@@ -36,7 +39,8 @@ export const CATEGORIES_QUERY = defineQuery(`*[
 ] | order(order asc) {
   _id,
   title,
-  slug
+  slug,
+  seo
 }`);
 
 // Single Category by slug
@@ -47,19 +51,21 @@ export const CATEGORY_QUERY = defineQuery(`*[
 ][0]{
   _id,
   title,
-  slug
+  slug,
+  seo
 }`);
 
 // All Projects
 export const PROJECTS_QUERY = defineQuery(`*[
   _type == "project" &&
-  defined(slug.current) &&
+  defined(slug.current)
 ] | order(order asc) {
   _id,
   name,
   slug,
   body,
-  image
+  image,
+  seo
 }`);
 
 // Single Project by slug
@@ -74,5 +80,6 @@ export const PROJECT_QUERY = defineQuery(`*[
   name,
   slug,
   body,
-  image
+  image,
+  seo
 }`);

@@ -21,6 +21,7 @@ export const projectType = defineType({
       options: {
         source: "name",
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "image",
@@ -32,6 +33,10 @@ export const projectType = defineType({
     defineField({
       name: "body",
       type: "blockContent",
+    }),
+    defineField({
+      name: "seo",
+      type: "seo",
     }),
   ],
   preview: {

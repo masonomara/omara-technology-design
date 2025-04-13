@@ -120,6 +120,7 @@ export type Project = {
     _type: "image";
     _key: string;
   }>;
+  seo?: Seo;
 };
 
 export type Service = {
@@ -168,6 +169,14 @@ export type Service = {
     _type: "image";
     _key: string;
   }>;
+  relatedServices?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "service";
+  }>;
+  seo?: Seo;
 };
 
 export type Category = {
@@ -179,6 +188,12 @@ export type Category = {
   order?: string;
   title?: string;
   slug?: Slug;
+  seo?: Seo;
+};
+
+export type Seo = {
+  _type: "seo";
+  title?: string;
 };
 
 export type Slug = {
@@ -276,11 +291,11 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | Service | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | Service | Category | Seo | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: SERVICES_QUERY
-// Query: *[  _type == "service" &&  defined(title) &&  defined(slug.current) &&  defined(category) &&  defined(body)] | order(order asc) {  _id,  title,  slug,  category->{_id, title, slug},  body,}
+// Query: *[  _type == "service" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  category->{_id, title, slug},  body,  seo}
 export type SERVICES_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -321,6 +336,7 @@ export type SERVICES_QUERYResult = Array<{
     _type: "image";
     _key: string;
   }> | null;
+  seo: Seo | null;
 }>;
 // Variable: SERVICES_SLUGS_QUERY
 // Query: *[_type == "service" && defined(slug.current)]{   "slug": slug.current}
@@ -328,7 +344,7 @@ export type SERVICES_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: SERVICE_QUERY
-// Query: *[  _type == "service" &&  slug.current == $slug &&  defined(title) &&  defined(body) &&  defined(category)][0]{  _id,  title,  slug,  body,  category->{_id, title, slug},}
+// Query: *[  _type == "service" &&  slug.current == $slug][0]{  _id,  title,  slug,  body,  category->{_id, title, slug},  relatedServices->{_id, title, slug},  seo}
 export type SERVICE_QUERYResult = {
   _id: string;
   title: string | null;
@@ -369,23 +385,27 @@ export type SERVICE_QUERYResult = {
     title: string | null;
     slug: Slug | null;
   } | null;
+  relatedServices: null;
+  seo: Seo | null;
 } | null;
 // Variable: CATEGORIES_QUERY
-// Query: *[  _type == "category" &&  defined(title) &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug}
+// Query: *[  _type == "category" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  seo}
 export type CATEGORIES_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
+  seo: Seo | null;
 }>;
 // Variable: CATEGORY_QUERY
-// Query: *[  _type == "category" &&  slug.current == $slug &&  defined(title)][0]{  _id,  title,  slug}
+// Query: *[  _type == "category" &&  slug.current == $slug &&  defined(title)][0]{  _id,  title,  slug,  seo}
 export type CATEGORY_QUERYResult = {
   _id: string;
   title: string | null;
   slug: Slug | null;
+  seo: Seo | null;
 } | null;
 // Variable: PROJECTS_QUERY
-// Query: *[  _type == "project" &&  defined(name) &&  defined(slug.current) &&  defined(body) &&  defined(image)] | order(order asc) {  _id,  name,  slug,  body,  image}
+// Query: *[  _type == "project" &&  defined(slug.current)] | order(order asc) {  _id,  name,  slug,  body,  image,  seo}
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -433,9 +453,10 @@ export type PROJECTS_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  seo: Seo | null;
 }>;
 // Variable: PROJECT_QUERY
-// Query: *[  _type == "project" &&  slug.current == $slug &&  defined(name) &&  defined(body) &&  defined(image)][0]{  _id,  name,  slug,  body,  image}
+// Query: *[  _type == "project" &&  slug.current == $slug &&  defined(name) &&  defined(body) &&  defined(image)][0]{  _id,  name,  slug,  body,  image,  seo}
 export type PROJECT_QUERYResult = {
   _id: string;
   name: string | null;
@@ -483,18 +504,19 @@ export type PROJECT_QUERYResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  seo: Seo | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"service\" &&\n  defined(title) &&\n  defined(slug.current) &&\n  defined(category) &&\n  defined(body)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  category->{_id, title, slug},\n  body,\n}": SERVICES_QUERYResult;
+    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  category->{_id, title, slug},\n  body,\n  seo\n}": SERVICES_QUERYResult;
     "*[_type == \"service\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": SERVICES_SLUGS_QUERYResult;
-    "*[\n  _type == \"service\" &&\n  slug.current == $slug &&\n  defined(title) &&\n  defined(body) &&\n  defined(category)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  category->{_id, title, slug},\n}": SERVICE_QUERYResult;
-    "*[\n  _type == \"category\" &&\n  defined(title) &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug\n}": CATEGORIES_QUERYResult;
-    "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  slug\n}": CATEGORY_QUERYResult;
-    "*[\n  _type == \"project\" &&\n  defined(name) &&\n  defined(slug.current) &&\n  defined(body) &&\n  defined(image)\n] | order(order asc) {\n  _id,\n  name,\n  slug,\n  body,\n  image\n}": PROJECTS_QUERYResult;
-    "*[\n  _type == \"project\" &&\n  slug.current == $slug &&\n  defined(name) &&\n  defined(body) &&\n  defined(image)\n][0]{\n  _id,\n  name,\n  slug,\n  body,\n  image\n}": PROJECT_QUERYResult;
+    "*[\n  _type == \"service\" &&\n  slug.current == $slug\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  category->{_id, title, slug},\n  relatedServices->{_id, title, slug},\n  seo\n}": SERVICE_QUERYResult;
+    "*[\n  _type == \"category\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  seo\n}": CATEGORIES_QUERYResult;
+    "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  slug,\n  seo\n}": CATEGORY_QUERYResult;
+    "*[\n  _type == \"project\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  name,\n  slug,\n  body,\n  image,\n  seo\n}": PROJECTS_QUERYResult;
+    "*[\n  _type == \"project\" &&\n  slug.current == $slug &&\n  defined(name) &&\n  defined(body) &&\n  defined(image)\n][0]{\n  _id,\n  name,\n  slug,\n  body,\n  image,\n  seo\n}": PROJECT_QUERYResult;
   }
 }
