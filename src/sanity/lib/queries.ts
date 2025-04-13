@@ -10,7 +10,9 @@ export const SERVICES_QUERY = defineQuery(`*[
   slug,
   category->{_id, title, slug},
   body,
-  seo
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+  },
 }`);
 
 export const SERVICES_SLUGS_QUERY =
@@ -29,7 +31,9 @@ export const SERVICE_QUERY = defineQuery(`*[
   body,
   category->{_id, title, slug},
   relatedServices->{_id, title, slug},
-  seo
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+  },
 }`);
 
 // All Categories (only those ready for publishing)
@@ -40,7 +44,9 @@ export const CATEGORIES_QUERY = defineQuery(`*[
   _id,
   title,
   slug,
-  seo
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+  },
 }`);
 
 // Single Category by slug
@@ -52,7 +58,9 @@ export const CATEGORY_QUERY = defineQuery(`*[
   _id,
   title,
   slug,
-  seo
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+  },
 }`);
 
 // All Projects
@@ -65,7 +73,9 @@ export const PROJECTS_QUERY = defineQuery(`*[
   slug,
   body,
   image,
-  seo
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+  },
 }`);
 
 // Single Project by slug
@@ -81,5 +91,7 @@ export const PROJECT_QUERY = defineQuery(`*[
   slug,
   body,
   image,
-  seo
+  "seo": {
+    "title": coalesce(seo.title, title, ""),
+  },
 }`);
