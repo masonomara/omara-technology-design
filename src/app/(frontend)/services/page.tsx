@@ -1,27 +1,14 @@
 // page.tsx
 import { sanityFetch } from "@/sanity/lib/live";
-import { defineQuery } from "next-sanity";
-// import { SERVICES_QUERY } from "@/sanity/lib/queries";
+import { SERVICES_QUERY } from "@/sanity/lib/queries";
 import Link from "next/link";
 
-export const SERVICES_QUERY =
-  defineQuery(`*[_type == "service" && defined(slug.current)]|order(order asc) {
-  _id,
-  title,
-  slug,
-  body,
-  order,
-  "category": category->{
-    _id,
-    slug,
-    title
-  }
-}`);
-
-
 export default async function Page() {
+
+  console.log("Fetching services with query:", SERVICES_QUERY);
   const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
-  console.log("services:", services);
+
+  console.log("Fetched services:", services);
 
   return (
     <main>

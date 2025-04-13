@@ -68,178 +68,15 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type SplitImage = {
-  _type: "splitImage";
-  orientation?: "imageLeft" | "imageRight";
-  title?: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
-export type Hero = {
-  _type: "hero";
-  title?: string;
-  text?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
-export type Features = {
-  _type: "features";
-  title?: string;
-  features?: Array<{
-    title?: string;
-    text?: string;
-    _type: "feature";
-    _key: string;
-  }>;
-};
-
-export type Faq = {
-  _id: string;
-  _type: "faq";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-};
-
-export type Faqs = {
-  _type: "faqs";
-  title?: string;
-  faqs?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "faq";
-  }>;
-};
-
-export type PageBuilder = Array<{
-  _key: string;
-} & Hero | {
-  _key: string;
-} & SplitImage | {
-  _key: string;
-} & Features | {
-  _key: string;
-} & Faqs>;
-
-export type Page = {
-  _id: string;
-  _type: "page";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  content?: PageBuilder;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
 export type Project = {
   _id: string;
   _type: "project";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order?: number;
-  title?: string;
+  name?: string;
   slug?: Slug;
-  mainImage?: {
+  image?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -249,18 +86,17 @@ export type Project = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
     _type: "image";
   };
-  body?: Array<{
+  bio?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-    listItem?: "bullet";
+    style?: "normal";
+    listItem?: never;
     markDefs?: Array<{
       href?: string;
       _type: "link";
@@ -268,19 +104,6 @@ export type Project = {
     }>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
     _key: string;
   }>;
 };
@@ -291,15 +114,29 @@ export type Service = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order?: number;
   title?: string;
   slug?: Slug;
-  category?: {
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    _key: string;
     [internalGroqTypeReferenceTo]?: "category";
-  };
+  }>;
+  publishedAt?: string;
   body?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -331,13 +168,6 @@ export type Service = {
     _type: "image";
     _key: string;
   }>;
-  relatedServices?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "service";
-  }>;
 };
 
 export type Category = {
@@ -346,7 +176,6 @@ export type Category = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order?: number;
   title?: string;
   slug?: Slug;
   description?: string;
@@ -447,7 +276,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | SplitImage | Hero | Features | Faq | Faqs | PageBuilder | Page | Project | Service | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | Service | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: SERVICES_QUERY
@@ -487,12 +316,8 @@ export type SERVICES_QUERYResult = Array<{
     _type: "image";
     _key: string;
   }> | null;
-  order: number | null;
-  category: {
-    _id: string;
-    slug: Slug | null;
-    title: string | null;
-  } | null;
+  order: null;
+  category: null;
 }>;
 // Variable: SERVICES_SLUGS_QUERY
 // Query: *[_type == "service" && defined(slug.current)]{   "slug": slug.current}
@@ -535,18 +360,9 @@ export type SERVICE_QUERYResult = {
     _type: "image";
     _key: string;
   }> | null;
-  order: number | null;
-  category: {
-    _id: string;
-    slug: Slug | null;
-    title: string | null;
-  } | null;
-  relatedServices: Array<{
-    _key: string;
-    _id: string;
-    title: string | null;
-    slug: Slug | null;
-  }> | null;
+  order: null;
+  category: null;
+  relatedServices: null;
 } | null;
 
 // Query TypeMap
