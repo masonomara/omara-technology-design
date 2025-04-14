@@ -10,7 +10,7 @@ export const components: PortableTextComponents = {
           src={urlFor(props.value)
             .width(600)
             .height(400)
-            .quality(80)
+            .quality(100)
             .auto("format")
             .url()}
           alt={props?.value?.alt || ""}

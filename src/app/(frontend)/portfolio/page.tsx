@@ -1,34 +1,29 @@
 // page.tsx
+import ProjectCard from "@/app/components/ProjectCard";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
-import Link from "next/link";
+import styles from "../../styles/portfolio.module.css"
+
 
 export default async function Page() {
-
   const { data: projects } = await sanityFetch({ query: PROJECTS_QUERY });
-  console.log("portfolio:", projects)
 
   return (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
         <h1 className="title">PORTFOLIO</h1>
-        <ul>
+
+        <div className={styles.portfolioWrapper}>
           {projects.map((project: any) => (
-            <li key={project._id}>
-              <Link
-                className="block p-4 hover:text-blue-500"
-                href={`/portfolio/${project?.slug?.current}`}
-              >
-                {project?.title}
-              </Link>
-            </li>
+            <ProjectCard key={project._id} project={project} />
           ))}
-        </ul>
+        </div>
+
         <div className="companyTitle">
-          <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology & Design" className="companyTitleImage" />
-          <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology & Design" className="companyTitleImageCondensed" />
-          <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology & Design" className="companyTitleImageSuperCondensed" />
+          <Image src="/longWordmark.svg" height={12} width={208} alt="O'Mara Technology & Design" className="companyTitleImage" />
+          <Image src="/condensedWordmark.svg" height={24} width={142} alt="O'Mara Technology & Design" className="companyTitleImageCondensed" />
+          <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O'Mara Technology & Design" className="companyTitleImageSuperCondensed" />
         </div>
       </div>
     </main>
