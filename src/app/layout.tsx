@@ -6,7 +6,7 @@ import CursorFollower from "./components/CursorFollower";
 export const metadata: Metadata = {
   title: "O’Mara Technology & Design",
   description:
-    "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, E-Commerce",
+    "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, ECommerce, Software",
 };
 
 const overpass = Overpass({

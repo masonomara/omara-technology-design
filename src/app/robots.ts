@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/studio/"],
       },
     ],
-    sitemap: "https://oamratechnologydesign.com/sitemap.xml",
+    sitemap: "https://omaratechnologydesign.com/sitemap.xml",
   };
 }
