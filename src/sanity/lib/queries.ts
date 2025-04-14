@@ -81,7 +81,7 @@ export const PROJECTS_QUERY = defineQuery(`*[
   defined(slug.current)
 ] | order(order asc) {
   _id,
-  name,
+  title,
   slug,
   body,
   image,
@@ -96,13 +96,10 @@ export const PROJECTS_QUERY = defineQuery(`*[
 // Single Project by slug
 export const PROJECT_QUERY = defineQuery(`*[
   _type == "project" &&
-  slug.current == $slug &&
-  defined(name) &&
-  defined(body) &&
-  defined(image)
+  defined(slug.current)
 ][0]{
   _id,
-  name,
+  title,
   slug,
   body,
   image,

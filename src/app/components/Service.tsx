@@ -5,13 +5,11 @@ import { SERVICE_QUERYResult } from "@/sanity/types"; // Update path if needed
 import { RelatedServices } from "./RelatedServices";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
-  const { _id, title, slug, body, category, seo, relatedServices } = props;
+  const { _id, title, body, seo, relatedServices } = props;
 
   return (
     <article>
       <header>
-        <div>
-        </div>
         <title>{seo?.title ?? title}</title>
       </header>
 

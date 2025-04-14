@@ -12,14 +12,14 @@ export const projectType = defineType({
       type: "string",
     }),
     defineField({
-      name: "name",
+      name: "title",
       type: "string",
     }),
     defineField({
       name: "slug",
       type: "slug",
       options: {
-        source: "name",
+        source: "title",
       },
       validation: (Rule) => Rule.required(),
     }),
@@ -29,6 +29,14 @@ export const projectType = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alt Text",
+          description: "Alternative text for screen readers and SEO",
+        }),
+      ],
     }),
     defineField({
       name: "body",
@@ -41,7 +49,7 @@ export const projectType = defineType({
   ],
   preview: {
     select: {
-      title: "name",
+      title: "title",
       media: "image",
     },
   },
