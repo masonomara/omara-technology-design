@@ -92,7 +92,7 @@ ${values.message || 'No message provided.'}`
           O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
         </p>
         <p className={styles.subtitle}>
-          Our focuses include mobile apps, websites, ecommerce, or any custom software. If you're interested in any of these services or more, please fill out the form below.
+          Our focuses include mobile apps, websites, ecommerce, or any custom software. If you’re interested in any of these services or more, please fill out the form below.
         </p>
 
         <div className={styles.contactFormWrapper}>

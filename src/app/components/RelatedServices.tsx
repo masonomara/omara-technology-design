@@ -12,7 +12,7 @@ type RelatedServicesProps = {
   documentType: string;
 };
 
-export function RelatedServices({ relatedServices, documentId }: RelatedServicesProps) {
+export function RelatedServices({ relatedServices }: RelatedServicesProps) {
   if (!relatedServices || relatedServices.length === 0) return null;
 
   return (

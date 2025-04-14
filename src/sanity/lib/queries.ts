@@ -33,7 +33,7 @@ export const SERVICE_QUERY = defineQuery(`*[
   slug,
   body,
   category->{_id, title, slug},
-  relatedServices->{_id, title, slug},
+  // relatedServices->{_id, title, slug},
   "seo": {
     "title": coalesce(seo.title, title, ""),
     "description": coalesce(seo.description,  ""),
@@ -140,4 +140,4 @@ export const SITEMAP_QUERY = defineQuery(`
       ),
       _updatedAt
   }
-  `)
+  `);

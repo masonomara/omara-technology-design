@@ -2,10 +2,10 @@
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
 import { SERVICE_QUERYResult } from "@/sanity/types"; // Update path if needed
-import { RelatedServices } from "./RelatedServices";
+// import { RelatedServices } from "./RelatedServices";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
-  const { _id, title, body, seo, relatedServices } = props;
+  const { title, body, seo } = props;
 
   return (
     <article>
@@ -16,13 +16,13 @@ export function Service(props: NonNullable<SERVICE_QUERYResult>) {
       {body ? (
         <div>
           <PortableText value={body} components={components} />
-          {relatedServices && (
+          {/* {relatedServices && (
             <RelatedServices
               relatedServices={relatedServices}
               documentId={_id}
               documentType="service"
             />
-          )}
+          )} */}
         </div>
       ) : null}
     </article>

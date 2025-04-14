@@ -182,13 +182,6 @@ export type Service = {
     _type: "image";
     _key: string;
   }>;
-  relatedServices?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "service";
-  }>;
   seo?: Seo;
 };
 
@@ -387,7 +380,7 @@ export type SERVICES_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: SERVICE_QUERY
-// Query: *[  _type == "service" &&  defined(slug.current)][0]{  _id,  title,  slug,  body,  category->{_id, title, slug},  relatedServices->{_id, title, slug},  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
+// Query: *[  _type == "service" &&  defined(slug.current)][0]{  _id,  title,  slug,  body,  category->{_id, title, slug},  // relatedServices->{_id, title, slug},  // "seo": {  //   "title": coalesce(seo.title, title, ""),  //   "description": coalesce(seo.description,  ""),  //   "image": seo.image,  //   "noIndex": seo.noIndex == true  // },}
 export type SERVICE_QUERYResult = {
   _id: string;
   title: string | null;
@@ -428,24 +421,6 @@ export type SERVICE_QUERYResult = {
     title: string | null;
     slug: Slug | null;
   } | null;
-  relatedServices: null;
-  seo: {
-    title: string | "";
-    description: string | "";
-    image: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    } | null;
-    noIndex: boolean | false;
-  };
 } | null;
 // Variable: CATEGORIES_QUERY
 // Query: *[  _type == "category" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
@@ -657,7 +632,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[\n  _type == \"service\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  category->{_id, title, slug},\n  body,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICES_QUERYResult;
     "*[_type == \"service\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": SERVICES_SLUGS_QUERYResult;
-    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  category->{_id, title, slug},\n  relatedServices->{_id, title, slug},\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICE_QUERYResult;
+    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  category->{_id, title, slug},\n  // relatedServices->{_id, title, slug},\n  // \"seo\": {\n  //   \"title\": coalesce(seo.title, title, \"\"),\n  //   \"description\": coalesce(seo.description,  \"\"),\n  //   \"image\": seo.image,\n  //   \"noIndex\": seo.noIndex == true\n  // },\n}": SERVICE_QUERYResult;
     "*[\n  _type == \"category\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORIES_QUERYResult;
     "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORY_QUERYResult;
     "*[\n  _type == \"project\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  body,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECTS_QUERYResult;

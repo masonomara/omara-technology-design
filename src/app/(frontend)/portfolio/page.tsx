@@ -2,8 +2,10 @@
 import ProjectCard from "@/app/components/ProjectCard";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
+
 import Image from "next/image";
 import styles from "../../styles/portfolio.module.css"
+import { PROJECT_QUERYResult } from "@/sanity/types";
 
 
 export default async function Page() {
@@ -15,7 +17,7 @@ export default async function Page() {
         <h1 className="title">PORTFOLIO</h1>
 
         <div className={styles.portfolioWrapper}>
-          {projects.map((project: any) => (
+          {projects.map((project: NonNullable<PROJECT_QUERYResult>) => (
             <ProjectCard key={project._id} project={project} />
           ))}
         </div>

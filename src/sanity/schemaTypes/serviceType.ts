@@ -33,11 +33,11 @@ export const serviceType = defineType({
       name: "body",
       type: "blockContent",
     }),
-    defineField({
-      name: "relatedServices",
-      type: "array",
-      of: [{ type: "reference", to: { type: "service" } }],
-    }),
+    // defineField({
+    //   name: "relatedServices",
+    //   type: "array",
+    //   of: [{ type: "reference", to: { type: "service" } }],
+    // }),
     defineField({
       name: "seo",
       type: "seo",

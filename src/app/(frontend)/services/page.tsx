@@ -1,6 +1,7 @@
 // page.tsx
 import { sanityFetch } from "@/sanity/lib/live";
 import { SERVICES_QUERY } from "@/sanity/lib/queries";
+import { SERVICE_QUERYResult } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,9 +12,9 @@ export default async function Page() {
   return (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <h1>Services</h1>
+        <h1 className="title">PORTFOLIO</h1>
         <ul>
-          {services.map((service: any) => (
+          {services.map((service: NonNullable<SERVICE_QUERYResult>) => (
             <li key={service._id}>
               <Link
                 className="block p-4 hover:text-blue-500"
