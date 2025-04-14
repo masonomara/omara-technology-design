@@ -35,7 +35,7 @@ export default function Header() {
             <div id={"textFocuses"} className={"header__textWrapper"}>
               <div className={"header__textTitle"}>Focuses</div>
               <div className={"header__textBody"}>Mobile Apps&nbsp;&nbsp;&nbsp;&nbsp;Websites</div>
-              <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Digital Systems</div>
+              <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Software</div>
             </div>
           </div>
         </div>

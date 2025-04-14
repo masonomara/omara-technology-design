@@ -103,7 +103,7 @@
   transition-delay: 75ms;
 }
 
-.cans,
+.cans, .pointScore,
 .trophyScore {
   font-size: 58px;
   pointer-events: none;
@@ -116,7 +116,7 @@
   line-height: 100%;
 }
 
-.trophyScore {
+.trophyScore, .pointScore {
   padding-top: 40px;
 }
 .cans {
@@ -139,7 +139,7 @@
   transition-delay: 250ms;
 }
 
-.scoreDetails {
+.scoreDetails, .trophyDetails {
   font-size: 27px;
   pointer-events: none;
   color: #891910;
@@ -321,32 +321,6 @@
 .primaryButton:hover {
   text-decoration-thickness: 2px !important;
   text-underline-offset: 4.8px !important;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-}
-
-.secondaryButton {
-  height: 48px;
-  font-size: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border-radius: 19.2px;
-  border: 1px solid #891910;
-  color: #891910;
-  background-color: #F8E9D8;
-  width: 100%;
-  max-width: 450px;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  font-family: var(--font-radio);
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  text-decoration: underline !important;
-  text-decoration-color: transparent !important;
-  text-decoration-thickness: 3.24px !important;
-  text-underline-offset: 3.18px !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
@@ -633,7 +607,7 @@
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
-.input:focus {
+.input:focus, .input:hover {
   outline: none;
   outline: 1px solid #891910;
   background-color: rgba(151, 27, 17, 0.08);
@@ -642,8 +616,10 @@
 /* Media queries */
 @media screen and (max-width: 699px) {
   .gameOver {
-    max-height: calc(100% - 56px - 25px - 80px);
-    height: calc(100% - 56px - 25px - 80px);
+    /* max-height: calc(100% - 56px - 25px - 80px);
+    height: calc(100% - 56px - 25px - 80px); */
+    max-height: calc(100% - 78px);
+    height: calc(100% - 78px);
   }
 
   .scoreWrapper {
@@ -658,13 +634,12 @@
     font-size: 68px;
   }
 
-  .cans,
-  .trophyScore {
+  .cans {
     font-size: 51px;
   }
 
   .scoreDetails {
-    font-size: 24px;
+    font-size: 23px;
   }
 }
 
@@ -680,9 +655,12 @@
     font-size: clamp(40px, 8.3vw, 59px);
   }
 
-  .cans,
-  .trophyScore {
+  .cans{
     font-size: clamp(35px, 7.2vw, 52px);
+  }
+
+  .trophyScore {
+    font-size: 50px;
   }
 
   .scoreDetails {
@@ -708,7 +686,9 @@
 
 
   .gameOver {
-    width: calc(100% - 80px - 64px);
+    width: calc(100% - 48px - 48px);
+    padding-left: 24px!important;
+    padding-right: 24px!important;
   }
 
   .startDescription {
@@ -759,9 +739,13 @@
 }
 
 @media screen and (max-width: 399px) {
-  .startContainer,
-  .gameOver {
+  .startContainer {
     width: calc(100% - 64px - 64px);
+  }
+
+  .gameOver {
+    width: calc(100% - 48px - 48px);
+
   }
 
   .startDescription {

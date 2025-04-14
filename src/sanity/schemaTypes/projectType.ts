@@ -1,12 +1,11 @@
-// serviceType.ts
-import { DocumentTextIcon } from "@sanity/icons";
+import { UserIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
-export const serviceType = defineType({
-  name: "service",
-  title: "Service",
+export const projectType = defineType({
+  name: "project",
+  title: "Project",
   type: "document",
-  icon: DocumentTextIcon,
+  icon: UserIcon,
   fields: [
     defineField({
       name: "order",
@@ -25,19 +24,24 @@ export const serviceType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "category",
-      type: "reference",
-      to: { type: "category" },
+      name: "image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alt Text",
+          description: "Alternative text for screen readers and SEO",
+        }),
+      ],
     }),
     defineField({
       name: "body",
       type: "blockContent",
     }),
-    // defineField({
-    //   name: "relatedServices",
-    //   type: "array",
-    //   of: [{ type: "reference", to: { type: "service" } }],
-    // }),
     defineField({
       name: "seo",
       type: "seo",
@@ -46,10 +50,7 @@ export const serviceType = defineType({
   preview: {
     select: {
       title: "title",
-      media: "mainImage",
-    },
-    prepare(selection) {
-      return { ...selection };
+      media: "image",
     },
   },
 });
