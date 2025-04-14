@@ -17,7 +17,7 @@ const contactFormSchema = z.object({
   currentUrl: z.string().optional(),
   services: z.array(z.string()).optional(),
   inquiryType: z.enum(['job', 'press', 'general']).optional(),
-  message: z.string().min(10, { message: 'Please make sure your message is at least 10 characters long' }),
+  message: z.string().optional(),
 });
 
 type FormData = z.infer<typeof contactFormSchema>;
@@ -51,8 +51,8 @@ Inquiry Type: ${values.inquiryType || 'N/A'}
 Services Interested In: ${selectedServices}
 
 Message:
-${values.message}
-     `;
+${values.message || 'No message provided.'}`
+;
 
       const response = await sendMail({
         email: values.email,
