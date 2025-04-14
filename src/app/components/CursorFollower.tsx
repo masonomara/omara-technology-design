@@ -32,7 +32,7 @@ const CursorFollower = () => {
 
       // Interactive element check
       if (!isHovering && (
-        ["A", "BUTTON", "INPUT"].includes(currentElement.tagName) ||
+        ["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL" ].includes(currentElement.tagName) ||
         currentElement.hasAttribute('onclick') ||
         currentElement.onclick !== null ||
         currentElement.getAttribute('role') === 'button' ||

@@ -633,7 +633,7 @@
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
-.input:focus {
+.input:focus, .input:hover {
   outline: none;
   outline: 1px solid #891910;
   background-color: rgba(151, 27, 17, 0.08);

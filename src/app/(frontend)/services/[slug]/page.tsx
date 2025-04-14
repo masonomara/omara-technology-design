@@ -3,6 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { SERVICE_QUERY } from "@/sanity/lib/queries";
 import { Metadata } from "next";
+import Image from "next/image";
 
 type RouteProps = {
   params: Promise<{ slug: string }>;
@@ -59,9 +60,16 @@ export default async function Page({ params }: RouteProps) {
   const { data: service } = await getService(params);
 
   return service?.body ? (
-    <main>
-      <title>{service.seo.title}</title>
-      <Service {...service} />
+    <main className="standardPageContainer">
+      <div className="standardPageWrapper">
+        <title>{service.seo.title}</title>
+        <Service {...service} />
+        <div className="companyTitle">
+          <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology & Design" className="companyTitleImage" />
+          <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology & Design" className="companyTitleImageCondensed" />
+          <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology & Design" className="companyTitleImageSuperCondensed" />
+        </div>
+      </div>
     </main>
   ) : null;
 }

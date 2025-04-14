@@ -73,12 +73,13 @@ ${values.message}
   };
 
   return (
-    <div className="standardPageContainer">
-      <div className={styles.contactWrapper}>
-        <h1 className={styles.title}>Contact</h1>
+    <main className="standardPageContainer">
+      <div className="standardPageWrapper">
+        <h1 className="title">Contact</h1>
 
         <div className={styles.emailInfo}>
-          Prefer email?{' '}
+          Online forms not your thing?<br />
+          Email:{' '}
           <Link
             className={styles.emailLink}
             href={`mailto:${emailAddress}`}
@@ -91,7 +92,7 @@ ${values.message}
           O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
         </p>
         <p className={styles.subtitle}>
-          Our focuses include mobile apps, websites, Ecommerce, or any digital system. If you're interested in any of these services or more, please fill out the form below.
+          Our focuses include mobile apps, websites, ecommerce, or any custom software. If you're interested in any of these services or more, please fill out the form below.
         </p>
 
         <div className={styles.contactFormWrapper}>
@@ -145,7 +146,6 @@ ${values.message}
 
 
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
-              <p>What services are you looking for?</p>
 
               {/* Leadership & Strategy Section */}
               <div className={styles.serviceCategory} style={{ gridColumn: "span 2" }}>
@@ -203,8 +203,8 @@ ${values.message}
                     <label htmlFor="ecommerceDevelopment">Ecommerce Development</label>
                   </div>
                   <div className={styles.checkboxItem}>
-                    <input type="checkbox" id="digitalSystemDevelopment" value="Digital System Development" {...register("services")} />
-                    <label htmlFor="digitalSystemDevelopment">Digital Systems</label>
+                    <input type="checkbox" id="softwareDevelopment" value="Software Development" {...register("services")} />
+                    <label htmlFor="softwareDevelopment">Software Development</label>
                   </div>
                 </div>
               </div>
@@ -245,9 +245,9 @@ ${values.message}
               <label className={styles.label} htmlFor="message">Message</label>
               <textarea
                 id="message"
-                rows={4}
+                rows={3}
                 className={styles.textareaInput}
-                placeholder="Please share details about your project or inquiry (minimum 10 characters)"
+                placeholder="Anything you would like to share"
                 {...register("message")}
               ></textarea>
               {errors.message && (
@@ -265,70 +265,14 @@ ${values.message}
           </form>
         </div>
 
-        {/* <div className={styles.buttonsWrapper}>
-          <Link
-            href={`/contact/clients`}
-            target="_top"
-            className={`${styles.buttonBorder} ${styles.mainButton}`}
-          >
-            <div className={styles.buttonHeading}>
-              FOR OPPORTUNITIES TO WORK WITH O.T.D.
-              <br />
-              PLEASE CLICK HERE
-            </div>
-          </Link>
 
-          <div className={styles.subButtonsWrapper}>
-            <Link
-              href={`/contact/press`}
-              target="_top"
-              className={`${styles.buttonBorder} ${styles.subButton}`}
-            >
-              For Press Inquiries
-              <br />
-              CLICK HERE
-            </Link>
 
-            <Link
-              href={`/contact/jobs`}
-              target="_top"
-              className={`${styles.buttonBorder} ${styles.subButton}`}
-            >
-              FOR JOB INQUIRIES
-              <br />
-              CLICK HERE
-            </Link>
-
-            <Link
-              href={`/contact/general`}
-              target="_top"
-              className={`${styles.buttonBorder} ${styles.subButton}`}
-            >
-              FOR GENERAL INQUIRIES
-              <br />
-              CLICK HERE
-            </Link>
-          </div>
-
-          <div className={styles.emailInfo}>
-            Prefer email?{' '}
-            <Link
-              className={styles.emailLink}
-              href={`mailto:${emailAddress}`}
-              target="_blank"
-            >
-              {emailAddress}
-            </Link>
-          </div>
-        </div> */}
-
-        <div className={styles.companyTitle}>
-          {/* O’Mara Technology & Design */}
-          <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology & Design" className={styles.companyTitleImage} />
-          <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology & Design" className={styles.companyTitleImageCondensed} />
-          <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology & Design" className={styles.companyTitleImageSuperCondensed} />
+        <div className="companyTitle">
+          <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology & Design" className="companyTitleImage" />
+          <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology & Design" className="companyTitleImageCondensed" />
+          <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology & Design" className="companyTitleImageSuperCondensed" />
         </div>
       </div>
-    </div>
+    </main>
   )
 }

@@ -22,10 +22,10 @@ export default function Marquee() {
       <div className={`marquee ${menuOpen ? "menu-open" : ""}`} ref={marqueeRef}>
         <p><span className="marqueeTitle">TECHNOLOGY CONSULTING FIRM</span>Fractional business & technology strategy, design, and development.</p>
         <p><span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
-        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;Websites&nbsp;&nbsp;Ecommerce&nbsp;&nbsp;Digital Systems</p>
+        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;Websites&nbsp;&nbsp;Ecommerce&nbsp;&nbsp;Softwares</p>
         <p><span className="marqueeTitle">TECHNOLOGY CONSULTING FIRM</span>Fractional business & technology strategy, design, and development.</p>
         <p><span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
-        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;Websites&nbsp;&nbsp;Ecommerce&nbsp;&nbsp;Digital Systems</p>
+        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;Websites&nbsp;&nbsp;Ecommerce&nbsp;&nbsp;Softwares</p>
       </div>
 
       <div className="menu__navigation">

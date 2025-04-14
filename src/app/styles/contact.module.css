@@ -155,7 +155,6 @@
   .contactWrapper {
     min-height: calc(100svh - 65px - 30px);
   }
-
 }
 
 @media screen and (max-width: 799px) {
@@ -172,9 +171,10 @@
   
   .companyTitle {
     aspect-ratio: 142 / 24;
-    margin-bottom: calc(60% / (142 / 24));
-    margin-top: calc(60% / (142 / 24));
-  }  .buttonHeading {
+    margin-top: calc(((100% * (24/142)) * .8));
+    margin-bottom: calc(((100% * (24/142)) * .8));
+  } 
+   .buttonHeading {
     font-size: 23px;
     line-height: 130%;
   }

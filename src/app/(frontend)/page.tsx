@@ -510,7 +510,7 @@ export default function Home() {
                   <>
                     <input
                       type="text"
-                      placeholder="Nickname"
+                      placeholder="NICKNAME"
                       className={styles.input}
                       value={nickname}
                       onChange={(e) => {
@@ -523,7 +523,7 @@ export default function Home() {
                         <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
                       </button>
                       <button onClick={restartGame} className={styles.primaryButton}>
-                        <p>Restart Game</p>
+                        <p>Play Again</p>
                       </button>
                     </div>
                   </>
