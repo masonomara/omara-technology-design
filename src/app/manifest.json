@@ -1,6 +1,6 @@
 {
-  "name": "O’Mara Technology & Design",
-  "short_name": "O’Mara Technology & Design",
+  "name": "O'Mara Technology & Design",
+  "short_name": "O'Mara",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#891910",
-  "background_color": "#891910",
+  "theme_color": "#971b11",
+  "background_color": "#971b11",
   "display": "standalone"
 }
