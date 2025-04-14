@@ -299,7 +299,7 @@
     min-height: calc(100svh - 65px - 30px);
   }
 }
-@media screen and (max-width: 484px) {
+@media screen and (max-width: 509px) {
   #contact {
     display: none;
   }
