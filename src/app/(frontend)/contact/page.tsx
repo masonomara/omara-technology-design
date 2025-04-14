@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React from 'react'
-import styles from '../../styles/subcontact.module.css'
+import styles from '../../styles/contact.module.css'
 import Image from 'next/image'
 import { sendMail } from '@/app/lib/send-mail';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -97,7 +97,9 @@ ${values.message}
 
         <div className={styles.contactFormWrapper}>
           <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>
+          <p className={styles.formDivider}>Your info</p>
             <div className={styles.formField}>
+   
               <label className={styles.label} htmlFor="name">Name*</label>
               <input
                 type="text"
@@ -144,7 +146,7 @@ ${values.message}
             </div>
 
 
-
+            <p className={styles.formDivider}>Services you are looking for</p>
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
 
               {/* Leadership & Strategy Section */}
@@ -240,7 +242,7 @@ ${values.message}
                 </div>
               </div>
             </div>
-
+            <p className={styles.formDivider}>Additional information</p>
             <div className={styles.formField} style={{ gridColumn: "span 2" }}>
               <label className={styles.label} htmlFor="message">Message</label>
               <textarea
@@ -257,7 +259,7 @@ ${values.message}
 
             <button
               type="submit"
-              className={styles.submitButton}
+              className={styles.primaryButton}
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Sending...' : 'Submit'}

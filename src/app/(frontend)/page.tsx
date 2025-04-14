@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
-import styles from "./../styles/page.module.css";
+import styles from "./../styles/index.module.css";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
@@ -450,7 +450,7 @@ export default function Home() {
             <div className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}>
               <div className={styles.leaderboardContainer}>
 
-                <span className={styles.trophyScore}>{score}<span className={styles.scoreDetails}>points!</span></span>
+                <span className={styles.trophyScore}>{score}<span className={styles.trophyDetails}>points!</span></span>
                 <div className={styles.statsContainer}>
                   <div className={styles.statsWrapper}>
                     <span className={styles.statsTitle} >{timeTaken} seconds</span>
