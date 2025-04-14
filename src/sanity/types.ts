@@ -68,6 +68,18 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Redirect = {
+  _id: string;
+  _type: "redirect";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  source?: string;
+  destination?: string;
+  permanent?: boolean;
+  isEnabled?: boolean;
+};
+
 export type Project = {
   _id: string;
   _type: "project";
@@ -305,7 +317,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | Service | Category | Seo | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Redirect | Project | Service | Category | Seo | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: SERVICES_QUERY
@@ -616,6 +628,25 @@ export type PROJECT_QUERYResult = {
     noIndex: boolean | false;
   };
 } | null;
+// Variable: REDIRECTS_QUERY
+// Query: *[_type == "redirect" && isEnabled == true] {      source,      destination,      permanent  }
+export type REDIRECTS_QUERYResult = Array<{
+  source: string | null;
+  destination: string | null;
+  permanent: boolean | null;
+}>;
+// Variable: OG_IMAGE_QUERY
+// Query: *[_id == $id][0]{    title,    "image": mainImage.asset->{      url,      metadata {        palette      }    }  }
+export type OG_IMAGE_QUERYResult = {
+  title: null;
+  image: null;
+} | {
+  title: string | null;
+  image: null;
+} | null;
+// Variable: SITEMAP_QUERY
+// Query: *[_type in ["page", "post"] && defined(slug.current)] {      "href": select(        _type == "page" => "/" + slug.current,        _type == "post" => "/posts/" + slug.current,        slug.current      ),      _updatedAt  }
+export type SITEMAP_QUERYResult = Array<never>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -628,5 +659,8 @@ declare module "@sanity/client" {
     "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORY_QUERYResult;
     "*[\n  _type == \"project\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  name,\n  slug,\n  body,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECTS_QUERYResult;
     "*[\n  _type == \"project\" &&\n  slug.current == $slug &&\n  defined(name) &&\n  defined(body) &&\n  defined(image)\n][0]{\n  _id,\n  name,\n  slug,\n  body,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECT_QUERYResult;
+    "\n  *[_type == \"redirect\" && isEnabled == true] {\n      source,\n      destination,\n      permanent\n  }\n": REDIRECTS_QUERYResult;
+    "\n  *[_id == $id][0]{\n    title,\n    \"image\": mainImage.asset->{\n      url,\n      metadata {\n        palette\n      }\n    }\n  }    \n": OG_IMAGE_QUERYResult;
+    "\n  *[_type in [\"page\", \"post\"] && defined(slug.current)] {\n      \"href\": select(\n        _type == \"page\" => \"/\" + slug.current,\n        _type == \"post\" => \"/posts/\" + slug.current,\n        slug.current\n      ),\n      _updatedAt\n  }\n  ": SITEMAP_QUERYResult;
   }
 }

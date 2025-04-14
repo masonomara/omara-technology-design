@@ -38,6 +38,16 @@ export async function generateMetadata({
     };
   }
 
+  metadata.openGraph = {
+    images: {
+      url: service.seo.image
+        ? urlFor(service.seo.image).width(1200).height(630).url()
+        : `/api/og?id=${service._id}`,
+      width: 1200,
+      height: 630,
+    },
+  };
+
   if (service.seo.noIndex) {
     metadata.robots = "noindex";
   }
