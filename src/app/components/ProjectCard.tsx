@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import styles from "../styles/portfolio.module.css"
-import { Project } from "@/sanity/types";
 
 import { PROJECT_QUERYResult } from "@/sanity/types";
 export default function ProjectCard({ project }: { project: NonNullable<PROJECT_QUERYResult> }) {  // Get the first line of body text if available
