@@ -31,13 +31,17 @@ const CursorFollower = () => {
       }
 
       // Interactive element check
-      if (!isHovering && (
-        ["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL" ].includes(currentElement.tagName) ||
-        currentElement.hasAttribute('onclick') ||
-        currentElement.onclick !== null ||
-        currentElement.getAttribute('role') === 'button' ||
-        currentElement.id === 'menu'
-      )) {
+      if (
+        !isHovering &&
+        (
+          ["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL"].includes(currentElement.tagName) ||
+          currentElement.hasAttribute('onclick') ||
+          typeof currentElement.onclick === 'function' ||
+          currentElement.getAttribute('role') === 'button' ||
+          currentElement.id.includes('enemy') ||
+          currentElement.id === 'menu'
+        )
+      ) {
         isHovering = true;
       }
 

@@ -446,7 +446,7 @@ export default function Home() {
           </div>
 
 
-          {gameStart &&
+          {gameStart && !showSubscribeScreen &&
             <div className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}>
               <div className={styles.leaderboardContainer}>
 
@@ -537,59 +537,59 @@ export default function Home() {
 
           {/* Subscribe Screen */}
           {showSubscribeScreen && (
-            <div className={styles.gameOver}>
-              <div className={styles.leaderboardContainer}>
-                <h2 className={styles.trophyScore}>Quick ask:</h2>
-                <p className={styles.statsTitle}>Would you like to sign up for either of these email lists?</p>
+            <div className={`${styles.emailSignup} ${!showSubscribeScreen ? styles.emialSignupClose : ""}`}>
+
+              <h2 className={styles.regularTitle}>Email List Signup</h2>
+              <p className={styles.regularBody}>Would you like to sign up for either of these email lists?</p>
 
 
-                <div className={styles.checkboxContainer}>
-                  <label className={styles.checkboxLabel}>
-                    <input
-                      type="checkbox"
-                      checked={subscribeToCompany}
-                      onChange={() => setSubscribeToCompany(!subscribeToCompany)}
-                    />
-                    O’Mara Technology & Design Work Blog (quarterly)
-                  </label>
-                  <label className={styles.checkboxLabel}>
-                    <input
-                      type="checkbox"
-                      checked={subscribeToBlog}
-                      onChange={() => setSubscribeToBlog(!subscribeToBlog)}
-                    />
-                    Mason O’Mara Personal Blog (monthly)
-                  </label>
-                </div>
+              <div className={styles.checkboxContainer}>
+                <label className={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={subscribeToCompany}
+                    onChange={() => setSubscribeToCompany(!subscribeToCompany)}
+                  />
+                  O’Mara Technology & Design Work Blog (quarterly)
+                </label>
+                <label className={styles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    checked={subscribeToBlog}
+                    onChange={() => setSubscribeToBlog(!subscribeToBlog)}
+                  />
+                  Mason O’Mara Personal Blog (monthly)
+                </label>
+              </div>
 
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className={styles.input}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+              <input
+                type="email"
+                placeholder="Your email"
+                className={styles.input}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-                <div className={styles.endButtonWrapper}>
-                  <button
-                    className={styles.primaryButton}
-                    onClick={handleSubscribe}
-                    disabled={!email}
-                  >
-                    <p>SIGN UP</p>
-                  </button>
-                  <button
-                    className={styles.primaryButton}
-                    onClick={() => {
-                      setShowSubscribeScreen(false);
-                      restartGame();
-                    }}
-                  >
-                    <p>NO THANKS</p>
-                  </button>
-                </div>
+              <div className={styles.endButtonWrapper}>
+                <button
+                  className={styles.primaryButton}
+                  onClick={handleSubscribe}
+                  disabled={!email}
+                >
+                  <p>SIGN UP</p>
+                </button>
+                <button
+                  className={styles.primaryButton}
+                  onClick={() => {
+                    setShowSubscribeScreen(false);
+                    restartGame();
+                  }}
+                >
+                  <p>NO THANKS</p>
+                </button>
               </div>
             </div>
+
           )}
         </div>
       </div>

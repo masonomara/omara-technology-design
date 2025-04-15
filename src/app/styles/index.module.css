@@ -103,7 +103,8 @@
   transition-delay: 75ms;
 }
 
-.cans, .pointScore,
+.cans,
+.pointScore,
 .trophyScore {
   font-size: 58px;
   pointer-events: none;
@@ -116,7 +117,8 @@
   line-height: 100%;
 }
 
-.trophyScore, .pointScore {
+.trophyScore,
+.pointScore {
   padding-top: 40px;
 }
 .cans {
@@ -139,7 +141,8 @@
   transition-delay: 250ms;
 }
 
-.scoreDetails, .trophyDetails {
+.scoreDetails,
+.trophyDetails {
   font-size: 27px;
   pointer-events: none;
   color: #891910;
@@ -226,7 +229,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #F8E9D8;
+  background-color: #f8e9d8;
   opacity: 1;
   position: absolute;
   top: 50%;
@@ -285,9 +288,7 @@
 }
 
 .endButtonWrapper {
-
-    padding-bottom: 40px;
-  
+  padding-bottom: 40px;
 }
 
 .primaryButton {
@@ -346,7 +347,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #F8E9D8;
+  background-color: #f8e9d8;
+  opacity: 1;
+  width: calc(100% - 96px - 64px);
+  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition-delay: 400ms;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: calc(100% - 71px - 25px - 32px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 0px !important;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.emailSignup {
+  border: 1px solid #891910;
+  max-width: 412px;
+  height: fit-content;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f8e9d8;
   opacity: 1;
   width: calc(100% - 96px - 64px);
   transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
@@ -364,6 +391,12 @@
 }
 
 .gameOverClose {
+  opacity: 0;
+  pointer-events: none;
+  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+}
+
+.emailSignupClose {
   opacity: 0;
   pointer-events: none;
   transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
@@ -481,7 +514,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #F8E9D8;
+  background-color: #f8e9d8;
   mix-blend-mode: screen;
   opacity: 50%;
 }
@@ -492,7 +525,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #F8E9D8;
+  background-color: #f8e9d8;
   mix-blend-mode: multiply;
 }
 
@@ -551,15 +584,14 @@
   background: transparent;
   font-size: 16px;
   margin-top: 37px;
-width: calc(100% - 24px);
+  width: calc(100% - 24px);
   color: #891910;
   font-family: var(--font-overpass);
   font-weight: 500 !important;
   height: 24px;
   padding: 8px 6.4px;
   font-weight: 800;
-  width: 100%;
-  max-width: 300px;
+  max-width: 276px;
   opacity: 1;
 }
 
@@ -596,8 +628,8 @@ width: calc(100% - 24px);
 
 .input {
   font-family: var(--font-overpass);
-  border: 1px solid #891910!important;
-  outline: .6px solid #891910;
+  border: 1px solid #891910 !important;
+  outline: 0.6px solid #891910;
   background-color: transparent;
   padding: 12px 12px;
   font-size: 16px;
@@ -607,7 +639,8 @@ width: calc(100% - 24px);
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
-.input:focus, .input:hover {
+.input:focus,
+.input:hover {
   outline: none;
   outline: 1px solid #891910;
   background-color: rgba(151, 27, 17, 0.08);
@@ -620,6 +653,11 @@ width: calc(100% - 24px);
     height: calc(100% - 56px - 25px - 80px); */
     max-height: calc(100% - 64px);
     height: calc(100% - 64px);
+  }
+
+  .emailSignup {
+    height: fit-content;
+    max-height: fit-content;
   }
 
   .scoreWrapper {
@@ -655,7 +693,7 @@ width: calc(100% - 24px);
     font-size: clamp(40px, 8.3vw, 59px);
   }
 
-  .cans{
+  .cans {
     font-size: clamp(35px, 7.2vw, 52px);
   }
 
@@ -684,11 +722,15 @@ width: calc(100% - 24px);
     width: calc(100% - 80px - 64px);
   }
 
-
   .gameOver {
     width: calc(100% - 48px - 48px);
-    padding-left: 24px!important;
-    padding-right: 24px!important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .emailSignup {
+    width: calc(100% - 48px - 48px);
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 
   .startDescription {
@@ -700,8 +742,6 @@ width: calc(100% - 24px);
     flex-direction: column;
     gap: 28px;
   }
-
-
 
   .handWrapper,
   .handWrapperActive {
@@ -745,7 +785,10 @@ width: calc(100% - 24px);
 
   .gameOver {
     width: calc(100% - 48px - 48px);
+  }
 
+  .emailSignup {
+    width: calc(100% - 48px - 48px);
   }
 
   .startDescription {

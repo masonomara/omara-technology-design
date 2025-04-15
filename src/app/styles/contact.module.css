@@ -300,8 +300,8 @@
     line-height: 130%;
   }
   .contactFormWrapper:has(.serviceCategory) {
-    width: calc(100%);
-    padding: 0px 0px;
+    width: calc(100% - 16px);
+    padding: 0px 8px;
     font-size: 16px;
     line-height: 130%;
   }
