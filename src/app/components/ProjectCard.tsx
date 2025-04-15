@@ -5,8 +5,8 @@ import { urlFor } from "@/sanity/lib/image";
 import styles from "../styles/portfolio.module.css"
 import { Project } from "@/sanity/types";
 
-export default function ProjectCard({ project }: { project: Project }) {
-  // Get the first line of body text if available
+import { PROJECT_QUERYResult } from "@/sanity/types";
+export default function ProjectCard({ project }: { project: NonNullable<PROJECT_QUERYResult> }) {  // Get the first line of body text if available
   const firstBodyText =
     project.body?.[0]?._type === "block" &&
       project.body?.[0].children?.[0]?.text
