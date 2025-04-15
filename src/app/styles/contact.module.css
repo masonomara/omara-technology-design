@@ -1,28 +1,4 @@
-/* Layout Container */
-.contactWrapper {
-  min-height: calc(100svh - 71px - 30px);
-  display: flex;
-  width: calc(100%);
-  padding: 0px 8px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  font-family: var(--font-overpass);
-  color: #891910;
-  height: fit-content;
-}
 
-/* Typography */
-.title {
-  width: 100%;
-  text-align: center;
-  font-size: clamp(54px, 10vw, 90px);
-  font-family: var(--font-rallingtonSerif);
-  color: #891910;
-  margin-top: 0.8em;
-  margin-bottom: 0px;
-  font-weight: 400;
-}
 .subtitle {
   margin-top: 0.8em;
   margin-bottom: 0em;
