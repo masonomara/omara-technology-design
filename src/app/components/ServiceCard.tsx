@@ -1,3 +1,4 @@
+// ServiceCard.tsx
 import Link from 'next/link'
 
 // Define the type based on the SERVICES_QUERY structure

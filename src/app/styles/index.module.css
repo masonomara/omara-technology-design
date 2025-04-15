@@ -551,7 +551,7 @@
   background: transparent;
   font-size: 16px;
   margin-top: 37px;
-
+width: calc(100% - 24px);
   color: #891910;
   font-family: var(--font-overpass);
   font-weight: 500 !important;
@@ -618,8 +618,8 @@
   .gameOver {
     /* max-height: calc(100% - 56px - 25px - 80px);
     height: calc(100% - 56px - 25px - 80px); */
-    max-height: calc(100% - 78px);
-    height: calc(100% - 78px);
+    max-height: calc(100% - 64px);
+    height: calc(100% - 64px);
   }
 
   .scoreWrapper {

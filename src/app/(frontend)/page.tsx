@@ -539,8 +539,28 @@ export default function Home() {
           {showSubscribeScreen && (
             <div className={styles.gameOver}>
               <div className={styles.leaderboardContainer}>
-                <h2 className={styles.trophyScore}>Having fun?</h2>
-                <p className={styles.statsTitle}>Stay in touch!</p>
+                <h2 className={styles.trophyScore}>Quick ask:</h2>
+                <p className={styles.statsTitle}>Would you like to sign up for either of these email lists?</p>
+
+
+                <div className={styles.checkboxContainer}>
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      checked={subscribeToCompany}
+                      onChange={() => setSubscribeToCompany(!subscribeToCompany)}
+                    />
+                    O’Mara Technology & Design Work Blog (quarterly)
+                  </label>
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      checked={subscribeToBlog}
+                      onChange={() => setSubscribeToBlog(!subscribeToBlog)}
+                    />
+                    Mason O’Mara Personal Blog (monthly)
+                  </label>
+                </div>
 
                 <input
                   type="email"
@@ -550,33 +570,13 @@ export default function Home() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <div className={styles.checkboxContainer}>
-                  <label className={styles.checkboxLabel}>
-                    <input
-                      type="checkbox"
-                      checked={subscribeToCompany}
-                      onChange={() => setSubscribeToCompany(!subscribeToCompany)}
-                    />
-                    Subscribe to Omara Technology Design email list
-                  </label>
-
-                  <label className={styles.checkboxLabel}>
-                    <input
-                      type="checkbox"
-                      checked={subscribeToBlog}
-                      onChange={() => setSubscribeToBlog(!subscribeToBlog)}
-                    />
-                    Subscribe to Mason O‘Mara personal blog newsletter
-                  </label>
-                </div>
-
                 <div className={styles.endButtonWrapper}>
                   <button
                     className={styles.primaryButton}
                     onClick={handleSubscribe}
                     disabled={!email}
                   >
-                    <p>SUBSCRIBE</p>
+                    <p>SIGN UP</p>
                   </button>
                   <button
                     className={styles.primaryButton}
@@ -585,7 +585,7 @@ export default function Home() {
                       restartGame();
                     }}
                   >
-                    <p>IGNORE</p>
+                    <p>NO THANKS</p>
                   </button>
                 </div>
               </div>
