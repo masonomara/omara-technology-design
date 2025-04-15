@@ -151,6 +151,7 @@ export type Service = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "category";
   };
+  overview?: string;
   body?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -315,7 +316,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: SERVICES_QUERY
-// Query: *[  _type == "service" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  category->{_id, title, slug},  body,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
+// Query: *[  _type == "service" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  category->{_id, title, slug},  overview,  body,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
 export type SERVICES_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -325,6 +326,7 @@ export type SERVICES_QUERYResult = Array<{
     title: string | null;
     slug: Slug | null;
   } | null;
+  overview: string | null;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -380,11 +382,12 @@ export type SERVICES_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: SERVICE_QUERY
-// Query: *[  _type == "service" &&  defined(slug.current)][0]{  _id,  title,  slug,  body,  category->{_id, title, slug},  // relatedServices->{_id, title, slug},  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
+// Query: *[  _type == "service" &&  defined(slug.current)][0]{  _id,  title,  slug,  overview,  body,  category->{_id, title, slug},  // relatedServices->{_id, title, slug},  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
 export type SERVICE_QUERYResult = {
   _id: string;
   title: string | null;
   slug: Slug | null;
+  overview: string | null;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -647,9 +650,9 @@ export type SITEMAP_QUERYResult = Array<never>;
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  category->{_id, title, slug},\n  body,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICES_QUERYResult;
+    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  category->{_id, title, slug},\n  overview,\n  body,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICES_QUERYResult;
     "*[_type == \"service\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": SERVICES_SLUGS_QUERYResult;
-    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  category->{_id, title, slug},\n  // relatedServices->{_id, title, slug},\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICE_QUERYResult;
+    "*[\n  _type == \"service\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  overview,\n  body,\n  category->{_id, title, slug},\n  // relatedServices->{_id, title, slug},\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICE_QUERYResult;
     "*[\n  _type == \"category\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORIES_QUERYResult;
     "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORY_QUERYResult;
     "*[\n  _type == \"project\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  body,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECTS_QUERYResult;

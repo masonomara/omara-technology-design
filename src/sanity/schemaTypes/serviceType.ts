@@ -30,6 +30,10 @@ export const serviceType = defineType({
       to: { type: "category" },
     }),
     defineField({
+      name: "overview",
+      type: "string",
+    }),
+    defineField({
       name: "body",
       type: "blockContent",
     }),
