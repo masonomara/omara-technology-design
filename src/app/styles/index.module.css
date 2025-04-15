@@ -594,6 +594,25 @@
   max-width: 276px;
   opacity: 1;
 }
+.inputThankYou {
+  margin-top: 1.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #891910;
+  font-weight: 500;
+  font-family: var(--font-overpass);
+  font-size: 16px;
+  line-height: 130%;
+  font-family: var(--font-overpass);
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 800 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800 !important;
+  text-transform: uppercase;
+}
 
 .input::placeholder {
   color: #89191099;
@@ -728,9 +747,9 @@
     padding-right: 24px !important;
   }
   .emailSignup {
-    width: calc(100% - 48px - 48px);
-    padding-left: 24px !important;
-    padding-right: 24px !important;
+    width: calc(100% - 80px - 48px);
+    padding-left: 40px !important;
+    padding-right: 40px !important;
   }
 
   .startDescription {
@@ -787,10 +806,6 @@
     width: calc(100% - 48px - 48px);
   }
 
-  .emailSignup {
-    width: calc(100% - 48px - 48px);
-  }
-
   .startDescription {
     margin-top: 30.12px;
     font-size: 19px;
@@ -802,4 +817,164 @@
   .leaderboardList {
     width: calc(100%);
   }
+}
+
+.checkboxItem label {
+  font-family: var(--font-overpass);
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 500 !important;
+}
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-bottom: 8px;
+}
+
+.checkboxItem input[type="checkbox"] {
+  appearance: none;
+  min-width: 20px;
+  min-height: 20px;
+  width: 20px;
+  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  padding: 0px !important;
+  position: relative;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.checkboxItem input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #891910;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkboxItem label {
+  font-family: var(--font-overpass);
+  color: #891910;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.checkboxItem input[type="text"],
+.checkboxItem input[type="email"],
+.checkboxItem input[type="url"],
+.checkboxItem input,
+.checkboxItem textarea {
+  font-family: var(--font-overpass);
+  border: 1px solid #891910;
+  background-color: transparent;
+  padding: 16px 12px;
+  font-size: 16px;
+  font-weight: 500 !important;
+  border-radius: 0px;
+  color: #891910;
+  outline: 0.6px solid #891910;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+}
+
+.checkboxItem input:focus,
+.checkboxItem textarea:focus,
+.checkboxItem input:hover,
+.checkboxItem textarea:hover {
+  outline: 1px solid #891910;
+  background-color: rgba(151, 27, 17, 0.08);
+}
+
+.checkboxItem input::placeholder,
+.checkboxItem textarea::placeholder {
+  color: #89191099;
+  font-weight: 500 !important;
+}
+
+.checkboxItem label {
+  font-family: var(--font-radio);
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-size: 16px;
+  color: #891910;
+  margin-bottom: 8px;
+}
+.checkboxItem label {
+  font-family: var(--font-overpass);
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 500 !important;
+  padding-left: 8px;
+}
+.checkboxItem label {
+  font-family: var(--font-overpass);
+  color: #891910;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+.label {
+  display: none !important;
+} /* Media Queries */
+
+.bodyRegular {
+  margin-top: 0.8em;
+  margin-bottom: 0em;
+  font-size: 19px;
+  font-weight: 500;
+  width: calc(100%);
+  max-width: 360px;
+  text-align: center;
+  line-height: 130%;
+  font-family: var(--font-overpass);
+  color: #891910;
+}
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25.6px;
+  width: calc(100%);
+  max-width: 360px;
+}
+@media screen and (max-width: 799px) {
+  .checkboxContainer {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 699px) {
+  .bodyRegular {
+    width: calc(100%);
+    max-width: 360px;
+    padding: 0px 16px;
+    font-size: 16px;
+    line-height: 130%;
+  }
+}
+.titleRegular {
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+  font-family: var(--font-rallingtonSerif);
+  color: #891910;
+  margin-bottom: 0px;
+  font-weight: 400;
+  margin-top: 40px;
 }

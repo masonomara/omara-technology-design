@@ -20,6 +20,11 @@ interface LeaderboardEntry {
   user_id: string;
 }
 
+function isValidEmail(email: string) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
 // Enemy images and bad words list for filtering nicknames
 const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
 const badWords = ["FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "FUCK", "KKK", "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH"];
@@ -47,6 +52,7 @@ export default function Home() {
   const [userId, setUserId] = useState<string>("");
 
   const [showSubscribeScreen, setShowSubscribeScreen] = useState(false);
+  const [subscriptionSubmitted, setSubscriptionSubmitted] = useState(false);
   const [email, setEmail] = useState("");
   const [subscribeToCompany, setSubscribeToCompany] = useState(true);
   const [subscribeToBlog, setSubscribeToBlog] = useState(true);
@@ -54,13 +60,12 @@ export default function Home() {
 
 
   const handleSubscribe = async () => {
-    if (!email) {
-      alert("Please enter your email address");
+    if (!email || !isValidEmail(email)) {
+      alert("Please enter a valid email");
       return;
     }
 
     try {
-      // Insert into a new "subscriptions" table instead
       const { error } = await supabase.from("subscriptions").insert([{
         user_id: userId,
         email: email,
@@ -71,11 +76,10 @@ export default function Home() {
 
       if (error) throw error;
 
-      console.log("Subscription data saved successfully");
-      setShowSubscribeScreen(false);
-      restartGame();
+      console.log("Subscription saved");
+      setSubscriptionSubmitted(true);
     } catch (err) {
-      console.error("Error submitting subscription:", err);
+      console.error("Error saving subscription:", err);
       alert("Error saving your subscription. Please try again.");
     }
   };
@@ -162,10 +166,10 @@ export default function Home() {
       setSubmitted(true);
 
       // Show subscribe screen if it hasn't been shown before
-      if (!hasShownSubscribe) {
-        setShowSubscribeScreen(true);
-        setHasShownSubscribe(true);
-      }
+      // if (!hasShownSubscribe) {
+      //   setShowSubscribeScreen(true);
+      //   setHasShownSubscribe(true);
+      // }
     }
   }
 
@@ -505,7 +509,7 @@ export default function Home() {
                   })}
                 </ol>
                 {submitted ? (
-                  <p>Score submitted!</p>
+                  <div className={styles.inputThankYou}>Score submitted!</div>
                 ) : (
                   <>
                     <input
@@ -517,77 +521,102 @@ export default function Home() {
                         setNickname(e.target.value.toUpperCase());
                         if (warning) setWarning("");
                       }} />
+
+
                     {warning ? (<div className={styles.warning}>{warning}</div>) : (<div className={styles.warning}>Enter your nickname</div>)}
-                    <div className={styles.endButtonWrapper}>
-                      <button className={styles.primaryButton} onClick={submitScore}>
-                        <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
-                      </button>
-                      <button onClick={restartGame} className={styles.primaryButton}>
-                        <p>Play Again</p>
-                      </button>
-                    </div>
                   </>
-
-
                 )}
+                <div className={styles.endButtonWrapper}>
+                  {!submitted && (
+                    <button className={styles.primaryButton} onClick={submitScore}>
+                      <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
+                    </button>
+                  )}
+                  <button onClick={restartGame} className={styles.primaryButton}>
+                    <p>Play Again</p>
+                  </button>
+                </div>
               </div>
-
             </div>
           }
 
           {/* Subscribe Screen */}
           {showSubscribeScreen && (
-            <div className={`${styles.emailSignup} ${!showSubscribeScreen ? styles.emialSignupClose : ""}`}>
+            <div className={`${styles.emailSignup} ${!showSubscribeScreen ? styles.emailSignupClose : ""}`}>
 
-              <h2 className={styles.regularTitle}>Email List Signup</h2>
-              <p className={styles.regularBody}>Would you like to sign up for either of these email lists?</p>
+              <h2 className={styles.titleRegular}>Email List Signup</h2>
+              <p className={styles.bodyRegular}>Would you like to sign up for either of these email lists?</p>
 
 
               <div className={styles.checkboxContainer}>
-                <label className={styles.checkboxLabel}>
+                <div className={styles.checkboxItem}>
                   <input
                     type="checkbox"
+                    id="subscribeToCompany"
                     checked={subscribeToCompany}
+                    value="Subscribe to Company"
                     onChange={() => setSubscribeToCompany(!subscribeToCompany)}
                   />
-                  O’Mara Technology & Design Work Blog (quarterly)
-                </label>
-                <label className={styles.checkboxLabel}>
+                  <label className={styles.checkboxLabel} htmlFor="subscribeToCompany">
+                    O’Mara Technology & Design Work Blog (quarterly)
+                  </label>
+                </div>
+                <div className={styles.checkboxItem}>
                   <input
                     type="checkbox"
+                    id="subscribeToBlog"
                     checked={subscribeToBlog}
+                    value="Subscribe to Blog"
                     onChange={() => setSubscribeToBlog(!subscribeToBlog)}
                   />
-                  Mason O’Mara Personal Blog (monthly)
-                </label>
+                  <label className={styles.checkboxLabel} htmlFor="subscribeToBlog">
+                    Mason O’Mara Personal Blog (monthly)
+                  </label>
+                </div>
               </div>
 
-              <input
+              {!subscriptionSubmitted ? (<input
                 type="email"
                 placeholder="Your email"
                 className={styles.input}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              />
+              />) : (<div className={styles.inputThankYou}>Thank you for subscribing!</div>)}
 
-              <div className={styles.endButtonWrapper}>
-                <button
-                  className={styles.primaryButton}
-                  onClick={handleSubscribe}
-                  disabled={!email}
-                >
-                  <p>SIGN UP</p>
-                </button>
-                <button
-                  className={styles.primaryButton}
-                  onClick={() => {
-                    setShowSubscribeScreen(false);
-                    restartGame();
-                  }}
-                >
-                  <p>NO THANKS</p>
-                </button>
-              </div>
+
+              {!subscriptionSubmitted ? (
+                <div className={styles.endButtonWrapper}>
+                  <button
+                    className={styles.primaryButton}
+                    onClick={handleSubscribe}
+                    disabled={!email}
+                  >
+                    <p>SIGN UP</p>
+                  </button>
+                  <button
+                    className={styles.primaryButton}
+                    onClick={() => {
+                      setShowSubscribeScreen(false);
+                      restartGame();
+                    }}
+                  >
+                    <p>NO THANKS</p>
+                  </button>
+                </div>
+              ) : (
+                <div className={styles.endButtonWrapper}>
+                  <button
+                    className={styles.primaryButton}
+                    onClick={() => {
+                      setShowSubscribeScreen(false);
+                      restartGame();
+                    }}
+                  >
+                    <p>Play AGAIN</p>
+                  </button>
+                </div>
+              )}
+
             </div>
 
           )}
