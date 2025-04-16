@@ -76,7 +76,6 @@ ${values.message || 'No message provided.'}`
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
         <h1 className="title">Contact</h1>
-
         <div className={styles.emailInfo}>
           Online forms not your thing?<br />
           Email:{' '}

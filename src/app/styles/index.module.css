@@ -49,7 +49,7 @@
 .score {
   font-size: 77px;
   pointer-events: none;
-  color: #891910;
+  color: var(--color-primary);
   font-variation-settings:
     "wdth" 75,
     "wght" 600;
@@ -67,7 +67,7 @@
 .trophyScore {
   font-size: 58px;
   pointer-events: none;
-  color: #891910;
+  color: var(--color-primary);
   font-variation-settings:
     "wdth" 75,
     "wght" 600;
@@ -105,7 +105,7 @@
 .trophyDetails {
   font-size: 27px;
   pointer-events: none;
-  color: #891910;
+  color: var(--color-primary);
   font-variation-settings:
     "wdth" 100,
     "wght" 800;
@@ -199,7 +199,7 @@
 /* Start Screen */
 .startContainer {
   padding: 48px;
-  border: 1px solid #891910;
+  border: 1px solid var(--color-primary);
   max-width: 412px;
   width: calc(100% - 96px - 64px);
   height: fit-content;
@@ -207,7 +207,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f8e9d8;
+  background-color: var(--color-background);
   opacity: 1;
   position: absolute;
   top: 50%;
@@ -218,7 +218,7 @@
 .startContainerClose {
   opacity: 0;
   pointer-events: none;
-  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-200) all;
 }
 
 .startTopWrapper {
@@ -239,7 +239,7 @@
   font-size: 21px;
   line-height: 130%;
   font-family: var(--font-overpass);
-  color: #891910;
+  color: var(--color-primary);
   font-weight: 800;
   margin-top: 33.13px;
   text-transform: uppercase;
@@ -250,12 +250,12 @@
 .startDivider {
   height: 1px;
   width: 100%;
-  background-color: #891910;
+  background-color: var(--color-primary);
 }
 
 /* Game Over Screen */
 .gameOver {
-  border: 1px solid #891910;
+  border: 1px solid var(--color-primary);
   max-width: 412px;
   height: 100%;
   min-height: fit-content;
@@ -263,10 +263,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #f8e9d8;
+  background-color: var(--color-background);
   opacity: 1;
   width: calc(100% - 96px - 64px);
-  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-200) all;
   transition-delay: 400ms;
   position: absolute;
   top: 50%;
@@ -283,12 +283,12 @@
 .gameOverClose {
   opacity: 0;
   pointer-events: none;
-  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-200) all;
 }
 
 /* Email Signup */
 .emailSignup {
-  border: 1px solid #891910;
+  border: 1px solid var(--color-primary);
   max-width: 412px;
   height: fit-content;
   min-height: fit-content;
@@ -296,10 +296,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #f8e9d8;
+  background-color: var(--color-background);
   opacity: 1;
   width: calc(100% - 96px - 64px);
-  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-200) all;
   transition-delay: 400ms;
   position: absolute;
   top: 50%;
@@ -316,7 +316,7 @@
 .emailSignupClose {
   opacity: 0;
   pointer-events: none;
-  transition: 200ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-200) all;
 }
 
 /* ==================== 
@@ -349,7 +349,7 @@
   border-radius: 19.2px;
   border: none;
   background-color: transparent;
-  color: #891910;
+  color: var(--color-primary);
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
@@ -362,7 +362,7 @@
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-100) all;
   margin-top: -10px;
   margin-bottom: -10px;
 }
@@ -370,7 +370,7 @@
 .primaryButton:hover {
   text-decoration-thickness: 2px !important;
   text-underline-offset: 4.8px !important;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-100) all;
 }
 
 .warning {
@@ -378,7 +378,7 @@
   font-size: 12px;
   line-height: 130%;
   opacity: 1;
-  color: #891910;
+  color: var(--color-primary);
   margin-top: 4.8px;
   text-align: center;
   height: 15px;
@@ -387,12 +387,12 @@
 
 /* Forms */
 .input {
-  border: 1.5px solid #891910;
+  border: 1.5px solid var(--color-primary);
   background: transparent;
   font-size: 16px;
   margin-top: 37px;
   width: calc(100% - 24px);
-  color: #891910;
+  color: var(--color-primary);
   font-family: var(--font-overpass);
   font-weight: 500 !important;
   height: 24px;
@@ -407,7 +407,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #891910;
+  color: var(--color-primary);
   font-weight: 500;
   font-family: var(--font-overpass);
   font-size: 16px;
@@ -423,7 +423,7 @@
 }
 
 .input::placeholder {
-  color: #89191099;
+  color: var(--color-primary)99;
   font-weight: 500;
 }
 
@@ -441,27 +441,27 @@
   text-transform: uppercase;
   letter-spacing: -0.03em;
   font-size: 16px;
-  color: #891910;
+  color: var(--color-primary);
   margin-bottom: 8px;
 }
 
 .input {
   font-family: var(--font-overpass);
-  border: 1px solid #891910 !important;
-  outline: 0.6px solid #891910;
+  border: 1px solid var(--color-primary) !important;
+  outline: 0.6px solid var(--color-primary);
   background-color: transparent;
   padding: 12px 12px;
   font-size: 16px;
   font-weight: 500;
-  color: #891910;
+  color: var(--color-primary);
   border-radius: 0px;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition: var(--transition-smooth-100) all;
 }
 
-.input:focus,
+.input:focus-visible,
 .input:hover {
   outline: none;
-  outline: 1px solid #891910;
+  outline: 1px solid var(--color-primary);
   background-color: rgba(151, 27, 17, 0.08);
 }
 
@@ -492,7 +492,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  background-color: #891910;
+  background-color: var(--color-primary);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -500,7 +500,7 @@
 
 .checkboxItem label {
   font-family: var(--font-overpass);
-  color: #891910;
+  color: var(--color-primary);
   font-size: 14px;
   cursor: pointer;
   text-transform: none;
@@ -526,13 +526,13 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  color: #891910;
+  color: var(--color-primary);
 }
 
 .leaderboardHeader {
   display: grid;
   grid-template-columns: 1fr 3fr 2fr;
-  border-bottom: 1px solid #891910;
+  border-bottom: 1px solid var(--color-primary);
   margin-bottom: 0;
   width: 100%;
   font-size: 14px;
@@ -560,7 +560,7 @@
   margin: 0;
   max-height: 100%;
   width: 100%;
-  border-bottom: 1px solid #891910;
+  border-bottom: 1px solid var(--color-primary);
 }
 
 .leaderboardEntry {
@@ -568,7 +568,7 @@
   grid-template-columns: 1fr 3fr 2fr;
   justify-content: flex-start;
   padding: 5px 0 1px;
-  border-bottom: 1px solid #891910;
+  border-bottom: 1px solid var(--color-primary);
   font-size: 24px;
   line-height: 130%;
   font-weight: 800;
@@ -603,7 +603,7 @@
 }
 
 .highlight {
-  background-color: #89191022;
+  background-color: var(--color-primary)22;
 }
 
 /* Stats & Trophy */
@@ -620,7 +620,7 @@
 .statsDivider {
   width: 1px;
   min-width: 1px;
-  background-color: #891910;
+  background-color: var(--color-primary);
 }
 
 .statsWrapper {
@@ -635,7 +635,7 @@
   line-height: 130%;
   font-weight: 800;
   font-family: var(--font-overpass);
-  color: #891910;
+  color: var(--color-primary);
   text-align: center;
 }
 
@@ -644,7 +644,7 @@
   line-height: 130%;
   font-weight: 500;
   font-family: var(--font-overpass);
-  color: #891910;
+  color: var(--color-primary);
 }
 
 /* Typography */
@@ -658,7 +658,7 @@
   text-align: center;
   line-height: 130%;
   font-family: var(--font-overpass);
-  color: #891910;
+  color: var(--color-primary);
 }
 
 .titleRegular {
@@ -666,7 +666,7 @@
   text-align: center;
   font-size: 32px;
   font-family: var(--font-rallingtonSerif);
-  color: #891910;
+  color: var(--color-primary);
   margin-bottom: 0px;
   font-weight: 400;
   margin-top: 40px;
@@ -706,7 +706,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #f8e9d8;
+  background-color: var(--color-background);
   mix-blend-mode: screen;
   opacity: 50%;
 }
@@ -717,7 +717,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #f8e9d8;
+  background-color: var(--color-background);
   mix-blend-mode: multiply;
 }
 
