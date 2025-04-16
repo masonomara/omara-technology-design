@@ -15,8 +15,6 @@
   position: relative;
   outline: 1.6px solid var(--color-primary);
 }
-.cardImageTwo {
-}
 .cardImage {
   position: relative;
   width: 100%;

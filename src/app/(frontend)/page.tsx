@@ -372,7 +372,7 @@ export default function Home() {
         <div className={`${styles.handWrapper} ${gameAction ? styles.handWrapperActive : ""}`}>
           <Image
             src={handImage}
-            alt="Hand Trigger"
+            alt="Line drawing of hand"
             layout="intrinsic"
             priority
             width={450}
@@ -394,7 +394,7 @@ export default function Home() {
               } as React.CSSProperties
               }
             >
-              <Image src="/bang.svg" priority height={120} width={120} alt="bang" />
+              <Image src="/bang.svg" priority height={120} width={120} alt="Bang" />
             </div>
           ))}
 
@@ -412,7 +412,7 @@ export default function Home() {
           {!gameEnd &&
             (<div className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
               <div className={styles.startTopWrapper}>
-                <Image priority src="/wordmark.svg" height={167} width={463} alt="bang" className={styles.startLogo} />
+                <Image priority src="/wordmark.svg" height={167} width={463} alt="Bang" className={styles.startLogo} />
                 <p className={styles.startDescription}>
                   Fractional business & technology strategy, design, and development
                 </p>
