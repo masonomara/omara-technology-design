@@ -8,7 +8,7 @@ export const SERVICES_QUERY = defineQuery(`*[
   _id,
   title,
   slug,
-  category->{_id, title, slug},
+  category->{_id, title, slug, order},
   overview,
   body,
   "seo": {
@@ -34,7 +34,7 @@ export const SERVICE_QUERY = defineQuery(`*[
   slug,
   overview,
   body,
-  category->{_id, title, slug},
+  category->{_id, title, slug, order},
   // relatedServices->{_id, title, slug},
   "seo": {
     "title": coalesce(seo.title, title, ""),
@@ -51,6 +51,7 @@ export const CATEGORIES_QUERY = defineQuery(`*[
 ] | order(order asc) {
   _id,
   title,
+  order,
   slug,
   "seo": {
     "title": coalesce(seo.title, title, ""),
@@ -68,6 +69,7 @@ export const CATEGORY_QUERY = defineQuery(`*[
 ][0]{
   _id,
   title,
+  order,
   slug,
   "seo": {
     "title": coalesce(seo.title, title, ""),

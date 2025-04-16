@@ -104,6 +104,9 @@
     font-size: 16px;
     line-height: 130%;
   }
+  .servicesCategorySection {
+    width: 100%;
+  }
   .servicesWrapper {
     flex: 1;
     width: calc(100% - 16px);

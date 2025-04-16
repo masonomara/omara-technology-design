@@ -534,7 +534,10 @@
 
   .companyTitle {
     aspect-ratio: 142 / 24;
+    margin-top: calc(((100% * (24 / 142)) * 0.8));
+    margin-bottom: calc(((100% * (24 / 142)) * 0.4));
   }
+  
 }
 @media screen and (max-width: 499px) {
   .companyTitleImage {
@@ -550,5 +553,10 @@
     object-fit: contain;
     width: 100%;
     display: flex;
+  }
+  .companyTitle {
+    aspect-ratio: 87 / 36;
+    margin-top: calc(((100% * (36 / 87)) * 0.53));
+    margin-bottom: calc(((100% * (36 / 87)) * 0.27));
   }
 }

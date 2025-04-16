@@ -1,25 +1,35 @@
+/* Organized CSS with camelCase naming convention */
+
+/* Typography Styles */
 .emailInfo {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
+  margin: 0.8em 0;
   font-size: 19px;
   line-height: 130%;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
   font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   text-align: center;
   max-width: 529px;
 }
 
+.subtitle {
+  margin: 0.8em 0 0;
+  font-size: 19px;
+  font-weight: 500;
+  max-width: 635px;
+  width: 60vw;
+  line-height: 130%;
+}
+
+/* Link Styles */
 .emailInfo a {
   color: var(--color-primary);
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
-  transition: var(--transition-smooth-100) all;
   background-color: var(--color-background);
+  transition: var(--transition-smooth-100) all;
 }
 
 .emailInfo a:hover {
@@ -28,45 +38,34 @@
   transition: var(--transition-smooth-100) all;
 }
 
-.subtitle {
-  margin-top: 0.8em;
-  margin-bottom: 0em;
-  font-size: 19px;
-  font-weight: 500;
-  max-width: 635px;
-  width: 60vw;
-  line-height: 130%;
-}
-
+/* Form Container Styles */
 .contactFormWrapper {
   width: 87vw;
   max-width: 890px;
 }
 
 .contactForm {
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   width: 100%;
-  grid-template-columns: 1fr 1fr;
-  display: grid;
   margin-top: 43px;
 }
 
 .formDivider {
   grid-column: span 2;
-  margin: 0px !important;
+  margin: 0 !important;
   font-family: var(--font-overpass);
   background-color: transparent;
   font-size: 16px;
   font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
+  font-variation-settings: "wdth" 100, "wght" 800 !important;
   text-transform: uppercase;
   margin-top: 0.8px !important;
   margin-bottom: -11.2px !important;
 }
 
+/* Form Field Styles */
 .formField {
   display: flex;
   flex-direction: column;
@@ -75,9 +74,7 @@
 
 .formField label {
   font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: "wdth" 75, "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   font-size: 16px;
@@ -85,6 +82,17 @@
   margin-bottom: 8px;
 }
 
+.formField p {
+  font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-size: 16px;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+/* Input Styles */
 .formField input[type="text"],
 .formField input[type="email"],
 .formField input[type="url"],
@@ -117,6 +125,7 @@
   font-weight: 500 !important;
 }
 
+/* Checkbox Styles */
 .formField:has(.serviceCategory) {
   border: 1.6px solid var(--color-primary);
   padding: 16px 12px;
@@ -127,14 +136,12 @@
 }
 
 .serviceCategory h3 {
-  margin: 0px !important;
+  margin: 0 !important;
   font-family: var(--font-overpass);
   background-color: transparent;
   font-size: 16px;
   font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
+  font-variation-settings: "wdth" 100, "wght" 800 !important;
   text-transform: uppercase;
   margin-bottom: 12.8px !important;
 }
@@ -144,32 +151,7 @@
   background-color: transparent;
   font-size: 16px;
   font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-}
-
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-  padding-left: 8px;
-}
-
-.formField p {
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  font-size: 16px;
-  color: var(--color-primary);
-  margin-bottom: 12px;
+  font-variation-settings: "wdth" 100, "wght" 500 !important;
 }
 
 .checkboxGroup {
@@ -185,6 +167,16 @@
   margin-bottom: 8px;
 }
 
+.checkboxItem label {
+  font-family: var(--font-overpass);
+  color: var(--color-primary);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+  padding-left: 8px;
+}
+
 .checkboxItem input[type="checkbox"] {
   appearance: none;
   min-width: 20px;
@@ -193,10 +185,10 @@
   height: 20px;
   max-width: 20px;
   max-height: 20px;
-  padding: 0px !important;
+  padding: 0 !important;
   position: relative;
   cursor: pointer;
-  margin: 0px;
+  margin: 0;
 }
 
 .checkboxItem input[type="checkbox"]:checked::after {
@@ -210,20 +202,10 @@
   transform: translate(-50%, -50%);
 }
 
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  cursor: pointer;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
-}
-
+/* Button Styles */
 .submitButton {
   font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: "wdth" 75, "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   background-color: transparent;
@@ -242,17 +224,6 @@
   transition: var(--transition-smooth-100) all;
 }
 
-.label {
-  display: none !important;
-}
-
-.backWrapper {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-  transform: rotate(180deg);
-}
-
 .primaryButton {
   height: 44px;
   font-size: 24px;
@@ -266,10 +237,8 @@
   color: var(--color-primary);
   width: 100%;
   white-space: nowrap;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
   font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   text-decoration: underline !important;
@@ -277,13 +246,24 @@
   text-underline-offset: 3.2px !important;
   transition: var(--transition-smooth-100) all;
   grid-column: span 2;
-  width: 100%;
 }
 
 .primaryButton:hover {
   text-decoration-thickness: 2px !important;
   text-underline-offset: 4.8px !important;
   transition: var(--transition-smooth-100) all;
+}
+
+/* Utility Classes */
+.label {
+  display: none !important;
+}
+
+.backWrapper {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  transform: rotate(180deg);
 }
 
 /* Media Queries */
@@ -296,28 +276,35 @@
   .checkboxGroup {
     grid-template-columns: 1fr;
   }
+  
   .contactForm {
     display: flex;
     flex-direction: column;
   }
 }
+
 @media screen and (max-width: 699px) {
   .contactWrapper {
     min-height: calc(100svh - 65px - 30px);
   }
+  .servicesCategorySection {
+    width: 100%;
+  }
   .submitButton:hover {
     background-color: var(--color-background);
   }
+  
   .contactFormWrapper,
   .subtitle {
     width: calc(100% - 32px);
-    padding: 0px 16px;
+    padding: 0 16px;
     font-size: 16px;
     line-height: 130%;
   }
+  
   .contactFormWrapper:has(.serviceCategory) {
     width: calc(100% - 16px);
-    padding: 0px 8px;
+    padding: 0 8px;
     font-size: 16px;
     line-height: 130%;
   }
