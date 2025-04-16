@@ -54,6 +54,8 @@
   outline: 1.6px solid var(--color-primary);
   max-width: 635px;
   width: 60vw;
+  margin-top: 30.4px;
+
 }
 .cardImage {
   position: relative;
@@ -100,6 +102,7 @@
   }
   .cardImageContainer {
     width: calc(100% - 32px);
+    margin-top: 25.6px;
   }
 }
 

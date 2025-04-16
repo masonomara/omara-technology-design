@@ -7,7 +7,7 @@ export default async function Page() {
   return (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <h1 className="title" style={{ marginBottom: ".8em" }}>About</h1>
+        <h1 className="title">About</h1>
         <div className={styles.cardImageContainer}>
           <div className={styles.cardImageScreen} />
           <div className={styles.cardImageMultiply} />
@@ -30,7 +30,7 @@ export default async function Page() {
         <p className={styles.subtitle}>
           O’Mara Technology & Design provides strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools that connect them all. We lead projects from ideation to ongoing iterations, often in fractional roles or long-term partnerships. We build intuitive, user-centered products that drive business towards their goals.
         </p>
-        <p className={styles.subtitle} style={{ marginBottom: "1.6em" }}>
+        <p className={styles.subtitle}>
           We prioritize open-minded problem-solving and tailor our process to each client’s goals, resources, and timeline. The end result is always the same: thoughtful, technically sound products that feel great to use and deliver real value for businesses and users.
         </p>
         <div className={styles.cardImageContainer}>
