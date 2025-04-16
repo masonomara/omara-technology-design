@@ -113,9 +113,9 @@
     display: grid;
     align-items: flex-start;
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 16px;
     max-width: 890px;
-    border-top: 1.6px solid var(--color-primary);
+    /* border-top: 1.6px solid var(--color-primary); */
     margin-left: 8px;
   }
   .servicesCategoryTitle {
@@ -123,14 +123,14 @@
     margin-left: 8px !important;
   }
   .servicesCard {
-    border: none !important;
+    /* border: none !important;
     outline: none !important;
-    padding: 0px;
-    width: 100%;
-    gap: 11px;
+    padding: 0px; */
+    /* width: 100%; */
+    /* gap: 11px;
     flex-direction: row;
     align-items: center;
-    height: fit-content;
+    height: fit-content; */
   }
   .servicesCardInfo {
     height: fit-content;
@@ -138,18 +138,19 @@
   .servicesCard:hover {
     background: none !important;
     background-color: none !important;
-    border: none !important;
-    outline: none !important;
+    /* border: none !important; */
+    border: 1px solid var(--color-primary);
+    outline: 0.6px solid var(--color-primary);
   }
   .arrow {
     display: flex;
     padding-right: 0px;
   }
-  .serviceCardTitle {
+  /* .serviceCardTitle {
     padding-top: 0.8em;
   }
   .serviceCardDescription {
     margin-top: 0.4em;
     padding-bottom: 0.8em;
-  }
+  } */
 }

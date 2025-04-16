@@ -52,7 +52,7 @@ Services Interested In: ${selectedServices}
 
 Message:
 ${values.message || 'No message provided.'}`
-;
+        ;
 
       const response = await sendMail({
         email: values.email,
@@ -90,15 +90,15 @@ ${values.message || 'No message provided.'}`
         <p className={styles.subtitle}>
           O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
         </p>
-        <p className={styles.subtitle}>
+        <p className={styles.subtitle} style={{ marginBottom: "2.4em" }}>
           Our focuses include mobile apps, websites, ecommerce, or any custom software. If you’re interested in any of these services or more, please fill out the form below.
         </p>
 
         <div className={styles.contactFormWrapper}>
           <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>
-          <p className={styles.formDivider}>Your info</p>
+            <p className={styles.formDivider} style={{ marginTop: "0em!important" }}>Your info</p>
             <div className={styles.formField}>
-   
+
               <label className={styles.label} htmlFor="name">Name*</label>
               <input
                 type="text"

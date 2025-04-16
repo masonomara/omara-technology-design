@@ -88,6 +88,7 @@ export const PROJECTS_QUERY = defineQuery(`*[
   title,
   slug,
   body,
+  order,
   image,
   "seo": {
     "title": coalesce(seo.title, title, ""),
@@ -106,6 +107,7 @@ export const PROJECT_QUERY = defineQuery(`*[
   title,
   slug,
   body,
+  order,
   image,
   "seo": {
     "title": coalesce(seo.title, title, ""),

@@ -495,7 +495,7 @@ export type CATEGORY_QUERYResult = {
   };
 } | null;
 // Variable: PROJECTS_QUERY
-// Query: *[  _type == "project" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  body,  image,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
+// Query: *[  _type == "project" &&  defined(slug.current)] | order(order asc) {  _id,  title,  slug,  body,  order,  image,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -531,6 +531,7 @@ export type PROJECTS_QUERYResult = Array<{
     _type: "image";
     _key: string;
   }> | null;
+  order: string | null;
   image: {
     asset?: {
       _ref: string;
@@ -563,7 +564,7 @@ export type PROJECTS_QUERYResult = Array<{
   };
 }>;
 // Variable: PROJECT_QUERY
-// Query: *[  _type == "project" &&  defined(slug.current)][0]{  _id,  title,  slug,  body,  image,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
+// Query: *[  _type == "project" &&  defined(slug.current)][0]{  _id,  title,  slug,  body,  order,  image,  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },}
 export type PROJECT_QUERYResult = {
   _id: string;
   title: string | null;
@@ -599,6 +600,7 @@ export type PROJECT_QUERYResult = {
     _type: "image";
     _key: string;
   }> | null;
+  order: string | null;
   image: {
     asset?: {
       _ref: string;
@@ -659,8 +661,8 @@ declare module "@sanity/client" {
     "*[\n  _type == \"service\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  overview,\n  body,\n  category->{_id, title, slug, order},\n  // relatedServices->{_id, title, slug},\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": SERVICE_QUERYResult;
     "*[\n  _type == \"category\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  order,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORIES_QUERYResult;
     "*[\n  _type == \"category\" &&\n  slug.current == $slug &&\n  defined(title)\n][0]{\n  _id,\n  title,\n  order,\n  slug,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": CATEGORY_QUERYResult;
-    "*[\n  _type == \"project\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  body,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECTS_QUERYResult;
-    "*[\n  _type == \"project\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECT_QUERYResult;
+    "*[\n  _type == \"project\" &&\n  defined(slug.current)\n] | order(order asc) {\n  _id,\n  title,\n  slug,\n  body,\n  order,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECTS_QUERYResult;
+    "*[\n  _type == \"project\" &&\n  defined(slug.current)\n][0]{\n  _id,\n  title,\n  slug,\n  body,\n  order,\n  image,\n  \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n    \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n}": PROJECT_QUERYResult;
     "\n  *[_type == \"redirect\" && isEnabled == true] {\n      source,\n      destination,\n      permanent\n  }\n": REDIRECTS_QUERYResult;
     "\n  *[_id == $id][0]{\n    title,\n    \"image\": mainImage.asset->{\n      url,\n      metadata {\n        palette\n      }\n    }\n  }    \n": OG_IMAGE_QUERYResult;
     "\n  *[_type in [\"page\", \"post\"] && defined(slug.current)] {\n      \"href\": select(\n        _type == \"page\" => \"/\" + slug.current,\n        _type == \"post\" => \"/posts/\" + slug.current,\n        slug.current\n      ),\n      _updatedAt\n  }\n  ": SITEMAP_QUERYResult;

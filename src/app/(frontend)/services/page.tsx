@@ -33,7 +33,7 @@ export default async function Page() {
         <p className={styles.subtitle}>
           We help businesses build smart, scalable digital products. Whether you need a fractional leader, a full design system, or a scalable app, we step in and make it happen.
         </p>
-        <p className={styles.subtitle}>
+        <p className={styles.subtitle} style={{ marginBottom: "calc(2.4em - 24px)" }}>
           We don't focus on commoditized solutions. We get to understand your business, your users, and your goals – then work with you to design and build what you need.
         </p>
 
@@ -51,7 +51,7 @@ export default async function Page() {
                     <div className={styles.serviceCardTitle}>{service.title}</div>
                     <div className={styles.serviceCardDescription}>{service.overview}</div>
                   </div>
-                  <Image className={styles.arrow} priority src="/redArrow.svg" height={22} width={22} alt="bang" />
+                  {/* <Image className={styles.arrow} priority src="/redArrow.svg" height={22} width={22} alt="bang" /> */}
                 </Link>
               ))}
             </div>

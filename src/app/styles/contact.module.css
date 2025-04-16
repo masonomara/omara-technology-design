@@ -6,7 +6,9 @@
   font-size: 19px;
   line-height: 130%;
   font-family: var(--font-radio);
-  font-variation-settings: "wdth" 75, "wght" 700;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   text-align: center;
@@ -49,7 +51,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   width: 100%;
-  margin-top: 43px;
 }
 
 .formDivider {
@@ -59,9 +60,11 @@
   background-color: transparent;
   font-size: 16px;
   font-weight: 800 !important;
-  font-variation-settings: "wdth" 100, "wght" 800 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800 !important;
   text-transform: uppercase;
-  margin-top: 0.8px !important;
+  margin-top: 0.8em !important;
   margin-bottom: -11.2px !important;
 }
 
@@ -74,7 +77,9 @@
 
 .formField label {
   font-family: var(--font-radio);
-  font-variation-settings: "wdth" 75, "wght" 700;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   font-size: 16px;
@@ -84,7 +89,9 @@
 
 .formField p {
   font-family: var(--font-radio);
-  font-variation-settings: "wdth" 75, "wght" 700;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   font-size: 16px;
@@ -141,7 +148,9 @@
   background-color: transparent;
   font-size: 16px;
   font-weight: 800 !important;
-  font-variation-settings: "wdth" 100, "wght" 800 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800 !important;
   text-transform: uppercase;
   margin-bottom: 12.8px !important;
 }
@@ -151,7 +160,9 @@
   background-color: transparent;
   font-size: 16px;
   font-weight: 500 !important;
-  font-variation-settings: "wdth" 100, "wght" 500 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 500 !important;
 }
 
 .checkboxGroup {
@@ -205,7 +216,9 @@
 /* Button Styles */
 .submitButton {
   font-family: var(--font-radio);
-  font-variation-settings: "wdth" 75, "wght" 700;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   background-color: transparent;
@@ -238,7 +251,9 @@
   width: 100%;
   white-space: nowrap;
   font-family: var(--font-radio);
-  font-variation-settings: "wdth" 75, "wght" 700;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   text-decoration: underline !important;
@@ -276,7 +291,7 @@
   .checkboxGroup {
     grid-template-columns: 1fr;
   }
-  
+
   .contactForm {
     display: flex;
     flex-direction: column;
@@ -293,7 +308,7 @@
   .submitButton:hover {
     background-color: var(--color-background);
   }
-  
+
   .contactFormWrapper,
   .subtitle {
     width: calc(100% - 32px);
@@ -301,7 +316,7 @@
     font-size: 16px;
     line-height: 130%;
   }
-  
+
   .contactFormWrapper:has(.serviceCategory) {
     width: calc(100% - 16px);
     padding: 0 8px;
