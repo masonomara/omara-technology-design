@@ -55,7 +55,7 @@
   max-width: 635px;
   width: 60vw;
   margin-top: 30.4px;
-
+z-index: 0;
 }
 .cardImage {
   position: relative;
@@ -103,6 +103,7 @@
   .cardImageContainer {
     width: calc(100% - 32px);
     margin-top: 25.6px;
+    z-index: 0;
   }
 }
 
