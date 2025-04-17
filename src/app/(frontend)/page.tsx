@@ -563,7 +563,7 @@ export default function Home() {
             ))}
 
             {/* Show Start Game button only if game hasn't started */}
-            {!gameEnd &&
+            {!gameEnd && !gameAction && !gameStart && 
               (<motion.div variants={fadeIn("up", "spring", 0.1, 0.8)}
                 initial="hidden"
                 whileInView="show"
