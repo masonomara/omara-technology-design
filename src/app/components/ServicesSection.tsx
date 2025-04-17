@@ -1,0 +1,88 @@
+// src/app/components/ServicesSection.tsx
+
+'use client'
+
+import Link from 'next/link'
+import styles from '../styles/services.module.css';
+import { SERVICES_QUERYResult } from '@/sanity/types';
+import { motion } from "framer-motion";
+import { fadeInButton, textFadeUp, textFadeUpSmall } from '../lib/motion';
+
+interface ServicesSectionProps {
+  services: SERVICES_QUERYResult;
+}
+
+export default function ServicesSection({ services }: ServicesSectionProps) {
+  const servicesByCategory = services.reduce((acc, service) => {
+    const category = service.category?.title || "Uncategorized";
+    if (!acc[category]) {
+      acc[category] = {
+        order: Number(service.category?.order) || 0,
+        services: [],
+      };
+    }
+    acc[category].services.push(service);
+    return acc;
+  }, {} as Record<string, { order: number; services: typeof services }>);
+
+  const sortedCategories = Object.entries(servicesByCategory).sort(
+    ([, a], [, b]) => a.order - b.order
+  );
+
+  return (
+    <>
+      <motion.h1 variants={textFadeUp("up", "spring", 0, 0.6)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0 }} className="title">SERVICES</motion.h1>
+      <motion.div
+        variants={textFadeUpSmall("up", "spring", .1, .8)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0 }}
+      >
+        <p className={styles.subtitle}>
+          We help businesses build smart, scalable digital products. Whether you need a fractional leader, a full design system, or a scalable app, we step in and make it happen.
+        </p>
+        <p className={styles.subtitle} style={{ marginBottom: "calc(2.4em - 24px)" }}>
+          We don’t focus on commoditized solutions. We learn about your business, your users, and your goals – then work with you to design and build what you need.
+        </p>
+      </motion.div>
+      {sortedCategories.map(([categoryTitle, { services }]) => (
+        <section key={categoryTitle} className={styles.servicesCategorySection}>
+          <motion.h2
+            variants={textFadeUpSmall("up", "spring", 0.2, 0.8)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
+            className={styles.servicesCategoryTitle}
+          >
+            {categoryTitle}
+          </motion.h2>
+          <div className={styles.servicesWrapper}>
+            {services.map((service, serviceIndex) => (
+              <motion.div
+                key={service._id}
+                variants={fadeInButton("up", "spring", 0.2 + serviceIndex * 0.1, 1.2)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }}
+              >
+                <Link
+
+                  className={styles.servicesCard}
+                  href={`/services/${service.slug?.current}`}
+                >
+                  <div className={styles.serviceCardInfo}>
+                    <div className={styles.serviceCardTitle}>{service.title}</div>
+                    <div className={styles.serviceCardDescription}>{service.overview}</div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  )
+}

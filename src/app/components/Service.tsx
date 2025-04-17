@@ -1,42 +1,63 @@
+"use client"
 
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
 import { SERVICE_QUERYResult } from "@/sanity/types"; // Update path if needed
 import Link from "next/link";
 import styles from "../styles/about.module.css";
+import { motion } from "framer-motion";
+import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
 // import { RelatedServices } from "./RelatedServices";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
-  const { body } = props;
+  const { body, title, seo } = props;
   const emailAddress = 'connect@omaratechnologydesign.com'
 
 
   return (
-    <article>
-      {body ? (
-        <div>
-          <PortableText value={body} components={components} />
-          {/* {relatedServices && (
-            <RelatedServices
-              relatedServices={relatedServices}
-              documentId={_id}
-              documentType="service"
-            />
-          )} */}
-          <div className={styles.emailInfo}>
-            Interested in working together?<br />
-            EMAIL:{' '}
-            <Link
-              className={styles.emailLink}
-              href={`mailto:${emailAddress}`}
-              target="_blank"
-            >
-              connect@omaratechnologydesign.com
-            </Link>
-          </div>
-        </div>
-      ) : null}
-    </article>
+    <>
+      <motion.h1
+        variants={textFadeUp("up", "spring", 0, 0.6)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0 }}
+        className="title"
+      >
+        {seo.title || title}
+      </motion.h1>
+      <div className="serviceWrapper">
+        <article>
+          {body ? (
+            <div>
+              <motion.div
+                variants={textFadeUpSmall("up", "spring", .1, .8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }}
+              >
+                <PortableText value={body} components={components} />
+              </motion.div>
+              <motion.div className={styles.emailInfo}
+                variants={fadeInButton("up", "spring", .3, 1.2)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }}>
+                Interested in working together?<br />
+                EMAIL:{' '}
+                <Link
+                  className={styles.emailLink}
+                  href={`mailto:${emailAddress}`}
+                  target="_blank"
+                >
+                  connect@omaratechnologydesign.com
+                </Link>
+              </motion.div>
+            </div>
+          ) : null
+          }
+        </article >
+      </div>
+    </>
   );
 }

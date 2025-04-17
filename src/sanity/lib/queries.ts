@@ -27,7 +27,8 @@ export const SERVICES_SLUGS_QUERY =
 // Single Service by slug
 export const SERVICE_QUERY = defineQuery(`*[
   _type == "service" &&
-  defined(slug.current)
+  defined(slug.current) &&
+  slug.current == $slug  // Add this line to filter by slug
 ][0]{
   _id,
   title,
@@ -101,7 +102,8 @@ export const PROJECTS_QUERY = defineQuery(`*[
 // Single Project by slug
 export const PROJECT_QUERY = defineQuery(`*[
   _type == "project" &&
-  defined(slug.current)
+  defined(slug.current) &&
+  slug.current == $slug  // Add this line to filter by slug
 ][0]{
   _id,
   title,

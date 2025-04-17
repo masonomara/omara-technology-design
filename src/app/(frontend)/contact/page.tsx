@@ -8,6 +8,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import FooterContact from '@/app/components/FooterContact'
+import { motion } from "framer-motion";
+import { fadeInButton, textFadeUp, textFadeUpSmall } from '../../lib/motion';
 
 
 const contactFormSchema = z.object({
@@ -75,8 +77,15 @@ ${values.message || 'No message provided.'}`
   return (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <h1 className="title">Contact</h1>
-        <div className={styles.emailInfo}>
+        <motion.h1 variants={textFadeUp("up", "spring", .1, 0.6)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }} className="title">Contact</motion.h1>
+        <motion.div className={styles.emailInfo}
+          variants={fadeInButton("up", "spring", .3, 1.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }}>
           Online forms not your thing?<br />
           Email:{' '}
           <Link
@@ -86,15 +95,23 @@ ${values.message || 'No message provided.'}`
           >
             {emailAddress}
           </Link>
-        </div>
-        <p className={styles.subtitle}>
-          O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
-        </p>
-        <p className={styles.subtitle} style={{ marginBottom: "2.4em" }}>
-          Our focuses include mobile apps, websites, ecommerce, or any custom software. If you’re interested in any of these services or more, please fill out the form below.
-        </p>
-
-        <div className={styles.contactFormWrapper}>
+        </motion.div>
+        <motion.div
+          variants={textFadeUpSmall("up", "spring", .4, .8)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }}>
+          <p className={styles.subtitle}>
+            O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
+          </p>
+          <p className={styles.subtitle} style={{ marginBottom: "2.4em" }}>
+            Our focuses include mobile apps, websites, ecommerce, or any custom software. If you’re interested in any of these services or more, please fill out the form below.
+          </p>
+        </motion.div>
+        <motion.div className={styles.contactFormWrapper} variants={fadeInButton("up", "spring", .6, 1.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }}>
           <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>
             <p className={styles.formDivider} style={{ marginTop: "0em!important" }}>Your info</p>
             <div className={styles.formField}>
@@ -264,7 +281,7 @@ ${values.message || 'No message provided.'}`
               {isSubmitting ? 'Sending...' : 'Submit'}
             </button>
           </form>
-        </div>
+        </motion.div>
 
 
 

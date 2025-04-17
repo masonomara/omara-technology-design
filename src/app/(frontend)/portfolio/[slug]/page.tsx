@@ -63,18 +63,6 @@ export default async function Page({ params }: RouteProps) {
 
   return project?.body ? (
     <>
-      {/* <div style={{
-        position: "absolute",
-        width: "100%",
-        height: "40vh",
-        maxHeight: "300px",
-        backgroundColor: "blue",
-        backgroundPosition: "center",
-        backgroundImage: project.image ? `url(${urlFor(project.image).url()})` : "none"
-      }} >
-
-      </div> */}
-
       <div className={styles.cardImageContainer}  >
         <div className={styles.cardImageScreen} />
         <div className={styles.cardImageMultiply} />
@@ -90,18 +78,10 @@ export default async function Page({ params }: RouteProps) {
           </div>
         )}
       </div >
-
-
-      <div className={styles.cardImageContainerBlock}
-/>
+      <div className={styles.cardImageContainerBlock} />
       <main className="standardPageContainer" style={{ paddingTop: "0px" }}>
-
         <div className="standardPageWrapper">
-          <h1 className="title">{project.seo.title || project.title}</h1>
-          <div className="projectWrapper">
-            <Project {...project} />
-          </div>
-
+          <Project {...project} />
           <FooterContact />
         </div>
       </main>

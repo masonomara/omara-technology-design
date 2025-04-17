@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import { Overpass } from "next/font/google";
 import CursorFollower from "./components/CursorFollower";
+import { AnimatePresence } from "framer-motion";
 
 export const metadata: Metadata = {
   title: "O’Mara Technology & Design",
@@ -30,11 +31,12 @@ export default function RootLayout({
     <html lang="en" style={{ margin: "0px", backgroundColor: "#F8E9D8" }}>
       <head><meta name="apple-mobile-web-app-title" content="O’Mara Technology & Design" />
       </head>
-      <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
-      <CursorFollower />
-
-        {children}
-      </body>
+      <AnimatePresence>
+        <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
+          <CursorFollower />
+          {children}
+        </body>
+      </AnimatePresence>
     </html>
   )
 }

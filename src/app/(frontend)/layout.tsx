@@ -10,6 +10,7 @@ import { MenuProvider } from "../context/MenuContext";
 import Header from "../components/Header";
 import Marquee from "../components/Marquee";
 
+
 export const metadata: Metadata = {
   title: "O’Mara Technology & Design",
   description:
@@ -22,19 +23,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <MenuProvider>
-        <Header />
-        {children}
-        <Marquee />
-        <SanityLive />
-        {(await draftMode()).isEnabled && (
-          <>
-            <DisableDraftMode />
-            <VisualEditing />
-          </>
-        )}
-        <Analytics />
-      </MenuProvider>
-    
+    <MenuProvider>
+
+      <Header />
+      {children}
+      <Marquee />
+      <Analytics />
+
+      <SanityLive />
+      {(await draftMode()).isEnabled && (
+        <>
+          <DisableDraftMode />
+          <VisualEditing />
+        </>
+      )}
+
+
+    </MenuProvider>
   );
 }
