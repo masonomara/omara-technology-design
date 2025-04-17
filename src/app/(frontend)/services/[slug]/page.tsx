@@ -63,7 +63,7 @@ export default async function Page({ params }: RouteProps) {
   return service?.body ? (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <h1 className="title">{service.seo.title || service.title}</h1>
+        <h1 className="title" style={{}}>{service.seo.title || service.title}</h1>
         <div className="serviceWrapper">
           <Service {...service} />
         </div>
