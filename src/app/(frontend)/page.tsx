@@ -8,7 +8,7 @@ import styles from "./../styles/index.module.css";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fadeIn, fadeInButton, textFadeUp } from '../lib/motion';
+import { fadeIn } from '../lib/motion';
 
 
 // Initialize Supabase client with environment variables
