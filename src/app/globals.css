@@ -4,9 +4,9 @@
 :root {
   --font-archivo: "Archivo", sans-serif;
   --font-radio: "Radio Canada", sans-serif;
-  --color-primary: #891910;
-  --color-background: #f8e9d8;
-  --color-bg-hover: rgba(151, 27, 17, 0.08);
+  --color-primary: rgb(137, 25, 16);
+  --color-background: rgb(248, 233, 216);
+  --color-bg-hover: rgba(137, 25, 16, 0.08);
   --transition-smooth-100: 100ms cubic-bezier(0.33, 0, 0.66, 1);
   --transition-smooth-200: 200ms cubic-bezier(0.33, 0, 0.66, 1);
   --transition-smooth-300: 300ms cubic-bezier(0.33, 0, 0.66, 1);

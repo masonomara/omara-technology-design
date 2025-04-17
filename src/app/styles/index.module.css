@@ -463,7 +463,7 @@
 .input:hover {
   outline: none;
   outline: 1px solid var(--color-primary);
-  background-color: rgba(151, 27, 17, 0.08);
+  background-color: rgba(137, 25, 16, 0.08);
 }
 
 /* Checkboxes */
@@ -979,7 +979,7 @@
 .checkboxItem input:hover,
 .checkboxItem textarea:hover {
   outline: 1px solid #891910;
-  background-color: rgba(151, 27, 17, 0.08);
+  background-color: rgba(137, 25, 16, 0.08);
 }
 
 .checkboxItem input::placeholder,
