@@ -1,6 +1,5 @@
 "use client"
 
-import type { Metadata } from "next";
 import Link from 'next/link'
 import React from 'react'
 import styles from '../../styles/contact.module.css'
@@ -13,29 +12,29 @@ import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from '../../lib/motion';
 import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
 
-export const metadata: Metadata = {
-  title: "Contact | O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-  alternates: {
-    canonical: "https://omaratechnologydesign.com/contact",
-  },
-  openGraph: {
-    title: "Contact | O'Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-    url: "https://omaratechnologydesign.com/contact",
-    siteName: "O‘Mara Technology & Design",
-    images: [
-      {
-        url: "https://omaratechnologydesign.com/bizCard.png",
-        width: 1200,
-        height: 686,
-        alt: "O‘Mara Technology & Design",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-};
+// export const metadata: Metadata = {
+//   title: "Contact | O‘Mara Technology & Design",
+//   description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+//   alternates: {
+//     canonical: "https://omaratechnologydesign.com/contact",
+//   },
+//   openGraph: {
+//     title: "Contact | O'Mara Technology & Design",
+//     description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+//     url: "https://omaratechnologydesign.com/contact",
+//     siteName: "O‘Mara Technology & Design",
+//     images: [
+//       {
+//         url: "https://omaratechnologydesign.com/bizCard.png",
+//         width: 1200,
+//         height: 686,
+//         alt: "O‘Mara Technology & Design",
+//       },
+//     ],
+//     locale: "en_US",
+//     type: "website",
+//   },
+// };
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Please enter your name' }),

@@ -12,9 +12,27 @@ import Marquee from "../components/Marquee";
 
 
 export const metadata: Metadata = {
-  title: "O’Mara Technology & Design",
-  description:
-    "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, E-Commerce",
+  title: "O‘Mara Technology & Design",
+  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+  alternates: {
+    canonical: "https://omaratechnologydesign.com/",
+  },
+  openGraph: {
+    title: "O'Mara Technology & Design",
+    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+    url: "https://omaratechnologydesign.com/",
+    siteName: "O‘Mara Technology & Design",
+    images: [
+      {
+        url: "https://omaratechnologydesign.com/bizCard.png",
+        width: 1200,
+        height: 686,
+        alt: "O‘Mara Technology & Design",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({
