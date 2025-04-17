@@ -1,4 +1,4 @@
-// app/layout.tsx
+// app/(frontend)/layout.tsx
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import '../globals.css';
