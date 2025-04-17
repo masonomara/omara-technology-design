@@ -31,7 +31,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#F8E9D8" }}>
-      <head><meta name="apple-mobile-web-app-title" content="O’Mara Technology & Design" />
+      <head>
+        <meta name="apple-mobile-web-app-title" content="O’Mara Technology & Design" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <AnimatePresence>
         <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>

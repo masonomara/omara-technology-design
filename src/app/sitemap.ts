@@ -1,3 +1,4 @@
+// sitemap.ts
 import { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
 
@@ -9,36 +10,42 @@ type SanityDoc = {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const [projects, services] = await Promise.all([
-      client.fetch<SanityDoc[]>(`*[_type == "portfolio"]{ slug, _updatedAt }`),
-      client.fetch<SanityDoc[]>(`*[_type == "service"]{ slug, _updatedAt }`)
+      client.fetch<SanityDoc[]>(`*[_type == "project"]{ slug, _updatedAt }`),
+      client.fetch<SanityDoc[]>(`*[_type == "service"]{ slug, _updatedAt }`),
     ]);
 
     const baseUrl = process.env.VERCEL
       ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000";
+      : "http://omaratechnologydesign.com";
 
-    const staticRoutes: MetadataRoute.Sitemap = ["", "/about", "/projects", "/services"].map((route) => ({
+    const staticRoutes: MetadataRoute.Sitemap = [
+      "/",
+      "/about",
+      "/contact",
+      "/portfolio",
+      "/services",
+    ].map((route) => ({
       url: `${baseUrl}${route}`,
       lastModified: new Date().toISOString(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 1,
     }));
 
-    const projectsRoutes: MetadataRoute.Sitemap = projects.map((item) => ({
-      url: `${baseUrl}/projects/${item.slug.current}`,
+    const projectRoutes: MetadataRoute.Sitemap = projects.map((item) => ({
+      url: `${baseUrl}/portfolio/${item.slug.current}`, // fixed path
       lastModified: new Date(item._updatedAt).toISOString(),
-      changeFrequency: "weekly",
-      priority: 1.0,
+      changeFrequency: "monthly",
+      priority: 0.7,
     }));
 
     const serviceRoutes: MetadataRoute.Sitemap = services.map((item) => ({
       url: `${baseUrl}/services/${item.slug.current}`,
       lastModified: new Date(item._updatedAt).toISOString(),
-      changeFrequency: "weekly",
-      priority: 0.9,
+      changeFrequency: "monthly",
+      priority: 0.8,
     }));
 
-    return [...staticRoutes, ...projectsRoutes, ...serviceRoutes];
+    return [...staticRoutes, ...projectRoutes, ...serviceRoutes];
   } catch (error) {
     console.error("Failed to generate sitemap:", error);
     return [];
