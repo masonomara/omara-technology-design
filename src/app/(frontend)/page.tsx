@@ -9,33 +9,10 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from '../lib/motion';
-import type { Metadata } from "next";
 import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
 
 
-export const metadata: Metadata = {
-  title: "O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-  alternates: {
-    canonical: "https://omaratechnologydesign.com/",
-  },
-  openGraph: {
-    title: "O'Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-    url: "https://omaratechnologydesign.com/",
-    siteName: "O‘Mara Technology & Design",
-    images: [
-      {
-        url: "https://omaratechnologydesign.com/bizCard.png",
-        width: 1200,
-        height: 686,
-        alt: "O‘Mara Technology & Design",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-};
+
 
 // Initialize Supabase client with environment variables
 const supabase = createClient(
