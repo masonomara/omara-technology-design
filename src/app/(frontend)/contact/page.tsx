@@ -10,7 +10,8 @@ import { z } from 'zod';
 import FooterContact from '@/app/components/FooterContact'
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from '../../lib/motion';
-import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
+// import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
+// import { Metadata } from 'next';
 
 // export const metadata: Metadata = {
 //   title: "Contact | O‘Mara Technology & Design",
@@ -100,7 +101,7 @@ ${values.message || 'No message provided.'}`
 
   return (
     <>
-      <OrganizationJsonLd
+      {/* <OrganizationJsonLd
         type="ProfessionalService"
         name="O‘Mara Technology & Design"
         url="https://omaratechnologydesign.com"
@@ -255,7 +256,7 @@ ${values.message || 'No message provided.'}`
             item: "https://omaratechnologydesign.com/contact",
           },
         ]}
-      />
+      /> */}
       <main className="standardPageContainer">
         <div className="standardPageWrapper">
           <motion.h1 variants={textFadeUp("up", "spring", .1, 0.6)}

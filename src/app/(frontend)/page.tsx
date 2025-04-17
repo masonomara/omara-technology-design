@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from '../lib/motion';
-import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
+// import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
 
 
 
@@ -357,7 +357,7 @@ export default function Home() {
 
   return (
     <>
-      <OrganizationJsonLd
+      {/* <OrganizationJsonLd
         type="ProfessionalService"
         name="O‘Mara Technology & Design"
         url="https://omaratechnologydesign.com"
@@ -507,7 +507,7 @@ export default function Home() {
             item: "https://omaratechnologydesign.com",
           },
         ]}
-      />
+      /> */}
 
 
       <div className="pageContainer">
