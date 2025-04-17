@@ -175,10 +175,10 @@ export const fadeIn = (
   duration: any
 ) => ({
   hidden: {
-    x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
-    y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+    x: direction === "left" ? 60 : direction === "right" ? -60 : 0,
+    y: direction === "up" ? 60 : direction === "down" ? -60 : 0,
     opacity: 0,
-    scale: 0.98,
+    scale: .97,
   },
   show: {
     x: 0,

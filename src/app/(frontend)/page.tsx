@@ -6,6 +6,8 @@ import { createClient } from "@supabase/supabase-js";
 import styles from "./../styles/index.module.css";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeIn, fadeInButton, textFadeUp } from '../lib/motion';
 
 
 // Initialize Supabase client with environment variables
@@ -404,7 +406,11 @@ export default function Home() {
 
           {/* Show Start Game button only if game hasn't started */}
           {!gameEnd &&
-            (<div className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
+            (<motion.div variants={fadeIn("up", "spring", 0.1, 0.8)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}
+              className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
               <div className={styles.startTopWrapper}>
                 <Image priority src="/wordmark.svg" height={167} width={463} alt="Bang" className={styles.startLogo} />
                 <p className={styles.startDescription}>
@@ -420,7 +426,7 @@ export default function Home() {
                   <p>Contact US</p>
                 </Link>
               </div>
-            </div>)
+            </motion.div>)
           }
 
           <div className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""}`}>
