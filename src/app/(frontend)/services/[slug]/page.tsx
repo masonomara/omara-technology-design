@@ -238,7 +238,7 @@ export default async function Page({ params }: RouteProps) {
           {
             position: 3,
             name: `${service.seo.title || service.title}`,
-            item: `https://omaratechnologydesign.com/services/${service.slugs}`,
+            item: `https://omaratechnologydesign.com/services/${service.slug}`,
           },
         ]}
       />

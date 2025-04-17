@@ -240,7 +240,7 @@ export default async function Page({ params }: RouteProps) {
           {
             position: 3,
             name: `${project?.seo?.title || project?.title}`,
-            item: `https://omaratechnologydesign.com/portfolio/${project?.slugs}`,
+            item: `https://omaratechnologydesign.com/portfolio/${project?.slug}`,
           },
         ]}
       />
