@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-export const navVariants = {
+export const navVariants: Variants = {
   hidden: {
     opacity: 0,
     y: -50,
@@ -22,11 +22,11 @@ export const navVariants = {
 };
 
 export const slideIn = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
-) => ({
+  direction: "left" | "right" | "up" | "down",
+  type: string,
+  delay: number,
+  duration: number
+): Variants => ({
   hidden: {
     x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
     y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
@@ -56,7 +56,7 @@ export const staggerContainer = (
   },
 });
 
-export const textVariant = (delay: any) => ({
+export const textVariant = (delay: number): Variants => ({
   hidden: {
     y: 50,
     opacity: 0,
@@ -72,7 +72,7 @@ export const textVariant = (delay: any) => ({
   },
 });
 
-export const textContainer = {
+export const textContainer: Variants = {
   hidden: {
     opacity: 0,
   },
@@ -82,7 +82,7 @@ export const textContainer = {
   }),
 };
 
-export const grow = {
+export const grow: Variants = {
   hidden: {
     width: "0px",
   },
@@ -106,21 +106,9 @@ export const growDown: Variants = {
     },
   },
 };
-export const growDownSub: Variants = {
-  hidden: {
-    height: "0px",
-  },
-  show: {
-    height: "calc(100% - 24px)",
-    transition: {
-      type: "spring",
-      delay: 0,
-      duration: 1.6,
-      bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67],
-    },
-  },
-};
+
+export const growDownSub = growDown;
+
 export const growRight: Variants = {
   hidden: {
     width: "0px",
@@ -137,7 +125,7 @@ export const growRight: Variants = {
   },
 };
 
-export const textVariant2 = {
+export const textVariant2: Variants = {
   hidden: {
     opacity: 0,
     y: 20,
@@ -152,56 +140,61 @@ export const textVariant2 = {
   },
 };
 
-export const fade = (type: any, delay: any, duration: any, opacity: any) => ({
+export const fade = (
+  type: string,
+  delay: number,
+  duration: number,
+  opacity: number
+): Variants => ({
   hidden: {
     opacity: 0,
   },
   show: {
-    opacity: opacity,
+    opacity,
     transition: {
       type,
       delay,
       duration,
       bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67],
     },
   },
 });
 
 export const fadeIn = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
-) => ({
+  direction: "left" | "right" | "up" | "down",
+  type: string,
+  delay: number,
+  duration: number
+): Variants => ({
   hidden: {
     x: direction === "left" ? 60 : direction === "right" ? -60 : 0,
     y: direction === "up" ? 60 : direction === "down" ? -60 : 0,
     opacity: 0,
-    scale: .97,
+    scale: 0.97,
   },
   show: {
     x: 0,
     y: 0,
     opacity: 1,
+    scale: 1,
     transition: {
       type,
       delay,
       duration,
       bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67],
     },
-    scale: 1,
   },
 });
 
 export const ringGrow = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any,
-  opacity?: any
-) => ({
+  direction: string,
+  type: string,
+  delay: number,
+  duration: number,
+  opacity: number = 1
+): Variants => ({
   hidden: {
     x: 0,
     y: 0,
@@ -212,24 +205,24 @@ export const ringGrow = (
   show: {
     x: 0,
     y: 0,
-    opacity: opacity || 1,
+    opacity,
+    scale: 1,
     transition: {
       type,
       delay,
       duration,
       bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67],
     },
-    scale: 1,
   },
 });
 
 export const fadeInButton = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
-) => ({
+  direction: "left" | "right" | "up" | "down",
+  type: string,
+  delay: number,
+  duration: number
+): Variants => ({
   hidden: {
     x: direction === "left" ? 24 : direction === "right" ? -24 : 0,
     y: direction === "up" ? 24 : direction === "down" ? -24 : 0,
@@ -240,50 +233,25 @@ export const fadeInButton = (
     x: 0,
     y: 0,
     opacity: 1,
+    scale: 1,
     transition: {
       type,
       delay,
       duration,
       bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67],
     },
-    scale: 1,
   },
 });
 
-export const fadeInIcon = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
-) => ({
-  hidden: {
-    x: direction === "left" ? 0 : direction === "right" ? -0 : 0,
-    y: direction === "up" ? 0 : direction === "down" ? -0 : 0,
-    opacity: 0,
-    scale: 0.98,
-  },
-  show: {
-    x: 0,
-    y: 0,
-    opacity: 1,
-    transition: {
-      type,
-      delay,
-      duration,
-      bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
-    },
-    scale: 1,
-  },
-});
+export const fadeInIcon = fadeInButton;
 
 export const textFadeUp = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
-) => ({
+  direction: string,
+  type: string,
+  delay: number,
+  duration: number
+): Variants => ({
   hidden: {
     x: 0,
     y: 100,
@@ -296,23 +264,24 @@ export const textFadeUp = (
     x: 0,
     y: 0,
     opacity: 1,
+    scale: 1,
+    skewY: 0,
     transition: {
       bounce: 0,
       type,
       delay,
       duration,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67],
     },
-    scale: 1,
-    skewY: 0,
   },
 });
+
 export const textFadeUpSmall = (
-  direction: any,
-  type: any,
-  delay: any,
-  duration: any
-) => ({
+  direction: string,
+  type: string,
+  delay: number,
+  duration: number
+): Variants => ({
   hidden: {
     x: 0,
     y: 33,
@@ -324,18 +293,20 @@ export const textFadeUpSmall = (
     x: 0,
     y: 0,
     opacity: 1,
+    scale: 1,
     transition: {
       bounce: 0,
       type,
       delay,
       duration,
-      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67],
     },
-    scale: 1,
   },
 });
 
-export const planetVariants = (direction: any) => ({
+export const planetVariants = (
+  direction: "left" | "right"
+): Variants => ({
   hidden: {
     x: direction === "left" ? "-100%" : "100%",
     rotate: 120,
@@ -351,7 +322,10 @@ export const planetVariants = (direction: any) => ({
   },
 });
 
-export const zoomIn = (delay: any, duration: any) => ({
+export const zoomIn = (
+  delay: number,
+  duration: number
+): Variants => ({
   hidden: {
     scale: 0,
     opacity: 0,
@@ -368,7 +342,7 @@ export const zoomIn = (delay: any, duration: any) => ({
   },
 });
 
-export const footerVariants = {
+export const footerVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 50,

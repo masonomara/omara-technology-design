@@ -1,3 +1,4 @@
+// src/app/(frontend)/page.tsx
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
