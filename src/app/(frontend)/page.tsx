@@ -164,12 +164,6 @@ export default function Home() {
       alert("Error submitting score: " + error.message);
     } else {
       setSubmitted(true);
-
-      // Show subscribe screen if it hasn't been shown before
-      // if (!hasShownSubscribe) {
-      //   setShowSubscribeScreen(true);
-      //   setHasShownSubscribe(true);
-      // }
     }
   }
 
@@ -528,7 +522,11 @@ export default function Home() {
                 )}
                 <div className={styles.endButtonWrapper}>
                   {!submitted && (
-                    <button className={styles.primaryButton} onClick={submitScore}>
+                    <button
+                      className={styles.primaryButton}
+                      onClick={submitScore}
+                      disabled={!nickname.trim()} // Disable the button if nickname is empty
+                    >
                       <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
                     </button>
                   )}

@@ -781,8 +781,9 @@
   }
 
   .emailSignup {
-    height: fit-content;
     max-height: fit-content;
+    min-height: calc(100% - 64px);
+    height: calc(100% - 64px);
     width: calc(100% - 80px - 48px);
     padding-left: 40px !important;
     padding-right: 40px !important;

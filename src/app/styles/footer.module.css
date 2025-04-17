@@ -1,0 +1,255 @@
+/* Layout Container */
+.contactWrapper {
+  /* min-height: calc(100svh - 71px - 30px); */
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-family: var(--font-overpass);
+  color: #891910;
+  height: fit-content;
+}
+
+/* Typography */
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(54px, 10vw, 90px);
+  font-family: var(--font-rallingtonSerif);
+  color: #891910;
+  margin-top: 0.8em;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
+.companyTitle {
+  width: 100%;
+  max-width: 1220px;
+  aspect-ratio: 208 / 12;
+  text-align: center;
+  font-family: var(--font-rallingtonSerif);
+  color: #891910;
+  margin-bottom: calc(80% / (208 / 12));
+  margin-top: calc(80% / (208 / 12));
+}
+
+/* Company Title Images */
+.companyTitleImage {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.companyTitleImageCondensed {
+  display: none;
+}
+
+.companyTitleImageSuperCondensed {
+  display: none;
+}
+
+/* Button Styles */
+.buttonBorder {
+  outline: 2px solid #891910;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 19px;
+  line-height: 130%;
+  outline-offset: 0px;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  text-decoration: none !important;
+}
+
+.buttonBorder:hover {
+  outline-offset: 1.2px;
+  outline: 2.4px solid #891910;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  background-color: rgba(151, 27, 17, 0.08);
+}
+
+.buttonsWrapper {
+  width: 75vw;
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex: 1;
+  margin-top: 23px;
+}
+
+.subButtonsWrapper {
+  width: calc(100% - 16px);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 8px;
+  max-width: 1204px;
+  padding: 0px 8px;
+  margin-top: calc(29px * 0.4);
+  margin-bottom: calc(29px * 0.8);
+}
+
+.mainButton {
+  padding: 23.04px 23.04px;
+  width: calc(100% - 46.08px);
+  color: #891910;
+}
+
+.buttonHeading {
+  font-size: 29px;
+  line-height: 130%;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  font-family: var(--font-radio);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.subButton {
+  color: #891910;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  font-family: var(--font-radio);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  text-align: center;
+  font-size: 29px;
+  text-decoration: underline !important;
+  text-decoration-color: transparent !important;
+  text-decoration-thickness: 3.24px !important;
+  text-underline-offset: 3.18px !important;
+  transition: 100ms all cubic-bezier(0.33, 0, 0.66, 1);
+}
+.subButton:hover {
+  text-decoration-color: var(--color-primary) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 3.24px !important;
+  text-underline-offset: 5.18px !important;
+  transition: var(--transition-smooth-100) all;
+}
+.bookends {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+/* Email Info */
+.emailInfo {
+  margin-top: 0.8em;
+  font-size: 19px;
+  line-height: 130%;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  font-family: var(--font-radio);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  text-align: center;
+  max-width: 529px;
+}
+
+.emailInfo a {
+  color: #891910;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3.2px !important;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  background-color: #f9f0e7;
+}
+
+.emailInfo a:hover {
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4.8px !important;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+}
+
+@media screen and (max-width: 799px) {
+  .companyTitleImage {
+    display: none;
+  }
+
+  .companyTitleImageCondensed {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+    display: flex;
+  }
+
+  .companyTitle {
+    aspect-ratio: 142 / 24;
+    margin-bottom: calc(60% / (142 / 24));
+    margin-top: calc(60% / (142 / 24));
+  }
+  .buttonHeading {
+    font-size: 23px;
+    line-height: 130%;
+  }
+
+  .subButton {
+    width: fit-content;
+  }
+
+  .buttonsWrapper {
+    width: calc(100% - 32px);
+  }
+
+
+  .emailInfo {
+    font-size: 17px;
+    line-height: 130%;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .buttonBorder:hover {
+    outline-offset: 0px;
+    outline: 2px solid #891910;
+    transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
+    background-color: #f9f0e7;
+  }
+  .subButton {
+    font-size: 24px;
+  }
+
+  .subButtonsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: calc(24px * 0.8);
+    row-gap: calc(24px * 0.4);
+    margin-top: calc(24px * 0.8);
+    margin-bottom: calc(24px * 0.8);
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .companyTitleImage {
+    display: none;
+  }
+
+  .companyTitleImageCondensed {
+    display: none;
+  }
+
+  .companyTitleImageSuperCondensed {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+    display: flex;
+  }
+
+  .companyTitle {
+    margin-bottom: calc(60% / (142 / 24));
+    margin-top: calc(60% / (142 / 24));
+  }
+}

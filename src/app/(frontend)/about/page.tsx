@@ -1,8 +1,10 @@
 import Image from "next/image";
 import styles from "../../styles/about.module.css";
 import Link from "next/link";
+import FooterContact from "@/app/components/FooterContact";
 
 export default async function Page() {
+  const emailAddress = 'connect@omaratechnologydesign.com';
 
   return (
     <main className="standardPageContainer">
@@ -33,6 +35,17 @@ export default async function Page() {
         <p className={styles.subtitle} >
           We prioritize open-minded problem-solving and tailor our process to each client’s goals, resources, and timeline. The end result is always the same: thoughtful, technically sound products that feel great to use and deliver real value for businesses and users.
         </p>
+        <div className={styles.emailInfo}>
+          Interested in working together?<br />
+          EMAIL:{' '}
+          <Link
+            className={styles.emailLink}
+            href={`mailto:${emailAddress}`}
+            target="_blank"
+          >
+            masonomara.com
+          </Link>
+        </div>
         <div className={styles.cardImageContainer}>
           <div className={styles.cardImageScreen} />
           <div className={styles.cardImageMultiply} />
@@ -67,29 +80,7 @@ export default async function Page() {
         </div>
 
 
-        <div className="companyTitle">
-          <Image
-            src="/longWordmark.svg"
-            height={12}
-            width={208}
-            alt="O'Mara Technology & Design"
-            className="companyTitleImage"
-          />
-          <Image
-            src="/condensedWordmark.svg"
-            height={24}
-            width={142}
-            alt="O'Mara Technology & Design"
-            className="companyTitleImageCondensed"
-          />
-          <Image
-            src="/superCondensedWordmark.svg"
-            height={36}
-            width={87}
-            alt="O'Mara Technology & Design"
-            className="companyTitleImageSuperCondensed"
-          />
-        </div>
+        <FooterContact />
       </div>
     </main>
   );

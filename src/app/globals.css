@@ -503,7 +503,7 @@
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
   margin-top: calc(((100% * (12 / 208)) * 1.6));
-  margin-bottom: calc(((100% * (12 / 208)) * 0.8));
+  /* margin-bottom: calc(((100% * (12 / 208)) * 0.8)); */
 }
 
 /* Company Title Images */
@@ -535,7 +535,7 @@
   .companyTitle {
     aspect-ratio: 142 / 24;
     margin-top: calc(((100% * (24 / 142)) * 0.8));
-    margin-bottom: calc(((100% * (24 / 142)) * 0.4));
+    /* margin-bottom: calc(((100% * (24 / 142)) * 0.4)); */
   }
   
 }
@@ -557,6 +557,6 @@
   .companyTitle {
     aspect-ratio: 87 / 36;
     margin-top: calc(((100% * (36 / 87)) * 0.53));
-    margin-bottom: calc(((100% * (36 / 87)) * 0.27));
+    /* margin-bottom: calc(((100% * (36 / 87)) * 0.27)); */
   }
 }

@@ -3,6 +3,7 @@ import { SERVICES_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/services.module.css";
+import FooterContact from "@/app/components/FooterContact";
 
 export default async function Page() {
   const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
@@ -58,29 +59,8 @@ export default async function Page() {
           </section>
         ))}
 
-        <div className="companyTitle">
-          <Image
-            src="/longWordmark.svg"
-            height={12}
-            width={208}
-            alt="O'Mara Technology & Design"
-            className="companyTitleImage"
-          />
-          <Image
-            src="/condensedWordmark.svg"
-            height={24}
-            width={142}
-            alt="O'Mara Technology & Design"
-            className="companyTitleImageCondensed"
-          />
-          <Image
-            src="/superCondensedWordmark.svg"
-            height={36}
-            width={87}
-            alt="O'Mara Technology & Design"
-            className="companyTitleImageSuperCondensed"
-          />
-        </div>
+
+        <FooterContact />
       </div>
     </main>
   );

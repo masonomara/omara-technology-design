@@ -6,6 +6,7 @@ import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import styles from "../../styles/portfolio.module.css"
 import { PROJECT_QUERYResult } from "@/sanity/types";
+import FooterContact from "@/app/components/FooterContact";
 
 
 export default async function Page() {
@@ -31,11 +32,7 @@ export default async function Page() {
             ))}
         </div>
 
-        <div className="companyTitle">
-          <Image src="/longWordmark.svg" height={12} width={208} alt="O'Mara Technology & Design" className="companyTitleImage" />
-          <Image src="/condensedWordmark.svg" height={24} width={142} alt="O'Mara Technology & Design" className="companyTitleImageCondensed" />
-          <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O'Mara Technology & Design" className="companyTitleImageSuperCondensed" />
-        </div>
+        <FooterContact />
       </div>
     </main>
   );
