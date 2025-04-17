@@ -43,7 +43,7 @@ export default async function Page() {
             href={`mailto:${emailAddress}`}
             target="_blank"
           >
-            masonomara.com
+            connect@omaratechnologydesign.com
           </Link>
         </div>
         <div className={styles.cardImageContainer}>

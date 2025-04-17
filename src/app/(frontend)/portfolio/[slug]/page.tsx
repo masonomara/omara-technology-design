@@ -1,9 +1,11 @@
-
+import FooterContact from "@/app/components/FooterContact";
 import { Project } from "@/app/components/Project";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PROJECT_QUERY } from "@/sanity/lib/queries";
 import { Metadata } from "next";
+import styles from "../../../styles/project.module.css"
+import Image from "next/image";
 
 type RouteProps = {
   params: Promise<{ slug: string }>;
@@ -60,9 +62,51 @@ export default async function Page({ params }: RouteProps) {
   const { data: project } = await getProject(params);
 
   return project?.body ? (
-    <main>
-      <title>{project.seo.title}</title>
-      <Project {...project} />
-    </main>
+    <>
+      {/* <div style={{
+        position: "absolute",
+        width: "100%",
+        height: "40vh",
+        maxHeight: "300px",
+        backgroundColor: "blue",
+        backgroundPosition: "center",
+        backgroundImage: project.image ? `url(${urlFor(project.image).url()})` : "none"
+      }} >
+
+      </div> */}
+
+      <div className={styles.cardImageContainer}  >
+        <div className={styles.cardImageScreen} />
+        <div className={styles.cardImageMultiply} />
+        {project.image?.asset?._ref && (
+          <div className={styles.cardImage}>
+            <Image
+              src={urlFor(project.image).url()}
+              alt={project.image.alt || project.title || "Project image"}
+              layout="fill"
+              objectFit="cover"
+              className={styles.cardImageTwo}
+            />
+          </div>
+        )}
+      </div >
+
+
+      <div className={styles.cardImageContainerBlock}
+/>
+      <main className="standardPageContainer" style={{ paddingTop: "0px" }}>
+
+        <div className="standardPageWrapper">
+          <h1 className="title">{project.seo.title || project.title}</h1>
+          <div className="projectWrapper">
+            <Project {...project} />
+          </div>
+
+          <FooterContact />
+        </div>
+      </main>
+    </>
+
+
   ) : null;
 }

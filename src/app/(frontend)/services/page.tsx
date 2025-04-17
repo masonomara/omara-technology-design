@@ -1,6 +1,5 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { SERVICES_QUERY } from "@/sanity/lib/queries";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/services.module.css";
 import FooterContact from "@/app/components/FooterContact";
@@ -8,7 +7,6 @@ import FooterContact from "@/app/components/FooterContact";
 export default async function Page() {
   const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
 
-  // Group services by category
   const servicesByCategory = services.reduce((acc, service) => {
     const category = service.category?.title || "Uncategorized";
     if (!acc[category]) {
@@ -21,7 +19,6 @@ export default async function Page() {
     return acc;
   }, {} as Record<string, { order: number; services: typeof services }>);
 
-  // Sort categories by order
   const sortedCategories = Object.entries(servicesByCategory).sort(
     ([, a], [, b]) => a.order - b.order
   );
@@ -52,7 +49,6 @@ export default async function Page() {
                     <div className={styles.serviceCardTitle}>{service.title}</div>
                     <div className={styles.serviceCardDescription}>{service.overview}</div>
                   </div>
-                  {/* <Image className={styles.arrow} priority src="/redArrow.svg" height={22} width={22} alt="bang" /> */}
                 </Link>
               ))}
             </div>

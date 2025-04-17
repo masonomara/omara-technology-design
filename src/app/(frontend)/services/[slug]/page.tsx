@@ -4,7 +4,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { SERVICE_QUERY } from "@/sanity/lib/queries";
 import { Metadata } from "next";
-import Image from "next/image";
+
 
 type RouteProps = {
   params: Promise<{ slug: string }>;
@@ -63,8 +63,11 @@ export default async function Page({ params }: RouteProps) {
   return service?.body ? (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <title>{service.seo.title}</title>
-        <Service {...service} />
+        <h1 className="title">{service.seo.title || service.title}</h1>
+        <div className="serviceWrapper">
+          <Service {...service} />
+        </div>
+
         <FooterContact />
       </div>
     </main>
