@@ -12,7 +12,7 @@ export default function FooterContact() {
   return (
 
     <div className={styles.contactWrapper}>
-      <motion.div className="companyTitle" variants={textFadeUpSmall("up", "spring", .2, .8)}
+      <motion.div className="companyTitle" variants={textFadeUpSmall("up", "spring", .1, .8)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}>
@@ -39,7 +39,7 @@ export default function FooterContact() {
         />
       </motion.div>
       <div className={styles.subButtonsWrapper} >
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .3, .4)}
+        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .2, .4)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }}>
@@ -51,7 +51,7 @@ export default function FooterContact() {
             HOME
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .35, .4)}
+        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .25, .4)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }}>
@@ -63,7 +63,7 @@ export default function FooterContact() {
             PORTFOLIO
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .4, .4)}
+        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .3, .4)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }}>
@@ -75,7 +75,7 @@ export default function FooterContact() {
             SERVICES
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .45, .4)}
+        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .35, .4)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }}>
@@ -87,7 +87,7 @@ export default function FooterContact() {
             ABOUT
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .5, .4)}
+        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", .4, .4)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }}>

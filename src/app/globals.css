@@ -325,7 +325,8 @@
   transition: var(--transition-smooth-300) all;
 }
 .menuWrapperActive {
-  height: calc(100vh - 70px);
+  height: calc(100svh - 70px);
+  overflow-y: scroll;
   transition: var(--transition-smooth-200) all;
 }
 .menuWrapperActive .menu__navigation {
@@ -336,7 +337,8 @@
 }
 @media screen and (max-width: 699px) {
   .menuWrapperActive {
-    height: calc(100vh - 64px);
+    height: calc(100svh - 64px);
+    overflow-y: scroll;
     transition: var(--transition-smooth-200) all;
   }
 }

@@ -24,7 +24,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         {projects
           .slice() // shallow copy to avoid mutating the original
           .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
-          .map((project: NonNullable<PROJECT_QUERYResult>, projectIndex) => (<motion.div key={project._id} variants={fadeInButton("up", "spring", 0.2 + projectIndex * 0.1, 1.2)}
+          .map((project: NonNullable<PROJECT_QUERYResult>, projectIndex) => (<motion.div key={project._id} variants={fadeInButton("up", "spring", 0.2, 1.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>

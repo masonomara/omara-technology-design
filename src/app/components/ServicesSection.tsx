@@ -60,10 +60,10 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
             {categoryTitle}
           </motion.h2>
           <div className={styles.servicesWrapper}>
-            {services.map((service, serviceIndex) => (
+            {services.map((service) => (
               <motion.div
                 key={service._id}
-                variants={fadeInButton("up", "spring", 0.2 + serviceIndex * 0.1, 1.2)}
+                variants={fadeInButton("up", "spring", 0.4, 1.2)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}
