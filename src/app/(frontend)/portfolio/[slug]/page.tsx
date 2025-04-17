@@ -25,14 +25,14 @@ export async function generateMetadata({
   const { data: project } = await getProject(params);
 
   const baseMetadata: Metadata = {
-    title: `${project.seo.title || project.title} | O‘Mara Technology & Design}`,
+    title: `${project?.seo?.title || project?.title || "Project"} | O‘Mara Technology & Design}`,
     description:
       "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
     alternates: {
       canonical: `https://omaratechnologydesign.com/portfolio/${project.slug}`,
     },
     openGraph: {
-      title: `${project.seo.title || project.title} | O‘Mara Technology & Design}`,
+      title: `${project?.seo?.title || project?.title || "Project"} | O‘Mara Technology & Design}`,
       description:
         "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
       url: `https://omaratechnologydesign.com/portfolio/${project.slug}`,
