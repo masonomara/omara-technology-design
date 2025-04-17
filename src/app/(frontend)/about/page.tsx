@@ -65,10 +65,10 @@ export default async function Page() {
           Fractional and Modular Roles
         </p>
         <p className={styles.subtitle}>
-          We independently lead projects or work embedded alongside product teams and company leadership. Our team, led by Mason O’Mara, brings experience across digital strategy, design, and development, supported by specialists who contribute in specific areas. Our goal is to surround ourselves with good people, good ideas, and build things that last.
+          We independently manage projects or work embedded alongside product teams and company leadership. Our team, led by Mason O’Mara, brings experience across digital strategy, design, and development, supported by specialists for adjacent services and expertise. Our goal is to surround ourselves with good people, good ideas, and build things that last.
         </p>
         <div className={styles.emailInfo}>
-          Visit Mason O‘Mara's Personal Site<br />
+            Visit Mason O‘Mara‘s Personal Site<br />
           URL:{' '}
           <Link
             className={styles.emailLink}

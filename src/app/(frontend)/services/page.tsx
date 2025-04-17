@@ -32,7 +32,7 @@ export default async function Page() {
           We help businesses build smart, scalable digital products. Whether you need a fractional leader, a full design system, or a scalable app, we step in and make it happen.
         </p>
         <p className={styles.subtitle} style={{ marginBottom: "calc(2.4em - 24px)" }}>
-          We don't focus on commoditized solutions. We get to understand your business, your users, and your goals – then work with you to design and build what you need.
+          We don‘t focus on commoditized solutions. We learn about your business, your users, and your goals – then work with you to design and build what you need.
         </p>
 
         {sortedCategories.map(([categoryTitle, { services }]) => (
