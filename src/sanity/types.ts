@@ -142,17 +142,10 @@ export type Service = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  order?: string;
+  order?: number;
   title?: string;
   slug?: Slug;
-  category?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "category";
-  };
-  overview?: string;
-  body?: Array<{
+  overview?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -183,7 +176,50 @@ export type Service = {
     _type: "image";
     _key: string;
   }>;
-  seo?: Seo;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  deepDive?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
 };
 
 export type Category = {
@@ -321,14 +357,8 @@ export type SERVICES_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
-  category: {
-    _id: string;
-    title: string | null;
-    slug: Slug | null;
-    order: string | null;
-  } | null;
-  overview: string | null;
-  body: Array<{
+  category: null;
+  overview: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -359,22 +389,12 @@ export type SERVICES_QUERYResult = Array<{
     _type: "image";
     _key: string;
   }> | null;
+  body: null;
   seo: {
     title: string | "";
-    description: string | "";
-    image: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    } | null;
-    noIndex: boolean | false;
+    description: "";
+    image: null;
+    noIndex: false;
   };
 }>;
 // Variable: SERVICES_SLUGS_QUERY
@@ -388,8 +408,7 @@ export type SERVICE_QUERYResult = {
   _id: string;
   title: string | null;
   slug: Slug | null;
-  overview: string | null;
-  body: Array<{
+  overview: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -420,28 +439,13 @@ export type SERVICE_QUERYResult = {
     _type: "image";
     _key: string;
   }> | null;
-  category: {
-    _id: string;
-    title: string | null;
-    slug: Slug | null;
-    order: string | null;
-  } | null;
+  body: null;
+  category: null;
   seo: {
     title: string | "";
-    description: string | "";
-    image: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    } | null;
-    noIndex: boolean | false;
+    description: "";
+    image: null;
+    noIndex: false;
   };
 } | null;
 // Variable: CATEGORIES_QUERY
@@ -647,6 +651,14 @@ export type OG_IMAGE_QUERYResult = {
 } | {
   title: string | null;
   image: null;
+} | {
+  title: string | null;
+  image: {
+    url: string | null;
+    metadata: {
+      palette: SanityImagePalette | null;
+    } | null;
+  } | null;
 } | null;
 // Variable: SITEMAP_QUERY
 // Query: *[_type in ["page", "post"] && defined(slug.current)] {      "href": select(        _type == "page" => "/" + slug.current,        _type == "post" => "/posts/" + slug.current,        slug.current      ),      _updatedAt  }
