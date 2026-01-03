@@ -13,13 +13,13 @@ import Marquee from "../components/Marquee";
 
 export const metadata: Metadata = {
   title: "O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
   alternates: {
     canonical: "https://omaratechnologydesign.com/",
   },
   openGraph: {
-    title: "O'Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+    title: "O’Mara Technology & Design",
+    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
     url: "https://omaratechnologydesign.com/",
     siteName: "O‘Mara Technology & Design",
     images: [

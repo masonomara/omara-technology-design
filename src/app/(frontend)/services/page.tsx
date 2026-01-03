@@ -8,13 +8,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services | O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
   alternates: {
     canonical: "https://omaratechnologydesign.com/services",
   },
   openGraph: {
-    title: "Services | O'Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+    title: "Services | O’Mara Technology & Design",
+    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
     url: "https://omaratechnologydesign.com/services",
     siteName: "O‘Mara Technology & Design",
     images: [

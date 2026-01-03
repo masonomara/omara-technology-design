@@ -23,7 +23,7 @@ const contactFormSchema = z.object({
 type FormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
-  const emailAddress = 'connect@omaratechnologydesign.com';
+  const emailAddress = 'mason@omaratechnologydesign.com';
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
@@ -85,7 +85,7 @@ ${values.message || 'No message provided.'}`
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
             Online forms not your thing?<br />
-            Email:{' '}
+            
             <Link
               className={styles.emailLink}
               href={`mailto:${emailAddress}`}
@@ -100,10 +100,10 @@ ${values.message || 'No message provided.'}`
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
             <p className={styles.subtitle}>
-              O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
+              O’Mara Technology & Design is a consultancy focused on digital product strategy, design, and development. We take on fractional roles, project-based work, and long-term partnerships.
             </p>
             <p className={styles.subtitle} style={{ marginBottom: "2.4em" }}>
-              Our focuses include mobile apps, websites, ecommerce, or any custom software. If you’re interested in any of these services or more, please fill out the form below.
+              If you have a product to build or a problem to solve, feel free to reach out.
             </p>
           </motion.div>
           <motion.div className={styles.contactFormWrapper} variants={fadeInButton("up", "spring", .6, 1.2)}

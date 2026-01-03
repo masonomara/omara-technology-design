@@ -23,14 +23,14 @@ export async function generateMetadata({
   const baseMetadata: Metadata = {
     title: `${service?.seo?.title || service?.title || "Service"} | O‘Mara Technology & Design}`,
     description:
-      "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+      "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
     alternates: {
       canonical: `https://omaratechnologydesign.com/services/${service?.slug || ""}`,
     },
     openGraph: {
       title: `${service?.seo?.title || service?.title || "Service"} | O‘Mara Technology & Design}`,
       description:
-        "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+        "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
       url: `https://omaratechnologydesign.com/services/${service?.slug || ""}`,
       siteName: "O‘Mara Technology & Design",
       images: [

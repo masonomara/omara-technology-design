@@ -23,19 +23,19 @@ export default function Header() {
           </Link>
           <div className={"header__textContainer"}>
             <div id={"textAbout"} className={"header__textWrapper"}>
-              <div className={"header__textTitle"}>Technology Consulting Firm</div>
-              <div className={"header__textBody"}>Fractional business & technology</div>
-              <div className={"header__textBody"}>strategy, design, and development.</div>
+              <div className={"header__textTitle"}>Digital Product Studio</div>
+              <div className={"header__textBody"}>Strategy, design, and development</div>
+              <div className={"header__textBody"}>for apps, websites, and software.</div>
             </div>
             <div id={"textWhere"} className={"header__textWrapper"}>
-              <div className={"header__textTitle"}>Where</div>
+              <div className={"header__textTitle"}>Location</div>
               <div className={"header__textBody"}>1301 Corlies Ave Suite 2D,</div>
               <div className={"header__textBody"}>Asbury Park, NJ 07712</div>
             </div>
             <div id={"textFocuses"} className={"header__textWrapper"}>
               <div className={"header__textTitle"}>Focuses</div>
-              <div className={"header__textBody"}>Mobile Apps&nbsp;&nbsp;&nbsp;&nbsp;Websites</div>
-              <div className={"header__textBody"}>Ecommerce&nbsp;&nbsp;&nbsp;&nbsp;Software</div>
+              <div className={"header__textBody"}>Mobile Apps&nbsp;&nbsp;&nbsp;Websites</div>
+              <div className={"header__textBody"}>Custom Software</div>
             </div>
           </div>
         </div>

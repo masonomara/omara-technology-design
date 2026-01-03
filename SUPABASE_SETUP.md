@@ -1,6 +1,6 @@
 # Supabase Setup Guide
 
-This guide covers recreating the Supabase project for the O'Mara Technology & Design website scoreboard and email subscription features.
+This guide covers recreating the Supabase project for the O’Mara Technology & Design website scoreboard and email subscription features.
 
 ## 1. Create Project
 

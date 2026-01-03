@@ -18,12 +18,12 @@ export default function Marquee() {
       className={`menuWrapper ${menuOpen ? "menuWrapperActive" : ""} `}
     >
       <div className={`marquee ${menuOpen ? "menu-open" : ""}`} ref={marqueeRef}>
-        <p><span className="marqueeTitle">TECHNOLOGY CONSULTING FIRM</span>Fractional business & technology strategy, design, and development.</p>
-        <p><span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
-        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;Websites&nbsp;&nbsp;Ecommerce&nbsp;&nbsp;Softwares</p>
-        <p><span className="marqueeTitle">TECHNOLOGY CONSULTING FIRM</span>Fractional business & technology strategy, design, and development.</p>
-        <p><span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
-        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;Websites&nbsp;&nbsp;Ecommerce&nbsp;&nbsp;Softwares</p>
+        <p><span className="marqueeTitle">DIGITAL PRODUCT STUDIO</span>Strategy, design, and development for apps, websites, and software.</p>
+        <p><span className="marqueeTitle">LOCATION</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
+        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;&nbsp;Websites&nbsp;&nbsp;Custom Software</p>
+            <p><span className="marqueeTitle">DIGITAL PRODUCT STUDIO</span>Strategy, design, and development for apps, websites, and software.</p>
+        <p><span className="marqueeTitle">LOCATION</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
+        <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;&nbsp;Websites&nbsp;&nbsp;Custom Software</p>
       </div>
       <div className="menu__navigation">
         <motion.div className="footer__menuOptionWrapper" variants={fadeInButton("up", "spring", .0, 1.2)}
