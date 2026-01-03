@@ -109,7 +109,7 @@
     "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   text-align: center;
 }
 
@@ -120,7 +120,7 @@
     "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   text-align: center;
   font-size: 29px;
   text-decoration: underline !important;
@@ -151,7 +151,7 @@
     "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   text-align: center;
   max-width: 529px;
 }

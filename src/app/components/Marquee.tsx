@@ -8,9 +8,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInButton } from "../lib/motion";
 
+const menuItems = [
+  { id: "footerHome", href: "/", title: "Home", subtitle: "Back to the start" },
+  { id: "footerPortfolio", href: "/portfolio", title: "Portfolio", subtitle: "Our recent work" },
+  { id: "footerServices", href: "/services", title: "Services", subtitle: "What we offer" },
+  { id: "footerAbout", href: "/about", title: "About", subtitle: "Who we are" },
+  { id: "footerContact", href: "/contact", title: "Contact", subtitle: "Get in touch" },
+];
+
 export default function Marquee() {
   const marqueeRef = useRef<HTMLDivElement>(null);
-  const { menuOpen } = useMenu();
+  const { menuOpen, setMenuOpen } = useMenu();
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <div
@@ -19,58 +28,29 @@ export default function Marquee() {
     >
       <div className={`marquee ${menuOpen ? "menu-open" : ""}`} ref={marqueeRef}>
         <p><span className="marqueeTitle">DIGITAL PRODUCT STUDIO</span>Strategy, design, and development for apps, websites, and software.</p>
-        <p><span className="marqueeTitle">LOCATION</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
+        <p><span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
         <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;&nbsp;Websites&nbsp;&nbsp;Custom Software</p>
             <p><span className="marqueeTitle">DIGITAL PRODUCT STUDIO</span>Strategy, design, and development for apps, websites, and software.</p>
-        <p><span className="marqueeTitle">LOCATION</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
+        <p><span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D, Asbury Park, NJ 07712</p>
         <p><span className="marqueeTitle">FOCUSES</span>Mobile Apps&nbsp;&nbsp;&nbsp;Websites&nbsp;&nbsp;Custom Software</p>
       </div>
       <div className="menu__navigation">
-        <motion.div className="footer__menuOptionWrapper" variants={fadeInButton("up", "spring", .0, 1.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0 }}>
-          <Link id="footerHome" className="footer__menuOption" href="/" target="_top">
-            <span className="footer__menuOption__header">Home</span>
-            <Image src="/tanArrow.svg" alt="arrow" height={25} width={25} />
-          </Link>
-        </motion.div>
-        <motion.div className="footer__menuOptionWrapper" variants={fadeInButton("up", "spring", .05, 1.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0 }}>
-          <Link id="footerPortfolio" className="footer__menuOption" href="/portfolio" target="_top">
-            <span className="footer__menuOption__header">Portfolio</span>
-            <Image src="/tanArrow.svg" alt="arrow" height={25} width={25} />
-          </Link>
-        </motion.div>
-        <motion.div className="footer__menuOptionWrapper" variants={fadeInButton("up", "spring", .1, 1.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0 }}>
-          <Link id="footerServices" className="footer__menuOption" href="/services" target="_top">
-            <span className="footer__menuOption__header">Services</span>
-            <Image src="/tanArrow.svg" alt="arrow" height={25} width={25} />
-          </Link>
-        </motion.div>
-        <motion.div className="footer__menuOptionWrapper" variants={fadeInButton("up", "spring", .15, 1.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0 }}>
-          <Link id="footerAbout" className="footer__menuOption" href="/about" target="_top">
-            <span className="footer__menuOption__header">About</span>
-            <Image src="/tanArrow.svg" alt="arrow" height={25} width={25} />
-          </Link>
-        </motion.div>
-        <motion.div className="footer__menuOptionWrapper" variants={fadeInButton("up", "spring", .2, 1.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0 }}>
-          <Link id="footerContact" className="footer__menuOption" href="/contact" target="_top">
-            <span className="footer__menuOption__header">Contact</span>
-            <Image src="/tanArrow.svg" alt="arrow" height={25} width={25} />
-          </Link>
-        </motion.div>
+        {menuItems.map((item, index) => (
+          <motion.div
+            key={item.id}
+            className="footer__menuOptionWrapper"
+            variants={fadeInButton("up", "spring", index * 0.05, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
+          >
+            <Link id={item.id} className="footer__menuOption" href={item.href} onClick={closeMenu}>
+              <span className="footer__menuOption__header">{item.title}</span>
+              <span className="footer__menuOption__subheader">{item.subtitle}</span>
+              <Image src="/tanArrow.svg" alt="arrow" height={25} width={25} />
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </div >
 

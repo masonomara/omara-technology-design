@@ -187,7 +187,7 @@
     "wght" 600;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   line-height: 54px;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
@@ -400,7 +400,6 @@
   margin-top: -7.5px;
   padding: 40px 32px;
   width: calc(100% - 64px);
-  height: 100%;
   /* opacity: 0;
   transition: 100ms ease-in 150ms all; */
   /* transition: var(--transition-smooth-200) all; */
@@ -432,10 +431,10 @@
 .footer__menuOption__header {
   font-variation-settings:
     "wdth" 75,
-    "wght" 600;
+    "wght" 500;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
 
   text-decoration: underline !important;
   -webkit-text-decoration-color: transparent !important;
@@ -465,7 +464,7 @@
   font-family: var(--font-overpass);
   font-size: 21px;
   line-height: 130%;
-  display: none;
+  color: var(--color-background);
 }
 
 /* Positioning each menu item in a scattered fashion */

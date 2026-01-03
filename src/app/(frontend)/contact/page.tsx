@@ -84,7 +84,7 @@ ${values.message || 'No message provided.'}`
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
-            Online forms not your thing?<br />
+            Prefer Email?<br />
             
             <Link
               className={styles.emailLink}
@@ -100,7 +100,7 @@ ${values.message || 'No message provided.'}`
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
             <p className={styles.subtitle}>
-              O’Mara Technology & Design is a consultancy focused on digital product strategy, design, and development. We take on fractional roles, project-based work, and long-term partnerships.
+              O’Mara Technology & Design is a digital product studio focused on strategy, design, and development. Flexible engagments available. 
             </p>
             <p className={styles.subtitle} style={{ marginBottom: "2.4em" }}>
               If you have a product to build or a problem to solve, feel free to reach out.
@@ -118,7 +118,7 @@ ${values.message || 'No message provided.'}`
                 <input
                   type="text"
                   id="name"
-                  placeholder='Name*'
+                  placeholder='Your name*'
                   {...register("name")}
                 />
                 {errors.name && (
@@ -131,7 +131,7 @@ ${values.message || 'No message provided.'}`
                 <input
                   type="email"
                   id="email"
-                  placeholder="Email*"
+                  placeholder="Your email*"
                   {...register("email")}
                 />
                 {errors.email && (
@@ -144,7 +144,7 @@ ${values.message || 'No message provided.'}`
                 <input
                   type="text"
                   id="company"
-                  placeholder='Company'
+                  placeholder='Your business name'
                   {...register("company")}
                 />
               </div>
@@ -154,7 +154,7 @@ ${values.message || 'No message provided.'}`
                 <input
                   type="text"
                   id="currentUrl"
-                  placeholder="Current URL"
+                  placeholder="yourwebsite.com"
                   {...register("currentUrl")}
                 />
               </div>

@@ -9,6 +9,7 @@ import { VisualEditing } from "next-sanity";
 import { MenuProvider } from "../context/MenuContext";
 import Header from "../components/Header";
 import Marquee from "../components/Marquee";
+import ScrollToTop from "../components/ScrollToTop";
 
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default async function RootLayout({
 }>) {
   return (
     <MenuProvider>
-
+      <ScrollToTop />
       <Header />
       {children}
       <Marquee />

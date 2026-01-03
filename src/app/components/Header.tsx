@@ -17,7 +17,7 @@ export default function Header() {
     <header className={"header"}>
       <div className={"header__content"}>
         <div className={"header__content--left"}>
-          <Link href="/" target="_top" className={"header__logoWrapper"}>
+          <Link href="/" className={"header__logoWrapper"}>
             <Image className={"header__logo--desktop"} src="/monogramText.svg" width={158} height={51} alt="Logo" />
             <Image className={"header__logo--mobile"} src="/monogramText.svg" width={140} height={45} alt="Logo" />
           </Link>
@@ -28,7 +28,7 @@ export default function Header() {
               <div className={"header__textBody"}>for apps, websites, and software.</div>
             </div>
             <div id={"textWhere"} className={"header__textWrapper"}>
-              <div className={"header__textTitle"}>Location</div>
+              <div className={"header__textTitle"}>Where</div>
               <div className={"header__textBody"}>1301 Corlies Ave Suite 2D,</div>
               <div className={"header__textBody"}>Asbury Park, NJ 07712</div>
             </div>
@@ -41,7 +41,7 @@ export default function Header() {
         </div>
         <div className={"header__content--right"}>
           <div className={"header__menuWrapper"}>
-            <Link id={"home"} className={"header__menuOption"} href="/" target="_top">
+            <Link id={"home"} className={"header__menuOption"} href="/">
               <span>Home</span>
             </Link>
             <div
@@ -53,16 +53,16 @@ export default function Header() {
             >
               <span>{menuOpen ? "Close" : "Menu"}</span>
             </div>
-            <Link id={"portfolio"} className={"header__menuOption"} href="/portfolio" target="_top">
+            <Link id={"portfolio"} className={"header__menuOption"} href="/portfolio">
               <span>Portfolio</span>
             </Link>
-            <Link id={"services"} className={"header__menuOption"} href="/services" target="_top">
+            <Link id={"services"} className={"header__menuOption"} href="/services">
               <span>Services</span>
             </Link>
-            <Link id={"about"} className={"header__menuOption"} href="/about" target="_top">
+            <Link id={"about"} className={"header__menuOption"} href="/about">
               <span>About</span>
             </Link>
-            <Link id={"contact"} className={"header__menuOption"} href="/contact" target="_top">
+            <Link id={"contact"} className={"header__menuOption"} href="/contact">
               <span>Contact</span>
             </Link>
           </div>

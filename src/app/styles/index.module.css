@@ -54,7 +54,7 @@
     "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   line-height: 100%;
   transform: translateY(calc(100% + 16px));
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
@@ -359,7 +359,7 @@
     "wght" 700;
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
@@ -440,7 +440,7 @@
     "wdth" 75,
     "wght" 700;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   font-size: 16px;
   color: var(--color-primary);
   margin-bottom: 8px;
@@ -984,7 +984,7 @@
 
 .checkboxItem input::placeholder,
 .checkboxItem textarea::placeholder {
-  color: #89191099;
+  color: rgba(137, 25, 16, 0.5);
   font-weight: 500 !important;
 }
 
@@ -994,7 +994,7 @@
     "wdth" 75,
     "wght" 700;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   font-size: 16px;
   color: #891910;
   margin-bottom: 8px;

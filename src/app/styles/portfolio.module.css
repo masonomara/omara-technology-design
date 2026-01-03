@@ -24,17 +24,19 @@
 
 .subtitle {
   margin: 0.8em 0 0;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 500;
   max-width: 635px;
   width: 60vw;
   line-height: 130%;
+    text-align: justify;
+
 }
 @media screen and (max-width: 699px) {
   .subtitle {
     width: calc(100% - 32px);
     padding: 0 16px;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 130%;
   }
 }
