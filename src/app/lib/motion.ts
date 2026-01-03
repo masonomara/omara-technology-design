@@ -1,5 +1,7 @@
 import { Variants } from "framer-motion";
 
+type AnimationType = "spring" | "tween" | "inertia" | "keyframes";
+
 export const navVariants: Variants = {
   hidden: {
     opacity: 0,
@@ -23,7 +25,7 @@ export const navVariants: Variants = {
 
 export const slideIn = (
   direction: "left" | "right" | "up" | "down",
-  type: string,
+  type: AnimationType,
   delay: number,
   duration: number
 ): Variants => ({
@@ -141,7 +143,7 @@ export const textVariant2: Variants = {
 };
 
 export const fade = (
-  type: string,
+  type: AnimationType,
   delay: number,
   duration: number,
   opacity: number
@@ -163,7 +165,7 @@ export const fade = (
 
 export const fadeIn = (
   direction: "left" | "right" | "up" | "down",
-  type: string,
+  type: AnimationType,
   delay: number,
   duration: number
 ): Variants => ({
@@ -189,8 +191,8 @@ export const fadeIn = (
 });
 
 export const ringGrow = (
-  direction: string,
-  type: string,
+  _direction: string,
+  type: AnimationType,
   delay: number,
   duration: number,
   opacity: number = 1
@@ -219,7 +221,7 @@ export const ringGrow = (
 
 export const fadeInButton = (
   direction: "left" | "right" | "up" | "down",
-  type: string,
+  type: AnimationType,
   delay: number,
   duration: number
 ): Variants => ({
@@ -247,8 +249,8 @@ export const fadeInButton = (
 export const fadeInIcon = fadeInButton;
 
 export const textFadeUp = (
-  direction: string,
-  type: string,
+  _direction: string,
+  type: AnimationType,
   delay: number,
   duration: number
 ): Variants => ({
@@ -277,8 +279,8 @@ export const textFadeUp = (
 });
 
 export const textFadeUpSmall = (
-  direction: string,
-  type: string,
+  _direction: string,
+  type: AnimationType,
   delay: number,
   duration: number
 ): Variants => ({

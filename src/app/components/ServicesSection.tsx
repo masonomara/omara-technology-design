@@ -5,6 +5,7 @@
 import Link from 'next/link'
 import styles from '../styles/services.module.css';
 import { SERVICES_QUERYResult } from '@/sanity/types';
+import { PortableText } from '@portabletext/react';
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from '../lib/motion';
 
@@ -75,7 +76,9 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                 >
                   <div className={styles.serviceCardInfo}>
                     <div className={styles.serviceCardTitle}>{service.title}</div>
-                    <div className={styles.serviceCardDescription}>{service.overview}</div>
+                    <div className={styles.serviceCardDescription}>
+                      {service.overview && <PortableText value={service.overview} />}
+                    </div>
                   </div>
                 </Link>
               </motion.div>

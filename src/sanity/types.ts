@@ -90,6 +90,12 @@ export type Service = {
   order?: number;
   title?: string;
   slug?: Slug;
+  category?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "category";
+  };
   overview?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -357,7 +363,12 @@ export type SERVICES_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
-  category: null;
+  category: {
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    order: string | null;
+  } | null;
   overview: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -440,7 +451,12 @@ export type SERVICE_QUERYResult = {
     _key: string;
   }> | null;
   body: null;
-  category: null;
+  category: {
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    order: string | null;
+  } | null;
   seo: {
     title: string | "";
     description: "";

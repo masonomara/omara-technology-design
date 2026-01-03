@@ -1,5 +1,5 @@
 // src/sanity/schemaTypes/postType.ts
-import { TextIcon, CalendarIcon } from "@sanity/icons";
+import { TextIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const postType = defineType({

@@ -14,7 +14,8 @@ const nextConfig: NextConfig = {
     const rawRedirects = await fetchRedirects();
 
     // Filter and map to enforce non-nullable types
-    const sanitizedRedirects = rawRedirects
+    type RawRedirect = { source?: string; destination?: string; permanent?: boolean };
+    const sanitizedRedirects = (rawRedirects as RawRedirect[])
       .filter(
         (r): r is { source: string; destination: string; permanent: boolean } =>
           typeof r.source === "string" &&

@@ -9,10 +9,6 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from '../lib/motion';
-// import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
-
-
-
 
 // Initialize Supabase client with environment variables
 const supabase = createClient(
@@ -31,9 +27,8 @@ function isValidEmail(email: string) {
   return re.test(email);
 }
 
-// Enemy images and bad words list for filtering nicknames
 const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
-const badWords = ["FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "FUCK", "KKK", "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH"];
+const badWords = atob("RkFHLEZVQ0ssVElUUyxDVU5ULDg9RCxTSElULFBJU1MsS0tLLENPQ0ssTklHR0VSLE5JR0dBLEtJS0UsUFVTU1ksU0xVVCxDUkFQLEJJVENI").split(",");
 
 export default function Home() {
   // State variables for game logic
@@ -82,7 +77,6 @@ export default function Home() {
 
       if (error) throw error;
 
-      console.log("Subscription saved");
       setSubscriptionSubmitted(true);
     } catch (err) {
       console.error("Error saving subscription:", err);
@@ -105,17 +99,14 @@ export default function Home() {
   useEffect(() => {
     if (gameEnd) {
       setTimeout(() => {
-        console.log("Scrolling to user score...");
         userScoreRef?.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 100); // Optional delay
+      }, 100);
     }
   }, [gameEnd]);
 
 
-  // Auto-scroll to user's leaderboard position when game ends
   useEffect(() => {
     if (currentEnemy >= 9 && userScoreRef.current) {
-      console.log("Scrolling to user score...");
       userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [currentEnemy]);
@@ -125,9 +116,7 @@ export default function Home() {
     return badWords.some((word) => nickname.includes(word));
   };
 
-  // Fetch leaderboard from Supabase, sort by highest score
   const fetchLeaderboard = useCallback(async () => {
-    console.log("Fetching leaderboard...");
     const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
     if (!error) {
       if (score > 0) {
@@ -135,9 +124,6 @@ export default function Home() {
         data.sort((a, b) => b.score - a.score);
       }
       setLeaderboard(data);
-      console.log("Leaderboard updated", data);
-    } else {
-      console.error("Error fetching leaderboard:", error);
     }
   }, [score, nickname]);
 
@@ -157,7 +143,6 @@ export default function Home() {
     }
 
     setWarning("");
-    console.log("Submitting score for", nickname);
 
     // Insert score WITHOUT subscription data initially
     const { error } = await supabase.from("scores").insert([{
@@ -183,7 +168,6 @@ export default function Home() {
 
     const handleClick = (event: MouseEvent) => {
       if (!gameAction) return; // Prevents clicks before game starts
-      console.log("User clicked on game frame at:", event.clientX, event.clientY);
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;

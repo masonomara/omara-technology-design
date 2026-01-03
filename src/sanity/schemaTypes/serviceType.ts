@@ -18,6 +18,12 @@ export const serviceType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
+    }),
+    defineField({
       name: "overview",
       title: "Overview",
       type: "blockContent",
