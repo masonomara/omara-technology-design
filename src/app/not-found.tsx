@@ -6,7 +6,7 @@ import { MenuProvider } from './context/MenuContext'
 import Header from './components/Header'
 
 export default function NotFound() {
-  const emailAddress = 'connect@omaratechnologydesign.com'
+  const emailAddress = 'mason@omaratechnologydesign.com'
 
   return (
     <MenuProvider>
@@ -62,13 +62,12 @@ export default function NotFound() {
 
             <div className={styles.emailInfo}>
               Prefer email?{' '}
-              <Link
+              <a
                 className={styles.emailLink}
                 href={`mailto:${emailAddress}`}
-                target="_blank"
               >
                 {emailAddress}
-              </Link>
+              </a>
             </div>
           </div>
 

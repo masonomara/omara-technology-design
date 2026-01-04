@@ -1,6 +1,5 @@
 "use client"
 
-import Link from 'next/link'
 import React from 'react'
 import styles from '../../styles/contact.module.css'
 import { sendMail } from '@/app/lib/send-mail';
@@ -86,13 +85,12 @@ ${values.message || 'No message provided.'}`
             viewport={{ once: true, amount: 0 }}>
             Prefer Email?<br />
             
-            <Link
+            <a
               className={styles.emailLink}
               href={`mailto:${emailAddress}`}
-              target="_blank"
             >
               {emailAddress}
-            </Link>
+            </a>
           </motion.div>
           <motion.div
             variants={textFadeUpSmall("up", "spring", .4, .8)}

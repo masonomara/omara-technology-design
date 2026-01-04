@@ -31,14 +31,14 @@
   color: var(--color-primary);
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 3.2px !important;
+  text-underline-offset: 0.15em !important;
   background-color: var(--color-background);
   transition: var(--transition-smooth-100) all;
 }
 
 .emailInfo a:hover {
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 4.8px !important;
+  text-underline-offset: 0.2em !important;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -110,7 +110,7 @@
   font-family: var(--font-overpass);
   border: 1px solid var(--color-primary);
   background-color: transparent;
-  padding: 16px 12px;
+  padding: 13px 12px 11px;
   font-size: 16px;
   font-weight: 500 !important;
   border-radius: 0px;
@@ -137,8 +137,8 @@
 /* Checkbox Styles */
 .formField:has(.serviceCategory) {
   border: 1.6px solid var(--color-primary);
-  padding: 16px 12px;
-  width: calc(100% - 24px);
+  padding: 20px;
+  width: calc(100% - 40px);
   gap: 20px;
   display: flex;
   flex-direction: column;
@@ -177,7 +177,10 @@
   display: flex;
   align-items: center;
   gap: 0px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+height: 32px;
+display: flex;
+flex-direction: row; gap: 10px;
 }
 
 .checkboxItem label {
@@ -187,7 +190,8 @@
   text-transform: none;
   letter-spacing: normal;
   margin-bottom: 0;
-  padding-left: 8px;
+  padding-left: 0px;
+ margin-bottom: -4px; padding-top: 1px;
 }
 
 .checkboxItem input[type="checkbox"] {
@@ -202,6 +206,7 @@
   position: relative;
   cursor: pointer;
   margin: 0;
+
 }
 
 .checkboxItem input[type="checkbox"]:checked::after {
@@ -260,14 +265,14 @@
   letter-spacing: -0.015em;
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 3.2px !important;
+  text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
   grid-column: span 2;
 }
 
 .primaryButton:hover {
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 4.8px !important;
+  text-underline-offset: 0.2em !important;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -313,8 +318,8 @@
 
   .contactFormWrapper,
   .subtitle {
-    width: calc(100% - 32px);
-    padding: 0 16px;
+        width: calc(100% - 16px);
+        padding: 0 8px;
     font-size: 15px;
     line-height: 130%;
   }
@@ -327,7 +332,7 @@
   }
 
   .primaryButton:hover {
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 3.2px !important;
+  text-decoration-thickness: 2px !important;
+    text-underline-offset: 0.2em !important;
   }
 }

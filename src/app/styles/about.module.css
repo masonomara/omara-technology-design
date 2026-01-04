@@ -39,14 +39,14 @@
   color: var(--color-primary);
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 3.2px !important;
+  text-underline-offset: 0.15em !important;
   background-color: var(--color-background);
   transition: var(--transition-smooth-100) all;
 }
 
 .emailInfo a:hover {
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 4.8px !important;
+  text-underline-offset: 0.2em !important;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -90,8 +90,8 @@ z-index: 0;
 }
 @media screen and (max-width: 699px) {
   .subtitle {
-    width: calc(100% - 32px);
-    padding: 0px 16px;
+        width: calc(100% - 16px);
+        padding: 0 8px;
     font-size: 15px;
     line-height: 130%;
   }

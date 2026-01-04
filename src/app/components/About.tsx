@@ -4,12 +4,11 @@ import React from 'react'
 import { motion } from "framer-motion";
 import { fadeIn, fadeInButton, textFadeUp, textFadeUpSmall } from '../lib/motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from "../styles/about.module.css";
 
 
 export default function About() {
-  const emailAddress = 'connect@omaratechnologydesign.com';
+  const emailAddress = 'mason@omaratechnologydesign.com';
 
   return (
     <>
@@ -61,14 +60,13 @@ export default function About() {
         whileInView="show"
         viewport={{ once: true, amount: 0 }}>
         Interested in working together?<br />
-        EMAIL:{' '}
-        <Link
+        Feel free to reach out to {' '}
+        <a
           className={styles.emailLink}
           href={`mailto:${emailAddress}`}
-          target="_blank"
         >
-          connect@omaratechnologydesign.com
-        </Link>
+          mason@omaratechnologydesign.com
+        </a>
       </motion.div>
       <motion.div className={styles.cardImageContainer} variants={fadeIn("up", "spring", 0.1, 0.8)}
         initial="hidden"
@@ -112,13 +110,14 @@ export default function About() {
         viewport={{ once: true, amount: 0 }}>
         Visit Mason O‘Mara‘s Personal Site<br />
         URL:{' '}
-        <Link
+        <a
           className={styles.emailLink}
-          href={`masonomara.com`}
+          href="https://masonomara.com"
           target="_blank"
+          rel="noopener noreferrer"
         >
           masonomara.com
-        </Link>
+        </a>
       </motion.div>
     </>
   )

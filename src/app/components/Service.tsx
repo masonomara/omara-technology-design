@@ -3,7 +3,6 @@
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
 import { SERVICE_QUERYResult } from "@/sanity/types"; // Update path if needed
-import Link from "next/link";
 import styles from "../styles/about.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
@@ -12,7 +11,7 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
   const { body, title, seo } = props;
-  const emailAddress = 'connect@omaratechnologydesign.com'
+  const emailAddress = 'mason@omaratechnologydesign.com'
 
 
   return (
@@ -44,14 +43,13 @@ export function Service(props: NonNullable<SERVICE_QUERYResult>) {
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}>
                 Interested in working together?<br />
-                EMAIL:{' '}
-                <Link
+                Feel free to reach out to {' '}
+                <a
                   className={styles.emailLink}
                   href={`mailto:${emailAddress}`}
-                  target="_blank"
                 >
-                  connect@omaratechnologydesign.com
-                </Link>
+                  mason@omaratechnologydesign.com
+                </a>
               </motion.div>
             </div>
           ) : null

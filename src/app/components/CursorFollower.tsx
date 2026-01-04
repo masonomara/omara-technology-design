@@ -6,6 +6,7 @@ const CursorFollower = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const isHoveringRef = useRef(false);
   const isMenuActiveRef = useRef(false);
+  const isPressedRef = useRef(false);
 
   const updateCursorStyle = useCallback(() => {
     const cursor = cursorRef.current;
@@ -13,12 +14,18 @@ const CursorFollower = () => {
 
     const isHovering = isHoveringRef.current;
     const isMenuActive = isMenuActiveRef.current;
+    const isPressed = isPressedRef.current;
 
-    cursor.style.width = isHovering ? "32px" : "16px";
-    cursor.style.height = isHovering ? "32px" : "16px";
+    const baseSize = isHovering ? 32 : 16;
+    const size = isPressed ? `${baseSize * 0.87}px` : `${baseSize}px`;
+    cursor.style.width = size;
+    cursor.style.height = size;
+
+    const baseOpacity = isHovering ? 0.6 : 0.25;
+    const opacity = isPressed ? Math.min(baseOpacity + 0.3, 1) : baseOpacity;
     cursor.style.backgroundColor = isMenuActive
-      ? isHovering ? "rgba(248, 233, 216, 0.6)" : "rgba(248, 233, 216, 0.25)"
-      : isHovering ? "rgba(137, 25, 16, .6)" : "rgba(137, 25, 16, 0.25)";
+      ? `rgba(248, 233, 216, ${opacity})`
+      : `rgba(137, 25, 16, ${opacity})`;
   }, []);
 
   useEffect(() => {
@@ -69,14 +76,28 @@ const CursorFollower = () => {
       updateCursorStyle();
     };
 
+    const handleMouseDown = () => {
+      isPressedRef.current = true;
+      updateCursorStyle();
+    };
+
+    const handleMouseUp = () => {
+      isPressedRef.current = false;
+      updateCursorStyle();
+    };
+
     window.addEventListener("mousemove", moveCursor, { passive: true });
     window.addEventListener("mouseover", handleMouseOver, { passive: true });
     window.addEventListener("mouseout", handleMouseOut, { passive: true });
+    window.addEventListener("mousedown", handleMouseDown, { passive: true });
+    window.addEventListener("mouseup", handleMouseUp, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [updateCursorStyle]);
 

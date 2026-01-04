@@ -3,14 +3,13 @@
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
 import { PROJECT_QUERYResult } from "@/sanity/types"; // Update path if needed
-import Link from "next/link";
 import styles from "../styles/about.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
 export function Project(props: NonNullable<PROJECT_QUERYResult>) {
   const { body, seo, title } = props;
-  const emailAddress = 'connect@omaratechnologydesign.com'
+  const emailAddress = 'mason@omaratechnologydesign.com'
 
 
   return (
@@ -38,14 +37,13 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}>
                 Interested in working together?<br />
-                EMAIL:{' '}
-                <Link
+                Feel free to reach out to
+                <a
                   className={styles.emailLink}
                   href={`mailto:${emailAddress}`}
-                  target="_blank"
                 >
-                  connect@omaratechnologydesign.com
-                </Link>
+                  mason@omaratechnologydesign.com
+                </a>
               </motion.div>
             </div>
           ) : null}

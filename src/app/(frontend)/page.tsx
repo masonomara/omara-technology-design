@@ -58,7 +58,7 @@ export default function Home() {
   const [subscribeToCompany, setSubscribeToCompany] = useState(true);
   const [subscribeToBlog, setSubscribeToBlog] = useState(true);
   const [hasShownSubscribe, setHasShownSubscribe] = useState(false);
-
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   const handleSubscribe = async () => {
     if (!email || !isValidEmail(email)) {
@@ -144,17 +144,22 @@ export default function Home() {
 
     setWarning("");
 
-    // Insert score WITHOUT subscription data initially
-    const { error } = await supabase.from("scores").insert([{
-      nickname,
-      score,
-      user_id: userId
-    }]);
+    try {
+      const { error } = await supabase.from("scores").insert([{
+        nickname,
+        score,
+        user_id: userId
+      }]);
 
-    if (error) {
-      alert("Error submitting score: " + error.message);
-    } else {
-      setSubmitted(true);
+      if (error) {
+        console.error("Supabase error:", error);
+        alert("Error submitting score: " + error.message);
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error("Network error:", err);
+      alert("Failed to connect to the server. Please check your connection and try again.");
     }
   }
 
@@ -166,7 +171,7 @@ export default function Home() {
     const gameFrame = document.getElementById("gameFrameWrapper");
     if (!gameFrame) return;
 
-    const handleClick = (event: MouseEvent) => {
+    const handleMouseDown = (event: MouseEvent) => {
       if (!gameAction) return; // Prevents clicks before game starts
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
@@ -179,8 +184,8 @@ export default function Home() {
       }, 250);
     };
 
-    gameFrame.addEventListener("click", handleClick);
-    return () => gameFrame.removeEventListener("click", handleClick);
+    gameFrame.addEventListener("mousedown", handleMouseDown);
+    return () => gameFrame.removeEventListener("mousedown", handleMouseDown);
   }, [gameAction]);
 
 
@@ -346,7 +351,7 @@ export default function Home() {
         name="O‘Mara Technology & Design"
         url="https://omaratechnologydesign.com"
         logo="https://omaratechnologydesign.com/monogramText.svg"
-        email="connect@omaratechnologydesign.com"
+        email="mason@omaratechnologydesign.com"
         founder={{
           "@type": "Person",
           name: "Mason O‘Mara",
@@ -556,7 +561,8 @@ export default function Home() {
                 <div className={styles.startTopWrapper}>
                   <Image priority src="/wordmark.svg" height={167} width={463} alt="Bang" className={styles.startLogo} />
                   <p className={styles.startDescription}>
-                    Fractional business & technology strategy, design, and development
+                    Strategy, design, and development
+for apps, websites, and software.
                   </p>
                 </div>
                 {/* <div className={styles.startDivider} /> */}
@@ -571,7 +577,7 @@ export default function Home() {
               </motion.div>)
             }
 
-            <div className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""}`}>
+            <div className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""} ${!videoLoaded ? styles.videoLoading : ""}`}>
               <div className={styles.videoScreenOverlay} />
               <div className={styles.videoMultiplyOverlay} />
               <video
@@ -582,7 +588,8 @@ export default function Home() {
                 muted
                 playsInline
                 loop
-                preload="metadata"
+                preload="auto"
+                onCanPlayThrough={() => setVideoLoaded(true)}
                 className={styles.videoSource}
               >
                 <source src="/mason.webm" type="video/webm" />
@@ -644,7 +651,7 @@ export default function Home() {
                           className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
                         >
                           <div className={styles.leaderboardRank}>{index + 1}</div>
-                          <div className={styles.leaderboardName}>{entry.nickname}</div>
+                          <div className={styles.leaderboardName} style={isUser && !entry.nickname ? { opacity: 0.5 } : undefined}>{entry.nickname ? entry.nickname.toUpperCase() : (isUser ? "NICKNAME" : "")}</div>
                           <div className={styles.leaderboardScore}>{entry.score}</div>
                         </li>
                       );
@@ -656,11 +663,11 @@ export default function Home() {
                     <>
                       <input
                         type="text"
-                        placeholder="NICKNAME"
+                        placeholder="Your nickname"
                         className={styles.input}
                         value={nickname}
                         onChange={(e) => {
-                          setNickname(e.target.value.toUpperCase());
+                          setNickname(e.target.value);
                           if (warning) setWarning("");
                         }} />
 
