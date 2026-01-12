@@ -27,7 +27,7 @@ const servicesData = [
   {
     title: "Product design services",
     description:
-      "Available for ad-hoc work. Inlcudes software development services.",
+      "Available for ad-hoc work. Includes software development services.",
     items: [
       "Wireframing",
       "Interface Design",
@@ -76,7 +76,7 @@ const servicesData = [
   {
     title: "Supplementary services",
     description:
-      "Services to trusted partners based available in strategy engagments.",
+      "Services to trusted partners available in strategy engagements.",
     items: [
       "Content Creation",
       "Graphic Design",

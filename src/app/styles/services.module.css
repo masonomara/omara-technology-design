@@ -109,9 +109,6 @@
   border: 2px solid var(--color-primary);
 }
 
-.servicesList {
-  margin-top: -4px;
-}
 .servicesCategoryHeader {
   padding: 24px;
   margin: 0px;
