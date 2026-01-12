@@ -12,7 +12,6 @@
   text-transform: uppercase;
   letter-spacing: -0.015em;
   text-align: center;
-  max-width: 529px;
 }
 
 .subtitle {
@@ -22,8 +21,37 @@
   max-width: 635px;
   width: 60vw;
   line-height: 130%;
-    text-align: justify;
+  text-align: center;
+  color: var(--color-primary);
+}
 
+.instructions {
+  margin: -8px 0 0;
+  font-family: var(--font-overpass);
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: 500;
+  width: fit-content;
+  line-height: 130%;
+  text-align: left;
+  background: none;
+  border: none;
+  outline: none;
+  stroke: none;
+  padding: 0px;
+}
+
+.instructions {
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.12em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.instructions:hover {
+  text-underline-offset: 0.18em !important;
+  transition: var(--transition-smooth-100) all;
 }
 
 /* Link Styles */
@@ -178,9 +206,10 @@
   align-items: center;
   gap: 0px;
   margin-bottom: 4px;
-height: 32px;
-display: flex;
-flex-direction: row; gap: 10px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .checkboxItem label {
@@ -191,7 +220,8 @@ flex-direction: row; gap: 10px;
   letter-spacing: normal;
   margin-bottom: 0;
   padding-left: 0px;
- margin-bottom: -4px; padding-top: 1px;
+  margin-bottom: -4px;
+  padding-top: 1px;
 }
 
 .checkboxItem input[type="checkbox"] {
@@ -206,7 +236,6 @@ flex-direction: row; gap: 10px;
   position: relative;
   cursor: pointer;
   margin: 0;
-
 }
 
 .checkboxItem input[type="checkbox"]:checked::after {
@@ -276,6 +305,161 @@ flex-direction: row; gap: 10px;
   transition: var(--transition-smooth-100) all;
 }
 
+/* Link Styles */
+.emailLink {
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.12em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.emailLink:hover {
+  text-underline-offset: 0.18em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+/* Secondary Button */
+.secondaryButton {
+  font-family: var(--font-radio);
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  background-color: transparent;
+  border: 1.6px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition-smooth-100) all;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(137, 25, 16, 0.08);
+  transition: var(--transition-smooth-100) all;
+}
+
+.removeFileButton {
+  font-family: var(--font-overpass);
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 8px;
+  padding: 0;
+}
+
+/* Status Messages */
+.successMessage {
+  grid-column: span 2;
+  font-family: var(--font-overpass);
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d7a3d;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.errorMessage {
+  font-family: var(--font-overpass);
+  font-size: 14px;
+  color: #c23b22;
+  margin-top: 4px;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--color-background);
+  border: 2px solid var(--color-primary);
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.modal h3 {
+  margin: 0;
+  font-family: var(--font-radio);
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+.modal p {
+  margin: 0;
+  font-family: var(--font-overpass);
+  font-size: 15px;
+  color: var(--color-primary);
+}
+
+.modal input[type="file"] {
+  font-family: var(--font-overpass);
+  font-size: 14px;
+  color: var(--color-primary);
+}
+
+/* Drop Zone Styles */
+.dropZone {
+  border: 2px dashed var(--color-primary);
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth-100) all;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropZone:hover {
+  background-color: rgba(137, 25, 16, 0.05);
+}
+
+.dropZoneDragging {
+  background-color: rgba(137, 25, 16, 0.1);
+  border-style: solid;
+}
+
+.dropZone p {
+  margin: 0;
+  font-family: var(--font-overpass);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.dropZoneHint {
+  margin: 0;
+  font-family: var(--font-overpass);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
 /* Utility Classes */
 .label {
   display: none !important;
@@ -318,8 +502,8 @@ flex-direction: row; gap: 10px;
 
   .contactFormWrapper,
   .subtitle {
-        width: calc(100% - 16px);
-        padding: 0 8px;
+    width: calc(100% - 16px);
+    padding: 0 8px;
     font-size: 15px;
     line-height: 130%;
   }
@@ -332,7 +516,7 @@ flex-direction: row; gap: 10px;
   }
 
   .primaryButton:hover {
-  text-decoration-thickness: 2px !important;
+    text-decoration-thickness: 2px !important;
     text-underline-offset: 0.2em !important;
   }
 }

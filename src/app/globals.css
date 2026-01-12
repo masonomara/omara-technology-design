@@ -189,24 +189,24 @@
   text-transform: uppercase;
   letter-spacing: -0.015em;
   line-height: 54px;
-  text-decoration: underline !important;
+  text-decoration: none !important;
   text-decoration-color: transparent !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: .15em !important;
+  text-decoration-thickness: 2.5px !important;
+  text-underline-offset: 0.15em !important;
   transition: 100ms all cubic-bezier(0.33, 0, 0.66, 1);
 }
 .header__menuOption:hover span {
   text-decoration-color: var(--color-primary) !important;
   text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: .2em !important;
+  text-decoration-thickness: 2.5px !important;
+  text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
 }
 .header__menuOptionActive span {
   text-decoration-color: var(--color-primary) !important;
   text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: .15em !important;
+  text-decoration-thickness: 2.5px !important;
+  text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
 }
 #menu {
@@ -439,7 +439,7 @@
   -webkit-text-decoration-color: transparent !important;
   text-decoration-color: transparent !important;
   text-decoration-thickness: 2px !important;
-  text-underline-offset: .15em !important;
+  text-underline-offset: 0.15em !important;
   transition: 100ms all cubic-bezier(0.33, 0, 0.66, 1);
   font-size: 54px;
   line-height: 54px;
@@ -508,7 +508,7 @@
   font-size: clamp(48px, 6.7vw, 74px);
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
-  margin-top: 0.5em;
+  margin-top: 0.8em;
   margin-bottom: 0px;
   font-weight: 400;
   overflow-wrap: break-word;
@@ -522,7 +522,6 @@
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
   margin-top: calc(((100% * (12 / 208)) * 1.6));
-  /* margin-bottom: calc(((100% * (12 / 208)) * 0.8)); */
 }
 
 /* Company Title Images */
