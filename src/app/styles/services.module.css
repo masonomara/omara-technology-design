@@ -58,7 +58,7 @@
   max-width: 635px;
   width: 60vw;
   line-height: 130%;
-  text-align: justify;
+  text-align: left;
 }
 .serviceCardTitle {
   font-variation-settings:
@@ -82,7 +82,6 @@
   color: var(--color-primary);
 }
 .servicesCategoryTitle {
-  grid-column: span 2;
   margin: 0px !important;
   font-family: var(--font-overpass);
   background-color: transparent;
@@ -98,12 +97,90 @@
   padding-top: 0.8em;
   padding-bottom: 0.8em;
 }
+.servicesDataWrapper {
+  margin-top: 0.8em;
+  margin-bottom: 0em;
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 635px;
+  width: 60vw;
+  line-height: 130%;
+  text-align: left;
+  border: 2px solid var(--color-primary);
+}
+
+.servicesList {
+  margin-top: -4px;
+}
+.servicesCategoryHeader {
+  padding: 24px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.servicesList {
+  padding: 24px;
+  padding-top: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: -10px;
+}
+.servicesCategoryHeader * {
+  padding: 0px;
+  margin: 0px !important;
+}
 @media screen and (max-width: 699px) {
   .subtitle {
-        width: calc(100% - 16px);
-        padding: 0 8px;
+    width: calc(100% - 16px);
+    padding: 0 8px;
     font-size: 15px;
     line-height: 130%;
+  }
+  .servicesCategoryHeader * {
+    font-size: 15px;
+    line-height: 130%;
+  }
+  .servicesList {
+    font-size: 15px;
+    line-height: 130%;
+  }
+  .servicesCategoryTitle {
+    font-size: 16px;
+    margin-left: 0px !important;
+  }
+  .servicesDataWrapper {
+    margin-top: 0.8em;
+    margin-bottom: 0em;
+    font-size: 16px;
+    font-weight: 500;
+    max-width: 635px;
+    width: calc(100% - 16px);
+    line-height: 130%;
+    text-align: left;
+    border: 2px solid var(--color-primary);
+  }
+
+  .servicesList {
+    margin-top: -4px;
+  }
+  .servicesCategoryHeader {
+    padding: 20px 16px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .servicesList {
+    padding: 16px;
+    padding-top: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: -6px;
   }
   .servicesCategorySection {
     width: 100%;
@@ -119,10 +196,7 @@
     /* border-top: 1.6px solid var(--color-primary); */
     margin-left: 8px;
   }
-  .servicesCategoryTitle {
-    width: calc(100% - 16px);
-    margin-left: 8px !important;
-  }
+
   .servicesCard {
     /* border: none !important;
     outline: none !important;

@@ -3,7 +3,7 @@ import { Project } from "@/app/components/Project";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PROJECT_QUERY } from "@/sanity/lib/queries";
-import styles from "../../../styles/project.module.css"
+import styles from "../../../styles/project.module.css";
 import Image from "next/image";
 import type { Metadata } from "next";
 
@@ -17,7 +17,6 @@ const getProject = async (params: RouteProps["params"]) =>
     params: await params,
   });
 
-
 export async function generateMetadata({
   params,
 }: RouteProps): Promise<Metadata> {
@@ -26,14 +25,14 @@ export async function generateMetadata({
   const baseMetadata: Metadata = {
     title: `${project?.seo?.title || project?.title || "Project"} | O‘Mara Technology & Design}`,
     description:
-      "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
+      "Product design and technical development strategy and services",
     alternates: {
       canonical: `https://omaratechnologydesign.com/portfolio/${project?.slug || ""}`,
     },
     openGraph: {
       title: `${project?.seo?.title || project?.title || "Project"} | O‘Mara Technology & Design}`,
       description:
-        "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
+        "Product design and technical development strategy and services",
       url: `https://omaratechnologydesign.com/portfolio/${project?.slug || ""}`,
       siteName: "O‘Mara Technology & Design",
       images: [
@@ -53,15 +52,15 @@ export async function generateMetadata({
 
   const ogImage = project?.seo?.image
     ? {
-      url: urlFor(project?.seo?.image).width(1200).height(630).url(),
-      width: 1200,
-      height: 630,
-    }
+        url: urlFor(project?.seo?.image).width(1200).height(630).url(),
+        width: 1200,
+        height: 630,
+      }
     : {
-      url: `/api/og?id=${project?._id}`,
-      width: 1200,
-      height: 630,
-    };
+        url: `/api/og?id=${project?._id}`,
+        width: 1200,
+        height: 630,
+      };
 
   return {
     ...baseMetadata,
@@ -70,7 +69,8 @@ export async function generateMetadata({
     openGraph: {
       ...baseMetadata.openGraph,
       title: project?.seo?.title || baseMetadata.openGraph?.title,
-      description: project?.seo?.description || baseMetadata.openGraph?.description,
+      description:
+        project?.seo?.description || baseMetadata.openGraph?.description,
       images: [ogImage],
     },
     robots: project?.seo.noIndex ? "noindex" : undefined,

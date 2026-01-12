@@ -5,13 +5,14 @@ import About from "@/app/components/About";
 
 export const metadata: Metadata = {
   title: "About | O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
+  description: "Product design and technical development strategy and services",
   alternates: {
     canonical: "https://omaratechnologydesign.com/about",
   },
   openGraph: {
     title: "About | O’Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
+    description:
+      "Product design and technical development strategy and services",
     url: "https://omaratechnologydesign.com/about",
     siteName: "O‘Mara Technology & Design",
     images: [
@@ -26,7 +27,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
 
 export default async function Page() {
   return (

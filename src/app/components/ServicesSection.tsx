@@ -2,37 +2,94 @@
 
 "use client";
 
-import Link from "next/link";
 import styles from "../styles/services.module.css";
-import { SERVICES_QUERYResult } from "@/sanity/types";
-import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
-import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
+import { textFadeUp, textFadeUpSmall } from "../lib/motion";
 
-interface ServicesSectionProps {
-  services: SERVICES_QUERYResult;
-}
+const servicesData = [
+  {
+    title: "Product design strategy",
+    description:
+      "Available in monthly or extended engagements. Includes product design services, technical strategy, and technical development services.",
+    items: [
+      "Discovery & Scoping",
+      "User Research & Interviews",
+      "Competitor Audits",
+      "Market Positioning",
+      "Information Architecture",
+      "Product Roadmaps",
+      "Feature Prioritization",
+      "Algorithm Design",
+      "Gamification Strategy",
+      "Onboarding Planning",
+    ],
+  },
+  {
+    title: "Product design services",
+    description:
+      "Available for ad-hoc work. Inlcudes software development services.",
+    items: [
+      "Wireframing",
+      "Interface Design",
+      "Accessible Design",
+      "Responsive Design",
+      "Design Systems",
+      "Prototyping",
+      "Technical Writing",
+      "Content Strategy",
+      "CMS Architecture",
+    ],
+  },
+  {
+    title: "Technical development strategy",
+    description:
+      "Available in monthly or extended engagements. Includes technical development services.",
+    items: [
+      "System Architecture",
+      "Database Design",
+      "API Design",
+      "Authentication & Row Level Security",
+      "Real-time Infrastructure",
+      "AI & RAG Architecture",
+      "MCP Server Design",
+      "Payment System Planning",
+      "Analytics Strategy",
+      "Deployment & DevOps Planning",
+    ],
+  },
+  {
+    title: "Technical development services",
+    description: "Available for ad-hoc work.",
+    items: [
+      "React & Next.js Development",
+      "React Native Mobile Apps",
+      "PostgreSQL & Supabase",
+      "Cloudflare Workers & Durable Objects",
+      "Stripe Integration",
+      "Real-time Chat & Notifications",
+      "Headless CMS Implementation",
+      "PostHog Analytics Setup",
+      "Vercel Deployment",
+      "MCP Server Development",
+    ],
+  },
+  {
+    title: "Supplementary services",
+    description:
+      "Services to trusted partners based available in strategy engagments.",
+    items: [
+      "Content Creation",
+      "Graphic Design",
+      "Shopify Storefronts",
+      "Marketing Sites",
+      "Workflow Automations",
+      "Social Media Setup",
+      "SEO Optimization",
+    ],
+  },
+];
 
-export default function ServicesSection({ services }: ServicesSectionProps) {
-  const servicesByCategory = services.reduce(
-    (acc, service) => {
-      const category = service.category?.title || "Uncategorized";
-      if (!acc[category]) {
-        acc[category] = {
-          order: Number(service.category?.order) || 0,
-          services: [],
-        };
-      }
-      acc[category].services.push(service);
-      return acc;
-    },
-    {} as Record<string, { order: number; services: typeof services }>
-  );
-
-  const sortedCategories = Object.entries(servicesByCategory).sort(
-    ([, a], [, b]) => a.order - b.order
-  );
-
+export default function ServicesSection() {
   return (
     <>
       <motion.h1
@@ -55,45 +112,23 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
           services. Pricing determined by hourly rate.
         </p>
       </motion.div>
-      {sortedCategories.map(([categoryTitle, { services }]) => (
-        <section key={categoryTitle} className={styles.servicesCategorySection}>
-          <motion.h2
-            variants={textFadeUpSmall("up", "spring", 0.2, 0.8)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0 }}
-            className={styles.servicesCategoryTitle}
-          >
-            {categoryTitle}
-          </motion.h2>
-          <div className={styles.servicesWrapper}>
-            {services.map((service) => (
-              <motion.div
-                key={service._id}
-                variants={fadeInButton("up", "spring", 0.4, 1.2)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0 }}
-              >
-                <Link
-                  className={styles.servicesCard}
-                  href={`/services/${service.slug?.current}`}
-                >
-                  <div className={styles.serviceCardInfo}>
-                    <div className={styles.serviceCardTitle}>
-                      {service.title}
-                    </div>
-                    <div className={styles.serviceCardDescription}>
-                      {service.overview && (
-                        <PortableText value={service.overview} />
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+      {servicesData.map((category, index) => (
+        <motion.div
+          key={category.title}
+          variants={textFadeUpSmall("up", "spring", 0.2 + index * 0.1, 0.8)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }}
+          className={styles.servicesDataWrapper}
+        >
+          <div className={styles.servicesCategoryHeader}>
+            <h3 className={styles.servicesCategoryTitle}>{category.title} </h3>
+            <p className={styles.servicesCategoryDescription}>
+              {category.description}
+            </p>
           </div>
-        </section>
+          <p className={styles.servicesList}>{category.items.join(", ")}</p>
+        </motion.div>
       ))}
     </>
   );

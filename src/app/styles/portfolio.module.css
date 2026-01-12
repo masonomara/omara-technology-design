@@ -29,7 +29,7 @@
   max-width: 635px;
   width: 60vw;
   line-height: 130%;
-    text-align: justify;
+    text-align: left;
 
 }
 @media screen and (max-width: 699px) {

@@ -1,20 +1,18 @@
 // src/app/(frontend)/services/page.tsx
 
-import { sanityFetch } from "@/sanity/lib/live";
-import { SERVICES_QUERY } from "@/sanity/lib/queries";
 import FooterContact from "@/app/components/FooterContact";
 import ServicesSection from "@/app/components/ServicesSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services | O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
+  description: "Product design and technical development strategy and services",
   alternates: {
     canonical: "https://omaratechnologydesign.com/services",
   },
   openGraph: {
-    title: "Services | O’Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O’Mara Technology & Design.",
+    title: "Services | O‘Mara Technology & Design",
+    description: "Product design and technical development strategy and services",
     url: "https://omaratechnologydesign.com/services",
     siteName: "O‘Mara Technology & Design",
     images: [
@@ -30,13 +28,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page() {
-  const { data: services } = await sanityFetch({ query: SERVICES_QUERY });
-
+export default function Page() {
   return (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <ServicesSection services={services} />
+        <ServicesSection />
         <FooterContact />
       </div>
     </main>
