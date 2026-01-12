@@ -19,7 +19,6 @@
   line-height: 130%;
 }
 
-
 .emailInfo {
   margin: 1.6em 0;
   font-size: 19px;
@@ -56,7 +55,7 @@
   max-width: 635px;
   width: 60vw;
   margin-top: 30.4px;
-z-index: 0;
+  z-index: 0;
 }
 .cardImage {
   position: relative;
@@ -90,8 +89,8 @@ z-index: 0;
 }
 @media screen and (max-width: 699px) {
   .subtitle {
-        width: calc(100% - 16px);
-        padding: 0 8px;
+    width: calc(100% - 16px);
+    padding: 0 8px;
     font-size: 15px;
     line-height: 130%;
   }
@@ -106,6 +105,22 @@ z-index: 0;
     margin-top: 25.6px;
     z-index: 0;
   }
+}
+
+.subtitle a {
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.12em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.subtitle a:hover {
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.18em !important;
+  transition: var(--transition-smooth-100) all;
 }
 
 @media screen and (max-width: 799px) {

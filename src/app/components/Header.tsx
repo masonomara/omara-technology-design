@@ -38,10 +38,10 @@ export default function Header() {
               <div className={"header__textTitle"}>Digital Product Agency</div>
 
               <div className={"header__textBody"}>
-                Product Design and Technical
+                Product design and technical
               </div>
               <div className={"header__textBody"}>
-                Development Strategy and Services
+                development strategy and services
               </div>
             </div>
             <div id={"textWhere"} className={"header__textWrapper"}>

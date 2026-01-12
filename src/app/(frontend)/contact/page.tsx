@@ -13,7 +13,7 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from "../../lib/motion";
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Please enter your name" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
-  inquiry: z.string().min(10, { message: "Please tell us about your inquiry" }),
+  inquiry: z.string().optional(),
   additional: z.string().optional(),
 });
 
@@ -135,14 +135,14 @@ ${values.additional || "None provided."}`;
       }
 
       const response = await sendMail({
-        email: values.email,
+        contact: values.email,
         subject: "New Contact Form Inquiry",
         text: mailText,
         attachment,
       });
 
       if (response?.messageId) {
-        alert("Email delivered. We'll be in touch soon.");
+        alert("Email delivered. Thank you for contacting us.");
         reset();
         setAttachedFile(null);
       } else {
@@ -257,7 +257,15 @@ ${values.additional || "None provided."}`;
               />
             </div>
 
-            <div className={styles.formField} style={{ gridColumn: "span 2", display: "flex", flexDirection: "row",  gap: "12px" }}>
+            <div
+              className={styles.formField}
+              style={{
+                gridColumn: "span 2",
+                display: "flex",
+                flexDirection: "row",
+                gap: "12px",
+              }}
+            >
               <button
                 type="button"
                 className={styles.instructions}

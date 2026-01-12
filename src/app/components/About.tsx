@@ -1,77 +1,60 @@
-"use client"
+"use client";
 
-import React from 'react'
+import React from "react";
 import { motion } from "framer-motion";
-import { fadeIn, fadeInButton, textFadeUp, textFadeUpSmall } from '../lib/motion';
-import Image from 'next/image';
+import { fadeIn, textFadeUp, textFadeUpSmall } from "../lib/motion";
+import Image from "next/image";
 import styles from "../styles/about.module.css";
-
+import Link from "next/link";
 
 export default function About() {
-  const emailAddress = 'mason@omaratechnologydesign.com';
-
   return (
     <>
-      <motion.h1 className="title" variants={textFadeUp("up", "spring", 0, 0.6)}
+      <motion.h1
+        className="title"
+        variants={textFadeUp("up", "spring", 0, 0.6)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }} >About</motion.h1>
-      <motion.div className={styles.cardImageContainer} variants={fadeIn("up", "spring", 0.1, 0.8)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0 }}>
-        <div className={styles.cardImageScreen} />
-        <div className={styles.cardImageMultiply} />
+        viewport={{ once: true, amount: 0 }}
+      >
+        About
+      </motion.h1>
 
-        <div className={styles.cardImage}>
-          <Image
-            src="/siteOffice.png"
-            alt="Photo of office interior"
-            layout="fill"
-            objectFit="cover"
-            className={styles.cardImageTwo}
-          />
-        </div>
-
-      </motion.div>
-
-      <motion.p variants={textFadeUpSmall("up", "spring", .1, .8)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0 }} className={styles.header}>
-        Strategy and Execution
-      </motion.p>
       <motion.div
-        variants={textFadeUpSmall("up", "spring", .2, .8)}
+        variants={textFadeUpSmall("up", "spring", 0.1, 0.8)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}
       >
         <p className={styles.subtitle}>
-          O’Mara Technology & Design provides strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools that connect them all. We lead projects from ideation to ongoing iterations, often in fractional roles or long-term partnerships. We build intuitive, user-centered products that drive business towards their goals.
+          Product design and technical development strategy and services for
+          hire. Founded by{" "}
+          <a
+            href="https://masonomara.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mason O&apos;Mara
+          </a>{" "}
+          for formal engagements and opportunities to work with trusted
+          partners. Based out of Asbury Park, NJ.
         </p>
-        <p className={styles.subtitle} >
-          We prioritize open-minded problem-solving and tailor our process to each client’s goals, resources, and timeline. The end result is always the same: thoughtful, technically sound products that feel great to use and deliver real value for businesses and users.
+        <p className={styles.subtitle}>
+          Full list of services available at{" "}
+          <Link href="/services" rel="noopener noreferrer">
+            omaratechnologydesign.com/services
+          </Link>
+          .
         </p>
       </motion.div>
-      <motion.div className={styles.emailInfo}
-        variants={fadeInButton("up", "spring", .4, 1.2)}
+
+      <motion.div
+        className={styles.cardImageContainer}
+        variants={fadeIn("up", "spring", 0.2, 0.8)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}>
-        Interested in working together?<br />
-        Feel free to reach out to {' '}
-        <a
-          className={styles.emailLink}
-          href={`mailto:${emailAddress}`}
-        >
-          mason@omaratechnologydesign.com
-        </a>
-      </motion.div>
-      <motion.div className={styles.cardImageContainer} variants={fadeIn("up", "spring", 0.1, 0.8)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0 }}>
+        viewport={{ once: true, amount: 0 }}
+      >
         <div className={styles.cardImageScreen} />
         <div className={styles.cardImageMultiply} />
 
@@ -84,41 +67,7 @@ export default function About() {
             className={styles.cardImageTwo}
           />
         </div>
-
-      </motion.div>
-      <motion.p variants={textFadeUpSmall("up", "spring", .1, .8)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0 }} className={styles.header}>
-        Fractional and Modular Roles
-      </motion.p>
-      <motion.div
-        variants={textFadeUpSmall("up", "spring", .2, .8)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0 }}
-      >
-
-        <p className={styles.subtitle}>
-          We independently manage projects or work embedded alongside product teams and company leadership. Our team, led by Mason O’Mara, brings experience across digital strategy, design, and development, supported by specialists for adjacent services and expertise. Our goal is to surround ourselves with good people, good ideas, and build things that last.
-        </p>
-      </motion.div>
-      <motion.div className={styles.emailInfo}
-        variants={fadeInButton("up", "spring", .4, 1.2)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0 }}>
-        Visit Mason O‘Mara‘s Personal Site<br />
-        URL:{' '}
-        <a
-          className={styles.emailLink}
-          href="https://masonomara.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          masonomara.com
-        </a>
       </motion.div>
     </>
-  )
+  );
 }
