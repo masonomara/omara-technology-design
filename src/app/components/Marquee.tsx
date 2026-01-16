@@ -58,8 +58,8 @@ export default function Marquee() {
           Software
         </p>
         <p>
-          <span className="marqueeTitle">DIGITAL PRODUCT STUDIO</span>Strategy,
-          design, and development for apps, websites, and software.
+          <span className="marqueeTitle">DIGITAL PRODUCT AGENCY</span>
+          Product Design and Technical Development Strategy and Services
         </p>
         <p>
           <span className="marqueeTitle">WHERE</span>1301 Corlies Ave, Suite 2D,
