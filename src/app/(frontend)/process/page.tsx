@@ -1,21 +1,22 @@
 import FooterContact from "@/app/components/FooterContact";
 import ServicesSection from "@/app/components/ServicesSection";
-import { getServiceItems } from "@/lib/content";
+import { getServicesData } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Services | O'Mara Technology",
-  description: "Product design and technical development strategy and services",
+  title: "Process | O'Mara Technology",
+  description:
+    "One-time project and partnership engagements for product design and development.",
   alternates: {
-    canonical: "https://omaratechnology.com/services",
+    canonical: "https://omaratechnology.com/process",
   },
   openGraph: {
-    title: "Services | O'Mara Technology",
+    title: "Process | O'Mara Technology",
     description:
-      "Product design and technical development strategy and services",
-    url: "https://omaratechnology.com/services",
+      "One-time project and partnership engagements for product design and development.",
+    url: "https://omaratechnology.com/process",
     siteName: "O'Mara Technology",
     images: [
       {
@@ -31,11 +32,11 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const services = getServiceItems();
+  const data = getServicesData();
   return (
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
-        <ServicesSection services={services} />
+        <ServicesSection data={data} />
         <FooterContact />
       </div>
     </main>

@@ -1,22 +1,22 @@
 import FooterContact from "@/app/components/FooterContact";
 import ProjectsSection from "@/app/components/ProjectsSection";
-import { getPortfolioItems, getThumbnail } from "@/lib/content";
+import { getWorkItems, getThumbnail } from "@/lib/content";
 import { toSlug } from "@/lib/slug";
 import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Portfolio | O'Mara Technology",
+  title: "Work | O'Mara Technology",
   description: "Product design and technical development strategy and services",
   alternates: {
-    canonical: "https://omaratechnology.com/portfolio",
+    canonical: "https://omaratechnology.com/work",
   },
   openGraph: {
-    title: "Portfolio | O'Mara Technology",
+    title: "Work | O'Mara Technology",
     description:
       "Product design and technical development strategy and services",
-    url: "https://omaratechnology.com/portfolio",
+    url: "https://omaratechnology.com/work",
     siteName: "O'Mara Technology",
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const items = getPortfolioItems();
+  const items = getWorkItems();
   const projects = items.map((node) => {
     const slug = toSlug(node.name);
     return { node, slug, thumbnail: getThumbnail(slug) };

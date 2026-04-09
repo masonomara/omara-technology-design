@@ -27,10 +27,10 @@ export default function Header() {
             />
             <Image
               className={"header__logo--mobile"}
-              src="/monogramText.svg"
-              width={140}
-              height={45}
-              alt="Logo"
+              src="/top-logo.svg"
+              width={326}
+              height={51.03}
+              alt="O'Mara Technology"
             />
           </Link>
           <div className={"header__textContainer"}>
@@ -75,18 +75,18 @@ export default function Header() {
               <span>{menuOpen ? "Close" : "Menu"}</span>
             </div>
             <Link
-              id={"portfolio"}
+              id={"work"}
               className={"header__menuOption"}
-              href="/portfolio"
+              href="/work"
             >
-              <span>Portfolio</span>
+              <span>Work</span>
             </Link>
             <Link
-              id={"services"}
+              id={"process"}
               className={"header__menuOption"}
-              href="/services"
+              href="/process"
             >
-              <span>Services</span>
+              <span>Process</span>
             </Link>
             <Link id={"about"} className={"header__menuOption"} href="/about">
               <span>About</span>

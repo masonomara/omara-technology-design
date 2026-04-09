@@ -2,21 +2,22 @@ import fs from "fs";
 import path from "path";
 import { marked } from "marked";
 import navRaw from "../../content/nav.json";
+import servicesRaw from "../../content/services.json";
 import type { ContentNode } from "./types";
 import { toSlug } from "./slug";
 
 const nav = navRaw as ContentNode[];
 
-export function getPortfolioItems(): ContentNode[] {
-  return nav.find((n) => n.name === "portfolio")?.children ?? [];
+export function getWorkItems(): ContentNode[] {
+  return nav.find((n) => n.name === "work")?.children ?? [];
 }
 
-export function getServiceItems(): ContentNode[] {
-  return nav.find((n) => n.name === "services")?.children ?? [];
+export function getServicesData(): typeof servicesRaw {
+  return servicesRaw;
 }
 
-export function getPortfolioNode(slug: string): ContentNode | null {
-  return getPortfolioItems().find((item) => toSlug(item.name) === slug) ?? null;
+export function getWorkNode(slug: string): ContentNode | null {
+  return getWorkItems().find((item) => toSlug(item.name) === slug) ?? null;
 }
 
 export function loadMarkdown(slug: string): string {
@@ -46,7 +47,7 @@ function naturalCompare(a: string, b: string): number {
 }
 
 export function getImages(slug: string): string[] {
-  const node = getPortfolioNode(slug);
+  const node = getWorkNode(slug);
   if (node?.images && node.images.length > 0) {
     return node.images.map((f) =>
       f.startsWith("/") ? f : `/content/projects/${slug}/images/${f}`,

@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getPortfolioItems } from "@/lib/content";
+import { getWorkItems } from "@/lib/content";
 import { toSlug } from "@/lib/slug";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,8 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/about",
     "/contact",
-    "/portfolio",
-    "/services",
+    "/work",
+    "/process",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
@@ -18,8 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   }));
 
-  const projectRoutes: MetadataRoute.Sitemap = getPortfolioItems().map((node) => ({
-    url: `${baseUrl}/portfolio/${toSlug(node.name)}`,
+  const projectRoutes: MetadataRoute.Sitemap = getWorkItems().map((node) => ({
+    url: `${baseUrl}/work/${toSlug(node.name)}`,
     lastModified: new Date().toISOString(),
     changeFrequency: "monthly",
     priority: 0.7,

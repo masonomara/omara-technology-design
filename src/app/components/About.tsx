@@ -40,9 +40,9 @@ export default function About() {
           partners. Based out of Asbury Park, NJ.
         </p>
         <p className={styles.subtitle}>
-          Full list of services available at{" "}
-          <Link href="/services" rel="noopener noreferrer">
-            omaratechnology.com/services
+          Our process and services available at{" "}
+          <Link href="/process" rel="noopener noreferrer">
+            omaratechnology.com/process
           </Link>
           .
         </p>

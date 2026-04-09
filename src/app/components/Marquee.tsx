@@ -11,16 +11,16 @@ import { fadeInButton } from "../lib/motion";
 const menuItems = [
   { id: "footerHome", href: "/", title: "Home", subtitle: "Back to the start" },
   {
-    id: "footerPortfolio",
-    href: "/portfolio",
-    title: "Portfolio",
+    id: "footerWork",
+    href: "/work",
+    title: "Work",
     subtitle: "Our recent work",
   },
   {
-    id: "footerServices",
-    href: "/services",
-    title: "Services",
-    subtitle: "What we offer",
+    id: "footerProcess",
+    href: "/process",
+    title: "Process",
+    subtitle: "How we work",
   },
   { id: "footerAbout", href: "/about", title: "About", subtitle: "Who we are" },
   {

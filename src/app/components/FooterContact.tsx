@@ -66,16 +66,16 @@ export default function FooterContact() {
           className={styles.subButton}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/portfolio`} target="_top" className={styles.subButton}>
-            PORTFOLIO
+          <Link href={`/work`} target="_top" className={styles.subButton}>
+            WORK
           </Link>
         </motion.div>
         <motion.div
           className={styles.subButton}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/services`} target="_top" className={styles.subButton}>
-            SERVICES
+          <Link href={`/process`} target="_top" className={styles.subButton}>
+            PROCESS
           </Link>
         </motion.div>
         <motion.div

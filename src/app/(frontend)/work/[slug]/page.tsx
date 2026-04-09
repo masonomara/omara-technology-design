@@ -1,8 +1,8 @@
 import FooterContact from "@/app/components/FooterContact";
 import { Project } from "@/app/components/Project";
 import {
-  getPortfolioItems,
-  getPortfolioNode,
+  getWorkItems,
+  getWorkNode,
   loadMarkdown,
   getImages,
   getThumbnail,
@@ -20,17 +20,17 @@ type RouteProps = {
 };
 
 export function generateStaticParams() {
-  return getPortfolioItems().map((node) => ({ slug: toSlug(node.name) }));
+  return getWorkItems().map((node) => ({ slug: toSlug(node.name) }));
 }
 
 export async function generateMetadata({
   params,
 }: RouteProps): Promise<Metadata> {
   const { slug } = await params;
-  const node = getPortfolioNode(slug);
+  const node = getWorkNode(slug);
   const title = node
     ? `${node.name} | O'Mara Technology`
-    : "Portfolio | O'Mara Technology";
+    : "Work | O'Mara Technology";
 
   return {
     title,
@@ -38,14 +38,14 @@ export async function generateMetadata({
       node?.description ??
       "Product design and technical development strategy and services",
     alternates: {
-      canonical: `https://omaratechnology.com/portfolio/${slug}`,
+      canonical: `https://omaratechnology.com/work/${slug}`,
     },
     openGraph: {
       title,
       description:
         node?.description ??
         "Product design and technical development strategy and services",
-      url: `https://omaratechnology.com/portfolio/${slug}`,
+      url: `https://omaratechnology.com/work/${slug}`,
       siteName: "O'Mara Technology",
       images: [
         {
@@ -63,7 +63,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: RouteProps) {
   const { slug } = await params;
-  const node = getPortfolioNode(slug);
+  const node = getWorkNode(slug);
 
   if (!node) return null;
 

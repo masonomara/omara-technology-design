@@ -1,6 +1,6 @@
 [
   {
-    "name": "portfolio",
+    "name": "work",
     "children": [
       {
         "name": "Moor",
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "name": "services",
+    "name": "process",
     "children": [
       {
         "name": "Product design strategy",
