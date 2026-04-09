@@ -1,86 +1,78 @@
-.servicesWrapper {
-  flex: 1;
-  width: 100%;
-  display: grid;
-  align-items: flex-start;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  width: 87vw;
-  max-width: 890px;
-}
-.servicesCard {
-  display: flex;
-  align-items: center;
-  justify-self: flex-start;
-  border: 1px solid var(--color-primary);
-  outline: 0.6px solid var(--color-primary);
-  padding: 16px;
-  flex-direction: row;
-  text-decoration: none !important;
-  color: var(--color-primary);
-  transition: var(--transition-smooth-100) all;
-  background-color: rgba(137, 24, 16, 0);
-  width: calc(100% - 32px);
-  height: calc(100% - 32px);
-  flex: 1;
-  gap: 16px;
-  grid-column: span 1;
-}
-.serviceCardInfo {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-.arrow {
-  display: flex;
-  padding-right: 0px;
-}
-.servicesCard:hover {
-  background-color: var(--color-bg-hover);
-  transition: var(--transition-smooth-100) all;
-  outline: 1px solid var(--color-primary);
-}
-.servicesCard p {
-  display: none;
-}
-.servicesCard p:first-of-type {
-  height: 20px;
-  display: flex;
-  overflow: hidden;
-  color: var(--color-primary);
-}
-.subtitle {
+.intro {
   margin-top: 0.8em;
   margin-bottom: 0em;
   font-size: 16px;
   font-weight: 500;
   max-width: 635px;
   width: 60vw;
-  line-height: 130%;
+  line-height: 140%;
   text-align: left;
 }
-.serviceCardTitle {
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  font-family: var(--font-radio);
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  font-size: 24px;
-  color: var(--color-primary);
-}
-.serviceCardDescription {
-  margin-top: 0.4em;
+
+.introMeta {
+  margin-top: 0.6em;
   margin-bottom: 0em;
   font-size: 16px;
-  font-weight: 500;
-  width: calc(100%);
+  font-weight: 400;
+  max-width: 635px;
+  width: 60vw;
+  line-height: 140%;
   text-align: left;
-  line-height: 130%;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
+  opacity: 0.75;
 }
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-top: 2em;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-overpass);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.4;
+  transition: opacity 100ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.toggleButton:hover {
+  opacity: 0.7;
+}
+
+.toggleActive {
+  opacity: 1;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 2px;
+}
+
+.engagementContent {
+  max-width: 635px;
+  width: 60vw;
+  margin-top: 1.5em;
+}
+
+.engagementDescription {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  margin-bottom: 0.8em;
+}
+
+.engagementCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 1.5em;
+}
+
 .servicesCategoryTitle {
   margin: 0px !important;
   font-family: var(--font-overpass);
@@ -97,13 +89,12 @@
   padding-top: 0.8em;
   padding-bottom: 0.8em;
 }
+
 .servicesDataWrapper {
-  margin-top: 0.8em;
-  margin-bottom: 0em;
+  margin-top: 0em;
   font-size: 16px;
   font-weight: 500;
-  max-width: 635px;
-  width: 60vw;
+  width: 100%;
   line-height: 130%;
   text-align: left;
   border: 2px solid var(--color-primary);
@@ -116,6 +107,12 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.servicesCategoryHeader * {
+  padding: 0px;
+  margin: 0px !important;
+}
+
 .servicesList {
   padding: 24px;
   padding-top: 0px;
@@ -125,104 +122,199 @@
   gap: 12px;
   margin-top: -10px;
 }
-.servicesCategoryHeader * {
-  padding: 0px;
-  margin: 0px !important;
+
+.timeline {
+  margin-top: 2em;
+  border-top: 2px solid var(--color-primary);
+  width: 100%;
 }
+
+.timelinePhase {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.timelinePhaseLast {
+  border-bottom: none;
+}
+
+.timelinePhaseHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.timelinePhaseName {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--font-overpass);
+}
+
+.timelinePhaseDuration {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.timelineMilestones {
+  font-size: 15px;
+  margin-top: 6px;
+  margin-bottom: 0;
+  opacity: 0.8;
+  line-height: 140%;
+}
+
+.timelineOutcome {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0;
+}
+
+.engagementNote {
+  font-size: 14px;
+  opacity: 0.65;
+  margin-top: 1.5em;
+  margin-bottom: 0;
+  line-height: 140%;
+}
+
+.processSection {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 2px solid var(--color-primary);
+  max-width: 635px;
+  width: 60vw;
+}
+
+.pricingSection {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 2px solid var(--color-primary);
+  max-width: 635px;
+  width: 60vw;
+}
+
+.sectionHeading {
+  margin: 0 0 1.2em 0;
+  font-family: var(--font-overpass);
+  font-size: 20px;
+  font-weight: 800;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.processBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.pricingBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.processBody p,
+.pricingBody p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 145%;
+}
+
 @media screen and (max-width: 699px) {
-  .subtitle {
+  .intro {
     width: calc(100% - 16px);
     padding: 0 8px;
     font-size: 15px;
-    line-height: 130%;
+    line-height: 140%;
   }
+
+  .introMeta {
+    width: calc(100% - 16px);
+    padding: 0 8px;
+    font-size: 15px;
+    line-height: 140%;
+  }
+
+  .toggle {
+    gap: 20px;
+    width: calc(100% - 16px);
+    padding: 0 8px;
+  }
+
+  .toggleButton {
+    font-size: 15px;
+  }
+
+  .engagementContent {
+    width: calc(100% - 16px);
+    padding: 0 8px;
+  }
+
+  .engagementDescription {
+    font-size: 15px;
+  }
+
+  .engagementCategories {
+    gap: 12px;
+  }
+
   .servicesCategoryHeader * {
     font-size: 15px;
     line-height: 130%;
   }
-  .servicesList {
-    font-size: 15px;
-    line-height: 130%;
-  }
+
   .servicesCategoryTitle {
     font-size: 16px;
     margin-left: 0px !important;
   }
-  .servicesDataWrapper {
-    margin-top: 0.8em;
-    margin-bottom: 0em;
-    font-size: 16px;
-    font-weight: 500;
-    max-width: 635px;
-    width: calc(100% - 16px);
-    line-height: 130%;
-    text-align: left;
-    border: 2px solid var(--color-primary);
-  }
 
-  .servicesList {
-    margin-top: -4px;
-  }
   .servicesCategoryHeader {
     padding: 20px 16px;
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
   }
+
   .servicesList {
     padding: 16px;
     padding-top: 0px;
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
     margin-top: -6px;
-  }
-  .servicesCategorySection {
-    width: 100%;
-  }
-  .servicesWrapper {
-    flex: 1;
-    width: calc(100% - 16px);
-    display: grid;
-    align-items: flex-start;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    max-width: 890px;
-    /* border-top: 1.6px solid var(--color-primary); */
-    margin-left: 8px;
+    font-size: 15px;
+    line-height: 130%;
   }
 
-  .servicesCard {
-    /* border: none !important;
-    outline: none !important;
-    padding: 0px; */
-    /* width: 100%; */
-    /* gap: 11px;
-    flex-direction: row;
-    align-items: center;
-    height: fit-content; */
+  .servicesDataWrapper {
+    width: 100%;
   }
-  .servicesCardInfo {
-    height: fit-content;
+
+  .timelineMilestones {
+    font-size: 14px;
   }
-  .servicesCard:hover {
-    background: none !important;
-    background-color: none !important;
-    /* border: none !important; */
-    border: 1px solid var(--color-primary);
-    outline: 0.6px solid var(--color-primary);
+
+  .timelineOutcome {
+    font-size: 14px;
   }
-  .arrow {
-    display: flex;
-    padding-right: 0px;
+
+  .processSection {
+    width: calc(100% - 16px);
+    padding-left: 8px;
+    padding-right: 8px;
   }
-  /* .serviceCardTitle {
-    padding-top: 0.8em;
+
+  .pricingSection {
+    width: calc(100% - 16px);
+    padding-left: 8px;
+    padding-right: 8px;
   }
-  .serviceCardDescription {
-    margin-top: 0.4em;
-    padding-bottom: 0.8em;
-  } */
+
+  .processBody p,
+  .pricingBody p {
+    font-size: 15px;
+  }
 }

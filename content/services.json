@@ -1,0 +1,145 @@
+{
+  "engagements": [
+    {
+      "id": "project",
+      "label": "One-time Project",
+      "description": "For new products and new builds. We take it from idea through design, development, and launch. At the end, we hand it off — documented, trained, yours to run.\n\nThe scope is defined before we start. Payments at monthly milestones.",
+      "note": "Project engagements are for new builds — not maintenance, bug fixes, or minor updates to existing products.",
+      "categories": [
+        {
+          "name": "Design",
+          "items": [
+            "Wireframing",
+            "Interface Design",
+            "Accessible Design",
+            "Responsive Design",
+            "Design Systems",
+            "Prototyping",
+            "Technical Writing",
+            "Content Strategy",
+            "CMS Architecture"
+          ]
+        },
+        {
+          "name": "Development",
+          "items": [
+            "React & Next.js Development",
+            "React Native Mobile Apps",
+            "PostgreSQL & Supabase",
+            "Cloudflare Workers & Durable Objects",
+            "Stripe Integration",
+            "Real-time Chat & Notifications",
+            "Headless CMS Implementation",
+            "PostHog Analytics Setup",
+            "Vercel Deployment",
+            "MCP Server Development"
+          ]
+        }
+      ],
+      "timeline": {
+        "phases": [
+          {
+            "name": "Discovery",
+            "duration": "1–2 weeks",
+            "milestones": [
+              "Intro call",
+              "Discovery & scoping sessions",
+              "Research & competitor audit",
+              "Information architecture"
+            ]
+          },
+          {
+            "name": "Design",
+            "duration": "2–6 weeks",
+            "milestones": [
+              "Wireframes",
+              "Interface design",
+              "Design review",
+              "Revisions"
+            ]
+          },
+          {
+            "name": "Development",
+            "duration": "4–12 weeks",
+            "milestones": [
+              "Build",
+              "Content population",
+              "Internal QA",
+              "Client QA"
+            ]
+          },
+          {
+            "name": "Launch",
+            "duration": "1–2 weeks",
+            "milestones": ["Final testing", "Deployment", "Handoff & training"]
+          }
+        ],
+        "outcome": "A shipped product and the keys to run it."
+      }
+    },
+    {
+      "id": "partnership",
+      "label": "Partnership",
+      "description": "For products in motion or in formation. Monthly engagements where we work alongside you — research, architecture, design direction, prioritization, and iteration as the product develops.\n\nLaunch isn't the end here. It's the beginning of the loop.",
+      "note": "Also available through trusted partners: content creation, graphic design, Shopify storefronts, marketing sites, workflow automations, SEO.",
+      "categories": [
+        {
+          "name": "Product Design Strategy",
+          "items": [
+            "Discovery & Scoping",
+            "User Research & Interviews",
+            "Competitor Audits",
+            "Market Positioning",
+            "Information Architecture",
+            "Product Roadmaps",
+            "Feature Prioritization",
+            "Algorithm Design",
+            "Gamification Strategy",
+            "Onboarding Planning"
+          ]
+        },
+        {
+          "name": "Technical Development Strategy",
+          "items": [
+            "System Architecture",
+            "Database Design",
+            "API Design",
+            "Authentication & Row Level Security",
+            "Real-time Infrastructure",
+            "AI & RAG Architecture",
+            "MCP Server Design",
+            "Payment System Planning",
+            "Analytics Strategy",
+            "Deployment & DevOps Planning"
+          ]
+        }
+      ],
+      "timeline": {
+        "phases": [
+          {
+            "name": "Discovery",
+            "duration": "1–2 weeks",
+            "milestones": [
+              "Intro call",
+              "Discovery sessions",
+              "Research & audit",
+              "Roadmap alignment"
+            ]
+          },
+          {
+            "name": "Monthly",
+            "duration": "Ongoing",
+            "milestones": [
+              "Strategy sessions",
+              "Design direction",
+              "Feature prioritization",
+              "Development",
+              "Review & iteration"
+            ]
+          }
+        ],
+        "outcome": "A product that keeps getting better."
+      }
+    }
+  ]
+}
