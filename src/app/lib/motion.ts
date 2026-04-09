@@ -2,49 +2,6 @@ import { Variants } from "framer-motion";
 
 type AnimationType = "spring" | "tween" | "inertia" | "keyframes";
 
-export const navVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: -50,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 140,
-    },
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      delay: 1,
-    },
-  },
-};
-
-export const slideIn = (
-  direction: "left" | "right" | "up" | "down",
-  type: AnimationType,
-  delay: number,
-  duration: number
-): Variants => ({
-  hidden: {
-    x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-    y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
-  },
-  show: {
-    x: 0,
-    y: 0,
-    transition: {
-      type,
-      delay,
-      duration,
-      ease: "easeOut",
-    },
-  },
-});
-
 export const staggerContainer = (
   staggerChildren: number = 0.2,
   delayChildren: number = 0.2
@@ -54,111 +11,6 @@ export const staggerContainer = (
     transition: {
       staggerChildren,
       delayChildren,
-    },
-  },
-});
-
-export const textVariant = (delay: number): Variants => ({
-  hidden: {
-    y: 50,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 1,
-      delay,
-    },
-  },
-});
-
-export const textContainer: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  show: (i = 1) => ({
-    opacity: 1,
-    transition: { staggerChildren: 0.01, delayChildren: i * 0.0 },
-  }),
-};
-
-export const grow: Variants = {
-  hidden: {
-    width: "0px",
-  },
-  show: {
-    width: "100%",
-  },
-};
-
-export const growDown: Variants = {
-  hidden: {
-    height: "0px",
-  },
-  show: {
-    height: "calc(100% - 24px)",
-    transition: {
-      type: "spring",
-      delay: 0,
-      duration: 1.6,
-      bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67],
-    },
-  },
-};
-
-export const growDownSub = growDown;
-
-export const growRight: Variants = {
-  hidden: {
-    width: "0px",
-  },
-  show: {
-    width: "50%",
-    transition: {
-      type: "spring",
-      delay: 1.6,
-      duration: 0.8,
-      bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67],
-    },
-  },
-};
-
-export const textVariant2: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "tween",
-      ease: "easeIn",
-    },
-  },
-};
-
-export const fade = (
-  type: AnimationType,
-  delay: number,
-  duration: number,
-  opacity: number
-): Variants => ({
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity,
-    transition: {
-      type,
-      delay,
-      duration,
-      bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67],
     },
   },
 });
@@ -179,35 +31,6 @@ export const fadeIn = (
     x: 0,
     y: 0,
     opacity: 1,
-    scale: 1,
-    transition: {
-      type,
-      delay,
-      duration,
-      bounce: 0,
-      ease: [0.17, 0.67, 0.83, 0.67],
-    },
-  },
-});
-
-export const ringGrow = (
-  _direction: string,
-  type: AnimationType,
-  delay: number,
-  duration: number,
-  opacity: number = 1
-): Variants => ({
-  hidden: {
-    x: 0,
-    y: 0,
-    opacity: 0,
-    scale: 0.5,
-    originY: "100%",
-  },
-  show: {
-    x: 0,
-    y: 0,
-    opacity,
     scale: 1,
     transition: {
       type,
@@ -245,8 +68,6 @@ export const fadeInButton = (
     },
   },
 });
-
-export const fadeInIcon = fadeInButton;
 
 export const textFadeUp = (
   _direction: string,
@@ -305,62 +126,3 @@ export const textFadeUpSmall = (
     },
   },
 });
-
-export const planetVariants = (
-  direction: "left" | "right"
-): Variants => ({
-  hidden: {
-    x: direction === "left" ? "-100%" : "100%",
-    rotate: 120,
-  },
-  show: {
-    x: 0,
-    rotate: 0,
-    transition: {
-      type: "spring",
-      duration: 1.8,
-      delay: 0.5,
-    },
-  },
-});
-
-export const zoomIn = (
-  delay: number,
-  duration: number
-): Variants => ({
-  hidden: {
-    scale: 0,
-    opacity: 0,
-  },
-  show: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      delay,
-      duration,
-      ease: "easeOut",
-    },
-  },
-});
-
-export const footerVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 140,
-    },
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      delay: 0.5,
-    },
-  },
-};
