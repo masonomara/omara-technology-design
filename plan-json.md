@@ -248,21 +248,24 @@ Note on Sanity content: before Phase 3 (deleting Sanity), run `npx sanity datase
 - [x] Remove Sanity redirect fetch from `next.config.ts`
 - [x] Exclude `sanity-archive/` from `tsconfig.json`
 
-### Phase 4 — Create new infrastructure
+### Phase 4 — Create new infrastructure ✓
 
-- [ ] Create `src/lib/content.ts`
-  - [ ] Export `ContentNode` type
-  - [ ] Export `toSlug(name)`
-  - [ ] Export `readNav()` — reads `content/nav.json` at build time
-  - [ ] Export `getPortfolioItems()` — filters to portfolio children
-  - [ ] Export `getServiceItems()` — filters to services children
-  - [ ] Export `loadMarkdown(slug)` — reads `content/projects/{slug}/{slug}.md`, runs through `marked`, returns HTML string (empty string if file absent)
-  - [ ] Export `getImages(slug)` — uses `node.images` if present, otherwise auto-discovers files in `content/projects/{slug}/images/` sorted naturally; returns `/content/projects/{slug}/images/{file}` URL strings
-  - [ ] Export `getThumbnail(slug)` — checks for `{slug}.png` then `{slug}.webp` in `content/projects/{slug}/`; returns `/content/projects/{slug}/{slug}.{ext}` URL string
-- [ ] Create `src/app/content/[...path]/route.ts`
-  - [ ] Path traversal guard
-  - [ ] MIME type map (png, jpg, jpeg, webp, gif, svg)
-  - [ ] Return file buffer with `Cache-Control: public, max-age=31536000, immutable`
+Pattern update from masonomara-website (commits f91fda4, e2f1d8f): type and slug extracted to separate lib files; nav.json imported directly as a module (bundled at build, no fs.readFileSync for JSON); `export const dynamic = "force-static"` and `dynamicParams = false` added to page components (Phases 6–7).
+
+- [x] Create `src/lib/types.ts` — exports `ContentNode` type
+- [x] Create `src/lib/slug.ts` — exports `toSlug(name)`
+- [x] Create `src/lib/content.ts`
+  - [x] Import nav.json directly as a module (not fs.readFileSync) — bundled at build time
+  - [x] Export `getPortfolioItems()` — filters to portfolio children
+  - [x] Export `getServiceItems()` — filters to services children
+  - [x] Export `getPortfolioNode(slug)` — finds a single portfolio item by slug
+  - [x] Export `loadMarkdown(slug)` — reads `content/projects/{slug}/{slug}.md`, runs through `marked`, returns HTML string (empty string if file absent)
+  - [x] Export `getImages(slug)` — uses `node.images` if present, otherwise auto-discovers files in `content/projects/{slug}/images/` sorted naturally; returns `/content/projects/{slug}/images/{file}` URL strings
+  - [x] Export `getThumbnail(slug)` — checks for `{slug}.png` then `{slug}.webp` in `content/projects/{slug}/`; returns `/content/projects/{slug}/{slug}.{ext}` URL string
+- [x] Create `src/app/content/[...path]/route.ts`
+  - [x] Path traversal guard
+  - [x] MIME type map (png, jpg, jpeg, webp, gif, svg)
+  - [x] Return file buffer with `Cache-Control: public, max-age=31536000, immutable`
 
 ### Phase 5 — Rewrite services
 
