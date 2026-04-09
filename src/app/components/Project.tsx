@@ -15,10 +15,10 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
     <>
       <motion.h1
         className="title"
-        variants={textFadeUp(0, 0.6)}
+        variants={textFadeUp(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         {seo.title || title}
       </motion.h1>
@@ -27,19 +27,19 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
           {body ? (
             <div>
               <motion.div
-                variants={textFadeUpSmall(0.1, 0.8)}
+                variants={textFadeUpSmall(0.08, 0.4)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
               >
                 <PortableText value={body} components={components} />
               </motion.div>
               <motion.div
                 className={styles.emailInfo}
-                variants={fadeInButton("up", 0.3, 1.2)}
+                variants={fadeInButton("up", 0.18, 0.35)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
               >
                 Interested in working together?
                 <br />

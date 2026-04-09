@@ -12,19 +12,19 @@ export default function About() {
     <>
       <motion.h1
         className="title"
-        variants={textFadeUp(0, 0.6)}
+        variants={textFadeUp(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         About
       </motion.h1>
 
       <motion.div
-        variants={textFadeUpSmall(0.1, 0.8)}
+        variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         <p className={styles.subtitle}>
           Product design and technical development strategy and services for
@@ -50,10 +50,10 @@ export default function About() {
 
       <motion.div
         className={styles.cardImageContainer}
-        variants={fadeIn("up", 0.2, 0.8)}
+        variants={fadeIn("up", 0.14, 0.5)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         <div className={styles.cardImageScreen} />
         <div className={styles.cardImageMultiply} />

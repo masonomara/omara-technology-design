@@ -12,10 +12,10 @@ export default function FooterContact() {
     <div className={styles.contactWrapper}>
       <motion.div
         className="companyTitle"
-        variants={textFadeUpSmall(0.1, 0.8)}
+        variants={textFadeUpSmall(0.06, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         <Image
           src="/longWordmark.svg"
@@ -43,12 +43,12 @@ export default function FooterContact() {
         className={styles.subButtonsWrapper}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.15 }}
         variants={{
           hidden: {},
           show: {
             transition: {
-              staggerChildren: 0.05,
+              staggerChildren: 0.04,
               delayChildren: 0.1,
             },
           },
@@ -56,7 +56,7 @@ export default function FooterContact() {
       >
         <motion.div
           className={styles.subButton}
-          variants={fadeInButton("up", 0, 0.4)}
+          variants={fadeInButton("up", 0, 0.35)}
         >
           <Link href={`/`} target="_top" className={styles.subButton}>
             HOME
@@ -64,7 +64,7 @@ export default function FooterContact() {
         </motion.div>
         <motion.div
           className={styles.subButton}
-          variants={fadeInButton("up", 0, 0.4)}
+          variants={fadeInButton("up", 0, 0.35)}
         >
           <Link href={`/portfolio`} target="_top" className={styles.subButton}>
             PORTFOLIO
@@ -72,7 +72,7 @@ export default function FooterContact() {
         </motion.div>
         <motion.div
           className={styles.subButton}
-          variants={fadeInButton("up", 0, 0.4)}
+          variants={fadeInButton("up", 0, 0.35)}
         >
           <Link href={`/services`} target="_top" className={styles.subButton}>
             SERVICES
@@ -80,7 +80,7 @@ export default function FooterContact() {
         </motion.div>
         <motion.div
           className={styles.subButton}
-          variants={fadeInButton("up", 0, 0.4)}
+          variants={fadeInButton("up", 0, 0.35)}
         >
           <Link href={`/about`} target="_top" className={styles.subButton}>
             ABOUT
@@ -88,7 +88,7 @@ export default function FooterContact() {
         </motion.div>
         <motion.div
           className={styles.subButton}
-          variants={fadeInButton("up", 0, 0.4)}
+          variants={fadeInButton("up", 0, 0.35)}
         >
           <Link href={`/contact`} target="_top" className={styles.subButton}>
             CONTACT

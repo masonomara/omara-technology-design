@@ -158,19 +158,19 @@ ${values.additional || "None provided."}`;
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
         <motion.h1
-          variants={textFadeUp(0.1, 0.6)}
+          variants={textFadeUp(0, 0.45)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
           className="title"
         >
           Contact
         </motion.h1>
         <motion.div
-          variants={textFadeUpSmall(0.2, 0.8)}
+          variants={textFadeUpSmall(0.08, 0.4)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
           <p className={styles.emailInfo}>
             To work together, please fill out the form below.
@@ -195,10 +195,10 @@ ${values.additional || "None provided."}`;
         </motion.div>
         <motion.div
           className={styles.contactFormWrapper}
-          variants={fadeInButton("up", 0.4, 1.2)}
+          variants={fadeInButton("up", 0.12, 0.35)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
           <form
             className={styles.contactForm}

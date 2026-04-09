@@ -14,10 +14,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <>
       <motion.h1
-        variants={textFadeUp(0, 0.6)}
+        variants={textFadeUp(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
         className="title"
       >
         PORTFOLIO
@@ -30,10 +30,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           .map((project: NonNullable<PROJECT_QUERYResult>) => (
             <motion.div
               key={project._id}
-              variants={fadeInButton("up", 0.2, 1.2)}
+              variants={fadeInButton("up", 0.1, 0.35)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
             >
               <ProjectCard project={project} />
             </motion.div>

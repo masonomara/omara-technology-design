@@ -93,19 +93,19 @@ export default function ServicesSection() {
   return (
     <>
       <motion.h1
-        variants={textFadeUp(0, 0.6)}
+        variants={textFadeUp(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
         className="title"
       >
         SERVICES
       </motion.h1>
       <motion.div
-        variants={textFadeUpSmall(0.1, 0.8)}
+        variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         <p className={styles.subtitle}>
           Available for product design and technical development strategy and
@@ -115,10 +115,10 @@ export default function ServicesSection() {
       {servicesData.map((category, index) => (
         <motion.div
           key={category.title}
-          variants={textFadeUpSmall(0.2 + index * 0.1, 0.8)}
+          variants={textFadeUpSmall(0.08 + index * 0.05, 0.4)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
           className={styles.servicesDataWrapper}
         >
           <div className={styles.servicesCategoryHeader}>
