@@ -1,6 +1,6 @@
-https://chompinsurance.com
+[chompinsurance.com](https://chompinsurance.com)
 
-Multi-step quoting form for Chomp, an insurance brokerage built around reducing friction in client onboarding.
-Built in React and Next.js, the form sequences questions to front-load only what's needed to price a policy—deferring the rest to a follow-up call—and routes submissions directly to the CRM.
+Chomp is an insurance brokerage that needed help with client onboarding on their existing website. I built a multi-step quoting form in React and Next.js. We determined which questions mattered upfront versus which could wait for a follow-up call. The form collects information needed to price policies and sends it directly to the CRM. The design stays approachable: bright colors, clean type, subtle animations.
 
-Development, Product Design
+![Mobile view of the Chomp homepage showing service descriptions](/content/projects/chomp/images/showcase-1.webp)
+![Two mobile views of the Chomp quoting form and coverage selection screens](/content/projects/chomp/images/showcase-2.webp)
