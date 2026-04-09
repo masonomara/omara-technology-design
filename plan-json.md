@@ -224,11 +224,11 @@ Note on Sanity content: before Phase 3 (deleting Sanity), run `npx sanity datase
   - Service entries need: `name`, `description`, `items` (copy from `ServicesSection.tsx` — it's all there)
 - [x] Verify slugs: confirm `toSlug(name)` for each nav.json entry matches its folder name in `content/projects/`
 
-### Phase 2 — Package cleanup
+### Phase 2 — Package cleanup ✓
 
-- [ ] Uninstall: `sanity`, `next-sanity`, `@sanity/icons`, `@sanity/image-url`, `@sanity/vision`, `next-seo`
-- [ ] Install: `marked`
-- [ ] Install: `@types/marked` if needed (check if marked ships its own types)
+- [x] Uninstall: `sanity`, `next-sanity`, `@sanity/icons`, `@sanity/image-url`, `@sanity/vision`, `next-seo`
+- [x] Install: `marked`
+- [x] Install: `@types/marked` if needed — not needed, marked ships its own types
 
 ### Phase 3 — Delete Sanity infrastructure
 
