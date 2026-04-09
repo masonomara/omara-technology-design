@@ -33,8 +33,8 @@ export function Project({ title, html }: ProjectProps) {
               <motion.div
                 variants={textFadeUpSmall(0.08, 0.4)}
                 initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.15 }}
+                animate="show"
+                className="projectContent"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
               <motion.div

@@ -626,6 +626,59 @@
 .projectWrapper article p {
   width: 100%;
 }
+.projectContent {
+  width: 100%;
+}
+.projectContent p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.projectContent p:last-child {
+  margin-bottom: 0;
+}
+.projectContent h1,
+.projectContent h2,
+.projectContent h3 {
+  font-family: var(--font-overpass);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.projectContent a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.12em;
+  transition: var(--transition-smooth-100) all;
+}
+.projectContent a:hover {
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition: var(--transition-smooth-100) all;
+}
+.projectContent img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.6em 0;
+  outline: 1px solid var(--color-primary);
+}
+.projectContent ul,
+.projectContent ol {
+  padding-left: 1.4em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.projectContent li {
+  margin-bottom: 0.25em;
+}
+.projectContent strong {
+  font-weight: 700;
+}
 @media screen and (max-width: 699px) {
   .projectWrapper {
     width: calc(100% - 32px);

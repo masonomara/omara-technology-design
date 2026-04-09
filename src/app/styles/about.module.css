@@ -36,6 +36,19 @@
 
 
 /* Link Styles */
+.emailLink {
+  display: block;
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.15em !important;
+  transition: var(--transition-smooth-100) all;
+}
+.emailLink:hover {
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.2em !important;
+  transition: var(--transition-smooth-100) all;
+}
 .emailInfo a {
   color: var(--color-primary);
   text-decoration: underline !important;
