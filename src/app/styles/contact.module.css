@@ -122,7 +122,7 @@
 .formField input:hover,
 .formField textarea:hover {
   outline: 1px solid var(--color-primary);
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: rgba(137, 24, 16, 0.08);
   transition: var(--transition-smooth-100) all;
 }
 
@@ -233,7 +233,7 @@
 }
 
 .submitButton:hover {
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: rgba(137, 24, 16, 0.08);
   transition: var(--transition-smooth-100) all;
 }
 
@@ -272,13 +272,6 @@
 /* Utility Classes */
 .label {
   display: none !important;
-}
-
-.backWrapper {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-  transform: rotate(180deg);
 }
 
 /* Media Queries */

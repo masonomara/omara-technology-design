@@ -19,7 +19,7 @@
   text-decoration: none !important;
   color: var(--color-primary);
   transition: var(--transition-smooth-100) all;
-  background-color: rgba(137, 25, 16, 0);
+  background-color: rgba(137, 24, 16, 0);
   width: calc(100% - 32px);
   height: calc(100% - 32px);
   flex: 1;
@@ -32,12 +32,8 @@
   width: 100%;
   height: 100%;
 }
-.arrow {
-  display: flex;
-  padding-right: 0px;
-}
 .servicesCard:hover {
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: rgba(137, 24, 16, 0.08);
   transition: var(--transition-smooth-100) all;
   outline: 1px solid var(--color-primary);
 }
@@ -122,35 +118,13 @@
     width: calc(100% - 16px);
     margin-left: 8px !important;
   }
-  .servicesCard {
-    /* border: none !important;
-    outline: none !important;
-    padding: 0px; */
-    /* width: 100%; */
-    /* gap: 11px;
-    flex-direction: row;
-    align-items: center;
-    height: fit-content; */
-  }
   .servicesCardInfo {
     height: fit-content;
   }
   .servicesCard:hover {
     background: none !important;
     background-color: none !important;
-    /* border: none !important; */
     border: 1px solid var(--color-primary);
     outline: 0.6px solid var(--color-primary);
   }
-  .arrow {
-    display: flex;
-    padding-right: 0px;
-  }
-  /* .serviceCardTitle {
-    padding-top: 0.8em;
-  }
-  .serviceCardDescription {
-    margin-top: 0.4em;
-    padding-bottom: 0.8em;
-  } */
 }

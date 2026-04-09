@@ -7,7 +7,7 @@
   justify-content: flex-start;
   flex-direction: column;
   font-family: var(--font-overpass);
-  color: #891910;
+  color: #891810;
   height: fit-content;
 }
 
@@ -17,7 +17,7 @@
   text-align: center;
   font-size: clamp(54px, 10vw, 90px);
   font-family: var(--font-rallingtonSerif);
-  color: #891910;
+  color: #891810;
   margin-top: 0.8em;
   margin-bottom: 0px;
   font-weight: 400;
@@ -29,7 +29,7 @@
   aspect-ratio: 208 / 12;
   text-align: center;
   font-family: var(--font-rallingtonSerif);
-  color: #891910;
+  color: #891810;
   margin-bottom: calc(80% / (208 / 12));
   margin-top: calc(80% / (208 / 12));
 }
@@ -51,7 +51,7 @@
 
 /* Button Styles */
 .buttonBorder {
-  outline: 2px solid #891910;
+  outline: 2px solid #891810;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -66,9 +66,9 @@
 
 .buttonBorder:hover {
   outline-offset: 1.2px;
-  outline: 2.4px solid #891910;
+  outline: 2.4px solid #891810;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: rgba(137, 24, 16, 0.08);
 }
 
 .buttonsWrapper {
@@ -98,7 +98,7 @@
 .mainButton {
   padding: 23.04px 23.04px;
   width: calc(100% - 46.08px);
-  color: #891910;
+  color: #891810;
 }
 
 .buttonHeading {
@@ -114,7 +114,7 @@
 }
 
 .subButton {
-  color: #891910;
+  color: #891810;
   font-variation-settings:
     "wdth" 75,
     "wght" 700;
@@ -136,11 +136,6 @@
   text-underline-offset: 5.18px !important;
   transition: var(--transition-smooth-100) all;
 }
-.bookends {
-  width: 0px;
-  height: 0px;
-  background: transparent;
-}
 /* Email Info */
 .emailInfo {
   margin-top: 0.8em;
@@ -157,12 +152,12 @@
 }
 
 .emailInfo a {
-  color: #891910;
+  color: #891810;
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3.2px !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: #f9f0e7;
+  background-color: #FCEEDE;
 }
 
 .emailInfo a:hover {
@@ -211,9 +206,9 @@
 @media screen and (max-width: 699px) {
   .buttonBorder:hover {
     outline-offset: 0px;
-    outline: 2px solid #891910;
+    outline: 2px solid #891810;
     transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-    background-color: #f9f0e7;
+    background-color: #FCEEDE;
   }
   .subButton {
     font-size: 24px;

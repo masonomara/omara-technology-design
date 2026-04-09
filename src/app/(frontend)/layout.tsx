@@ -12,22 +12,22 @@ import Marquee from "../components/Marquee";
 
 
 export const metadata: Metadata = {
-  title: "O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+  title: "O‘Mara Technology",
+  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology.",
   alternates: {
-    canonical: "https://omaratechnologydesign.com/",
+    canonical: "https://omaratechnology.com/",
   },
   openGraph: {
-    title: "O'Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-    url: "https://omaratechnologydesign.com/",
-    siteName: "O‘Mara Technology & Design",
+    title: "O'Mara Technology",
+    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology.",
+    url: "https://omaratechnology.com/",
+    siteName: "O‘Mara Technology",
     images: [
       {
-        url: "https://omaratechnologydesign.com/bizCard.png",
+        url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O‘Mara Technology & Design",
+        alt: "O‘Mara Technology",
       },
     ],
     locale: "en_US",

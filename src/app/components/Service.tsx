@@ -12,7 +12,7 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
   const { body, title, seo } = props;
-  const emailAddress = 'connect@omaratechnologydesign.com'
+  const emailAddress = 'connect@omaratechnology.com'
 
 
   return (
@@ -50,7 +50,7 @@ export function Service(props: NonNullable<SERVICE_QUERYResult>) {
                   href={`mailto:${emailAddress}`}
                   target="_blank"
                 >
-                  connect@omaratechnologydesign.com
+                  connect@omaratechnology.com
                 </Link>
               </motion.div>
             </div>

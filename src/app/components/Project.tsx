@@ -10,7 +10,7 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
 export function Project(props: NonNullable<PROJECT_QUERYResult>) {
   const { body, seo, title } = props;
-  const emailAddress = 'connect@omaratechnologydesign.com'
+  const emailAddress = 'connect@omaratechnology.com'
 
 
   return (
@@ -44,7 +44,7 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
                   href={`mailto:${emailAddress}`}
                   target="_blank"
                 >
-                  connect@omaratechnologydesign.com
+                  connect@omaratechnology.com
                 </Link>
               </motion.div>
             </div>

@@ -7,7 +7,7 @@ import CursorFollower from "./components/CursorFollower";
 import { AnimatePresence } from "framer-motion";
 
 export const metadata: Metadata = {
-  title: "O’Mara Technology & Design",
+  title: "O’Mara Technology",
   description:
     "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, ECommerce, Software",
 };
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ margin: "0px", backgroundColor: "#F8E9D8" }}>
       <head>
-        <meta name="apple-mobile-web-app-title" content="O’Mara Technology & Design" />
+        <meta name="apple-mobile-web-app-title" content="O’Mara Technology" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <AnimatePresence>

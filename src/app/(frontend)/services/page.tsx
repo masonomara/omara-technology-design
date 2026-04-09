@@ -8,22 +8,22 @@ import type { Metadata } from "next";
 // import { BreadcrumbJsonLd, OrganizationJsonLd } from "next-seo";
 
 export const metadata: Metadata = {
-  title: "Services | O‘Mara Technology & Design",
-  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+  title: "Services | O‘Mara Technology",
+  description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology.",
   alternates: {
-    canonical: "https://omaratechnologydesign.com/services",
+    canonical: "https://omaratechnology.com/services",
   },
   openGraph: {
-    title: "Services | O'Mara Technology & Design",
-    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-    url: "https://omaratechnologydesign.com/services",
-    siteName: "O‘Mara Technology & Design",
+    title: "Services | O'Mara Technology",
+    description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology.",
+    url: "https://omaratechnology.com/services",
+    siteName: "O‘Mara Technology",
     images: [
       {
-        url: "https://omaratechnologydesign.com/bizCard.png",
+        url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O‘Mara Technology & Design",
+        alt: "O‘Mara Technology",
       },
     ],
     locale: "en_US",
@@ -38,17 +38,17 @@ export default async function Page() {
     <>
       {/* <OrganizationJsonLd
         type="ProfessionalService"
-        name="O‘Mara Technology & Design"
-        url="https://omaratechnologydesign.com"
-        logo="https://omaratechnologydesign.com/monogramText.svg"
-        email="connect@omaratechnologydesign.com"
+        name="O‘Mara Technology"
+        url="https://omaratechnology.com"
+        logo="https://omaratechnology.com/monogramText.svg"
+        email="connect@omaratechnology.com"
         founder={{
           "@type": "Person",
           name: "Mason O‘Mara",
           sameAs: "https://masonomara.com",
         }}
         description="Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools."
-        images={["https://omaratechnologydesign.com/bizCard.png"]}
+        images={["https://omaratechnology.com/bizCard.png"]}
         serviceType={[
           "Strategy",
           "Design",
@@ -76,7 +76,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Fractional Business Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-business-leadership",
+                url: "https://omaratechnology.com/services/fractional-business-leadership",
               },
             },
             {
@@ -84,7 +84,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Digital Systems",
-                url: "https://omaratechnologydesign.com/services/digital-systems",
+                url: "https://omaratechnology.com/services/digital-systems",
               },
             },
             {
@@ -92,7 +92,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Custom Solutions",
-                url: "https://omaratechnologydesign.com/services/custom-solutions",
+                url: "https://omaratechnology.com/services/custom-solutions",
               },
             },
             {
@@ -100,7 +100,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Audits & Optimization",
-                url: "https://omaratechnologydesign.com/services/audits-and-optimization",
+                url: "https://omaratechnology.com/services/audits-and-optimization",
               },
             },
             {
@@ -108,7 +108,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Product Consulting",
-                url: "https://omaratechnologydesign.com/services/product-consulting",
+                url: "https://omaratechnology.com/services/product-consulting",
               },
             },
             {
@@ -116,7 +116,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Fractional Technology Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-technology-leadership",
+                url: "https://omaratechnology.com/services/fractional-technology-leadership",
               },
             },
             {
@@ -124,7 +124,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "App Design",
-                url: "https://omaratechnologydesign.com/services/app-design",
+                url: "https://omaratechnology.com/services/app-design",
               },
             },
             {
@@ -132,7 +132,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Website Design",
-                url: "https://omaratechnologydesign.com/services/website-design",
+                url: "https://omaratechnology.com/services/website-design",
               },
             },
             {
@@ -140,7 +140,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Ecommerce Design",
-                url: "https://omaratechnologydesign.com/services/ecommerce-design",
+                url: "https://omaratechnology.com/services/ecommerce-design",
               },
             },
             {
@@ -148,7 +148,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Brand Identity",
-                url: "https://omaratechnologydesign.com/services/brand-identity",
+                url: "https://omaratechnology.com/services/brand-identity",
               },
             },
             {
@@ -156,7 +156,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "App Development",
-                url: "https://omaratechnologydesign.com/services/app-development",
+                url: "https://omaratechnology.com/services/app-development",
               },
             },
             {
@@ -164,7 +164,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Website Development",
-                url: "https://omaratechnologydesign.com/services/website-development",
+                url: "https://omaratechnology.com/services/website-development",
               },
             },
             {
@@ -172,7 +172,7 @@ export default async function Page() {
               itemOffered: {
                 "@type": "Service",
                 name: "Ecommerce Development",
-                url: "https://omaratechnologydesign.com/services/ecommerce-development",
+                url: "https://omaratechnology.com/services/ecommerce-development",
               },
             },
           ],
@@ -183,12 +183,12 @@ export default async function Page() {
           {
             position: 1,
             name: "Home",
-            item: "https://omaratechnologydesign.com",
+            item: "https://omaratechnology.com",
           },
           {
             position: 2,
             name: "Services",
-            item: "https://omaratechnologydesign.com/services",
+            item: "https://omaratechnology.com/services",
           },
         ]}
       /> */}

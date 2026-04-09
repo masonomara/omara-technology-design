@@ -359,17 +359,17 @@ export default function Home() {
     <>
       {/* <OrganizationJsonLd
         type="ProfessionalService"
-        name="O‘Mara Technology & Design"
-        url="https://omaratechnologydesign.com"
-        logo="https://omaratechnologydesign.com/monogramText.svg"
-        email="connect@omaratechnologydesign.com"
+        name="O‘Mara Technology"
+        url="https://omaratechnology.com"
+        logo="https://omaratechnology.com/monogramText.svg"
+        email="connect@omaratechnology.com"
         founder={{
           "@type": "Person",
           name: "Mason O‘Mara",
           sameAs: "https://masonomara.com",
         }}
         description="Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools."
-        images={["https://omaratechnologydesign.com/bizCard.png"]}
+        images={["https://omaratechnology.com/bizCard.png"]}
         serviceType={[
           "Strategy",
           "Design",
@@ -397,7 +397,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Fractional Business Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-business-leadership",
+                url: "https://omaratechnology.com/services/fractional-business-leadership",
               },
             },
             {
@@ -405,7 +405,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Digital Systems",
-                url: "https://omaratechnologydesign.com/services/digital-systems",
+                url: "https://omaratechnology.com/services/digital-systems",
               },
             },
             {
@@ -413,7 +413,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Custom Solutions",
-                url: "https://omaratechnologydesign.com/services/custom-solutions",
+                url: "https://omaratechnology.com/services/custom-solutions",
               },
             },
             {
@@ -421,7 +421,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Audits & Optimization",
-                url: "https://omaratechnologydesign.com/services/audits-and-optimization",
+                url: "https://omaratechnology.com/services/audits-and-optimization",
               },
             },
             {
@@ -429,7 +429,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Product Consulting",
-                url: "https://omaratechnologydesign.com/services/product-consulting",
+                url: "https://omaratechnology.com/services/product-consulting",
               },
             },
             {
@@ -437,7 +437,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Fractional Technology Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-technology-leadership",
+                url: "https://omaratechnology.com/services/fractional-technology-leadership",
               },
             },
             {
@@ -445,7 +445,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "App Design",
-                url: "https://omaratechnologydesign.com/services/app-design",
+                url: "https://omaratechnology.com/services/app-design",
               },
             },
             {
@@ -453,7 +453,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Website Design",
-                url: "https://omaratechnologydesign.com/services/website-design",
+                url: "https://omaratechnology.com/services/website-design",
               },
             },
             {
@@ -461,7 +461,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Ecommerce Design",
-                url: "https://omaratechnologydesign.com/services/ecommerce-design",
+                url: "https://omaratechnology.com/services/ecommerce-design",
               },
             },
             {
@@ -469,7 +469,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Brand Identity",
-                url: "https://omaratechnologydesign.com/services/brand-identity",
+                url: "https://omaratechnology.com/services/brand-identity",
               },
             },
             {
@@ -477,7 +477,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "App Development",
-                url: "https://omaratechnologydesign.com/services/app-development",
+                url: "https://omaratechnology.com/services/app-development",
               },
             },
             {
@@ -485,7 +485,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Website Development",
-                url: "https://omaratechnologydesign.com/services/website-development",
+                url: "https://omaratechnology.com/services/website-development",
               },
             },
             {
@@ -493,7 +493,7 @@ export default function Home() {
               itemOffered: {
                 "@type": "Service",
                 name: "Ecommerce Development",
-                url: "https://omaratechnologydesign.com/services/ecommerce-development",
+                url: "https://omaratechnology.com/services/ecommerce-development",
               },
             },
           ],
@@ -504,7 +504,7 @@ export default function Home() {
           {
             position: 1,
             name: "Home",
-            item: "https://omaratechnologydesign.com",
+            item: "https://omaratechnology.com",
           },
         ]}
       /> */}
@@ -720,7 +720,7 @@ export default function Home() {
                       onChange={() => setSubscribeToCompany(!subscribeToCompany)}
                     />
                     <label className={styles.checkboxLabel} htmlFor="subscribeToCompany">
-                      O’Mara Technology & Design Work Blog (quarterly)
+                      O’Mara Technology Work Blog (quarterly)
                     </label>
                   </div>
                   <div className={styles.checkboxItem}>

@@ -9,7 +9,7 @@ import styles from "../styles/about.module.css";
 
 
 export default function About() {
-  const emailAddress = 'connect@omaratechnologydesign.com';
+  const emailAddress = 'connect@omaratechnology.com';
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function About() {
         viewport={{ once: true, amount: 0 }}
       >
         <p className={styles.subtitle}>
-          O’Mara Technology & Design provides strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools that connect them all. We lead projects from ideation to ongoing iterations, often in fractional roles or long-term partnerships. We build intuitive, user-centered products that drive business towards their goals.
+          O’Mara Technology provides strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools that connect them all. We lead projects from ideation to ongoing iterations, often in fractional roles or long-term partnerships. We build intuitive, user-centered products that drive business towards their goals.
         </p>
         <p className={styles.subtitle} >
           We prioritize open-minded problem-solving and tailor our process to each client’s goals, resources, and timeline. The end result is always the same: thoughtful, technically sound products that feel great to use and deliver real value for businesses and users.
@@ -67,7 +67,7 @@ export default function About() {
           href={`mailto:${emailAddress}`}
           target="_blank"
         >
-          connect@omaratechnologydesign.com
+          connect@omaratechnology.com
         </Link>
       </motion.div>
       <motion.div className={styles.cardImageContainer} variants={fadeIn("up", "spring", 0.1, 0.8)}

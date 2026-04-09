@@ -2,11 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Radio+Canada:ital,wdth,wght@0,75..100,300..700;1,75..100,300..700&display=swap");
 
 :root {
-  --font-archivo: "Archivo", sans-serif;
   --font-radio: "Radio Canada", sans-serif;
-  --color-primary: rgb(137, 25, 16);
-  --color-background: rgb(248, 233, 216);
-  --color-bg-hover: rgba(137, 25, 16, 0.08);
+  --color-primary: rgb(137, 24, 16);
+  --color-background: rgb(252, 238, 222);
+  --color-bg-hover: rgba(137, 24, 16, 0.08);
   --transition-smooth-100: 100ms cubic-bezier(0.33, 0, 0.66, 1);
   --transition-smooth-200: 200ms cubic-bezier(0.33, 0, 0.66, 1);
   --transition-smooth-300: 300ms cubic-bezier(0.33, 0, 0.66, 1);
@@ -353,19 +352,11 @@
   border-bottom: 1px solid var(--color-background);
   transition: var(--transition-smooth-300) all;
 }
-/* .marqueeCrack {
-  animation: marquee 9s linear infinite;
-  transition: var(--transition-smooth-300) all;
-} */
 @media screen and (max-width: 699px) {
   .marquee {
     animation: marquee 40s linear infinite;
     transition: var(--transition-smooth-300) all;
   }
-  /* .marqueeCrack {
-    animation: marquee 12s linear infinite;
-    transition: var(--transition-smooth-300) all;
-  } */
 }
 
 .marquee p {
@@ -459,15 +450,6 @@
     width: calc(100% - 32px);
   }
 }
-.footer__menuOption__subheader {
-  white-space: nowrap;
-  font-weight: 500;
-  font-family: var(--font-overpass);
-  font-size: 21px;
-  line-height: 130%;
-  display: none;
-}
-
 /* Positioning each menu item in a scattered fashion */
 #footerHome {
   grid-area: 2 / 2 / 3 / 6;

@@ -14,22 +14,22 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from '../../lib/motion';
 // import { Metadata } from 'next';
 
 // export const metadata: Metadata = {
-//   title: "Contact | O‘Mara Technology & Design",
-//   description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
+//   title: "Contact | O‘Mara Technology",
+//   description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology.",
 //   alternates: {
-//     canonical: "https://omaratechnologydesign.com/contact",
+//     canonical: "https://omaratechnology.com/contact",
 //   },
 //   openGraph: {
-//     title: "Contact | O'Mara Technology & Design",
-//     description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology & Design.",
-//     url: "https://omaratechnologydesign.com/contact",
-//     siteName: "O‘Mara Technology & Design",
+//     title: "Contact | O'Mara Technology",
+//     description: "Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools by O'Mara Technology.",
+//     url: "https://omaratechnology.com/contact",
+//     siteName: "O‘Mara Technology",
 //     images: [
 //       {
-//         url: "https://omaratechnologydesign.com/bizCard.png",
+//         url: "https://omaratechnology.com/bizCard.png",
 //         width: 1200,
 //         height: 686,
-//         alt: "O‘Mara Technology & Design",
+//         alt: "O‘Mara Technology",
 //       },
 //     ],
 //     locale: "en_US",
@@ -50,7 +50,7 @@ const contactFormSchema = z.object({
 type FormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
-  const emailAddress = 'connect@omaratechnologydesign.com';
+  const emailAddress = 'connect@omaratechnology.com';
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
@@ -103,17 +103,17 @@ ${values.message || 'No message provided.'}`
     <>
       {/* <OrganizationJsonLd
         type="ProfessionalService"
-        name="O‘Mara Technology & Design"
-        url="https://omaratechnologydesign.com"
-        logo="https://omaratechnologydesign.com/monogramText.svg"
-        email="connect@omaratechnologydesign.com"
+        name="O‘Mara Technology"
+        url="https://omaratechnology.com"
+        logo="https://omaratechnology.com/monogramText.svg"
+        email="connect@omaratechnology.com"
         founder={{
           "@type": "Person",
           name: "Mason O‘Mara",
           sameAs: "https://masonomara.com",
         }}
         description="Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools."
-        images={["https://omaratechnologydesign.com/bizCard.png"]}
+        images={["https://omaratechnology.com/bizCard.png"]}
         serviceType={[
           "Strategy",
           "Design",
@@ -141,7 +141,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Fractional Business Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-business-leadership",
+                url: "https://omaratechnology.com/services/fractional-business-leadership",
               },
             },
             {
@@ -149,7 +149,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Digital Systems",
-                url: "https://omaratechnologydesign.com/services/digital-systems",
+                url: "https://omaratechnology.com/services/digital-systems",
               },
             },
             {
@@ -157,7 +157,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Custom Solutions",
-                url: "https://omaratechnologydesign.com/services/custom-solutions",
+                url: "https://omaratechnology.com/services/custom-solutions",
               },
             },
             {
@@ -165,7 +165,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Audits & Optimization",
-                url: "https://omaratechnologydesign.com/services/audits-and-optimization",
+                url: "https://omaratechnology.com/services/audits-and-optimization",
               },
             },
             {
@@ -173,7 +173,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Product Consulting",
-                url: "https://omaratechnologydesign.com/services/product-consulting",
+                url: "https://omaratechnology.com/services/product-consulting",
               },
             },
             {
@@ -181,7 +181,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Fractional Technology Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-technology-leadership",
+                url: "https://omaratechnology.com/services/fractional-technology-leadership",
               },
             },
             {
@@ -189,7 +189,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "App Design",
-                url: "https://omaratechnologydesign.com/services/app-design",
+                url: "https://omaratechnology.com/services/app-design",
               },
             },
             {
@@ -197,7 +197,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Website Design",
-                url: "https://omaratechnologydesign.com/services/website-design",
+                url: "https://omaratechnology.com/services/website-design",
               },
             },
             {
@@ -205,7 +205,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Ecommerce Design",
-                url: "https://omaratechnologydesign.com/services/ecommerce-design",
+                url: "https://omaratechnology.com/services/ecommerce-design",
               },
             },
             {
@@ -213,7 +213,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Brand Identity",
-                url: "https://omaratechnologydesign.com/services/brand-identity",
+                url: "https://omaratechnology.com/services/brand-identity",
               },
             },
             {
@@ -221,7 +221,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "App Development",
-                url: "https://omaratechnologydesign.com/services/app-development",
+                url: "https://omaratechnology.com/services/app-development",
               },
             },
             {
@@ -229,7 +229,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Website Development",
-                url: "https://omaratechnologydesign.com/services/website-development",
+                url: "https://omaratechnology.com/services/website-development",
               },
             },
             {
@@ -237,7 +237,7 @@ ${values.message || 'No message provided.'}`
               itemOffered: {
                 "@type": "Service",
                 name: "Ecommerce Development",
-                url: "https://omaratechnologydesign.com/services/ecommerce-development",
+                url: "https://omaratechnology.com/services/ecommerce-development",
               },
             },
           ],
@@ -248,12 +248,12 @@ ${values.message || 'No message provided.'}`
           {
             position: 1,
             name: "Home",
-            item: "https://omaratechnologydesign.com",
+            item: "https://omaratechnology.com",
           },
           {
             position: 2,
             name: "Contact",
-            item: "https://omaratechnologydesign.com/contact",
+            item: "https://omaratechnology.com/contact",
           },
         ]}
       /> */}
@@ -284,7 +284,7 @@ ${values.message || 'No message provided.'}`
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
             <p className={styles.subtitle}>
-              O’Mara Technology & Design is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
+              O’Mara Technology is a technology consulting firm working in fractional and independent business and digital product strategy, design, and development roles.
             </p>
             <p className={styles.subtitle} style={{ marginBottom: "2.4em" }}>
               Our focuses include mobile apps, websites, ecommerce, or any custom software. If you’re interested in any of these services or more, please fill out the form below.
