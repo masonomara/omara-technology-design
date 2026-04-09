@@ -252,8 +252,8 @@ export default async function Page({ params }: RouteProps) {
             <Image
               src={urlFor(project.image).url()}
               alt={project.image.alt || project.title || "Project image"}
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
               className={styles.cardImageTwo}
             />
           </div>

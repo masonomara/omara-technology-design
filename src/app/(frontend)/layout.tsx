@@ -5,7 +5,7 @@ import '../globals.css';
 import { Analytics } from "@vercel/analytics/react";
 import { SanityLive } from "@/sanity/lib/live";
 import { DisableDraftMode } from "../components/DisableDraftMode";
-import { VisualEditing } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { MenuProvider } from "../context/MenuContext";
 import Header from "../components/Header";
 import Marquee from "../components/Marquee";

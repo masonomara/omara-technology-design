@@ -2,7 +2,7 @@
 
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
-import { Overpass } from "next/font/google";
+import { Overpass, Radio_Canada } from "next/font/google";
 import CursorFollower from "./components/CursorFollower";
 import { AnimatePresence } from "framer-motion";
 
@@ -16,6 +16,13 @@ const overpass = Overpass({
   subsets: ["latin"],
   display: "swap",
   variable: '--font-overpass',
+});
+
+const radioCanada = Radio_Canada({
+  subsets: ["latin"],
+  display: "swap",
+  variable: '--font-radio',
+  axes: ["wdth"],
 });
 
 const rallingtonSerif = localFont({
@@ -36,7 +43,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <AnimatePresence>
-        <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
+        <body className={`${overpass.variable} ${rallingtonSerif.variable} ${radioCanada.variable}`} style={{ margin: "0px", position: "relative" }}>
           <CursorFollower />
           {children}
         </body>

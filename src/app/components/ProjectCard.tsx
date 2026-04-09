@@ -42,8 +42,8 @@ export default function ProjectCard({ project }: { project: NonNullable<PROJECT_
               <Image
                 src={urlFor(projectImage).url()}
                 alt={projectImage.alt || project.title || "Project image"}
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className={styles.cardImageTwo}
               />
             </div>

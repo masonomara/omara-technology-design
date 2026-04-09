@@ -527,7 +527,6 @@ export default function Home() {
             <Image
               src={handImage}
               alt="Line drawing of hand"
-              layout="intrinsic"
               priority
               width={450}
               height={438}

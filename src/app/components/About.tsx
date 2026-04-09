@@ -28,8 +28,8 @@ export default function About() {
           <Image
             src="/siteOffice.png"
             alt="Photo of office interior"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
             className={styles.cardImageTwo}
           />
         </div>
@@ -81,8 +81,8 @@ export default function About() {
           <Image
             src="/siteHeadshot.png"
             alt="Headshot of Mason O‘Mara"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
             className={styles.cardImageTwo}
           />
         </div>
