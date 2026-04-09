@@ -1,7 +1,7 @@
 // src/app/layout.tsx
 
 import type { Metadata } from "next";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 import { Overpass } from "next/font/google";
 import CursorFollower from "./components/CursorFollower";
 
@@ -14,30 +14,33 @@ export const metadata: Metadata = {
 const overpass = Overpass({
   subsets: ["latin"],
   display: "swap",
-  variable: '--font-overpass',
+  variable: "--font-overpass",
 });
 
 const rallingtonSerif = localFont({
-  src: '../../public/fonts/RallingtonSerif.woff2',
-  display: 'swap',
-  variable: '--font-rallingtonSerif',
-})
+  src: "../../public/fonts/RallingtonSerif.woff2",
+  display: "swap",
+  variable: "--font-rallingtonSerif",
+});
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" style={{ margin: "0px", backgroundColor: "#F8E9D8" }}>
+    <html lang="en" style={{ margin: "0px", backgroundColor: "#FCEEDE" }}>
       <head>
         <meta name="apple-mobile-web-app-title" content="O’Mara Technology" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-        <body className={`${overpass.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", position: "relative" }}>
-          <CursorFollower />
-          {children}
-        </body>
+      <body
+        className={`${overpass.variable} ${rallingtonSerif.variable}`}
+        style={{ margin: "0px", position: "relative" }}
+      >
+        <CursorFollower />
+        {children}
+      </body>
     </html>
-  )
+  );
 }

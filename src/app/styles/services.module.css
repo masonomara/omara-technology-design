@@ -19,7 +19,7 @@
   text-decoration: none !important;
   color: var(--color-primary);
   transition: var(--transition-smooth-100) all;
-  background-color: rgba(137, 25, 16, 0);
+  background-color: rgba(137, 24, 16, 0);
   width: calc(100% - 32px);
   height: calc(100% - 32px);
   flex: 1;
@@ -37,7 +37,7 @@
   padding-right: 0px;
 }
 .servicesCard:hover {
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: var(--color-bg-hover);
   transition: var(--transition-smooth-100) all;
   outline: 1px solid var(--color-primary);
 }

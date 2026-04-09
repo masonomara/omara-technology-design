@@ -24,8 +24,8 @@ const CursorFollower = () => {
     const baseOpacity = isHovering ? 0.6 : 0.25;
     const opacity = isPressed ? Math.min(baseOpacity + 0.3, 1) : baseOpacity;
     cursor.style.backgroundColor = isMenuActive
-      ? `rgba(248, 233, 216, ${opacity})`
-      : `rgba(137, 25, 16, ${opacity})`;
+      ? `rgba(252, 238, 222, ${opacity})`
+      : `rgba(137, 24, 16, ${opacity})`;
   }, []);
 
   useEffect(() => {
@@ -44,20 +44,20 @@ const CursorFollower = () => {
       let currentElement: HTMLElement | null = target;
 
       while (currentElement) {
-        if (currentElement.id === 'menuActive') {
+        if (currentElement.id === "menuActive") {
           isOverMenuActive = true;
         }
 
         if (
           !isHovering &&
-          (
-            ["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL"].includes(currentElement.tagName) ||
-            currentElement.hasAttribute('onclick') ||
-            typeof currentElement.onclick === 'function' ||
-            currentElement.getAttribute('role') === 'button' ||
-            currentElement.id.includes('enemy') ||
-            currentElement.id === 'menu'
-          )
+          (["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL"].includes(
+            currentElement.tagName,
+          ) ||
+            currentElement.hasAttribute("onclick") ||
+            typeof currentElement.onclick === "function" ||
+            currentElement.getAttribute("role") === "button" ||
+            currentElement.id.includes("enemy") ||
+            currentElement.id === "menu")
         ) {
           isHovering = true;
         }
@@ -106,17 +106,17 @@ const CursorFollower = () => {
       ref={cursorRef}
       className="cursorFollower"
       style={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
         width: "16px",
         height: "16px",
-        backgroundColor: "rgba(137, 25, 16, 0.25)",
-        transform: 'translate(-50%, -50%)',
-        pointerEvents: 'none',
-        transition: 'width 0.2s, height 0.2s, background-color 0.2s',
+        backgroundColor: "rgba(137, 24, 16, 0.25)",
+        transform: "translate(-50%, -50%)",
+        pointerEvents: "none",
+        transition: "width 0.2s, height 0.2s, background-color 0.2s",
         zIndex: 9999,
-        borderRadius: '50%',
+        borderRadius: "50%",
       }}
     />
   );

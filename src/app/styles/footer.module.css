@@ -7,7 +7,7 @@
   justify-content: flex-start;
   flex-direction: column;
   font-family: var(--font-overpass);
-  color: #891910;
+  color: var(--color-primary);
   height: fit-content;
 }
 
@@ -17,7 +17,7 @@
   text-align: center;
   font-size: clamp(48px, 6.7vw, 74px);
   font-family: var(--font-rallingtonSerif);
-  color: #891910;
+  color: var(--color-primary);
   margin-top: 0.5em;
   margin-bottom: 0px;
   font-weight: 400;
@@ -29,7 +29,7 @@
   aspect-ratio: 208 / 12;
   text-align: center;
   font-family: var(--font-rallingtonSerif);
-  color: #891910;
+  color: var(--color-primary);
   margin-bottom: calc(80% / (208 / 12));
   margin-top: calc(80% / (208 / 12));
 }
@@ -51,7 +51,7 @@
 
 /* Button Styles */
 .buttonBorder {
-  outline: 2px solid #891910;
+  outline: 2px solid var(--color-primary);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -66,9 +66,9 @@
 
 .buttonBorder:hover {
   outline-offset: 1.2px;
-  outline: 2.4px solid #891910;
+  outline: 2.4px solid var(--color-primary);
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: var(--color-bg-hover);
 }
 
 .buttonsWrapper {
@@ -98,7 +98,7 @@
 .mainButton {
   padding: 23.04px 23.04px;
   width: calc(100% - 46.08px);
-  color: #891910;
+  color: var(--color-primary);
 }
 
 .buttonHeading {
@@ -114,7 +114,7 @@
 }
 
 .subButton {
-  color: #891910;
+  color: var(--color-primary);
   font-variation-settings:
     "wdth" 75,
     "wght" 700;
@@ -126,15 +126,11 @@
   text-decoration: none !important;
 }
 .subButton:hover {
-  text-decoration-color: var(--color-primary) !important;
   text-decoration: underline !important;
+  text-decoration-color: var(--color-primary) !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
-  text-decoration-color: #891910 !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.15em !important;
-  transition: 100ms all cubic-bezier(0.33, 0, 0.66, 1);
 }
 .bookends {
   width: 0px;
@@ -157,12 +153,12 @@
 }
 
 .emailInfo a {
-  color: #891910;
+  color: var(--color-primary);
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 0.15em !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: #f9f0e7;
+  background-color: var(--color-background);
 }
 
 .emailInfo a:hover {
@@ -210,9 +206,9 @@
 @media screen and (max-width: 699px) {
   .buttonBorder:hover {
     outline-offset: 0px;
-    outline: 2px solid #891910;
+    outline: 2px solid var(--color-primary);
     transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-    background-color: #f9f0e7;
+    background-color: var(--color-background);
   }
   .subButton {
     font-size: 24px;

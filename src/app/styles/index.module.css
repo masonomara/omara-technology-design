@@ -425,7 +425,7 @@
 
 .input::placeholder {
   color: var(--color-primary);
-  opacity: .5;
+  opacity: 0.5;
   font-weight: 500;
 }
 
@@ -464,7 +464,7 @@
 .input:hover {
   outline: none;
   outline: 1px solid var(--color-primary);
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: var(--color-bg-hover);
 }
 
 /* Checkboxes */
@@ -950,7 +950,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  background-color: #891910;
+  background-color: var(--color-primary);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -958,12 +958,16 @@
 
 .checkboxItem label {
   font-family: var(--font-overpass);
-  color: #891910;
-  font-size: 14px;
+  color: var(--color-primary);
+  font-size: 16px;
   cursor: pointer;
   text-transform: none;
   letter-spacing: normal;
   margin-bottom: 0;
+  background-color: transparent;
+  font-weight: 500 !important;
+  font-variation-settings: "wdth" 100, "wght" 500 !important;
+  padding-left: 8px;
 }
 
 .checkboxItem input[type="text"],
@@ -972,14 +976,14 @@
 .checkboxItem input,
 .checkboxItem textarea {
   font-family: var(--font-overpass);
-  border: 1px solid #891910;
+  border: 1px solid var(--color-primary);
   background-color: transparent;
   padding: 13px 12px 11px;
   font-size: 16px;
   font-weight: 500 !important;
   border-radius: 0px;
-  color: #891910;
-  outline: 0.6px solid #891910;
+  color: var(--color-primary);
+  outline: 0.6px solid var(--color-primary);
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
@@ -987,42 +991,13 @@
 .checkboxItem textarea:focus,
 .checkboxItem input:hover,
 .checkboxItem textarea:hover {
-  outline: 1px solid #891910;
-  background-color: rgba(137, 25, 16, 0.08);
+  outline: 1px solid var(--color-primary);
+  background-color: var(--color-bg-hover);
 }
 
 .checkboxItem input::placeholder,
 .checkboxItem textarea::placeholder {
-  color: rgba(137, 25, 16, 0.5);
+  color: rgba(137, 24, 16, 0.5);
   font-weight: 500 !important;
 }
 
-.checkboxItem label {
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  font-size: 16px;
-  color: #891910;
-  margin-bottom: 8px;
-}
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-  padding-left: 8px;
-}
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  color: #891910;
-  cursor: pointer;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
-}

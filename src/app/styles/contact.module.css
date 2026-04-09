@@ -152,13 +152,13 @@
 .formField input:hover,
 .formField textarea:hover {
   outline: 1px solid var(--color-primary);
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: var(--color-bg-hover);
   transition: var(--transition-smooth-100) all;
 }
 
 .formField input::placeholder,
 .formField textarea::placeholder {
-  color: rgba(137, 25, 16, 0.5);
+  color: rgba(137, 24, 16, 0.5);
   font-weight: 500 !important;
 }
 
@@ -269,7 +269,7 @@
 }
 
 .submitButton:hover {
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: var(--color-bg-hover);
   transition: var(--transition-smooth-100) all;
 }
 
@@ -337,7 +337,7 @@
 }
 
 .secondaryButton:hover {
-  background-color: rgba(137, 25, 16, 0.08);
+  background-color: var(--color-bg-hover);
   transition: var(--transition-smooth-100) all;
 }
 
@@ -359,7 +359,7 @@
   font-family: var(--font-overpass);
   font-size: 16px;
   font-weight: 600;
-  color: #2d7a3d;
+  color: var(--color-primary);
   text-align: center;
   margin-top: 8px;
 }
@@ -367,7 +367,7 @@
 .errorMessage {
   font-family: var(--font-overpass);
   font-size: 14px;
-  color: #c23b22;
+  color: var(--color-primary);
   margin-top: 4px;
 }
 
@@ -436,11 +436,11 @@
 }
 
 .dropZone:hover {
-  background-color: rgba(137, 25, 16, 0.05);
+  background-color: rgba(137, 24, 16, 0.05);
 }
 
 .dropZoneDragging {
-  background-color: rgba(137, 25, 16, 0.1);
+  background-color: rgba(137, 24, 16, 0.1);
   border-style: solid;
 }
 
