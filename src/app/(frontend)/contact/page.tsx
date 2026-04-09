@@ -30,7 +30,7 @@ const ALLOWED_FILE_TYPES = [
 ];
 
 export default function Contact() {
-  const emailAddress = "mason@omaratechnologydesign.com";
+  const emailAddress = "info@omaratechnology.com";
   const [showFileModal, setShowFileModal] = useState(false);
   const [attachedFile, setAttachedFile] = useState<File | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
@@ -185,7 +185,7 @@ ${values.additional || "None provided."}`;
             Other places you can find us:{" "}
             <a
               className={styles.emailLink}
-              href="https://linkedin.com/company/omaratechnologydesign"
+              href="https://linkedin.com/company/omaratechnology"
               target="_blank"
               rel="noopener noreferrer"
             >

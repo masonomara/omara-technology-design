@@ -8,12 +8,12 @@ import styles from "./../styles/index.module.css";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fadeIn } from '../lib/motion';
+import { fadeIn } from "../lib/motion";
 
 // Initialize Supabase client with environment variables
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 );
 
 interface LeaderboardEntry {
@@ -28,11 +28,15 @@ function isValidEmail(email: string) {
 }
 
 const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
-const badWords = atob("RkFHLEZVQ0ssVElUUyxDVU5ULDg9RCxTSElULFBJU1MsS0tLLENPQ0ssTklHR0VSLE5JR0dBLEtJS0UsUFVTU1ksU0xVVCxDUkFQLEJJVENI").split(",");
+const badWords = atob(
+  "RkFHLEZVQ0ssVElUUyxDVU5ULDg9RCxTSElULFBJU1MsS0tLLENPQ0ssTklHR0VSLE5JR0dBLEtJS0UsUFVTU1ksU0xVVCxDUkFQLEJJVENI",
+).split(",");
 
 export default function Home() {
   // State variables for game logic
-  const [bangs, setBangs] = useState<{ x: number; y: number; id: number; rotation: number }[]>([]);
+  const [bangs, setBangs] = useState<
+    { x: number; y: number; id: number; rotation: number }[]
+  >([]);
   const [currentEnemy, setCurrentEnemy] = useState(0);
   const [score, setScore] = useState(0);
   const [spawnTime, setSpawnTime] = useState(0);
@@ -67,13 +71,15 @@ export default function Home() {
     }
 
     try {
-      const { error } = await supabase.from("subscriptions").insert([{
-        user_id: userId,
-        email: email,
-        company_newsletter: subscribeToCompany,
-        personal_blog: subscribeToBlog,
-        created_at: new Date().toISOString()
-      }]);
+      const { error } = await supabase.from("subscriptions").insert([
+        {
+          user_id: userId,
+          email: email,
+          company_newsletter: subscribeToCompany,
+          personal_blog: subscribeToBlog,
+          created_at: new Date().toISOString(),
+        },
+      ]);
 
       if (error) throw error;
 
@@ -95,19 +101,23 @@ export default function Home() {
 
   const userScoreRef = useRef<HTMLLIElement | null>(null);
 
-
   useEffect(() => {
     if (gameEnd) {
       setTimeout(() => {
-        userScoreRef?.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        userScoreRef?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }, 100);
     }
   }, [gameEnd]);
 
-
   useEffect(() => {
     if (currentEnemy >= 9 && userScoreRef.current) {
-      userScoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      userScoreRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }
   }, [currentEnemy]);
 
@@ -117,7 +127,10 @@ export default function Home() {
   };
 
   const fetchLeaderboard = useCallback(async () => {
-    const { data, error } = await supabase.from("scores").select("*").order("score", { ascending: false });
+    const { data, error } = await supabase
+      .from("scores")
+      .select("*")
+      .order("score", { ascending: false });
     if (!error) {
       if (score > 0) {
         data.push({ nickname, score });
@@ -138,18 +151,22 @@ export default function Home() {
     }
 
     if (containsBadWord(nickname) && !warning) {
-      setWarning("Your nickname contains a bad word. Please consider a different name.");
+      setWarning(
+        "Your nickname contains a bad word. Please consider a different name.",
+      );
       return;
     }
 
     setWarning("");
 
     try {
-      const { error } = await supabase.from("scores").insert([{
-        nickname,
-        score,
-        user_id: userId
-      }]);
+      const { error } = await supabase.from("scores").insert([
+        {
+          nickname,
+          score,
+          user_id: userId,
+        },
+      ]);
 
       if (error) {
         console.error("Supabase error:", error);
@@ -159,12 +176,11 @@ export default function Home() {
       }
     } catch (err) {
       console.error("Network error:", err);
-      alert("Failed to connect to the server. Please check your connection and try again.");
+      alert(
+        "Failed to connect to the server. Please check your connection and try again.",
+      );
     }
   }
-
-
-
 
   // Handles user clicking on the game frame
   useEffect(() => {
@@ -176,7 +192,15 @@ export default function Home() {
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
-      setBangs((prev) => [...prev, { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation }]);
+      setBangs((prev) => [
+        ...prev,
+        {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+          id: bangId,
+          rotation,
+        },
+      ]);
       setHandImage("/thumbsDown.svg");
       setTimeout(() => setHandImage("/thumbsUp.svg"), 250);
       setTimeout(() => {
@@ -188,8 +212,6 @@ export default function Home() {
     return () => gameFrame.removeEventListener("mousedown", handleMouseDown);
   }, [gameAction]);
 
-
-
   // Spawns an enemy
   useEffect(() => {
     if (gameAction && currentEnemy < 9) {
@@ -197,8 +219,6 @@ export default function Home() {
       setSpawnTime(performance.now());
     }
   }, [currentEnemy, gameAction]);
-
-
 
   // Positions the enemies to shoot
   useEffect(() => {
@@ -253,8 +273,10 @@ export default function Home() {
 
   // Hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
   const iShoot = (event: React.MouseEvent, index: number) => {
-    setShotsTaken(prev => prev + 1); // Increment shots taken
-    setEnemyStates((prev) => prev.map((_, i) => (i === index ? false : prev[i])));
+    setShotsTaken((prev) => prev + 1); // Increment shots taken
+    setEnemyStates((prev) =>
+      prev.map((_, i) => (i === index ? false : prev[i])),
+    );
     setCurrentEnemy((prev) => {
       const newEnemy = prev + 1;
       if (newEnemy >= 9) {
@@ -273,7 +295,8 @@ export default function Home() {
       enemy.classList.add(styles.hidden);
     }, 500);
 
-    enemy.style.transition = "transform 0.5s cubic-bezier(0,0.66,.66,1), opacity 0.5s linear";
+    enemy.style.transition =
+      "transform 0.5s cubic-bezier(0,0.66,.66,1), opacity 0.5s linear";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
     enemy.style.pointerEvents = "none";
@@ -283,17 +306,20 @@ export default function Home() {
     const enemyCenterX = enemyRect.left + enemyRect.width / 2;
     const enemyCenterY = enemyRect.top + enemyRect.height / 2;
     const distance = Math.sqrt(
-      Math.pow(event.clientX - enemyCenterX, 2) + Math.pow(event.clientY - enemyCenterY, 2)
+      Math.pow(event.clientX - enemyCenterX, 2) +
+        Math.pow(event.clientY - enemyCenterY, 2),
     );
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
-    const speedScore = (Math.max(0, (1 - reactionTime / 2000) * 67) * 1.5);
+    const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67) * 1.5;
     const hitSuccess = accuracyScore > 30; // if accuracy is greater than 30, it's considered a hit
     if (hitSuccess) {
-      setSuccessfulHits(prev => prev + 1); // Increment successful hits
+      setSuccessfulHits((prev) => prev + 1); // Increment successful hits
     }
-    setScore((prev) => prev + Math.round(((accuracyScore * 1.5) + speedScore) * 10));
-  }
+    setScore(
+      (prev) => prev + Math.round((accuracyScore * 1.5 + speedScore) * 10),
+    );
+  };
 
   // Restarts game
   function restartGame() {
@@ -315,7 +341,9 @@ export default function Home() {
     setGameEnd(false);
     setEnemyStates(Array(9).fill(false));
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
-    const allEnemies: NodeListOf<HTMLElement> = document.querySelectorAll(`.${styles.enemy}`);
+    const allEnemies: NodeListOf<HTMLElement> = document.querySelectorAll(
+      `.${styles.enemy}`,
+    );
     allEnemies.forEach((enemy: HTMLElement) => {
       enemy.style.transition = "";
       enemy.style.transform = "";
@@ -323,7 +351,7 @@ export default function Home() {
       enemy.style.pointerEvents = "";
       enemy.style.left = "";
       enemy.style.top = "";
-      enemy.style.display = 'none';
+      enemy.style.display = "none";
       enemy.classList.remove(styles.enemyHit);
       enemy.classList.remove(styles.hidden);
       enemy.classList.remove(styles.active);
@@ -341,178 +369,34 @@ export default function Home() {
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
 
-  const timeTaken = gameEndTime ? ((gameEndTime - gameStartTime) / 1000).toFixed(0) : "0"; // Time in seconds
-  const accuracy = shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0"; // Accuracy as a percentage
+  const timeTaken = gameEndTime
+    ? ((gameEndTime - gameStartTime) / 1000).toFixed(0)
+    : "0"; // Time in seconds
+  const accuracy =
+    shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0"; // Accuracy as a percentage
 
   return (
     <>
-      {/* <OrganizationJsonLd
-        type="ProfessionalService"
-        name="O‘Mara Technology & Design"
-        url="https://omaratechnologydesign.com"
-        logo="https://omaratechnologydesign.com/monogramText.svg"
-        email="mason@omaratechnologydesign.com"
-        founder={{
-          "@type": "Person",
-          name: "Mason O‘Mara",
-          sameAs: "https://masonomara.com",
-        }}
-        description="Strategy, design, and development for digital products - apps, websites, ecommerce, and internal tools."
-        images={["https://omaratechnologydesign.com/bizCard.png"]}
-        serviceType={[
-          "Strategy",
-          "Design",
-          "Development",
-          "Fractional Business Leadership",
-          "Digital Systems",
-          "Custom Solutions",
-          "Audits & Optimization",
-          "Product Consulting",
-          "Fractional Technology Leadership",
-          "App Design",
-          "Website Design",
-          "Ecommerce Design",
-          "Brand Identity",
-          "App Development",
-          "Website Development",
-          "Ecommerce Development",
-        ]}
-        hasOfferCatalog={{
-          "@type": "OfferCatalog",
-          name: "Services",
-          itemListElement: [
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Fractional Business Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-business-leadership",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Digital Systems",
-                url: "https://omaratechnologydesign.com/services/digital-systems",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Custom Solutions",
-                url: "https://omaratechnologydesign.com/services/custom-solutions",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Audits & Optimization",
-                url: "https://omaratechnologydesign.com/services/audits-and-optimization",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Product Consulting",
-                url: "https://omaratechnologydesign.com/services/product-consulting",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Fractional Technology Leadership",
-                url: "https://omaratechnologydesign.com/services/fractional-technology-leadership",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "App Design",
-                url: "https://omaratechnologydesign.com/services/app-design",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Website Design",
-                url: "https://omaratechnologydesign.com/services/website-design",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Ecommerce Design",
-                url: "https://omaratechnologydesign.com/services/ecommerce-design",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Brand Identity",
-                url: "https://omaratechnologydesign.com/services/brand-identity",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "App Development",
-                url: "https://omaratechnologydesign.com/services/app-development",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Website Development",
-                url: "https://omaratechnologydesign.com/services/website-development",
-              },
-            },
-            {
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: "Ecommerce Development",
-                url: "https://omaratechnologydesign.com/services/ecommerce-development",
-              },
-            },
-          ],
-        }}
-      />
-      <BreadcrumbJsonLd
-        itemListElements={[
-          {
-            position: 1,
-            name: "Home",
-            item: "https://omaratechnologydesign.com",
-          },
-        ]}
-      /> */}
-
-
       <div className="pageContainer">
         <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
           <div className={styles.scoreWrapper}>
-            <div className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveOne : ""}`}>
+            <div
+              className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveOne : ""}`}
+            >
               {score}
               <span className={styles.scoreDetails}>POINTS</span>
             </div>
-            <div className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveTwo : ""}`}>
+            <div
+              className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveTwo : ""}`}
+            >
               {currentEnemy}/9
               <span className={styles.scoreDetails}>CANS</span>
             </div>
           </div>
 
-          <div className={`${styles.handWrapper} ${gameAction ? styles.handWrapperActive : ""}`}>
+          <div
+            className={`${styles.handWrapper} ${gameAction ? styles.handWrapperActive : ""}`}
+          >
             <Image
               src={handImage}
               alt="Line drawing of hand"
@@ -529,15 +413,22 @@ export default function Home() {
               <div
                 key={bang.id}
                 className={styles.bangMarker}
-                style={{
-                  left: bang.x - 60,
-                  top: bang.y - 60,
-                  transform: `rotate(${bang.rotation}deg)`,
-                  "--rotation": `${bang.rotation}deg`,
-                } as React.CSSProperties
+                style={
+                  {
+                    left: bang.x - 60,
+                    top: bang.y - 60,
+                    transform: `rotate(${bang.rotation}deg)`,
+                    "--rotation": `${bang.rotation}deg`,
+                  } as React.CSSProperties
                 }
               >
-                <Image src="/bang.svg" priority height={120} width={120} alt="Bang" />
+                <Image
+                  src="/bang.svg"
+                  priority
+                  height={120}
+                  width={120}
+                  alt="Bang"
+                />
               </div>
             ))}
 
@@ -547,22 +438,33 @@ export default function Home() {
                 id={`enemy${index}`}
                 className={styles.enemy}
                 onMouseDown={(e) => iShoot(e, index)}
-                style={{ backgroundImage: `url(${enemyImages[index % enemyImages.length]})` }}
+                style={{
+                  backgroundImage: `url(${enemyImages[index % enemyImages.length]})`,
+                }}
               />
             ))}
 
             {/* Show Start Game button only if game hasn't started */}
-            {!gameEnd && !gameAction && !gameStart && 
-              (<motion.div variants={fadeIn("up", "spring", 0.1, 0.8)}
+            {!gameEnd && !gameAction && !gameStart && (
+              <motion.div
+                variants={fadeIn("up", "spring", 0.1, 0.8)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}
-                className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
+                className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}
+              >
                 <div className={styles.startTopWrapper}>
-                  <Image priority src="/wordmark.svg" height={167} width={463} alt="Bang" className={styles.startLogo} />
+                  <Image
+                    priority
+                    src="/wordmark.svg"
+                    height={167}
+                    width={463}
+                    alt="Bang"
+                    className={styles.startLogo}
+                  />
                   <p className={styles.startDescription}>
-                    Strategy, design, and development
-for apps, websites, and software.
+                    Strategy, design, and development for apps, websites, and
+                    software.
                   </p>
                 </div>
                 {/* <div className={styles.startDivider} /> */}
@@ -570,14 +472,20 @@ for apps, websites, and software.
                   <button className={styles.primaryButton} onClick={startGame}>
                     <p>Start Game</p>
                   </button>
-                  <Link className={styles.primaryButton} href="/contact" target="_top" >
+                  <Link
+                    className={styles.primaryButton}
+                    href="/contact"
+                    target="_top"
+                  >
                     <p>Contact US</p>
                   </Link>
                 </div>
-              </motion.div>)
-            }
+              </motion.div>
+            )}
 
-            <div className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""} ${!videoLoaded ? styles.videoLoading : ""}`}>
+            <div
+              className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""} ${!videoLoaded ? styles.videoLoading : ""}`}
+            >
               <div className={styles.videoScreenOverlay} />
               <div className={styles.videoMultiplyOverlay} />
               <video
@@ -598,30 +506,40 @@ for apps, websites, and software.
               </video>
             </div>
 
-
-            {gameStart && !showSubscribeScreen &&
-              <div className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}>
+            {gameStart && !showSubscribeScreen && (
+              <div
+                className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}
+              >
                 <div className={styles.leaderboardContainer}>
-
-                  <span className={styles.trophyScore}>{score}<span className={styles.trophyDetails}>points!</span></span>
+                  <span className={styles.trophyScore}>
+                    {score}
+                    <span className={styles.trophyDetails}>points!</span>
+                  </span>
                   <div className={styles.statsContainer}>
                     <div className={styles.statsWrapper}>
-                      <span className={styles.statsTitle} >{timeTaken} seconds</span>
+                      <span className={styles.statsTitle}>
+                        {timeTaken} seconds
+                      </span>
                     </div>
                     <div className={styles.statsDivider} />
                     <div className={styles.statsWrapper}>
-                      <span className={styles.statsTitle}>{accuracy}% accuracy</span>
+                      <span className={styles.statsTitle}>
+                        {accuracy}% accuracy
+                      </span>
                     </div>
                     <div className={styles.statsDivider} />
                     <div className={styles.statsWrapper}>
                       <span className={styles.statsTitle}>
                         {(() => {
                           const totalEntries = leaderboard.length;
-                          const userRank = leaderboard.findIndex(entry => entry.score === score);
+                          const userRank = leaderboard.findIndex(
+                            (entry) => entry.score === score,
+                          );
 
                           if (userRank === -1) return "Rank not available";
 
-                          const rankPercentage = (userRank / totalEntries) * 100;
+                          const rankPercentage =
+                            (userRank / totalEntries) * 100;
 
                           if (rankPercentage <= 0.01) return "Top 0.01%";
                           if (rankPercentage <= 0.1) return "Top 0.1%";
@@ -650,9 +568,26 @@ for apps, websites, and software.
                           ref={isUser ? userScoreRef : null}
                           className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
                         >
-                          <div className={styles.leaderboardRank}>{index + 1}</div>
-                          <div className={styles.leaderboardName} style={isUser && !entry.nickname ? { opacity: 0.5 } : undefined}>{entry.nickname ? entry.nickname.toUpperCase() : (isUser ? "NICKNAME" : "")}</div>
-                          <div className={styles.leaderboardScore}>{entry.score}</div>
+                          <div className={styles.leaderboardRank}>
+                            {index + 1}
+                          </div>
+                          <div
+                            className={styles.leaderboardName}
+                            style={
+                              isUser && !entry.nickname
+                                ? { opacity: 0.5 }
+                                : undefined
+                            }
+                          >
+                            {entry.nickname
+                              ? entry.nickname.toUpperCase()
+                              : isUser
+                                ? "NICKNAME"
+                                : ""}
+                          </div>
+                          <div className={styles.leaderboardScore}>
+                            {entry.score}
+                          </div>
                         </li>
                       );
                     })}
@@ -669,10 +604,16 @@ for apps, websites, and software.
                         onChange={(e) => {
                           setNickname(e.target.value);
                           if (warning) setWarning("");
-                        }} />
+                        }}
+                      />
 
-
-                      {warning ? (<div className={styles.warning}>{warning}</div>) : (<div className={styles.warning}>Enter your nickname</div>)}
+                      {warning ? (
+                        <div className={styles.warning}>{warning}</div>
+                      ) : (
+                        <div className={styles.warning}>
+                          Enter your nickname
+                        </div>
+                      )}
                     </>
                   )}
                   <div className={styles.endButtonWrapper}>
@@ -685,21 +626,26 @@ for apps, websites, and software.
                         <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
                       </button>
                     )}
-                    <button onClick={restartGame} className={styles.primaryButton}>
+                    <button
+                      onClick={restartGame}
+                      className={styles.primaryButton}
+                    >
                       <p>Play Again</p>
                     </button>
                   </div>
                 </div>
               </div>
-            }
+            )}
 
             {/* Subscribe Screen */}
             {showSubscribeScreen && (
-              <div className={`${styles.emailSignup} ${!showSubscribeScreen ? styles.emailSignupClose : ""}`}>
-
+              <div
+                className={`${styles.emailSignup} ${!showSubscribeScreen ? styles.emailSignupClose : ""}`}
+              >
                 <h2 className={styles.titleRegular}>Email List Signup</h2>
-                <p className={styles.bodyRegular}>Would you like to sign up for either of these email lists?</p>
-
+                <p className={styles.bodyRegular}>
+                  Would you like to sign up for either of these email lists?
+                </p>
 
                 <div className={styles.checkboxContainer}>
                   <div className={styles.checkboxItem}>
@@ -708,10 +654,15 @@ for apps, websites, and software.
                       id="subscribeToCompany"
                       checked={subscribeToCompany}
                       value="Subscribe to Company"
-                      onChange={() => setSubscribeToCompany(!subscribeToCompany)}
+                      onChange={() =>
+                        setSubscribeToCompany(!subscribeToCompany)
+                      }
                     />
-                    <label className={styles.checkboxLabel} htmlFor="subscribeToCompany">
-                      O’Mara Technology & Design Work Blog (quarterly)
+                    <label
+                      className={styles.checkboxLabel}
+                      htmlFor="subscribeToCompany"
+                    >
+                      O’Mara Technology Work Blog (quarterly)
                     </label>
                   </div>
                   <div className={styles.checkboxItem}>
@@ -722,20 +673,28 @@ for apps, websites, and software.
                       value="Subscribe to Blog"
                       onChange={() => setSubscribeToBlog(!subscribeToBlog)}
                     />
-                    <label className={styles.checkboxLabel} htmlFor="subscribeToBlog">
+                    <label
+                      className={styles.checkboxLabel}
+                      htmlFor="subscribeToBlog"
+                    >
                       Mason O’Mara Personal Blog (monthly)
                     </label>
                   </div>
                 </div>
 
-                {!subscriptionSubmitted ? (<input
-                  type="email"
-                  placeholder="Your email"
-                  className={styles.input}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />) : (<div className={styles.inputThankYou}>Thank you for subscribing!</div>)}
-
+                {!subscriptionSubmitted ? (
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className={styles.input}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                ) : (
+                  <div className={styles.inputThankYou}>
+                    Thank you for subscribing!
+                  </div>
+                )}
 
                 {!subscriptionSubmitted ? (
                   <div className={styles.endButtonWrapper}>
@@ -769,13 +728,11 @@ for apps, websites, and software.
                     </button>
                   </div>
                 )}
-
               </div>
-
             )}
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }

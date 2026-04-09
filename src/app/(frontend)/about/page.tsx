@@ -4,23 +4,23 @@ import FooterContact from "@/app/components/FooterContact";
 import About from "@/app/components/About";
 
 export const metadata: Metadata = {
-  title: "About | O‘Mara Technology & Design",
+  title: "About | O‘Mara Technology",
   description: "Product design and technical development strategy and services",
   alternates: {
-    canonical: "https://omaratechnologydesign.com/about",
+    canonical: "https://omaratechnology.com/about",
   },
   openGraph: {
-    title: "About | O’Mara Technology & Design",
+    title: "About | O’Mara Technology",
     description:
       "Product design and technical development strategy and services",
-    url: "https://omaratechnologydesign.com/about",
-    siteName: "O‘Mara Technology & Design",
+    url: "https://omaratechnology.com/about",
+    siteName: "O‘Mara Technology",
     images: [
       {
-        url: "https://omaratechnologydesign.com/bizCard.png",
+        url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O’Mara Technology & Design",
+        alt: "O’Mara Technology",
       },
     ],
     locale: "en_US",

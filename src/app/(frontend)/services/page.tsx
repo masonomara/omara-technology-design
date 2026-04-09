@@ -5,22 +5,22 @@ import ServicesSection from "@/app/components/ServicesSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | O‘Mara Technology & Design",
+  title: "Services | O‘Mara Technology",
   description: "Product design and technical development strategy and services",
   alternates: {
-    canonical: "https://omaratechnologydesign.com/services",
+    canonical: "https://omaratechnology.com/services",
   },
   openGraph: {
-    title: "Services | O‘Mara Technology & Design",
+    title: "Services | O‘Mara Technology",
     description: "Product design and technical development strategy and services",
-    url: "https://omaratechnologydesign.com/services",
-    siteName: "O‘Mara Technology & Design",
+    url: "https://omaratechnology.com/services",
+    siteName: "O‘Mara Technology",
     images: [
       {
-        url: "https://omaratechnologydesign.com/bizCard.png",
+        url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O‘Mara Technology & Design",
+        alt: "O‘Mara Technology",
       },
     ],
     locale: "en_US",

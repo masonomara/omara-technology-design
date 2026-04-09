@@ -8,22 +8,22 @@ import ProjectsSection from "@/app/components/ProjectsSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio | O‘Mara Technology & Design",
+  title: "Portfolio | O‘Mara Technology",
   description: "Product design and technical development strategy and services",
   alternates: {
-    canonical: "https://omaratechnologydesign.com/portfolio",
+    canonical: "https://omaratechnology.com/portfolio",
   },
   openGraph: {
-    title: "Portfolio | O’Mara Technology & Design",
+    title: "Portfolio | O’Mara Technology",
     description: "Product design and technical development strategy and services",
-    url: "https://omaratechnologydesign.com/portfolio",
-    siteName: "O‘Mara Technology & Design",
+    url: "https://omaratechnology.com/portfolio",
+    siteName: "O‘Mara Technology",
     images: [
       {
-        url: "https://omaratechnologydesign.com/bizCard.png",
+        url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O‘Mara Technology & Design",
+        alt: "O‘Mara Technology",
       },
     ],
     locale: "en_US",

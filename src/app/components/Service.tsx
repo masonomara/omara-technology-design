@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { components } from "@/sanity/portableTextComponents";
 import { PortableText } from "next-sanity";
@@ -11,8 +11,7 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
 export function Service(props: NonNullable<SERVICE_QUERYResult>) {
   const { body, title, seo } = props;
-  const emailAddress = 'mason@omaratechnologydesign.com'
-
+  const emailAddress = "info@omaratechnology.com";
 
   return (
     <>
@@ -30,31 +29,30 @@ export function Service(props: NonNullable<SERVICE_QUERYResult>) {
           {body ? (
             <div>
               <motion.div
-                variants={textFadeUpSmall("up", "spring", .1, .8)}
+                variants={textFadeUpSmall("up", "spring", 0.1, 0.8)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}
               >
                 <PortableText value={body} components={components} />
               </motion.div>
-              <motion.div className={styles.emailInfo}
-                variants={fadeInButton("up", "spring", .3, 1.2)}
+              <motion.div
+                className={styles.emailInfo}
+                variants={fadeInButton("up", "spring", 0.3, 1.2)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0 }}>
-                Interested in working together?<br />
-                Feel free to reach out to {' '}
-                <a
-                  className={styles.emailLink}
-                  href={`mailto:${emailAddress}`}
-                >
-                  mason@omaratechnologydesign.com
+                viewport={{ once: true, amount: 0 }}
+              >
+                Interested in working together?
+                <br />
+                Feel free to reach out to{" "}
+                <a className={styles.emailLink} href={`mailto:${emailAddress}`}>
+                  info@omaratechnology.com
                 </a>
               </motion.div>
             </div>
-          ) : null
-          }
-        </article >
+          ) : null}
+        </article>
       </div>
     </>
   );

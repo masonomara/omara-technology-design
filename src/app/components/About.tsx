@@ -42,7 +42,7 @@ export default function About() {
         <p className={styles.subtitle}>
           Full list of services available at{" "}
           <Link href="/services" rel="noopener noreferrer">
-            omaratechnologydesign.com/services
+            omaratechnology.com/services
           </Link>
           .
         </p>

@@ -20,21 +20,21 @@ export default function FooterContact() {
           src="/longWordmark.svg"
           height={12}
           width={208}
-          alt="O’Mara Technology & Design"
+          alt="O’Mara Technology"
           className="companyTitleImage"
         />
         <Image
           src="/condensedWordmark.svg"
           height={24}
           width={142}
-          alt="O’Mara Technology & Design"
+          alt="O’Mara Technology"
           className="companyTitleImageCondensed"
         />
         <Image
           src="/superCondensedWordmark.svg"
           height={36}
           width={87}
-          alt="O’Mara Technology & Design"
+          alt="O’Mara Technology"
           className="companyTitleImageSuperCondensed"
         />
       </motion.div>

@@ -13,22 +13,22 @@ import ScrollToTop from "../components/ScrollToTop";
 
 
 export const metadata: Metadata = {
-  title: "O‘Mara Technology & Design",
+  title: "O‘Mara Technology",
   description: "Product design and technical development strategy and services",
   alternates: {
-    canonical: "https://omaratechnologydesign.com/",
+    canonical: "https://omaratechnology.com/",
   },
   openGraph: {
-    title: "O’Mara Technology & Design",
+    title: "O’Mara Technology",
     description: "Product design and technical development strategy and services",
-    url: "https://omaratechnologydesign.com/",
-    siteName: "O‘Mara Technology & Design",
+    url: "https://omaratechnology.com/",
+    siteName: "O‘Mara Technology",
     images: [
       {
-        url: "https://omaratechnologydesign.com/bizCard.png",
+        url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O‘Mara Technology & Design",
+        alt: "O‘Mara Technology",
       },
     ],
     locale: "en_US",

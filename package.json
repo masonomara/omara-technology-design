@@ -1,6 +1,6 @@
 {
-  "name": "omaratechnologydesign",
-  "version": "0.1.0",
+  "name": "omaratechnology",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,32 +14,32 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@sanity/icons": "^3.7.0",
-    "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.84.0",
-    "@supabase/supabase-js": "^2.49.3",
-    "@vercel/analytics": "^1.5.0",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.20.0",
+    "@supabase/supabase-js": "^2.103.0",
+    "@vercel/analytics": "^2.0.1",
     "dayjs": "^1.11.13",
     "framer-motion": "^12.7.3",
-    "next": "^15.5.9",
-    "next-sanity": "^9.10.2",
-    "next-seo": "^6.6.0",
-    "nodemailer": "^6.10.0",
+    "next": "^16.2.3",
+    "next-sanity": "^12.2.2",
+    "next-seo": "^7.2.0",
+    "nodemailer": "^8.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",
-    "sanity": "^3.84.0",
+    "sanity": "^5.20.0",
     "sonner": "^2.0.3",
     "styled-components": "^6.1.17",
-    "uuid": "^11.1.0"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/nodemailer": "^6.4.17",
+    "@types/node": "^25.5.2",
+    "@types/nodemailer": "^8.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.3",
-    "typescript": "^5"
+    "eslint": "^10.2.0",
+    "eslint-config-next": "^16.2.3",
+    "typescript": "^6.0.2"
   }
 }

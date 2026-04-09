@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const baseUrl = process.env.VERCEL
       ? `https://${process.env.VERCEL_URL}`
-      : "http://omaratechnologydesign.com";
+      : "http://omaratechnology.com";
 
     const staticRoutes: MetadataRoute.Sitemap = [
       "/",

@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import React from 'react'
-import styles from '../app/styles/contact.module.css'
-import Image from 'next/image'
-import { MenuProvider } from './context/MenuContext'
-import Header from './components/Header'
+import Link from "next/link";
+import React from "react";
+import styles from "../app/styles/contact.module.css";
+import Image from "next/image";
+import { MenuProvider } from "./context/MenuContext";
+import Header from "./components/Header";
 
 export default function NotFound() {
-  const emailAddress = 'mason@omaratechnologydesign.com'
+  const emailAddress = "info@omaratechnology.com";
 
   return (
     <MenuProvider>
@@ -61,24 +61,39 @@ export default function NotFound() {
             </div>
 
             <div className={styles.emailInfo}>
-              Prefer email?{' '}
-              <a
-                className={styles.emailLink}
-                href={`mailto:${emailAddress}`}
-              >
+              Prefer email?{" "}
+              <a className={styles.emailLink} href={`mailto:${emailAddress}`}>
                 {emailAddress}
               </a>
             </div>
           </div>
 
           <div className={styles.companyTitle}>
-            {/* O’Mara Technology & Design */}
-            <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology & Design" className={styles.companyTitleImage} />
-            <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology & Design" className={styles.companyTitleImageCondensed} />
-            <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology & Design" className={styles.companyTitleImageSuperCondensed} />
+            {/* O’Mara Technology */}
+            <Image
+              src="/longWordmark.svg"
+              height={12}
+              width={198}
+              alt="O’Mara Technology"
+              className={styles.companyTitleImage}
+            />
+            <Image
+              src="/condensedWordmark.svg"
+              height={12}
+              width={198}
+              alt="O’Mara Technology"
+              className={styles.companyTitleImageCondensed}
+            />
+            <Image
+              src="/superCondensedWordmark.svg"
+              height={24}
+              width={94}
+              alt="O’Mara Technology"
+              className={styles.companyTitleImageSuperCondensed}
+            />
           </div>
         </div>
       </div>
     </MenuProvider>
-  )
+  );
 }
