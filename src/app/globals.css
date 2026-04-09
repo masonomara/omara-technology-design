@@ -1,8 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Radio+Canada:ital,wdth,wght@0,75..100,300..700;1,75..100,300..700&display=swap");
-
 :root {
-  --font-archivo: "Archivo", sans-serif;
   --font-radio: "Radio Canada", sans-serif;
   --color-primary: rgb(137, 24, 16);
   --color-background: rgb(252, 238, 222);

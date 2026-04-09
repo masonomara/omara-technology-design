@@ -2,7 +2,7 @@
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Overpass } from "next/font/google";
+import { Overpass, Radio_Canada } from "next/font/google";
 import CursorFollower from "./components/CursorFollower";
 
 export const metadata: Metadata = {
@@ -17,6 +17,12 @@ const overpass = Overpass({
   variable: "--font-overpass",
 });
 
+const radioCanada = Radio_Canada({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-radio",
+});
+
 const rallingtonSerif = localFont({
   src: "../../public/fonts/RallingtonSerif.woff2",
   display: "swap",
@@ -29,13 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" style={{ margin: "0px", backgroundColor: "#FCEEDE" }}>
+    <html lang="en" className={`${overpass.variable} ${radioCanada.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", backgroundColor: "#FCEEDE" }}>
       <head>
         <meta name="apple-mobile-web-app-title" content="O’Mara Technology" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
-        className={`${overpass.variable} ${rallingtonSerif.variable}`}
         style={{ margin: "0px", position: "relative" }}
       >
         <CursorFollower />
