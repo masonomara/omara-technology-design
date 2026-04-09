@@ -230,21 +230,23 @@ Note on Sanity content: before Phase 3 (deleting Sanity), run `npx sanity datase
 - [x] Install: `marked`
 - [x] Install: `@types/marked` if needed — not needed, marked ships its own types
 
-### Phase 3 — Delete Sanity infrastructure
+### Phase 3 — Delete Sanity infrastructure ✓
 
-- [ ] Delete `src/sanity/` (entire directory)
-- [ ] Delete `sanity.config.ts`
-- [ ] Delete `sanity.cli.ts`
-- [ ] Delete `sanity-typegen.json`
-- [ ] Delete `src/app/studio/` (entire directory)
-- [ ] Delete `src/app/api/draft-mode/` (entire directory)
-- [ ] Delete `src/app/api/og/` (entire directory)
-- [ ] Delete `src/app/components/DisableDraftMode.tsx`
-- [ ] Delete `src/app/components/RelatedServices.tsx`
-- [ ] Delete `src/app/components/Category.tsx`
-- [ ] Delete `src/app/components/Title.tsx` (confirm unused first)
-- [ ] Delete `src/app/(frontend)/services/[slug]/` (entire directory)
-- [ ] Delete `src/app/components/Service.tsx`
+- [x] Delete `src/sanity/` (entire directory)
+- [x] Delete `sanity.config.ts` — moved to `sanity-archive/`
+- [x] Delete `sanity.cli.ts` — moved to `sanity-archive/`
+- [x] Delete `sanity-typegen.json` — moved to `sanity-archive/`
+- [x] Delete `src/app/studio/` (entire directory)
+- [x] Delete `src/app/api/draft-mode/` (entire directory)
+- [x] Delete `src/app/api/og/` (entire directory)
+- [x] Delete `src/app/components/DisableDraftMode.tsx`
+- [x] Delete `src/app/components/RelatedServices.tsx`
+- [x] Delete `src/app/components/Category.tsx`
+- [x] Delete `src/app/components/Title.tsx` (confirmed unused — no imports found)
+- [x] Delete `src/app/(frontend)/services/[slug]/` (entire directory)
+- [x] Delete `src/app/components/Service.tsx`
+- [x] Remove Sanity redirect fetch from `next.config.ts`
+- [x] Exclude `sanity-archive/` from `tsconfig.json`
 
 ### Phase 4 — Create new infrastructure
 
