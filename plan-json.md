@@ -209,20 +209,20 @@ No CMS login. No API token. No schema change. No deploy hook.
 
 ## Todo
 
-### Phase 1 — Migrate the `portfolio/` folder
+### Phase 1 — Migrate the `portfolio/` folder ✓
 
 The `portfolio/` folder at the project root already contains all 15 projects, each with a markdown writeup, a thumbnail image, and an `images/` directory. It just needs to be moved and the nav.json scaffolded so the code can use it.
 
 Note on Sanity content: before Phase 3 (deleting Sanity), run `npx sanity dataset export` to download a full NDJSON snapshot of all Sanity documents. Cross-check against the existing `portfolio/` folder — any images or writing still only in Sanity need to be downloaded from the CDN and added to the right project folder before Sanity is removed. Most content appears to already be captured in the markdown files.
 
 - [x] Move `portfolio/` → `content/projects/` (a simple folder rename/move at the project root)
-- [ ] Confirm each project directory has: `{slug}.md`, `{slug}.png` or `.webp`, and `images/` subfolder
-- [ ] Export Sanity dataset: `npx sanity dataset export` — save the snapshot before any deletion
-- [ ] Cross-check snapshot against `content/projects/` — download any missing images from Sanity CDN
-- [ ] Write placeholder `content/nav.json` — include all 15 project names (in desired display order) and all 5 service categories with their items lists; descriptions and final image curation can be placeholder/empty for now
+- [x] Confirm each project directory has: `{slug}.md`, `{slug}.png` or `.webp`, and `images/` subfolder
+- [x] Export Sanity dataset: exported to `sanity-export.tar.gz` (25 docs, 13 images)
+- [x] Cross-check snapshot against `content/projects/` — no project documents had image assets attached in Sanity; nothing to download. Two Sanity projects (Cureader, Current Media Company) have no local folder — decide whether to add them before Phase 3.
+- [x] Write placeholder `content/nav.json` — include all 15 project names (in desired display order) and all 5 service categories with their items lists; descriptions and final image curation can be placeholder/empty for now
   - Portfolio entries need at minimum: `name` (exact, since slug derives from it)
   - Service entries need: `name`, `description`, `items` (copy from `ServicesSection.tsx` — it's all there)
-- [ ] Verify slugs: confirm `toSlug(name)` for each nav.json entry matches its folder name in `content/projects/`
+- [x] Verify slugs: confirm `toSlug(name)` for each nav.json entry matches its folder name in `content/projects/`
 
 ### Phase 2 — Package cleanup
 

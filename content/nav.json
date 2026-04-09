@@ -1,0 +1,152 @@
+[
+  {
+    "name": "portfolio",
+    "children": [
+      {
+        "name": "Moor",
+        "description": ""
+      },
+      {
+        "name": "Innova Sphere",
+        "description": ""
+      },
+      {
+        "name": "Seed to Sprout",
+        "description": ""
+      },
+      {
+        "name": "CaptureNoire",
+        "description": ""
+      },
+      {
+        "name": "Train Market",
+        "description": ""
+      },
+      {
+        "name": "Lisa Says Gah",
+        "description": ""
+      },
+      {
+        "name": "Offshore Coffee",
+        "description": ""
+      },
+      {
+        "name": "Butcher's Block",
+        "description": ""
+      },
+      {
+        "name": "Chomp",
+        "description": ""
+      },
+      {
+        "name": "Flora and Mar",
+        "description": ""
+      },
+      {
+        "name": "Hazel Boutique",
+        "description": ""
+      },
+      {
+        "name": "Cookman Creamery",
+        "description": ""
+      },
+      {
+        "name": "Interwoven",
+        "description": ""
+      },
+      {
+        "name": "Talulas",
+        "description": ""
+      },
+      {
+        "name": "Patriae",
+        "description": ""
+      },
+      {
+        "name": "Current Media Company",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "services",
+    "children": [
+      {
+        "name": "Product design strategy",
+        "description": "Available in monthly or extended engagements. Includes product design services, technical strategy, and technical development services.",
+        "items": [
+          "Discovery & Scoping",
+          "User Research & Interviews",
+          "Competitor Audits",
+          "Market Positioning",
+          "Information Architecture",
+          "Product Roadmaps",
+          "Feature Prioritization",
+          "Algorithm Design",
+          "Gamification Strategy",
+          "Onboarding Planning"
+        ]
+      },
+      {
+        "name": "Product design services",
+        "description": "Available for ad-hoc work. Includes software development services.",
+        "items": [
+          "Wireframing",
+          "Interface Design",
+          "Accessible Design",
+          "Responsive Design",
+          "Design Systems",
+          "Prototyping",
+          "Technical Writing",
+          "Content Strategy",
+          "CMS Architecture"
+        ]
+      },
+      {
+        "name": "Technical development strategy",
+        "description": "Available in monthly or extended engagements. Includes technical development services.",
+        "items": [
+          "System Architecture",
+          "Database Design",
+          "API Design",
+          "Authentication & Row Level Security",
+          "Real-time Infrastructure",
+          "AI & RAG Architecture",
+          "MCP Server Design",
+          "Payment System Planning",
+          "Analytics Strategy",
+          "Deployment & DevOps Planning"
+        ]
+      },
+      {
+        "name": "Technical development services",
+        "description": "Available for ad-hoc work.",
+        "items": [
+          "React & Next.js Development",
+          "React Native Mobile Apps",
+          "PostgreSQL & Supabase",
+          "Cloudflare Workers & Durable Objects",
+          "Stripe Integration",
+          "Real-time Chat & Notifications",
+          "Headless CMS Implementation",
+          "PostHog Analytics Setup",
+          "Vercel Deployment",
+          "MCP Server Development"
+        ]
+      },
+      {
+        "name": "Supplementary services",
+        "description": "Services to trusted partners available in strategy engagements.",
+        "items": [
+          "Content Creation",
+          "Graphic Design",
+          "Shopify Storefronts",
+          "Marketing Sites",
+          "Workflow Automations",
+          "Social Media Setup",
+          "SEO Optimization"
+        ]
+      }
+    ]
+  }
+]
