@@ -1,89 +1,108 @@
-.subtitle {
+/* Ethos + Identity */
+.ethos {
   margin-top: 0.8em;
-  margin-bottom: 0em;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
+  max-width: 635px;
+  width: 60vw;
+  line-height: 145%;
+}
+
+.identity {
+  margin-top: 0.8em;
+  margin-bottom: 0;
   font-size: 16px;
   font-weight: 500;
   max-width: 635px;
   width: 60vw;
-  line-height: 130%;
-  text-align: left;
+  line-height: 140%;
+  opacity: 0.85;
 }
-.header {
-  margin-top: 1.6em;
-  margin-bottom: 0em;
-  font-size: 19px;
+
+.identity a {
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.12em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.identity a:hover {
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.18em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+/* Capabilities */
+.capabilitiesSection {
+  max-width: 900px;
+  width: 80vw;
+  margin-top: 2.4em;
+  padding-top: 2em;
+  border-top: 2px solid var(--color-primary);
+}
+
+.capabilitiesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 56px;
+}
+
+.capability {
+  display: flex;
+  flex-direction: column;
+}
+
+.capabilityLabel {
+  font-family: var(--font-overpass);
+  font-size: 13px;
   font-weight: 800;
-  max-width: 635px;
-  width: 60vw;
   text-transform: uppercase;
-  line-height: 130%;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.45em 0;
 }
 
-.emailInfo {
-  margin: 1.6em 0;
-  font-size: 19px;
-  line-height: 130%;
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  text-align: center;
-  max-width: 529px;
+.capabilityBody {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 145%;
+  opacity: 0.8;
 }
 
-
-
-/* Link Styles */
-.emailLink {
-  display: block;
-  color: var(--color-primary);
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.15em !important;
-  transition: var(--transition-smooth-100) all;
-}
-.emailLink:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
-  transition: var(--transition-smooth-100) all;
-}
-.emailInfo a {
-  color: var(--color-primary);
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.15em !important;
-  background-color: var(--color-background);
-  transition: var(--transition-smooth-100) all;
+/* Bio */
+.bioSection {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  max-width: 900px;
+  width: 80vw;
+  margin-top: 2.4em;
+  align-items: flex-start;
 }
 
-.emailInfo a:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
-.cardImageContainer {
+.bioImageContainer {
   position: relative;
   outline: 1px solid var(--color-primary);
-  max-width: 635px;
-  width: 60vw;
-  margin-top: 30.4px;
-  z-index: 0;
+  flex: 0 0 340px;
+  width: 340px;
 }
+
 .cardImage {
   position: relative;
   width: 100%;
   height: auto;
   aspect-ratio: 1280/853;
 }
+
 .cardImageTwo {
   position: relative;
   object-fit: cover;
   height: auto;
   filter: saturate(0);
 }
+
 .cardImageMultiply {
   width: 100%;
   height: 100%;
@@ -93,6 +112,7 @@
   opacity: 100%;
   z-index: 1;
 }
+
 .cardImageScreen {
   width: 100%;
   height: 100%;
@@ -102,27 +122,23 @@
   opacity: 100%;
   z-index: 2;
 }
-@media screen and (max-width: 699px) {
-  .subtitle {
-    width: calc(100% - 16px);
-    padding: 0 8px;
-    font-size: 15px;
-    line-height: 130%;
-  }
-  .header {
-    width: calc(100% - 32px);
-    padding: 0px 16px;
-    font-size: 16px;
-    line-height: 130%;
-  }
-  .cardImageContainer {
-    width: calc(100% - 32px);
-    margin-top: 25.6px;
-    z-index: 0;
-  }
+
+.bioText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-top: 2px;
 }
 
-.subtitle a {
+.bioText p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.bioText a {
   color: var(--color-primary);
   text-decoration: underline !important;
   text-decoration-thickness: 1.5px !important;
@@ -130,17 +146,141 @@
   transition: var(--transition-smooth-100) all;
 }
 
-.subtitle a:hover {
-  color: var(--color-primary);
-  text-decoration: underline !important;
+.bioText a:hover {
   text-decoration-thickness: 1.5px !important;
   text-underline-offset: 0.18em !important;
   transition: var(--transition-smooth-100) all;
 }
 
-@media screen and (max-width: 799px) {
-  .emailInfo {
-    font-size: 17px;
-    line-height: 130%;
+/* Engagements */
+.engagementsSection {
+  max-width: 900px;
+  width: 80vw;
+  margin-top: 2.4em;
+  padding-top: 2em;
+  border-top: 2px solid var(--color-primary);
+}
+
+.sectionHeading {
+  margin: 0 0 1.2em 0;
+  font-family: var(--font-overpass);
+  font-size: 20px;
+  font-weight: 800;
+  font-variation-settings: "wdth" 100, "wght" 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.engagementsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 56px;
+}
+
+.engagementType h3 {
+  font-family: var(--font-overpass);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5em 0;
+}
+
+.engagementType p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 145%;
+}
+
+.processNote {
+  margin-top: 1.8em;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 145%;
+  opacity: 0.65;
+}
+
+.processLink {
+  display: inline-block;
+  margin-top: 1em;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.12em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.processLink:hover {
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 0.18em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+/* Mobile */
+@media screen and (max-width: 699px) {
+  .ethos {
+    width: calc(100% - 16px);
+    padding: 0 8px;
+    font-size: 16px;
+  }
+
+  .identity {
+    width: calc(100% - 16px);
+    padding: 0 8px;
+    font-size: 15px;
+  }
+
+  .capabilitiesSection {
+    width: calc(100% - 16px);
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .capabilitiesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .capabilityBody {
+    font-size: 14px;
+  }
+
+  .bioSection {
+    flex-direction: column;
+    width: calc(100% - 16px);
+    padding: 0 8px;
+    gap: 20px;
+  }
+
+  .bioImageContainer {
+    flex: none;
+    width: 100%;
+  }
+
+  .bioText p {
+    font-size: 15px;
+  }
+
+  .engagementsSection {
+    width: calc(100% - 16px);
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .engagementsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .engagementType p {
+    font-size: 14px;
+  }
+
+  .processNote {
+    font-size: 13px;
   }
 }

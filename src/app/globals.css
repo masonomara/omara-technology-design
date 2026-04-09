@@ -1,5 +1,4 @@
 :root {
-  --font-radio: "Radio Canada", sans-serif;
   --color-primary: rgb(137, 24, 16);
   --color-background: rgb(252, 238, 222);
   --color-bg-hover: rgba(137, 24, 16, 0.08);
@@ -208,40 +207,8 @@
   text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
 }
-#menu {
-  display: none;
-}
 
-@media screen and (max-width: 1891px) {
-  #menu {
-    display: flex;
-  }
-  #home,
-  #about {
-    display: none;
-  }
-}
-@media screen and (max-width: 1722px) {
-  #services {
-    display: none;
-  }
-}
-@media screen and (max-width: 1488px) {
-  #work {
-    display: none;
-  }
-}
-@media screen and (max-width: 1221px) {
-  #textWhere {
-    display: none;
-  }
-}
-@media screen and (max-width: 1039px) {
-  #textFocuses {
-    display: none;
-  }
-}
-@media screen and (max-width: 832px) {
+@media screen and (max-width: 699px) {
   .pageContainer {
     position: relative;
   }
@@ -272,24 +239,14 @@
     gap: 12px;
   }
   .header__menuOption {
-    padding: 0px 4px;
+    padding: 0px;
   }
   .header__menuOption span {
-    font-size: 45px;
-    line-height: 48px;
+    font-size: 21px;
+    line-height: 25px;
   }
 }
-@media screen and (max-width: 711px) {
-  #textAbout {
-    display: none;
-  }
-  .header__menuWrapper {
-    gap: 10px;
-  }
-  .header__menuOption {
-    padding: 0px 4px;
-  }
-}
+
 @media screen and (max-width: 699px) {
   .header {
     height: fit-content;
@@ -355,77 +312,44 @@
   position: relative;
 }
 
-.menuWrapper {
-  max-width: 100%;
+.marqueeContainer {
+  width: 100%;
   overflow: hidden;
   background-color: var(--color-primary);
   height: 30px;
   position: fixed;
   bottom: 0px;
-  transition: var(--transition-smooth-300) all;
-}
-.menuWrapperActive {
-  height: calc(100svh - 70px);
-  overflow-y: scroll;
-  transition: var(--transition-smooth-200) all;
-}
-.menuWrapperActive .menu__navigation {
-  /* opacity: 1;
-  transition: 100ms ease-in 0ms all; */
-
-  /* transition: var(--transition-smooth-200) all; */
-}
-@media screen and (max-width: 699px) {
-  .menuWrapperActive {
-    height: calc(100svh - 64px);
-    overflow-y: scroll;
-    transition: var(--transition-smooth-200) all;
-  }
 }
 
 .marquee {
   white-space: nowrap;
-  overflow: hidden;
   display: inline-block;
-  animation: marquee 20s linear infinite;
-  background-color: var(--color-primary);
-  height: 30px;
-  transition: var(--transition-smooth-300) all;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
 }
-/* .marqueeCrack {
-  animation: marquee 9s linear infinite;
-  transition: var(--transition-smooth-300) all;
-} */
 @media screen and (max-width: 699px) {
   .marquee {
     animation: marquee 18s linear infinite;
-    transition: var(--transition-smooth-300) all;
   }
-  /* .marqueeCrack {
-    animation: marquee 12s linear infinite;
-    transition: var(--transition-smooth-300) all;
-  } */
 }
 
-.marquee p {
-  display: inline-block;
-  color: var(--color-background);
-  font-size: 16px;
-  line-height: 35px;
-  white-space: nowrap;
-  font-family: var(--font-overpass);
-  font-weight: 500;
-  margin: 0px;
-  transition: var(--transition-smooth-300) all;
-}
 .marqueeTitle {
   display: inline-block;
   color: var(--color-background);
+  font-size: 16px;
+  line-height: 30px;
+  white-space: nowrap;
   font-family: var(--font-overpass);
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   margin-left: 32px;
   margin-right: 4px;
+}
+
+.marqueeWave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu__navigation {

@@ -34,7 +34,7 @@ export default function Header() {
             />
           </Link>
           <div className={"header__textContainer"}>
-            <div id={"textAbout"} className={"header__textWrapper"}>
+            {/* <div id={"textAbout"} className={"header__textWrapper"}>
               <div className={"header__textTitle"}>Digital Product Agency</div>
 
               <div className={"header__textBody"}>
@@ -43,43 +43,30 @@ export default function Header() {
               <div className={"header__textBody"}>
                 development strategy and services
               </div>
-            </div>
-            <div id={"textWhere"} className={"header__textWrapper"}>
+            </div> */}
+            {/* <div id={"textWhere"} className={"header__textWrapper"}>
               <div className={"header__textTitle"}>Where</div>
               <div className={"header__textBody"}>
                 1301 Corlies Ave Suite 2D,
               </div>
               <div className={"header__textBody"}>Asbury Park, NJ 07712</div>
-            </div>
-            <div id={"textFocuses"} className={"header__textWrapper"}>
+            </div> */}
+            {/* <div id={"textFocuses"} className={"header__textWrapper"}>
               <div className={"header__textTitle"}>Focuses</div>
               <div className={"header__textBody"}>
                 Mobile Apps&nbsp;&nbsp;&nbsp;Websites
               </div>
               <div className={"header__textBody"}>Software</div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={"header__content--right"}>
           <div className={"header__menuWrapper"}>
-            <Link id={"home"} className={"header__menuOption"} href="/">
-              <span>Home</span>
-            </Link>
-            <div
-              id={"menu"}
-              className={`header__menuOption ${menuOpen ? "header__menuOptionActive" : ""}`}
-              onClick={() => {
-                toggleMenu();
-              }}
-            >
-              <span>{menuOpen ? "Close" : "Menu"}</span>
-            </div>
-            <Link
-              id={"work"}
-              className={"header__menuOption"}
-              href="/work"
-            >
+            <Link id={"work"} className={"header__menuOption"} href="/work">
               <span>Work</span>
+            </Link>
+            <Link id={"about"} className={"header__menuOption"} href="/about">
+              <span>About</span>
             </Link>
             <Link
               id={"process"}
@@ -88,9 +75,7 @@ export default function Header() {
             >
               <span>Process</span>
             </Link>
-            <Link id={"about"} className={"header__menuOption"} href="/about">
-              <span>About</span>
-            </Link>
+
             <Link
               id={"contact"}
               className={"header__menuOption"}

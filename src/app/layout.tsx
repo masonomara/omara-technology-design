@@ -21,6 +21,7 @@ const radioCanada = Radio_Canada({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-radio",
+  axes: ["wdth"],
 });
 
 const rallingtonSerif = localFont({
