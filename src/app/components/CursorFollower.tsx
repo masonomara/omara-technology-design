@@ -114,7 +114,7 @@ const CursorFollower = () => {
         backgroundColor: "rgba(137, 24, 16, 0.25)",
         transform: "translate(-50%, -50%)",
         pointerEvents: "none",
-        transition: "width 0.2s, height 0.2s, background-color 0.2s",
+        transition: "width 0.1s, height 0.1s, background-color 0.1s",
         zIndex: 9999,
         borderRadius: "50%",
       }}
