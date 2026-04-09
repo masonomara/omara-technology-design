@@ -778,8 +778,8 @@
 @media screen and (max-width: 699px) {
   /* Layout adjustments */
   .gameFrameWrapper {
-    top: 65px;
-    height: calc(100svh - 65px - 30px);
+    top: 0px;
+    height: calc(100svh);
   }
 
   .gameOver {
