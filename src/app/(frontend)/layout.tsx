@@ -1,34 +1,29 @@
-// app/(frontend)/layout.tsx
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
-import '../globals.css';
+import "../globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { SanityLive } from "@/sanity/lib/live";
-import { DisableDraftMode } from "../components/DisableDraftMode";
-import { VisualEditing } from "next-sanity";
 import { MenuProvider } from "../context/MenuContext";
 import Header from "../components/Header";
 import Marquee from "../components/Marquee";
 import ScrollToTop from "../components/ScrollToTop";
 
-
 export const metadata: Metadata = {
-  title: "O‘Mara Technology",
+  title: "O'Mara Technology",
   description: "Product design and technical development strategy and services",
   alternates: {
     canonical: "https://omaratechnology.com/",
   },
   openGraph: {
-    title: "O’Mara Technology",
-    description: "Product design and technical development strategy and services",
+    title: "O'Mara Technology",
+    description:
+      "Product design and technical development strategy and services",
     url: "https://omaratechnology.com/",
-    siteName: "O‘Mara Technology",
+    siteName: "O'Mara Technology",
     images: [
       {
         url: "https://omaratechnology.com/bizCard.png",
         width: 1200,
         height: 686,
-        alt: "O‘Mara Technology",
+        alt: "O'Mara Technology",
       },
     ],
     locale: "en_US",
@@ -36,7 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -48,16 +43,6 @@ export default async function RootLayout({
       {children}
       <Marquee />
       <Analytics />
-
-      <SanityLive />
-      {(await draftMode()).isEnabled && (
-        <>
-          <DisableDraftMode />
-          <VisualEditing />
-        </>
-      )}
-
-
     </MenuProvider>
   );
 }

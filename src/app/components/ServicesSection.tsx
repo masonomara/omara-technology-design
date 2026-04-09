@@ -1,95 +1,15 @@
-// src/app/components/ServicesSection.tsx
-
 "use client";
 
 import styles from "../styles/services.module.css";
 import { motion } from "framer-motion";
 import { textFadeUp, textFadeUpSmall } from "../lib/motion";
+import type { ContentNode } from "@/lib/types";
 
-const servicesData = [
-  {
-    title: "Product design strategy",
-    description:
-      "Available in monthly or extended engagements. Includes product design services, technical strategy, and technical development services.",
-    items: [
-      "Discovery & Scoping",
-      "User Research & Interviews",
-      "Competitor Audits",
-      "Market Positioning",
-      "Information Architecture",
-      "Product Roadmaps",
-      "Feature Prioritization",
-      "Algorithm Design",
-      "Gamification Strategy",
-      "Onboarding Planning",
-    ],
-  },
-  {
-    title: "Product design services",
-    description:
-      "Available for ad-hoc work. Includes software development services.",
-    items: [
-      "Wireframing",
-      "Interface Design",
-      "Accessible Design",
-      "Responsive Design",
-      "Design Systems",
-      "Prototyping",
-      "Technical Writing",
-      "Content Strategy",
-      "CMS Architecture",
-    ],
-  },
-  {
-    title: "Technical development strategy",
-    description:
-      "Available in monthly or extended engagements. Includes technical development services.",
-    items: [
-      "System Architecture",
-      "Database Design",
-      "API Design",
-      "Authentication & Row Level Security",
-      "Real-time Infrastructure",
-      "AI & RAG Architecture",
-      "MCP Server Design",
-      "Payment System Planning",
-      "Analytics Strategy",
-      "Deployment & DevOps Planning",
-    ],
-  },
-  {
-    title: "Technical development services",
-    description: "Available for ad-hoc work.",
-    items: [
-      "React & Next.js Development",
-      "React Native Mobile Apps",
-      "PostgreSQL & Supabase",
-      "Cloudflare Workers & Durable Objects",
-      "Stripe Integration",
-      "Real-time Chat & Notifications",
-      "Headless CMS Implementation",
-      "PostHog Analytics Setup",
-      "Vercel Deployment",
-      "MCP Server Development",
-    ],
-  },
-  {
-    title: "Supplementary services",
-    description:
-      "Services to trusted partners available in strategy engagements.",
-    items: [
-      "Content Creation",
-      "Graphic Design",
-      "Shopify Storefronts",
-      "Marketing Sites",
-      "Workflow Automations",
-      "Social Media Setup",
-      "SEO Optimization",
-    ],
-  },
-];
+interface ServicesSectionProps {
+  services: ContentNode[];
+}
 
-export default function ServicesSection() {
+export default function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <>
       <motion.h1
@@ -112,9 +32,9 @@ export default function ServicesSection() {
           services. Pricing determined by hourly rate.
         </p>
       </motion.div>
-      {servicesData.map((category, index) => (
+      {services.map((category, index) => (
         <motion.div
-          key={category.title}
+          key={category.name}
           variants={textFadeUpSmall(0.08 + index * 0.05, 0.4)}
           initial="hidden"
           whileInView="show"
@@ -122,12 +42,14 @@ export default function ServicesSection() {
           className={styles.servicesDataWrapper}
         >
           <div className={styles.servicesCategoryHeader}>
-            <h3 className={styles.servicesCategoryTitle}>{category.title} </h3>
+            <h3 className={styles.servicesCategoryTitle}>{category.name}</h3>
             <p className={styles.servicesCategoryDescription}>
               {category.description}
             </p>
           </div>
-          <p className={styles.servicesList}>{category.items.join(", ")}</p>
+          <p className={styles.servicesList}>
+            {(category.items ?? []).join(", ")}
+          </p>
         </motion.div>
       ))}
     </>

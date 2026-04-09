@@ -1,53 +1,29 @@
-// sitemap.ts
 import { MetadataRoute } from "next";
-import { client } from "@/sanity/lib/client";
+import { getPortfolioItems } from "@/lib/content";
+import { toSlug } from "@/lib/slug";
 
-type SanityDoc = {
-  slug: { current: string };
-  _updatedAt: string;
-};
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://omaratechnology.com";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  try {
-    const [projects, services] = await Promise.all([
-      client.fetch<SanityDoc[]>(`*[_type == "project"]{ slug, _updatedAt }`),
-      client.fetch<SanityDoc[]>(`*[_type == "service"]{ slug, _updatedAt }`),
-    ]);
+  const staticRoutes: MetadataRoute.Sitemap = [
+    "/",
+    "/about",
+    "/contact",
+    "/portfolio",
+    "/services",
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "monthly",
+    priority: 1,
+  }));
 
-    const baseUrl = process.env.VERCEL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://omaratechnology.com";
+  const projectRoutes: MetadataRoute.Sitemap = getPortfolioItems().map((node) => ({
+    url: `${baseUrl}/portfolio/${toSlug(node.name)}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
-    const staticRoutes: MetadataRoute.Sitemap = [
-      "/",
-      "/about",
-      "/contact",
-      "/portfolio",
-      "/services",
-    ].map((route) => ({
-      url: `${baseUrl}${route}`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: "monthly",
-      priority: 1,
-    }));
-
-    const projectRoutes: MetadataRoute.Sitemap = projects.map((item) => ({
-      url: `${baseUrl}/portfolio/${item.slug.current}`, // fixed path
-      lastModified: new Date(item._updatedAt).toISOString(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    }));
-
-    const serviceRoutes: MetadataRoute.Sitemap = services.map((item) => ({
-      url: `${baseUrl}/services/${item.slug.current}`,
-      lastModified: new Date(item._updatedAt).toISOString(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    }));
-
-    return [...staticRoutes, ...projectRoutes, ...serviceRoutes];
-  } catch (error) {
-    console.error("Failed to generate sitemap:", error);
-    return [];
-  }
+  return [...staticRoutes, ...projectRoutes];
 }

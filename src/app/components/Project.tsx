@@ -1,14 +1,18 @@
 "use client";
 
-import { components } from "@/sanity/portableTextComponents";
-import { PortableText } from "next-sanity";
-import { PROJECT_QUERYResult } from "@/sanity/types"; // Update path if needed
 import styles from "../styles/about.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
-export function Project(props: NonNullable<PROJECT_QUERYResult>) {
-  const { body, seo, title } = props;
+interface ProjectProps {
+  title: string;
+  html: string;
+  images: string[];
+  tags?: string[];
+  description?: string;
+}
+
+export function Project({ title, html }: ProjectProps) {
   const emailAddress = "info@omaratechnology.com";
 
   return (
@@ -20,20 +24,19 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
       >
-        {seo.title || title}
+        {title}
       </motion.h1>
       <div className="projectWrapper">
         <article>
-          {body ? (
+          {html ? (
             <div>
               <motion.div
                 variants={textFadeUpSmall(0.08, 0.4)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.15 }}
-              >
-                <PortableText value={body} components={components} />
-              </motion.div>
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
               <motion.div
                 className={styles.emailInfo}
                 variants={fadeInButton("up", 0.18, 0.35)}

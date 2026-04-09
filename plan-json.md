@@ -267,65 +267,66 @@ Pattern update from masonomara-website (commits f91fda4, e2f1d8f): type and slug
   - [x] MIME type map (png, jpg, jpeg, webp, gif, svg)
   - [x] Return file buffer with `Cache-Control: public, max-age=31536000, immutable`
 
-### Phase 5 — Rewrite services
+### Phase 5 — Rewrite services ✓
 
-- [ ] Rewrite `src/app/components/ServicesSection.tsx`
-  - [ ] Remove `"use client"` directive
-  - [ ] Remove hardcoded `servicesData` array
-  - [ ] Call `getServiceItems()` at the top of the component (server component — no hook needed)
-  - [ ] Confirm render output is identical to current
+Note: `ServicesSection` keeps `"use client"` because it uses framer-motion. Data moves to the server page component and is passed as props — data is resolved at build time, animations run client-side.
 
-### Phase 6 — Rewrite portfolio list
+- [x] Rewrite `src/app/components/ServicesSection.tsx`
+  - [x] Accept `ContentNode[]` as props (data passed from server page)
+  - [x] Remove hardcoded `servicesData` array
+- [x] Update `src/app/(frontend)/services/page.tsx`
+  - [x] Call `getServiceItems()` and pass result as props to `ServicesSection`
+  - [x] Add `export const dynamic = "force-static"`
 
-- [ ] Rewrite `src/app/(frontend)/portfolio/page.tsx`
-  - [ ] Remove `sanityFetch` and `PROJECTS_QUERY` imports
-  - [ ] Call `getPortfolioItems()` directly (no await — synchronous fs read)
-  - [ ] Pass items to `ProjectsSection`
-- [ ] Rewrite `src/app/components/ProjectsSection.tsx`
-  - [ ] Replace `PROJECTS_QUERYResult` type with `ContentNode[]`
-  - [ ] Remove Sanity type imports
-  - [ ] Update sort logic (order now comes from array index in nav.json, no separate `order` field needed)
-- [ ] Rewrite `src/app/components/ProjectCard.tsx`
-  - [ ] Replace prop type with `ContentNode`
-  - [ ] Remove `urlFor`, `@sanity/image-url`, Sanity type imports
-  - [ ] Remove multi-fallback image logic — thumbnail src is `getThumbnail(slug)`, a single `/content/projects/{slug}/{slug}.png` string
-  - [ ] Remove `firstBodyText` extraction from PortableText blocks — use `node.description` directly
-  - [ ] Update `href` to `/portfolio/{toSlug(node.name)}`
+### Phase 6 — Rewrite portfolio list ✓
 
-### Phase 7 — Rewrite portfolio detail
+- [x] Rewrite `src/app/(frontend)/portfolio/page.tsx`
+  - [x] Remove `sanityFetch` and `PROJECTS_QUERY` imports
+  - [x] Call `getPortfolioItems()`, compute slug + thumbnail per item, pass to `ProjectsSection`
+  - [x] Add `export const dynamic = "force-static"`
+- [x] Rewrite `src/app/components/ProjectsSection.tsx`
+  - [x] Replace Sanity types with `{ node: ContentNode; slug: string; thumbnail: string }[]`
+  - [x] Remove Sanity type imports, remove sort (order from nav.json array)
+- [x] Rewrite `src/app/components/ProjectCard.tsx`
+  - [x] Replace prop type with `{ node: ContentNode; slug: string; thumbnail: string }`
+  - [x] Remove `urlFor`, Sanity type imports
+  - [x] Use `node.description`, thumbnail string, slug directly
 
-- [ ] Rewrite `src/app/(frontend)/portfolio/[slug]/page.tsx`
-  - [ ] Add `generateStaticParams()` reading from `getPortfolioItems()`
-  - [ ] Remove `sanityFetch`, `PROJECT_QUERY`, `urlFor` imports
-  - [ ] Remove Sanity-based `generateMetadata` fetch — derive title from slug or node name
-  - [ ] Call `loadMarkdown(slug)` and `getImages(slug)` in the page body (build time)
-  - [ ] Pass `{ title, html, images, tags, description }` as props to `Project`
-  - [ ] Hero image: `images[0]` rendered above the fold (same pattern as current)
-- [ ] Rewrite `src/app/components/Project.tsx`
-  - [ ] Replace prop type — plain object `{ title: string, html: string, images: string[], tags?: string[], description?: string }`
-  - [ ] Remove `PortableText`, `next-sanity`, Sanity type imports
-  - [ ] Render body as `<div dangerouslySetInnerHTML={{ __html: html }} />`
-  - [ ] Keep framer-motion animations and email CTA
+### Phase 7 — Rewrite portfolio detail ✓
 
-### Phase 8 — Strip Sanity from layout and sitemap
+- [x] Rewrite `src/app/(frontend)/portfolio/[slug]/page.tsx`
+  - [x] Add `generateStaticParams()` reading from `getPortfolioItems()`
+  - [x] Add `export const dynamic = "force-static"` and `dynamicParams = false`
+  - [x] Remove `sanityFetch`, `PROJECT_QUERY`, `urlFor` imports
+  - [x] Derive metadata from node name + description (no async Sanity fetch)
+  - [x] Call `loadMarkdown(slug)`, `getImages(slug)`, `getThumbnail(slug)` at build time
+  - [x] Pass `{ title, html, images, tags, description }` as props to `Project`
+- [x] Rewrite `src/app/components/Project.tsx`
+  - [x] Plain props `{ title, html, images, tags?, description? }`
+  - [x] Remove `PortableText`, `next-sanity`, Sanity type imports
+  - [x] Render body as `dangerouslySetInnerHTML={{ __html: html }}`
+  - [x] Keep framer-motion animations and email CTA
 
-- [ ] Rewrite `src/app/(frontend)/layout.tsx`
-  - [ ] Remove `SanityLive`, `VisualEditing`, `DisableDraftMode` imports and JSX
-  - [ ] Remove `draftMode()` call and conditional block
-  - [ ] Remove `async` from the function signature
-- [ ] Rewrite `src/app/sitemap.ts`
-  - [ ] Remove Sanity `client` import and all `client.fetch` calls
-  - [ ] Call `getPortfolioItems()` and `getServiceItems()` for dynamic routes
-  - [ ] Keep static routes array unchanged
+### Phase 8 — Strip Sanity from layout and sitemap ✓
 
-### Phase 9 — Verify and clean up
+- [x] Rewrite `src/app/(frontend)/layout.tsx`
+  - [x] Remove `SanityLive`, `VisualEditing`, `DisableDraftMode` imports and JSX
+  - [x] Remove `draftMode()` call and conditional block
+  - [x] Remove `async` from the function signature
+- [x] Rewrite `src/app/sitemap.ts`
+  - [x] Remove Sanity `client` import and all `client.fetch` calls
+  - [x] Call `getPortfolioItems()` for portfolio routes (no service detail pages)
+  - [x] Keep static routes array unchanged
+- [x] Remove `predev`, `prebuild`, `typegen` scripts from `package.json`
 
-- [ ] Run `npm run build` — confirm zero Sanity imports remain, zero type errors
-- [ ] Confirm all portfolio pages render correctly with local images
-- [ ] Confirm services page renders correctly from JSON
-- [ ] Confirm sitemap generates correct URLs
-- [ ] Delete any now-unused CSS modules (e.g. `styles/project.module.css` if Project.tsx no longer needs it — check first)
-- [ ] Confirm `.env` — remove `SANITY_*` vars from `.env.local`, keep Supabase vars
+### Phase 9 — Verify and clean up ✓
+
+- [x] Run `npm run build` — zero Sanity imports, zero type errors, 30 static pages generated
+- [x] All 16 portfolio slugs pre-rendered via `generateStaticParams`
+- [x] Services page renders from JSON
+- [x] Sitemap generates correct URLs
+- [x] CSS modules all still in use — no deletions needed
+- [ ] Remove `SANITY_*` vars from `.env.local` (manual step — contains API tokens)
 
 ### Phase 10 — Content finalization (human work, after everything is live)
 
