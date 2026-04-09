@@ -570,7 +570,7 @@ export default function Home() {
                 viewport={{ once: true, amount: 0 }}
                 className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}>
                 <div className={styles.startTopWrapper}>
-                  <Image priority src="/wordmark.svg" height={167} width={463} alt="Bang" className={styles.startLogo} />
+                  <Image priority src="/wordmark.svg" height={167} width={424} alt="O'Mara Technology" className={styles.startLogo} />
                   <p className={styles.startDescription}>
                     Fractional business & technology strategy, design, and development
                   </p>

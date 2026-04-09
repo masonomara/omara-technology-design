@@ -74,9 +74,9 @@ export default function NotFound() {
 
           <div className={styles.companyTitle}>
             {/* O’Mara Technology */}
-            <Image src="/longWordmark.svg" height={12} width={208} alt="O’Mara Technology" className={styles.companyTitleImage} />
-            <Image src="/condensedWordmark.svg" height={24} width={142} alt="O’Mara Technology" className={styles.companyTitleImageCondensed} />
-            <Image src="/superCondensedWordmark.svg" height={36} width={87} alt="O’Mara Technology" className={styles.companyTitleImageSuperCondensed} />
+            <Image src="/longWordmark.svg" height={12} width={198} alt="O’Mara Technology" className={styles.companyTitleImage} />
+            <Image src="/condensedWordmark.svg" height={12} width={198} alt="O’Mara Technology" className={styles.companyTitleImageCondensed} />
+            <Image src="/superCondensedWordmark.svg" height={24} width={94} alt="O’Mara Technology" className={styles.companyTitleImageSuperCondensed} />
           </div>
         </div>
       </div>
