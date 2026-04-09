@@ -1,4 +1,4 @@
-.portfolioWrapper {
+.workWrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
@@ -7,17 +7,17 @@
   margin-top: 30.4px;
 }
 @media screen and (max-width: 899px) {
-  .portfolioWrapper {
+  .workWrapper {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (max-width: 699px) {
-  .portfolioWrapper {
+  .workWrapper {
     margin-top: 25.6px;
   }
 }
 @media screen and (max-width: 549px) {
-  .portfolioWrapper {
+  .workWrapper {
     grid-template-columns: 1fr;
   }
 }

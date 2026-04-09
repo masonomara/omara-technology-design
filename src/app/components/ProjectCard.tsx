@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/portfolio.module.css";
+import styles from "../styles/work.module.css";
 import type { ContentNode } from "@/lib/types";
 
 interface ProjectCardProps {
@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ node, slug, thumbnail }: ProjectCardProps) {
   return (
-    <Link href={`/portfolio/${slug}`} className={styles.cardContainer}>
+    <Link href={`/work/${slug}`} className={styles.cardContainer}>
       <div className={styles.cardWrapper}>
         <div className={styles.cardImageContainer}>
           <div className={styles.cardImageScreen} />

@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../styles/portfolio.module.css";
+import styles from "../styles/work.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp } from "../lib/motion";
 import ProjectCard from "./ProjectCard";
@@ -26,10 +26,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         viewport={{ once: true, amount: 0.15 }}
         className="title"
       >
-        PORTFOLIO
+        WORK
       </motion.h1>
 
-      <div className={styles.portfolioWrapper}>
+      <div className={styles.workWrapper}>
         {projects.map((item) => (
           <motion.div
             key={item.slug}
