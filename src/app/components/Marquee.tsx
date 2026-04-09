@@ -75,7 +75,7 @@ export default function Marquee() {
           <motion.div
             key={item.id}
             className="footer__menuOptionWrapper"
-            variants={fadeInButton("up", "spring", index * 0.03, 1.2)}
+            variants={fadeInButton("up", index * 0.03, 1.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}

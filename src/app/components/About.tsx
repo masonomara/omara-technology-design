@@ -12,7 +12,7 @@ export default function About() {
     <>
       <motion.h1
         className="title"
-        variants={textFadeUp("up", "spring", 0, 0.6)}
+        variants={textFadeUp(0, 0.6)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}
@@ -21,7 +21,7 @@ export default function About() {
       </motion.h1>
 
       <motion.div
-        variants={textFadeUpSmall("up", "spring", 0.1, 0.8)}
+        variants={textFadeUpSmall(0.1, 0.8)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}
@@ -50,7 +50,7 @@ export default function About() {
 
       <motion.div
         className={styles.cardImageContainer}
-        variants={fadeIn("up", "spring", 0.2, 0.8)}
+        variants={fadeIn("up", 0.2, 0.8)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}

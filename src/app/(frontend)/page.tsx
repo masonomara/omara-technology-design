@@ -407,7 +407,7 @@ export default function Home() {
 
             {!gameEnd && !gameAction && !gameStart && (
               <motion.div
-                variants={fadeIn("up", "spring", 0.1, 0.8)}
+                variants={fadeIn("up", 0.1, 0.8)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}

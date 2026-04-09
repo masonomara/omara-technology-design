@@ -93,7 +93,7 @@ export default function ServicesSection() {
   return (
     <>
       <motion.h1
-        variants={textFadeUp("up", "spring", 0, 0.6)}
+        variants={textFadeUp(0, 0.6)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}
@@ -102,7 +102,7 @@ export default function ServicesSection() {
         SERVICES
       </motion.h1>
       <motion.div
-        variants={textFadeUpSmall("up", "spring", 0.1, 0.8)}
+        variants={textFadeUpSmall(0.1, 0.8)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }}
@@ -115,7 +115,7 @@ export default function ServicesSection() {
       {servicesData.map((category, index) => (
         <motion.div
           key={category.title}
-          variants={textFadeUpSmall("up", "spring", 0.2 + index * 0.1, 0.8)}
+          variants={textFadeUpSmall(0.2 + index * 0.1, 0.8)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }}

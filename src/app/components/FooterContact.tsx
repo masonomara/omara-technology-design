@@ -1,21 +1,22 @@
-"use client"
+"use client";
 
-import Link from 'next/link'
-import React from 'react'
-import styles from '../styles/footer.module.css'
-import Image from 'next/image'
+import Link from "next/link";
+import React from "react";
+import styles from "../styles/footer.module.css";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUpSmall } from "../lib/motion";
 
 export default function FooterContact() {
-
   return (
-
     <div className={styles.contactWrapper}>
-      <motion.div className="companyTitle" variants={textFadeUpSmall("up", "spring", .1, .8)}
+      <motion.div
+        className="companyTitle"
+        variants={textFadeUpSmall(0.1, 0.8)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }}>
+        viewport={{ once: true, amount: 0 }}
+      >
         <Image
           src="/longWordmark.svg"
           height={12}
@@ -53,32 +54,47 @@ export default function FooterContact() {
           },
         }}
       >
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", 0, .4)}>
+        <motion.div
+          className={styles.subButton}
+          variants={fadeInButton("up", 0, 0.4)}
+        >
           <Link href={`/`} target="_top" className={styles.subButton}>
             HOME
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", 0, .4)}>
+        <motion.div
+          className={styles.subButton}
+          variants={fadeInButton("up", 0, 0.4)}
+        >
           <Link href={`/portfolio`} target="_top" className={styles.subButton}>
             PORTFOLIO
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", 0, .4)}>
+        <motion.div
+          className={styles.subButton}
+          variants={fadeInButton("up", 0, 0.4)}
+        >
           <Link href={`/services`} target="_top" className={styles.subButton}>
             SERVICES
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", 0, .4)}>
+        <motion.div
+          className={styles.subButton}
+          variants={fadeInButton("up", 0, 0.4)}
+        >
           <Link href={`/about`} target="_top" className={styles.subButton}>
             ABOUT
           </Link>
         </motion.div>
-        <motion.div className={styles.subButton} variants={fadeInButton("up", "spring", 0, .4)}>
+        <motion.div
+          className={styles.subButton}
+          variants={fadeInButton("up", 0, 0.4)}
+        >
           <Link href={`/contact`} target="_top" className={styles.subButton}>
             CONTACT
           </Link>
         </motion.div>
       </motion.div>
     </div>
-  )
+  );
 }
