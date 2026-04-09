@@ -1,7 +1,6 @@
-// src/app/(frontend)/page.tsx
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 import styles from "./../styles/index.module.css";
@@ -10,7 +9,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "../lib/motion";
 
-// Initialize Supabase client with environment variables
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -22,18 +20,12 @@ interface LeaderboardEntry {
   user_id: string;
 }
 
-function isValidEmail(email: string) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
 const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
 const badWords = atob(
   "RkFHLEZVQ0ssVElUUyxDVU5ULDg9RCxTSElULFBJU1MsS0tLLENPQ0ssTklHR0VSLE5JR0dBLEtJS0UsUFVTU1ksU0xVVCxDUkFQLEJJVENI",
 ).split(",");
 
 export default function Home() {
-  // State variables for game logic
   const [bangs, setBangs] = useState<
     { x: number; y: number; id: number; rotation: number }[]
   >([]);
@@ -42,6 +34,7 @@ export default function Home() {
   const [spawnTime, setSpawnTime] = useState(0);
   const [nickname, setNickname] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
   const [enemyStates, setEnemyStates] = useState(Array(9).fill(false));
@@ -49,46 +42,12 @@ export default function Home() {
   const [gameStart, setGameStart] = useState(false);
   const [gameAction, setGameAction] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
-
   const [gameStartTime, setGameStartTime] = useState(0);
   const [gameEndTime, setGameEndTime] = useState(0);
   const [shotsTaken, setShotsTaken] = useState(0);
   const [successfulHits, setSuccessfulHits] = useState(0);
   const [userId, setUserId] = useState<string>("");
-
-  const [showSubscribeScreen, setShowSubscribeScreen] = useState(false);
-  const [subscriptionSubmitted, setSubscriptionSubmitted] = useState(false);
-  const [email, setEmail] = useState("");
-  const [subscribeToCompany, setSubscribeToCompany] = useState(true);
-  const [subscribeToBlog, setSubscribeToBlog] = useState(true);
-  const [hasShownSubscribe, setHasShownSubscribe] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
-
-  const handleSubscribe = async () => {
-    if (!email || !isValidEmail(email)) {
-      alert("Please enter a valid email");
-      return;
-    }
-
-    try {
-      const { error } = await supabase.from("subscriptions").insert([
-        {
-          user_id: userId,
-          email: email,
-          company_newsletter: subscribeToCompany,
-          personal_blog: subscribeToBlog,
-          created_at: new Date().toISOString(),
-        },
-      ]);
-
-      if (error) throw error;
-
-      setSubscriptionSubmitted(true);
-    } catch (err) {
-      console.error("Error saving subscription:", err);
-      alert("Error saving your subscription. Please try again.");
-    }
-  };
 
   useEffect(() => {
     let storedId = localStorage.getItem("userId");
@@ -121,28 +80,20 @@ export default function Home() {
     }
   }, [currentEnemy]);
 
-  // Function to check if a nickname contains banned words
-  const containsBadWord = (nickname: string) => {
-    return badWords.some((word) => nickname.includes(word));
-  };
+  const containsBadWord = (name: string) =>
+    badWords.some((word) => name.includes(word));
 
-  const fetchLeaderboard = useCallback(async () => {
+  async function fetchLeaderboard() {
     const { data, error } = await supabase
       .from("scores")
       .select("*")
       .order("score", { ascending: false });
-    if (!error) {
-      if (score > 0) {
-        data.push({ nickname, score });
-        data.sort((a, b) => b.score - a.score);
-      }
-      setLeaderboard(data);
-    }
-  }, [score, nickname]);
+    if (!error) setLeaderboard(data);
+  }
 
   useEffect(() => {
-    fetchLeaderboard();
-  }, [fetchLeaderboard]);
+    if (gameEnd) fetchLeaderboard();
+  }, [gameEnd]);
 
   async function submitScore() {
     if (!nickname.trim()) {
@@ -150,45 +101,46 @@ export default function Home() {
       return;
     }
 
-    if (containsBadWord(nickname) && !warning) {
-      setWarning(
-        "Your nickname contains a bad word. Please consider a different name.",
-      );
-      return;
+    if (containsBadWord(nickname)) {
+      if (!warning) {
+        setWarning(
+          "Your nickname contains a bad word. Please consider a different name.",
+        );
+        return;
+      }
     }
 
     setWarning("");
+    setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("scores").insert([
-        {
-          nickname,
-          score,
-          user_id: userId,
-        },
-      ]);
+      const { error } = await supabase
+        .from("scores")
+        .insert([{ nickname, score, user_id: userId }]);
 
       if (error) {
         console.error("Supabase error:", error);
         alert("Error submitting score: " + error.message);
       } else {
         setSubmitted(true);
+        await fetchLeaderboard();
       }
     } catch (err) {
       console.error("Network error:", err);
       alert(
         "Failed to connect to the server. Please check your connection and try again.",
       );
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
-  // Handles user clicking on the game frame
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrameWrapper");
     if (!gameFrame) return;
 
     const handleMouseDown = (event: MouseEvent) => {
-      if (!gameAction) return; // Prevents clicks before game starts
+      if (!gameAction) return;
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
@@ -212,7 +164,6 @@ export default function Home() {
     return () => gameFrame.removeEventListener("mousedown", handleMouseDown);
   }, [gameAction]);
 
-  // Spawns an enemy
   useEffect(() => {
     if (gameAction && currentEnemy < 9) {
       setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
@@ -220,7 +171,6 @@ export default function Home() {
     }
   }, [currentEnemy, gameAction]);
 
-  // Positions the enemies to shoot
   useEffect(() => {
     if (!gameAction || currentEnemy >= 9) return;
 
@@ -233,23 +183,38 @@ export default function Home() {
       const handWrapper = document.querySelector("." + styles.handWrapper);
       const scoreWrapper = document.querySelector("." + styles.scoreWrapper);
 
-      if (!gameFrame || !enemy || !handWrapper || !scoreWrapper) return;
+      if (!handWrapper || !scoreWrapper) return;
       const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
-      const handRect = handWrapper.getBoundingClientRect();
-      const scoreRect = scoreWrapper.getBoundingClientRect();
-      let enemyX, enemyY, overlap;
+
+      const frameRect = gameFrame.getBoundingClientRect();
+      const toFrameCoords = (rect: DOMRect) => ({
+        left: rect.left - frameRect.left,
+        right: rect.right - frameRect.left,
+        top: rect.top - frameRect.top,
+        bottom: rect.bottom - frameRect.top,
+      });
+
+      const hand = toFrameCoords(handWrapper.getBoundingClientRect());
+      const scoreRect = toFrameCoords(scoreWrapper.getBoundingClientRect());
+
+      let enemyX: number, enemyY: number, overlap: boolean;
       do {
         enemyX = Math.random() * (frameWidth - 67);
         enemyY = Math.random() * (frameHeight - 120);
-        overlap =
-          enemyX < handRect.right &&
-          enemyX + 67 > handRect.left &&
-          enemyY < handRect.bottom &&
-          enemyY + 120 > handRect.top &&
+
+        const overlapHand =
+          enemyX < hand.right &&
+          enemyX + 67 > hand.left &&
+          enemyY < hand.bottom &&
+          enemyY + 120 > hand.top;
+
+        const overlapScore =
           enemyX < scoreRect.right &&
           enemyX + 67 > scoreRect.left &&
           enemyY < scoreRect.bottom &&
           enemyY + 120 > scoreRect.top;
+
+        overlap = overlapHand || overlapScore;
       } while (overlap);
 
       Object.assign(enemy.style, {
@@ -271,9 +236,8 @@ export default function Home() {
     return () => window.removeEventListener("resize", positionEnemy);
   }, [gameAction, currentEnemy]);
 
-  // Hits the enemy, then goes to the next enemy, then scores the user on how they hit the enemy, and then adjusts the score
   const iShoot = (event: React.MouseEvent, index: number) => {
-    setShotsTaken((prev) => prev + 1); // Increment shots taken
+    setShotsTaken((prev) => prev + 1);
     setEnemyStates((prev) =>
       prev.map((_, i) => (i === index ? false : prev[i])),
     );
@@ -282,7 +246,7 @@ export default function Home() {
       if (newEnemy >= 9) {
         setGameAction(false);
         setGameEnd(true);
-        setGameEndTime(performance.now()); // Game ends, record the end time
+        setGameEndTime(performance.now());
       }
       return newEnemy;
     });
@@ -312,22 +276,16 @@ export default function Home() {
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67) * 1.5;
-    const hitSuccess = accuracyScore > 30; // if accuracy is greater than 30, it's considered a hit
+    const hitSuccess = accuracyScore > 30;
     if (hitSuccess) {
-      setSuccessfulHits((prev) => prev + 1); // Increment successful hits
+      setSuccessfulHits((prev) => prev + 1);
     }
     setScore(
       (prev) => prev + Math.round((accuracyScore * 1.5 + speedScore) * 10),
     );
   };
 
-  // Restarts game
   function restartGame() {
-    if (!hasShownSubscribe) {
-      setShowSubscribeScreen(true);
-      setHasShownSubscribe(true);
-      return;
-    }
     setCurrentEnemy(0);
     setScore(0);
     setSubmitted(false);
@@ -337,8 +295,12 @@ export default function Home() {
     setBangs([]);
     setHandImage("/thumbsUp.svg");
     setGameAction(true);
-    setGameStartTime(performance.now()); // Add this line to record new start time
+    setGameStart(true);
+    setGameStartTime(performance.now());
     setGameEnd(false);
+    setShotsTaken(0);
+    setSuccessfulHits(0);
+    setGameEndTime(0);
     setEnemyStates(Array(9).fill(false));
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
     const allEnemies: NodeListOf<HTMLElement> = document.querySelectorAll(
@@ -359,21 +321,20 @@ export default function Home() {
     });
   }
 
-  // Starts game
   function startGame() {
     setGameStart(true);
     setGameAction(true);
     setGameEnd(false);
     setCurrentEnemy(0);
-    setGameStartTime(performance.now()); // Add this line to record start time
+    setGameStartTime(performance.now());
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
   }
 
   const timeTaken = gameEndTime
     ? ((gameEndTime - gameStartTime) / 1000).toFixed(0)
-    : "0"; // Time in seconds
+    : "0";
   const accuracy =
-    shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0"; // Accuracy as a percentage
+    shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0";
 
   return (
     <>
@@ -444,7 +405,6 @@ export default function Home() {
               />
             ))}
 
-            {/* Show Start Game button only if game hasn't started */}
             {!gameEnd && !gameAction && !gameStart && (
               <motion.div
                 variants={fadeIn("up", "spring", 0.1, 0.8)}
@@ -467,7 +427,6 @@ export default function Home() {
                     software.
                   </p>
                 </div>
-                {/* <div className={styles.startDivider} /> */}
                 <div className={styles.startButtonWrapper}>
                   <button className={styles.primaryButton} onClick={startGame}>
                     <p>Start Game</p>
@@ -506,7 +465,7 @@ export default function Home() {
               </video>
             </div>
 
-            {gameStart && !showSubscribeScreen && (
+            {gameStart && (
               <div
                 className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}
               >
@@ -561,7 +520,7 @@ export default function Home() {
                   </div>
                   <ol className={styles.leaderboardList}>
                     {leaderboard.map((entry, index) => {
-                      const isUser = entry.score === score;
+                      const isUser = entry.user_id === userId;
                       return (
                         <li
                           key={index}
@@ -621,7 +580,7 @@ export default function Home() {
                       <button
                         className={styles.primaryButton}
                         onClick={submitScore}
-                        disabled={!nickname.trim()} // Disable the button if nickname is empty
+                        disabled={!nickname.trim() || isSubmitting}
                       >
                         <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
                       </button>
@@ -634,100 +593,6 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-              </div>
-            )}
-
-            {/* Subscribe Screen */}
-            {showSubscribeScreen && (
-              <div
-                className={`${styles.emailSignup} ${!showSubscribeScreen ? styles.emailSignupClose : ""}`}
-              >
-                <h2 className={styles.titleRegular}>Email List Signup</h2>
-                <p className={styles.bodyRegular}>
-                  Would you like to sign up for either of these email lists?
-                </p>
-
-                <div className={styles.checkboxContainer}>
-                  <div className={styles.checkboxItem}>
-                    <input
-                      type="checkbox"
-                      id="subscribeToCompany"
-                      checked={subscribeToCompany}
-                      value="Subscribe to Company"
-                      onChange={() =>
-                        setSubscribeToCompany(!subscribeToCompany)
-                      }
-                    />
-                    <label
-                      className={styles.checkboxLabel}
-                      htmlFor="subscribeToCompany"
-                    >
-                      O’Mara Technology Work Blog (quarterly)
-                    </label>
-                  </div>
-                  <div className={styles.checkboxItem}>
-                    <input
-                      type="checkbox"
-                      id="subscribeToBlog"
-                      checked={subscribeToBlog}
-                      value="Subscribe to Blog"
-                      onChange={() => setSubscribeToBlog(!subscribeToBlog)}
-                    />
-                    <label
-                      className={styles.checkboxLabel}
-                      htmlFor="subscribeToBlog"
-                    >
-                      Mason O’Mara Personal Blog (monthly)
-                    </label>
-                  </div>
-                </div>
-
-                {!subscriptionSubmitted ? (
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    className={styles.input}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                ) : (
-                  <div className={styles.inputThankYou}>
-                    Thank you for subscribing!
-                  </div>
-                )}
-
-                {!subscriptionSubmitted ? (
-                  <div className={styles.endButtonWrapper}>
-                    <button
-                      className={styles.primaryButton}
-                      onClick={handleSubscribe}
-                      disabled={!email}
-                    >
-                      <p>SIGN UP</p>
-                    </button>
-                    <button
-                      className={styles.primaryButton}
-                      onClick={() => {
-                        setShowSubscribeScreen(false);
-                        restartGame();
-                      }}
-                    >
-                      <p>NO THANKS</p>
-                    </button>
-                  </div>
-                ) : (
-                  <div className={styles.endButtonWrapper}>
-                    <button
-                      className={styles.primaryButton}
-                      onClick={() => {
-                        setShowSubscribeScreen(false);
-                        restartGame();
-                      }}
-                    >
-                      <p>Play AGAIN</p>
-                    </button>
-                  </div>
-                )}
               </div>
             )}
           </div>
