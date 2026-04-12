@@ -80,8 +80,45 @@ export default function About() {
       </motion.div>
 
       <motion.div
-        className={styles.capabilitiesSection}
+        className={styles.engagementsSection}
         variants={textFadeUpSmall(0.12, 0.4)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+      >
+        <h2 className={styles.sectionHeading}>How We Work</h2>
+        <div className={styles.engagementsGrid}>
+          <div className={styles.engagementType}>
+            <h3>Strategic Engagements</h3>
+            <p>
+              Monthly. For products in motion or being formed. We work alongside
+              you — research, architecture, design direction, prioritization, and
+              iteration as the product develops. Not a project, a relationship.
+            </p>
+          </div>
+          <div className={styles.engagementType}>
+            <h3>Project Engagements</h3>
+            <p>
+              One-time. For new builds. Discovery, design, development, and
+              launch — scoped before we start, payments at monthly milestones.
+              At the end, you own it: documented, trained, yours to run.
+            </p>
+          </div>
+        </div>
+        <p className={styles.processNote}>
+          Once we commit after discovery, everything is in motion. Creative
+          design stays with Mason. Architecture and information design is Mason
+          or someone he trusts. Development is Mason or collaborators he&apos;s
+          worked with. Nothing gets handed off to strangers.
+        </p>
+        <Link href="/process" className={styles.processLink}>
+          Full services and process at omaratechnology.com/process
+        </Link>
+      </motion.div>
+
+      <motion.div
+        className={styles.capabilitiesSection}
+        variants={textFadeUpSmall(0.16, 0.4)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
@@ -98,7 +135,7 @@ export default function About() {
 
       <motion.div
         className={styles.bioSection}
-        variants={fadeIn("up", 0.16, 0.5)}
+        variants={fadeIn("up", 0.2, 0.5)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
@@ -145,43 +182,6 @@ export default function About() {
             . He&apos;s based in Asbury Park, NJ.
           </p>
         </div>
-      </motion.div>
-
-      <motion.div
-        className={styles.engagementsSection}
-        variants={textFadeUpSmall(0.08, 0.4)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
-      >
-        <h2 className={styles.sectionHeading}>How We Work</h2>
-        <div className={styles.engagementsGrid}>
-          <div className={styles.engagementType}>
-            <h3>Strategic Engagements</h3>
-            <p>
-              Monthly. For products in motion or being formed. We work alongside
-              you — research, architecture, design direction, prioritization, and
-              iteration as the product develops. Not a project, a relationship.
-            </p>
-          </div>
-          <div className={styles.engagementType}>
-            <h3>Project Engagements</h3>
-            <p>
-              One-time. For new builds. Discovery, design, development, and
-              launch — scoped before we start, payments at monthly milestones.
-              At the end, you own it: documented, trained, yours to run.
-            </p>
-          </div>
-        </div>
-        <p className={styles.processNote}>
-          Once we commit after discovery, everything is in motion. Creative
-          design stays with Mason. Architecture and information design is Mason
-          or someone he trusts. Development is Mason or collaborators he&apos;s
-          worked with. Nothing gets handed off to strangers.
-        </p>
-        <Link href="/process" className={styles.processLink}>
-          Full services and process at omaratechnology.com/process
-        </Link>
       </motion.div>
     </>
   );

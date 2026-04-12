@@ -85,9 +85,9 @@ Rationale: Engagement types qualify clients faster than the capabilities grid do
 
 ## Implementation Order
 
-1. **Extract Game component** — `src/app/components/Game.tsx`
-2. **Cover redesign** — update JSX in `Game.tsx`, add CSS to `index.module.css`
-3. **About page** — update `About.tsx`
+1. ✅ **Extract Game component** — `src/app/components/Game.tsx`
+2. ✅ **Cover redesign** — updated JSX in `Game.tsx`, added CSS to `index.module.css`
+3. ✅ **About page** — reordered sections in `About.tsx` (How We Work now above capabilities grid)
 
 ---
 
