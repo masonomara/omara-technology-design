@@ -58,9 +58,8 @@ export default function About() {
         viewport={{ once: true, amount: 0.15 }}
       >
         <p className={styles.ethos}>
-          Everything is changing faster than anyone can comfortably track. The
-          tools, the platforms, the market — it shifts constantly. The only
-          things that hold up are solutions built on timeless thinking and
+          Everything changes faster than anyone can track. Tools, platforms,
+          markets — constantly. What holds up is timeless thinking and
           creativity that meets the moment. That&apos;s what O&apos;Mara
           Technology is built around.
         </p>

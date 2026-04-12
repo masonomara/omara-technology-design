@@ -1,36 +1,27 @@
 [seedtosproutnj.com](https://seedtosproutnj.com)
 
-Seed to Sprout is a vegan restaurant in Avon-By-The-Sea, New Jersey, known for organic, plant-based meals made from scratch. They were looking for help expanding into multiple locations and building their brand. I worked with them on two projects: rebuilding an online store and designing their first cookbook with a preordering system to support it.
+One cart, six product types, six different shipping and pickup rules. Custom cakes need local pickup scheduling. Digital recipes deliver instantly. Merchandise ships nationally.
 
-![Cookbook product page with add-to-cart interface](/content/projects/seed-to-sprout/images/screenshot-2.png)
+Seed to Sprout is a vegan restaurant in Avon-By-The-Sea, NJ. They needed an online store and a cookbook — and infrastructure that the team could operate independently after handoff.
 
 I built the Shopify store from scratch, designed the cookbook with a specialty print designer, then trained their team to operate everything independently.
 
-## The Website
+## Routing one cart through six product types
 
-Seed to Sprout had an existing e-commerce build, but it couldn't handle the complexity they needed: different shipping and ordering rules for direct-to-print merchandise, digital recipe packs, shelf-stable products, custom cakes, catering services, and bakery orders—each had different shipping rules, pickup options, and checkout flows. The technical challenge was configuring Shopify to handle different product types through one checkout. Merchandise ships nationally. Shelf-stable products have different rates. Custom cakes require local pickup scheduling. Digital recipes deliver instantly. I configured shipping profiles, pickup calendars, and checkout flows so the system routes each item correctly when customers mix products in one cart.
+The technical challenge was configuring Shopify to handle different product types through one checkout. Merchandise ships nationally. Shelf-stable products have different rates. Custom cakes require local pickup scheduling. Digital recipes deliver instantly. I configured shipping profiles, pickup calendars, and checkout flows so the system routes each item correctly when customers mix products in one cart.
 
+## The cookbook
+
+I brought on a specialty print designer for layout and print specifications while I guided brand consistency and creative direction. Templates for recipe pages with sections for title, cook time, servings, ingredients, step-by-step instructions, and essays. Interactive QR codes throughout — videos and product recommendation lists I built and tested before print. I coordinated the ordering flow between the printer, the Seed to Sprout team, and Shopify.
+
+## Training and documentation
+
+I documented every step of Shopify administration as I built it. Troubleshooting guides for consistent issues. The goal was to make myself replaceable through monthly check-ins and knowledge sharing — by the end of the engagement, the team could handle operations independently.
+
+![Cookbook product page with add-to-cart interface](/content/projects/seed-to-sprout/images/screenshot-2.png)
 ![Site map for homepage and shop with product categories](/content/projects/seed-to-sprout/images/information-architecture.png)
 ![Style tiles with typography, colors, and UI components](/content/projects/seed-to-sprout/images/style-tiles-1.png)
 ![Annotated wireframes for homepage, shop, and product pages](/content/projects/seed-to-sprout/images/wireframes.png)
-
-The website is highlighted by hand-drawn flowers that "grow" as you scroll past the first section of the homepage — as well as doodles, curves, and consistent colors throughout. We designed it together using their brand assets, creating style tiles and mockups for flow and feedback.
-
 ![Homepage with hand-drawn flowers and brand design](/content/projects/seed-to-sprout/images/screenshot-1.png)
-
-The homepage handled restaurant essentials—menu, hours, location, reservations—while surfacing the online store, which organized products by type, each with their own checkout rules. This served restaurant visitors ordering online and online shoppers buying products—one seamless brand experience.
-
-## The Cookbook
-
-I brought on a specialty print designer for layout and print specifications while I guided brand consistency and creative direction. Together we created templates for recipe pages with sections for title, cook time, servings, ingredients, step-by-step instructions, and essays. There were also interactive QR codes scattered throughout — videos and lists of products they recommend that are changing — I built and tested these pages before print.
-
 ![Cookbook recipe page template with labeled sections](/content/projects/seed-to-sprout/images/cookbook-review.png)
 ![Customer journey flowchart from order to delivery](/content/projects/seed-to-sprout/images/cookbook-journey.png)
-
-I also had to create a separate track for building out the cookbook ordering flow, coordinating between the printer, the Seed to Sprout team, and Shopify's services.
-
-![Style tiles with typography, colors, and UI components](/content/projects/seed-to-sprout/images/style-tiles-1.png)
-
-## Training and Documentation
-
-I documented every step of Shopify administration as I built it. The goal was to make myself replaceable through monthly check-ins, changes, issues, and sharing knowledge. I wrote troubleshooting guides for consistent issues. They understood what to fix themselves, how to create events, promotions, and new products, and when to escalate. By the end of our engagement, the Seed to Sprout team could handle operations independently. It even got some props from Guy Fieri.

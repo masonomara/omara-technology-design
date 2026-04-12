@@ -1,311 +1,32 @@
-/* Organized CSS with camelCase naming convention */
-
-/* Typography Styles */
-.emailInfo {
-  margin: 0.8em 0;
-  font-size: 19px;
-  line-height: 130%;
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  text-align: center;
-}
-
-.subtitle {
-  margin: 0.8em 0 0;
-  font-size: 16px;
-  font-weight: 500;
-  max-width: 635px;
-  width: 60vw;
-  line-height: 130%;
-  text-align: center;
-  color: var(--color-primary);
-}
-
-.instructions {
-  margin: -8px 0 0;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  font-size: 16px;
-  font-weight: 500;
-  width: fit-content;
-  line-height: 130%;
-  text-align: left;
-  background: none;
-  border: none;
-  outline: none;
-  stroke: none;
-  padding: 0px;
-}
-
-.instructions {
-  color: var(--color-primary);
-  text-decoration: underline !important;
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.12em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
-.instructions:hover {
-  text-underline-offset: 0.18em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
-/* Link Styles */
-.emailInfo a {
-  color: var(--color-primary);
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.15em !important;
-  background-color: var(--color-background);
-  transition: var(--transition-smooth-100) all;
-}
-
-.emailInfo a:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
-/* Form Container Styles */
-.contactFormWrapper {
-  width: 87vw;
-  max-width: 890px;
-}
-
-.contactForm {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  width: 100%;
-}
-
-.formDivider {
-  grid-column: span 2;
-  margin: 0 !important;
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
-  text-transform: uppercase;
-  margin-top: 0.8em !important;
-  margin-bottom: -11.2px !important;
-}
-
-/* Form Field Styles */
-.formField {
+/* Opener */
+.openerBlock {
   display: flex;
   flex-direction: column;
-  width: 100%;
-}
-
-.formField label {
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  font-size: 16px;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.formField p {
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  font-size: 16px;
-  color: var(--color-primary);
-  margin-bottom: 12px;
-}
-
-/* Input Styles */
-.formField input[type="text"],
-.formField input[type="email"],
-.formField input[type="url"],
-.formField input,
-.formField textarea {
-  font-family: var(--font-overpass);
-  border: 1px solid var(--color-primary);
-  background-color: transparent;
-  padding: 13px 12px 11px;
-  font-size: 16px;
-  font-weight: 500 !important;
-  border-radius: 0px;
-  color: var(--color-primary);
-  outline: 0.6px solid var(--color-primary);
-  transition: var(--transition-smooth-100) all;
-}
-
-.formField input:focus-visible,
-.formField textarea:focus-visible,
-.formField input:hover,
-.formField textarea:hover {
-  outline: 1px solid var(--color-primary);
-  background-color: var(--color-bg-hover);
-  transition: var(--transition-smooth-100) all;
-}
-
-.formField input::placeholder,
-.formField textarea::placeholder {
-  color: rgba(137, 24, 16, 0.5);
-  font-weight: 500 !important;
-}
-
-/* Checkbox Styles */
-.formField:has(.serviceCategory) {
-  border: 1.6px solid var(--color-primary);
-  padding: 20px;
-  width: calc(100% - 40px);
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.serviceCategory h3 {
-  margin: 0 !important;
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
-  text-transform: uppercase;
-  margin-bottom: 12.8px !important;
-}
-
-.serviceCategory .checkboxItem label {
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-}
-
-.checkboxGroup {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.checkboxItem {
-  display: flex;
   align-items: center;
-  gap: 0px;
-  margin-bottom: 4px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+  margin-bottom: 2.4em;
 }
 
-.checkboxItem label {
+.opener {
+  margin: 0.4em 0 0.5em;
+  font-size: 20px;
   font-family: var(--font-overpass);
+  font-weight: 500;
   color: var(--color-primary);
-  cursor: pointer;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
-  padding-left: 0px;
-  margin-bottom: -4px;
-  padding-top: 1px;
+  line-height: 1.3;
+  text-align: center;
 }
 
-.checkboxItem input[type="checkbox"] {
-  appearance: none;
-  min-width: 20px;
-  min-height: 20px;
-  width: 20px;
-  height: 20px;
-  max-width: 20px;
-  max-height: 20px;
-  padding: 0 !important;
-  position: relative;
-  cursor: pointer;
+.fallback {
   margin: 0;
-}
-
-.checkboxItem input[type="checkbox"]:checked::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-primary);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Button Styles */
-.submitButton {
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
+  font-size: 15px;
+  font-family: var(--font-overpass);
+  font-weight: 500;
   color: var(--color-primary);
-  padding: 12px 24px;
-  font-size: 19px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: var(--transition-smooth-100) all;
-  align-self: center;
+  line-height: 1.4;
+  text-align: center;
 }
 
-.submitButton:hover {
-  background-color: var(--color-bg-hover);
-  transition: var(--transition-smooth-100) all;
-}
-
-.primaryButton {
-  height: 44px;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border-radius: 19.2px;
-  border: none;
-  background-color: transparent;
-  color: var(--color-primary);
-  width: 100%;
-  white-space: nowrap;
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.15em !important;
-  transition: var(--transition-smooth-100) all;
-  grid-column: span 2;
-}
-
-.primaryButton:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
-/* Link Styles */
+/* Link */
 .emailLink {
   color: var(--color-primary);
   text-decoration: underline !important;
@@ -316,207 +37,240 @@
 
 .emailLink:hover {
   text-underline-offset: 0.18em !important;
+}
+
+/* Form container */
+.contactFormWrapper {
+  width: 87vw;
+  max-width: 760px;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+/* Prose lines */
+.proseLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  line-height: 1.5;
+}
+
+.proseText {
+  font-size: 21px;
+  font-family: var(--font-overpass);
+  font-weight: 500;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.inlineFieldWrapper {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.inlineInput {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--color-primary);
+  padding: 0 4px 3px;
+  font-size: 21px;
+  font-family: var(--font-overpass);
+  font-weight: 500;
+  color: var(--color-primary);
+  min-width: 160px;
+  outline: none;
+  transition: var(--transition-smooth-100) border-bottom-width;
+}
+
+.inlineInput::placeholder {
+  color: rgba(137, 24, 16, 0.4);
+  font-style: italic;
+}
+
+.inlineInput:focus {
+  border-bottom-width: 2px;
+}
+
+.inlineError {
+  font-family: var(--font-overpass);
+  font-size: 12px;
+  color: var(--color-primary);
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* Services */
+.servicesBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.servicesLabel {
+  margin: 0;
+  font-size: 21px;
+  font-family: var(--font-overpass);
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 1.5;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 24px;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--font-overpass);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 1.3;
+  min-height: 36px;
+}
+
+.serviceCheckbox {
+  appearance: none;
+  min-width: 18px;
+  min-height: 18px;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-primary);
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  background: transparent;
+  flex-shrink: 0;
+  transition: var(--transition-smooth-100) background-color;
+}
+
+.serviceCheckbox:checked::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-primary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.serviceLabel {
+  line-height: 1.3;
+}
+
+/* Message textarea */
+.messageInput {
+  font-family: var(--font-overpass);
+  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  padding: 13px 12px 11px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-primary);
+  outline: 0.6px solid var(--color-primary);
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
   transition: var(--transition-smooth-100) all;
 }
 
-/* Secondary Button */
-.secondaryButton {
+.messageInput::placeholder {
+  color: rgba(137, 24, 16, 0.5);
+  font-weight: 500;
+}
+
+.messageInput:focus-visible,
+.messageInput:hover {
+  outline: 1px solid var(--color-primary);
+  background-color: var(--color-bg-hover);
+}
+
+/* Submit */
+.submitButton {
   font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: "wdth" 75, "wght" 700;
   text-transform: uppercase;
   letter-spacing: -0.015em;
   background-color: transparent;
-  border: 1.6px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   color: var(--color-primary);
-  padding: 12px 20px;
-  font-size: 16px;
+  padding: 12px 24px;
+  font-size: 19px;
   cursor: pointer;
+  margin-top: 4px;
   transition: var(--transition-smooth-100) all;
+  align-self: flex-start;
 }
 
-.secondaryButton:hover {
+.submitButton:hover {
   background-color: var(--color-bg-hover);
-  transition: var(--transition-smooth-100) all;
 }
 
-.removeFileButton {
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  border: none;
-  color: var(--color-primary);
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-top: 8px;
-  padding: 0;
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-/* Status Messages */
+/* Success / Error */
 .successMessage {
-  grid-column: span 2;
+  font-size: 21px;
   font-family: var(--font-overpass);
-  font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-primary);
-  text-align: center;
-  margin-top: 8px;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .errorMessage {
   font-family: var(--font-overpass);
   font-size: 14px;
   color: var(--color-primary);
-  margin-top: 4px;
+  margin-top: -8px;
 }
 
-/* Modal Styles */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal {
-  background-color: var(--color-background);
-  border: 2px solid var(--color-primary);
-  padding: 32px;
-  max-width: 400px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-bottom: 24px;
-}
-
-.modal h3 {
-  margin: 0;
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  font-size: 20px;
-  color: var(--color-primary);
-}
-
-.modal p {
-  margin: 0;
-  font-family: var(--font-overpass);
-  font-size: 15px;
-  color: var(--color-primary);
-}
-
-.modal input[type="file"] {
-  font-family: var(--font-overpass);
-  font-size: 14px;
-  color: var(--color-primary);
-}
-
-/* Drop Zone Styles */
-.dropZone {
-  border: 2px dashed var(--color-primary);
-  padding: 32px 24px;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--transition-smooth-100) all;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.dropZone:hover {
-  background-color: rgba(137, 24, 16, 0.05);
-}
-
-.dropZoneDragging {
-  background-color: rgba(137, 24, 16, 0.1);
-  border-style: solid;
-}
-
-.dropZone p {
-  margin: 0;
-  font-family: var(--font-overpass);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-.dropZoneHint {
-  margin: 0;
-  font-family: var(--font-overpass);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--color-primary);
-}
-
-/* Utility Classes */
-.label {
-  display: none !important;
-}
-
-.backWrapper {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-  transform: rotate(180deg);
-}
-
-/* Media Queries */
+/* Mobile */
 @media screen and (max-width: 799px) {
-  .emailInfo {
-    font-size: 17px;
-    line-height: 130%;
+  .proseText {
+    font-size: 19px;
   }
 
-  .checkboxGroup {
+  .inlineInput {
+    font-size: 19px;
+    min-width: 130px;
+  }
+
+  .servicesLabel {
+    font-size: 19px;
+  }
+
+  .serviceGrid {
     grid-template-columns: 1fr;
-  }
-
-  .contactForm {
-    display: flex;
-    flex-direction: column;
   }
 }
 
 @media screen and (max-width: 699px) {
-  .contactWrapper {
-    min-height: calc(100svh - 65px - 30px);
+  .contactFormWrapper {
+    width: calc(100% - 16px);
+    padding: 0 8px;
   }
-  .servicesCategorySection {
-    width: 100%;
+
+  .fallback {
+    font-size: 14px;
   }
+
   .submitButton:hover {
     background-color: var(--color-background);
-  }
-
-  .contactFormWrapper,
-  .subtitle {
-    width: calc(100% - 16px);
-    padding: 0 8px;
-    font-size: 15px;
-    line-height: 130%;
-  }
-
-  .contactFormWrapper:has(.serviceCategory) {
-    width: calc(100% - 16px);
-    padding: 0 8px;
-    font-size: 16px;
-    line-height: 130%;
-  }
-
-  .primaryButton:hover {
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 0.2em !important;
   }
 }

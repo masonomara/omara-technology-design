@@ -4,7 +4,6 @@ import {
   getWorkItems,
   getWorkNode,
   loadMarkdown,
-  getImages,
   getThumbnail,
 } from "@/lib/content";
 import { toSlug } from "@/lib/slug";
@@ -68,13 +67,11 @@ export default async function Page({ params }: RouteProps) {
   if (!node) return null;
 
   const html = loadMarkdown(slug);
-  const images = getImages(slug);
   const thumbnail = getThumbnail(slug);
 
   return (
     <>
       <div className={styles.cardImageContainer}>
-        <div className={styles.cardImageScreen} />
         <div className={styles.cardImageMultiply} />
         {thumbnail && (
           <div className={styles.cardImage}>
@@ -94,9 +91,6 @@ export default async function Page({ params }: RouteProps) {
           <Project
             title={node.name}
             html={html}
-            images={images}
-            tags={node.tags}
-            description={node.description}
           />
           <FooterContact />
         </div>

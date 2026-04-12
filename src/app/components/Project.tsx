@@ -7,9 +7,6 @@ import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 interface ProjectProps {
   title: string;
   html: string;
-  images: string[];
-  tags?: string[];
-  description?: string;
 }
 
 export function Project({ title, html }: ProjectProps) {
