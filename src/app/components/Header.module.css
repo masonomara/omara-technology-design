@@ -85,15 +85,14 @@
   letter-spacing: -0.015em;
   text-transform: uppercase;
   color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-decoration-thickness: 0.02em;
-  text-underline-offset: 0.15em;
-  transition: 100ms all cubic-bezier(0.33, 0, 0.66, 1);
 }
 
 .menuOption:hover span {
-  text-decoration-color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-primary) !important;
+  text-decoration-thickness: 0.075em !important;
+  text-underline-offset: 0.15em !important;
+  transition: var(--transition-smooth-100) all;
 }
 
 /* ─── Mobile ───────────────────────────────────────────────────────────────── */
@@ -101,15 +100,14 @@
 @media screen and (max-width: 699px) {
   .header {
     position: fixed;
-    top: 16px;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    width: calc(100vw - 64px);
-    max-width: 466px;
+    width: calc(100vw - 40px);
     height: fit-content;
-    padding: 0px 16px 0px;
+    padding: 0px 0px 0px;
     border: 1.5px solid var(--color-primary);
   }
 
@@ -125,6 +123,7 @@
 
   .logoWrapper {
     width: 100%;
+    margin: 0px 7px;
   }
 
   .logoDesktop {
@@ -146,8 +145,10 @@
   .menuWrapper {
     justify-content: space-around;
     width: 100%;
-    margin: 7px 0px 7px;
-    gap: auto;
+    margin: calc(clamp(15px, 4.75vw, 24px) / 2.5) 0px;
+    gap: 0px;
+    width: calc(100% - clamp(15px, 4.75vw, 24px));
+    padding: 0px calc(clamp(15px, 4.75vw, 24px) / 2);
   }
 
   .menuOption {
@@ -155,7 +156,7 @@
   }
 
   .menuOption span {
-    font-size: 19px;
+    font-size: clamp(15px, 4.75vw, 24px);
     line-height: 100%;
   }
 }
