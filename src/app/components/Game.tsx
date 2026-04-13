@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
-import styles from "./../styles/index.module.css";
+import styles from "./../styles/game.module.css";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -14,41 +14,109 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
 );
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+
 interface LeaderboardEntry {
   nickname: string;
   score: number;
   user_id: string;
 }
 
-const enemyImages = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
-const badWords = atob(
+interface BangMarker {
+  x: number;
+  y: number;
+  id: number;
+  rotation: number;
+}
+
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const ENEMY_COUNT = 9;
+const ENEMY_IMAGES = ["/canOne.svg", "/canTwo.svg", "/canThree.svg"];
+
+// Bad words stored base64 so they don't appear as plain text in the source
+const BAD_WORDS = atob(
   "RkFHLEZVQ0ssVElUUyxDVU5ULDg9RCxTSElULFBJU1MsS0tLLENPQ0ssTklHR0VSLE5JR0dBLEtJS0UsUFVTU1ksU0xVVCxDUkFQLEJJVENI",
 ).split(",");
 
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function containsBadWord(name: string): boolean {
+  return BAD_WORDS.some((word) => name.includes(word));
+}
+
+/**
+ * Converts a player's leaderboard position into a human-readable rank label.
+ * Returns "Rank not available" if the score isn't yet in the fetched leaderboard
+ * (e.g. the player hasn't submitted yet).
+ */
+function getRankLabel(score: number, leaderboard: LeaderboardEntry[]): string {
+  const totalEntries = leaderboard.length;
+  const userRank = leaderboard.findIndex((entry) => entry.score === score);
+
+  if (userRank === -1) return "Rank not available";
+
+  const rankPercentage = (userRank / totalEntries) * 100;
+  if (rankPercentage <= 0.01) return "Top 0.01%";
+  if (rankPercentage <= 0.1) return "Top 0.1%";
+  if (rankPercentage <= 1) return "Top 1%";
+  if (rankPercentage <= 5) return "Top 5%";
+  if (rankPercentage <= 10) return "Top 10%";
+  if (rankPercentage <= 25) return "Top 25%";
+  if (rankPercentage <= 50) return "Top 50%";
+  return "Bottom 50%";
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
 export default function Game() {
-  const [bangs, setBangs] = useState<
-    { x: number; y: number; id: number; rotation: number }[]
-  >([]);
-  const [currentEnemy, setCurrentEnemy] = useState(0);
+  // ── Game flow ──────────────────────────────────────────────────────────────
+  const [gameStart, setGameStart] = useState(false); // true once the player has clicked Play at least once
+  const [isGameActive, setIsGameActive] = useState(false); // true while enemies are spawning
+  const [gameEnd, setGameEnd] = useState(false); // true when all 9 enemies have been shot
+
+  // ── Enemy state ────────────────────────────────────────────────────────────
+  const [currentEnemy, setCurrentEnemy] = useState(0); // index of the enemy currently on screen (0–8)
+  const [enemyStates, setEnemyStates] = useState(
+    Array(ENEMY_COUNT).fill(false),
+  ); // which enemy slot is active
+  const [spawnTime, setSpawnTime] = useState(0); // performance.now() when the current enemy appeared
+
+  // ── Scoring ────────────────────────────────────────────────────────────────
   const [score, setScore] = useState(0);
-  const [spawnTime, setSpawnTime] = useState(0);
+  const [shotsTaken, setShotsTaken] = useState(0);
+  const [successfulHits, setSuccessfulHits] = useState(0);
+  const [gameStartTime, setGameStartTime] = useState(0);
+  const [gameEndTime, setGameEndTime] = useState(0);
+
+  // ── Leaderboard & submission ───────────────────────────────────────────────
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [nickname, setNickname] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [warning, setWarning] = useState<string>("");
-  const [enemyStates, setEnemyStates] = useState(Array(9).fill(false));
-  const [handImage, setHandImage] = useState("/thumbsUp.svg");
-  const [gameStart, setGameStart] = useState(false);
-  const [gameAction, setGameAction] = useState(false);
-  const [gameEnd, setGameEnd] = useState(false);
-  const [gameStartTime, setGameStartTime] = useState(0);
-  const [gameEndTime, setGameEndTime] = useState(0);
-  const [shotsTaken, setShotsTaken] = useState(0);
-  const [successfulHits, setSuccessfulHits] = useState(0);
   const [userId, setUserId] = useState<string>("");
+
+  // ── UI ─────────────────────────────────────────────────────────────────────
+  const [bangs, setBangs] = useState<BangMarker[]>([]); // click-flash markers
+  const [handImage, setHandImage] = useState("/thumbsUp.svg"); // swaps to thumbsDown on fire
   const [videoLoaded, setVideoLoaded] = useState(false);
 
+  // Ref used to auto-scroll the leaderboard to the current user's row
+  const userScoreRef = useRef<HTMLLIElement | null>(null);
+
+  // ─── Derived display values ──────────────────────────────────────────────────
+
+  const timeTaken = gameEndTime
+    ? ((gameEndTime - gameStartTime) / 1000).toFixed(0)
+    : "0";
+  const accuracy =
+    shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0";
+
+  // ─── One-time setup ──────────────────────────────────────────────────────────
+
+  // Persist a UUID in localStorage so we can identify the current user in the
+  // leaderboard without requiring an account
   useEffect(() => {
     let storedId = localStorage.getItem("userId");
     if (!storedId) {
@@ -58,7 +126,7 @@ export default function Game() {
     setUserId(storedId);
   }, []);
 
-  const userScoreRef = useRef<HTMLLIElement | null>(null);
+  // ─── Scroll leaderboard to user's row ────────────────────────────────────────
 
   useEffect(() => {
     if (gameEnd) {
@@ -72,7 +140,7 @@ export default function Game() {
   }, [gameEnd]);
 
   useEffect(() => {
-    if (currentEnemy >= 9 && userScoreRef.current) {
+    if (currentEnemy >= ENEMY_COUNT && userScoreRef.current) {
       userScoreRef.current.scrollIntoView({
         behavior: "smooth",
         block: "center",
@@ -80,8 +148,7 @@ export default function Game() {
     }
   }, [currentEnemy]);
 
-  const containsBadWord = (name: string) =>
-    badWords.some((word) => name.includes(word));
+  // ─── Supabase ────────────────────────────────────────────────────────────────
 
   async function fetchLeaderboard() {
     const { data, error } = await supabase
@@ -135,15 +202,20 @@ export default function Game() {
     }
   }
 
+  // ─── Click / bang effect ─────────────────────────────────────────────────────
+
+  // Attach a mousedown listener to the whole game frame so every click (whether
+  // it hits an enemy or not) spawns a bang graphic and briefly flips the hand
   useEffect(() => {
     const gameFrame = document.getElementById("gameFrameWrapper");
     if (!gameFrame) return;
 
-    const handleMouseDown = (event: MouseEvent) => {
-      if (!gameAction) return;
+    const handleFrameClick = (event: MouseEvent) => {
+      if (!isGameActive) return;
       const rect = gameFrame.getBoundingClientRect();
       const bangId = Date.now() + Math.random();
       const rotation = Math.random() * 20 - 10;
+
       setBangs((prev) => [
         ...prev,
         {
@@ -153,26 +225,35 @@ export default function Game() {
           rotation,
         },
       ]);
+
+      // Flip hand to thumbs-down briefly, then back
       setHandImage("/thumbsDown.svg");
       setTimeout(() => setHandImage("/thumbsUp.svg"), 250);
+
+      // Remove this bang marker after its animation finishes
       setTimeout(() => {
         setBangs((prev) => prev.filter((bang) => bang.id !== bangId));
       }, 250);
     };
 
-    gameFrame.addEventListener("mousedown", handleMouseDown);
-    return () => gameFrame.removeEventListener("mousedown", handleMouseDown);
-  }, [gameAction]);
+    gameFrame.addEventListener("mousedown", handleFrameClick);
+    return () => gameFrame.removeEventListener("mousedown", handleFrameClick);
+  }, [isGameActive]);
 
+  // ─── Enemy spawning ──────────────────────────────────────────────────────────
+
+  // Mark which enemy slot should be active whenever currentEnemy advances
   useEffect(() => {
-    if (gameAction && currentEnemy < 9) {
+    if (isGameActive && currentEnemy < ENEMY_COUNT) {
       setEnemyStates((prev) => prev.map((_, index) => index === currentEnemy));
       setSpawnTime(performance.now());
     }
-  }, [currentEnemy, gameAction]);
+  }, [currentEnemy, isGameActive]);
 
+  // Position the active enemy at a random spot that doesn't overlap the hand or
+  // score display. Re-runs on resize so the position stays valid.
   useEffect(() => {
-    if (!gameAction || currentEnemy >= 9) return;
+    if (!isGameActive || currentEnemy >= ENEMY_COUNT) return;
 
     const positionEnemy = () => {
       const gameFrame = document.getElementById("gameFrame");
@@ -180,13 +261,15 @@ export default function Game() {
       if (!gameFrame || !enemy) return;
 
       enemy.classList.remove(styles.upcomingEnemy);
+
       const handWrapper = document.querySelector("." + styles.handWrapper);
       const scoreWrapper = document.querySelector("." + styles.scoreWrapper);
-
       if (!handWrapper || !scoreWrapper) return;
-      const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
 
+      const { clientWidth: frameWidth, clientHeight: frameHeight } = gameFrame;
       const frameRect = gameFrame.getBoundingClientRect();
+
+      // Convert a DOMRect from page coords into coords relative to the game frame
       const toFrameCoords = (rect: DOMRect) => ({
         left: rect.left - frameRect.left,
         right: rect.right - frameRect.left,
@@ -197,6 +280,8 @@ export default function Game() {
       const hand = toFrameCoords(handWrapper.getBoundingClientRect());
       const scoreRect = toFrameCoords(scoreWrapper.getBoundingClientRect());
 
+      // Keep re-rolling until we find a position that doesn't overlap the hand
+      // or the score display
       let enemyX: number, enemyY: number, overlap: boolean;
       do {
         enemyX = Math.random() * (frameWidth - 67);
@@ -222,7 +307,7 @@ export default function Game() {
         position: "absolute",
         width: "clamp(51px, 9.7vw, 67px)",
         height: "clamp(91px, 17.3vw, 120px)",
-        backgroundImage: `url(${enemyImages[currentEnemy % enemyImages.length]})`,
+        backgroundImage: `url(${ENEMY_IMAGES[currentEnemy % ENEMY_IMAGES.length]})`,
         backgroundSize: "contain",
         left: `${enemyX}px`,
         top: `${enemyY}px`,
@@ -234,23 +319,41 @@ export default function Game() {
     positionEnemy();
     window.addEventListener("resize", positionEnemy);
     return () => window.removeEventListener("resize", positionEnemy);
-  }, [gameAction, currentEnemy]);
+  }, [isGameActive, currentEnemy]);
 
-  const iShoot = (event: React.MouseEvent, index: number) => {
+  // ─── Shooting ────────────────────────────────────────────────────────────────
+
+  /**
+   * Called when the player clicks directly on an enemy element.
+   *
+   * Score formula:
+   *   accuracyScore  = how close to the centre the click landed  (0–50 pts)
+   *   speedScore     = how fast the player reacted               (0–100 pts)
+   *   total          = (accuracyScore × 1.5 + speedScore) × 10
+   *
+   * A hit is counted as "successful" when the click lands within 60% of the
+   * enemy's radius (accuracyScore > 30).
+   */
+  const handleEnemyShot = (event: React.MouseEvent, index: number) => {
     setShotsTaken((prev) => prev + 1);
+
+    // Deactivate the enemy that was just shot
     setEnemyStates((prev) =>
       prev.map((_, i) => (i === index ? false : prev[i])),
     );
+
+    // Advance to the next enemy; end the game if this was the last one
     setCurrentEnemy((prev) => {
       const newEnemy = prev + 1;
-      if (newEnemy >= 9) {
-        setGameAction(false);
+      if (newEnemy >= ENEMY_COUNT) {
+        setIsGameActive(false);
         setGameEnd(true);
         setGameEndTime(performance.now());
       }
       return newEnemy;
     });
 
+    // Animate the enemy flying off screen
     const enemy = event.currentTarget as HTMLElement;
     enemy.classList.add(styles.enemyHit);
 
@@ -265,27 +368,53 @@ export default function Game() {
     enemy.style.opacity = "0";
     enemy.style.pointerEvents = "none";
 
+    // ── Score calculation ──────────────────────────────────────────────────
     const reactionTime = performance.now() - spawnTime;
     const enemyRect = enemy.getBoundingClientRect();
     const enemyCenterX = enemyRect.left + enemyRect.width / 2;
     const enemyCenterY = enemyRect.top + enemyRect.height / 2;
+
+    // Distance from click to enemy centre, normalised against the enemy's radius
     const distance = Math.sqrt(
       Math.pow(event.clientX - enemyCenterX, 2) +
         Math.pow(event.clientY - enemyCenterY, 2),
     );
     const maxDistance = Math.max(enemyRect.width, enemyRect.height) / 2;
+
     const accuracyScore = Math.max(0, 50 - (distance / maxDistance) * 33);
     const speedScore = Math.max(0, (1 - reactionTime / 2000) * 67) * 1.5;
+
     const hitSuccess = accuracyScore > 30;
     if (hitSuccess) {
       setSuccessfulHits((prev) => prev + 1);
     }
+
     setScore(
       (prev) => prev + Math.round((accuracyScore * 1.5 + speedScore) * 10),
     );
   };
 
+  // ─── Game lifecycle ──────────────────────────────────────────────────────────
+
+  function startGame() {
+    setGameStart(true);
+    setIsGameActive(true);
+    setGameEnd(false);
+    setCurrentEnemy(0);
+    setGameStartTime(performance.now());
+    setEnemyStates((prev) => prev.map((_, index) => index === 0));
+  }
+
+  /**
+   * Restarts the game from scratch.
+   *
+   * This can't just call startGame() because enemy elements are positioned and
+   * animated via direct DOM manipulation (not React state), so we have to
+   * manually reset their inline styles and class lists here. React owns the
+   * reactive state; the DOM manipulation lives outside of it.
+   */
   function restartGame() {
+    // Reset all React state
     setCurrentEnemy(0);
     setScore(0);
     setSubmitted(false);
@@ -294,15 +423,17 @@ export default function Game() {
     setWarning("");
     setBangs([]);
     setHandImage("/thumbsUp.svg");
-    setGameAction(true);
+    setIsGameActive(true);
     setGameStart(true);
     setGameStartTime(performance.now());
     setGameEnd(false);
     setShotsTaken(0);
     setSuccessfulHits(0);
     setGameEndTime(0);
-    setEnemyStates(Array(9).fill(false));
+    setEnemyStates(Array(ENEMY_COUNT).fill(false));
     setEnemyStates((prev) => prev.map((_, index) => index === 0));
+
+    // Reset all enemy DOM nodes that were mutated during the previous round
     const allEnemies: NodeListOf<HTMLElement> = document.querySelectorAll(
       `.${styles.enemy}`,
     );
@@ -321,40 +452,29 @@ export default function Game() {
     });
   }
 
-  function startGame() {
-    setGameStart(true);
-    setGameAction(true);
-    setGameEnd(false);
-    setCurrentEnemy(0);
-    setGameStartTime(performance.now());
-    setEnemyStates((prev) => prev.map((_, index) => index === 0));
-  }
-
-  const timeTaken = gameEndTime
-    ? ((gameEndTime - gameStartTime) / 1000).toFixed(0)
-    : "0";
-  const accuracy =
-    shotsTaken > 0 ? ((successfulHits / shotsTaken) * 100).toFixed(0) : "0";
+  // ─── Render ───────────────────────────────────────────────────────────────────
 
   return (
     <div id="gameFrameWrapper" className={styles.gameFrameWrapper}>
+      {/* ── Score display (slides up when isGameActive becomes true) ── */}
       <div className={styles.scoreWrapper}>
         <div
-          className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveOne : ""}`}
+          className={`${styles.score} ${gameEnd ? styles["hand--gameDone"] : ""} ${isGameActive ? styles.scoreWrapperActiveOne : ""}`}
         >
           {score}
           <span className={styles.scoreDetails}>POINTS</span>
         </div>
         <div
-          className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""} ${gameAction ? styles.scoreWrapperActiveTwo : ""}`}
+          className={`${styles.cans} ${gameEnd ? styles["hand--gameDone"] : ""} ${isGameActive ? styles.scoreWrapperActiveTwo : ""}`}
         >
           {currentEnemy}/9
           <span className={styles.scoreDetails}>CANS</span>
         </div>
       </div>
 
+      {/* ── Hand (bottom-right corner, animates in when game starts) ── */}
       <div
-        className={`${styles.handWrapper} ${gameAction ? styles.handWrapperActive : ""}`}
+        className={`${styles.handWrapper} ${isGameActive ? styles.handWrapperActive : ""}`}
       >
         <Image
           src={handImage}
@@ -363,11 +483,13 @@ export default function Game() {
           priority
           width={450}
           height={438}
-          className={`${styles.hand} ${currentEnemy === 9 ? styles["hand--gameDone"] : ""} ${handImage === "/thumbsDown.svg" ? styles.thumbsDown : ""}`}
+          className={`${styles.hand} ${currentEnemy === ENEMY_COUNT ? styles["hand--gameDone"] : ""} ${handImage === "/thumbsDown.svg" ? styles.thumbsDown : ""}`}
         />
       </div>
 
+      {/* ── Main game frame (enemies, bangs, overlays, modals all live here) ── */}
       <div id="gameFrame" className={styles.gameFrame}>
+        {/* Bang markers — appear at click position and animate out */}
         {bangs.map((bang) => (
           <div
             key={bang.id}
@@ -391,19 +513,21 @@ export default function Game() {
           </div>
         ))}
 
+        {/* Enemy target slots — positioned by the spawning useEffect above */}
         {enemyStates.map((_isActive, index) => (
           <div
             key={index}
             id={`enemy${index}`}
             className={styles.enemy}
-            onMouseDown={(e) => iShoot(e, index)}
+            onMouseDown={(e) => handleEnemyShot(e, index)}
             style={{
-              backgroundImage: `url(${enemyImages[index % enemyImages.length]})`,
+              backgroundImage: `url(${ENEMY_IMAGES[index % ENEMY_IMAGES.length]})`,
             }}
           />
         ))}
 
-        {!gameEnd && !gameAction && !gameStart && (
+        {/* ── Start screen (visible before the first game begins) ── */}
+        {!gameEnd && !isGameActive && !gameStart && (
           <motion.div
             variants={fadeIn("up", 0.05, 0.5)}
             initial="hidden"
@@ -442,8 +566,9 @@ export default function Game() {
           </motion.div>
         )}
 
+        {/* ── Video background (fades out once the game goes active) ── */}
         <div
-          className={`${styles.videoWrapper} ${gameAction ? styles.videoWrapperClose : ""} ${!videoLoaded ? styles.videoLoading : ""}`}
+          className={`${styles.videoWrapper} ${isGameActive ? styles.videoWrapperClose : ""} ${!videoLoaded ? styles.videoLoading : ""}`}
         >
           <div className={styles.videoScreenOverlay} />
           <div className={styles.videoMultiplyOverlay} />
@@ -465,15 +590,19 @@ export default function Game() {
           </video>
         </div>
 
+        {/* ── Game over screen (fades in after the last enemy is shot) ── */}
         {gameStart && (
           <div
             className={`${styles.gameOver} ${!gameEnd ? styles.gameOverClose : ""}`}
           >
             <div className={styles.leaderboardContainer}>
+              {/* Final score */}
               <span className={styles.trophyScore}>
                 {score}
                 <span className={styles.trophyDetails}>points!</span>
               </span>
+
+              {/* Quick stats: time / accuracy / percentile rank */}
               <div className={styles.statsContainer}>
                 <div className={styles.statsWrapper}>
                   <span className={styles.statsTitle}>{timeTaken} seconds</span>
@@ -487,26 +616,12 @@ export default function Game() {
                 <div className={styles.statsDivider} />
                 <div className={styles.statsWrapper}>
                   <span className={styles.statsTitle}>
-                    {(() => {
-                      const totalEntries = leaderboard.length;
-                      const userRank = leaderboard.findIndex(
-                        (entry) => entry.score === score,
-                      );
-                      if (userRank === -1) return "Rank not available";
-                      const rankPercentage = (userRank / totalEntries) * 100;
-                      if (rankPercentage <= 0.01) return "Top 0.01%";
-                      if (rankPercentage <= 0.1) return "Top 0.1%";
-                      if (rankPercentage <= 1) return "Top 1%";
-                      if (rankPercentage <= 5) return "Top 5%";
-                      if (rankPercentage <= 10) return "Top 10%";
-                      if (rankPercentage <= 25) return "Top 25%";
-                      if (rankPercentage <= 50) return "Top 50%";
-                      return "Bottom 50%";
-                    })()}
+                    {getRankLabel(score, leaderboard)}
                   </span>
                 </div>
               </div>
 
+              {/* Leaderboard */}
               <div className={styles.leaderboardHeader}>
                 <span>Rank</span>
                 <span>Name</span>
@@ -514,25 +629,25 @@ export default function Game() {
               </div>
               <ol className={styles.leaderboardList}>
                 {leaderboard.map((entry, index) => {
-                  const isUser = entry.user_id === userId;
+                  const isCurrentUser = entry.user_id === userId;
                   return (
                     <li
                       key={index}
-                      ref={isUser ? userScoreRef : null}
-                      className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
+                      ref={isCurrentUser ? userScoreRef : null}
+                      className={`${styles.leaderboardEntry} ${isCurrentUser ? styles.highlight : ""}`}
                     >
                       <div className={styles.leaderboardRank}>{index + 1}</div>
                       <div
                         className={styles.leaderboardName}
                         style={
-                          isUser && !entry.nickname
+                          isCurrentUser && !entry.nickname
                             ? { opacity: 0.5 }
                             : undefined
                         }
                       >
                         {entry.nickname
                           ? entry.nickname.toUpperCase()
-                          : isUser
+                          : isCurrentUser
                             ? "NICKNAME"
                             : ""}
                       </div>
@@ -543,6 +658,8 @@ export default function Game() {
                   );
                 })}
               </ol>
+
+              {/* Nickname input / thank-you message */}
               {submitted ? (
                 <div className={styles.inputThankYou}>Score submitted!</div>
               ) : (
@@ -564,6 +681,8 @@ export default function Game() {
                   )}
                 </>
               )}
+
+              {/* Action buttons */}
               <div className={styles.endButtonWrapper}>
                 {!submitted && (
                   <button

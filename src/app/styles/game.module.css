@@ -1,6 +1,30 @@
-/* ==================== 
-   Base Layout & Container 
-   ==================== */
+/* =============================================================================
+   GAME PAGE STYLES
+   index.module.css
+
+   Sections:
+   1. Layout & Containers
+   2. Score Display
+   3. Hand Animation
+   4. Enemy Targets
+   5. Start Screen
+   6. Game Over Screen
+   7. Buttons
+   8. Leaderboard
+   9. Stats Bar
+   10. Form Fields & Inputs
+   11. Checkboxes
+   12. Typography
+   13. Video Background
+   14. Bang Animations
+   15. Media Queries
+   ============================================================================= */
+
+/* =============================================================================
+   1. LAYOUT & CONTAINERS
+   ============================================================================= */
+
+/* Full-screen wrapper that sits below the site header */
 .gameFrameWrapper {
   position: fixed;
   top: var(--header-height);
@@ -13,6 +37,7 @@
   overflow: hidden;
 }
 
+/* Inner frame — caps width so the game doesn't stretch on ultra-wide screens */
 .gameFrame {
   width: 100%;
   height: 100%;
@@ -27,24 +52,25 @@
   height: 100% !important;
 }
 
-/* ==================== 
-     Game UI Components 
-     ==================== */
+/* =============================================================================
+   2. SCORE DISPLAY
+   Starts off-screen (translateY 100%) and slides up when the game begins.
+   ============================================================================= */
 
-/* Score Display */
 .scoreWrapper {
+  position: absolute;
   bottom: 16px;
   left: 32px;
-  gap: 24px;
-  justify-content: center;
-  align-items: baseline;
   display: flex;
   flex-direction: row;
-  position: absolute;
+  align-items: baseline;
+  justify-content: center;
+  gap: 24px;
   pointer-events: none;
   transition: transform cubic-bezier(0.33, 0, 0.66, 1) 200ms;
 }
 
+/* Main score number — slides in with a short delay */
 .score {
   font-size: 77px;
   pointer-events: none;
@@ -56,11 +82,14 @@
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   line-height: 100%;
-  transform: translateY(calc(100% + 16px));
+  transform: translateY(
+    calc(100% + 16px)
+  ); /* hidden below the fold by default */
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
   transition-delay: 75ms;
 }
 
+/* Can count and point counter share the same large italic style */
 .cans,
 .pointScore,
 .trophyScore {
@@ -75,17 +104,21 @@
   line-height: 100%;
 }
 
+/* These two live below the score number — extra top padding creates the
+   visual baseline alignment with the larger score text */
 .trophyScore,
 .pointScore {
   padding-top: 40px;
 }
 
+/* Can counter slides in slightly later than the score (staggered entrance) */
 .cans {
   transform: translateY(calc(100% + 16px));
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
   transition-delay: 187ms;
 }
 
+/* Applied to the score element when the game is active — slides it on screen */
 .scoreWrapperActiveOne {
   pointer-events: none;
   transform: translateY(0%);
@@ -93,6 +126,7 @@
   transition-delay: 100ms;
 }
 
+/* Applied to the can counter — slightly later than scoreWrapperActiveOne */
 .scoreWrapperActiveTwo {
   pointer-events: none;
   transform: translateY(0%);
@@ -100,6 +134,7 @@
   transition-delay: 250ms;
 }
 
+/* Small label beneath the score number (e.g. "POINTS", "CANS") */
 .scoreDetails,
 .trophyDetails {
   font-size: 27px;
@@ -116,31 +151,38 @@
   letter-spacing: 0;
 }
 
-/* Hand Animations */
+/* =============================================================================
+   3. HAND ANIMATION
+   The hand sits in the bottom-right corner. It starts rotated and off-screen,
+   then snaps into place when the game starts.
+   ============================================================================= */
+
+/* Default state: hidden below/right, tilted */
 .handWrapper {
   position: absolute;
   bottom: 0;
   right: 0;
   width: auto;
   height: 50%;
-  aspect-ratio: 473.95/461;
-  transition: all cubic-bezier(0.33, 0, 0.66, 1) 225ms;
+  aspect-ratio: 473.95 / 461;
   pointer-events: none;
-  transition-delay: 300ms;
   transform: translateY(100%) rotate(-30deg);
+  transition: all cubic-bezier(0.33, 0, 0.66, 1) 225ms;
+  transition-delay: 300ms;
 }
 
+/* Active state: slides up and straightens out */
 .handWrapperActive {
   position: absolute;
   bottom: 0;
   right: 0;
   width: auto;
   height: 50%;
-  aspect-ratio: 473.95/461;
-  transition: all cubic-bezier(0.33, 0, 0.66, 1.33) 300ms;
-  transition-delay: 400ms;
+  aspect-ratio: 473.95 / 461;
   pointer-events: none;
   transform: translateY(0%) rotate(0deg);
+  transition: all cubic-bezier(0.33, 0, 0.66, 1.33) 300ms;
+  transition-delay: 400ms;
 }
 
 .hand {
@@ -151,12 +193,17 @@
   object-fit: contain;
 }
 
+/* Brief "recoil" shake applied when the player fires */
 .thumbsDown {
   transform: rotate(0.5deg);
   transition: transform cubic-bezier(0.33, 6, 0.66, 6) 150ms;
 }
 
-/* Game Elements */
+/* =============================================================================
+   4. ENEMY TARGETS
+   ============================================================================= */
+
+/* Base enemy element — hidden until the game positions and shows it via JS */
 .enemy {
   height: 120px;
   width: 70px;
@@ -165,6 +212,8 @@
   display: none;
 }
 
+/* Dead enemy keeps its dimensions but loses pointer events so it can't be
+   clicked again while the death animation plays */
 .deadEnemy {
   height: 120px;
   width: 70px;
@@ -173,6 +222,7 @@
   pointer-events: none;
 }
 
+/* Bang flash that appears at the click point */
 .bangMarker {
   width: 120px;
   height: 120px;
@@ -191,11 +241,10 @@
   display: flex;
 }
 
-/* ==================== 
-     Screens & Modals
-     ==================== */
+/* =============================================================================
+   5. START SCREEN
+   ============================================================================= */
 
-/* Start Screen */
 .startContainer {
   padding: 48px;
   border: 1px solid var(--color-primary);
@@ -211,6 +260,7 @@
   position: relative;
 }
 
+/* Fades out the start screen when the game begins */
 .startContainerClose {
   opacity: 0 !important;
   pointer-events: none;
@@ -269,6 +319,7 @@
   opacity: 0.45;
 }
 
+/* Decorative can images pinned to the corners of the start card */
 .startCoverAssetRight {
   position: absolute;
   top: -28px;
@@ -295,10 +346,21 @@
   background-color: var(--color-primary);
 }
 
-/* Game Over Screen */
+/* =============================================================================
+   6. GAME OVER SCREEN
+   ============================================================================= */
+
 .gameOver {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 1px solid var(--color-primary);
   max-width: 412px;
+  width: calc(100% - 96px - 64px);
+  /* Cap height so it doesn't overflow the game area; the 71px + 25px + 32px
+     accounts for header, bottom bar, and breathing room */
+  max-height: calc(100% - 71px - 25px - 32px);
   height: 100%;
   min-height: fit-content;
   display: flex;
@@ -307,31 +369,32 @@
   justify-content: flex-start;
   background-color: var(--color-background);
   opacity: 1;
-  width: calc(100% - 96px - 64px);
-  transition: var(--transition-smooth-200) all;
-  transition-delay: 400ms;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: calc(100% - 71px - 25px - 32px);
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-bottom: 0px !important;
   padding-left: 40px;
   padding-right: 40px;
+  padding-bottom: 0px !important;
+  transition: var(--transition-smooth-200) all;
+  transition-delay: 400ms;
 }
 
+/* Hidden state — fades out before the game over screen fades in */
 .gameOverClose {
   opacity: 0;
   pointer-events: none;
   transition: var(--transition-smooth-200) all;
 }
 
-/* Email Signup */
+/* Email signup uses the same layout as game over */
 .emailSignup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 1px solid var(--color-primary);
   max-width: 412px;
+  width: calc(100% - 96px - 64px);
+  max-height: calc(100% - 71px - 25px - 32px);
   height: fit-content;
   min-height: fit-content;
   display: flex;
@@ -340,19 +403,13 @@
   justify-content: flex-start;
   background-color: var(--color-background);
   opacity: 1;
-  width: calc(100% - 96px - 64px);
-  transition: var(--transition-smooth-200) all;
-  transition-delay: 400ms;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: calc(100% - 71px - 25px - 32px);
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-bottom: 0px !important;
   padding-left: 40px;
   padding-right: 40px;
+  padding-bottom: 0px !important;
+  transition: var(--transition-smooth-200) all;
+  transition-delay: 400ms;
 }
 
 .emailSignupClose {
@@ -361,12 +418,11 @@
   transition: var(--transition-smooth-200) all;
 }
 
-/* ==================== 
-     UI Components
-     ==================== */
+/* =============================================================================
+   7. BUTTONS
+   ============================================================================= */
 
-/* Button Styles */
-
+/* Stacks buttons vertically (used on start screen) */
 .buttonWrapper {
   display: flex;
   flex-direction: column;
@@ -375,6 +431,8 @@
   width: 100%;
   gap: 10px;
 }
+
+/* Side-by-side secondary buttons (e.g. About / View Work) */
 .secondaryButtonWrapper {
   display: flex;
   flex-direction: row;
@@ -384,6 +442,7 @@
   gap: 10px;
 }
 
+/* Button group on the start screen */
 .startButtonWrapper {
   display: flex;
   flex-direction: column;
@@ -394,6 +453,7 @@
   width: 100%;
 }
 
+/* Button group on the game over screen */
 .endButtonWrapper {
   display: flex;
   flex-direction: row;
@@ -402,12 +462,10 @@
   gap: 10px;
   margin-top: 33.6px;
   width: 320px;
-}
-
-.endButtonWrapper {
   padding-bottom: 40px;
 }
 
+/* Filled button — primary action (Play, Submit Score, Play Again) */
 .primaryButton {
   height: 40px;
   font-size: 21px;
@@ -431,6 +489,14 @@
   text-decoration: none;
   transition: var(--transition-smooth-100) all;
 }
+
+.primaryButton:hover {
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.2em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+/* Outline button — secondary action (About Us, View Work) */
 .secondaryButton {
   height: 40px;
   font-size: 21px;
@@ -439,9 +505,7 @@
   justify-content: center;
   gap: 7px;
   border-radius: 0;
-
   border: 1.5px solid var(--color-primary);
-
   background-color: var(--color-background);
   color: var(--color-primary);
   width: 100%;
@@ -454,70 +518,165 @@
   letter-spacing: -0.015em;
   text-transform: uppercase;
   text-decoration: none;
-
   transition: var(--transition-smooth-100) all;
 }
 
-.primaryButton:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
+/* Inline warning / hint beneath the nickname input */
 .warning {
   font-family: var(--font-overpass);
   font-size: 12px;
   line-height: 130%;
-  opacity: 1;
   color: var(--color-primary);
-  margin-top: 4.8px;
   text-align: center;
   height: 15px;
+  margin-top: 4.8px;
   margin-bottom: -10px;
-}
-
-/* Forms */
-.input {
-  border: 1.5px solid var(--color-primary);
-  background: transparent;
-  font-size: 16px;
-  margin-top: 37px;
-  width: calc(100% - 24px);
-  color: var(--color-primary);
-  font-family: var(--font-overpass);
-  font-weight: 500 !important;
-  height: 24px;
-  padding: 8px 6.4px;
-  font-weight: 800;
-  max-width: 276px;
   opacity: 1;
 }
 
-.inputThankYou {
-  margin-top: 1.6em;
+/* =============================================================================
+   8. LEADERBOARD
+   3-column grid: rank | name | score
+   ============================================================================= */
+
+.leaderboardContainer {
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
   color: var(--color-primary);
-  font-weight: 500;
-  font-family: var(--font-overpass);
-  font-size: 16px;
-  line-height: 130%;
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
-  text-transform: uppercase;
 }
 
-.input::placeholder {
-  color: var(--color-primary);
-  opacity: 0.5;
-  font-weight: 500;
+.leaderboardHeader {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr;
+  width: 100%;
+  border-bottom: 1px solid var(--color-primary);
+  font-size: 14px;
+  line-height: 130%;
+  font-family: var(--font-overpass);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 22.4px;
+  margin-bottom: 0;
+  padding-bottom: 2.8px;
 }
+
+.leaderboardHeader span {
+  text-align: left;
+}
+
+.leaderboardHeader span:last-child {
+  text-align: center;
+}
+
+.leaderboardList {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 179px;
+  max-height: 100%;
+  overflow-y: scroll;
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.leaderboardEntry {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr;
+  justify-content: flex-start;
+  width: 100%;
+  height: 29px;
+  padding: 5px 0 1px;
+  border-bottom: 1px solid var(--color-primary);
+  font-size: 24px;
+  line-height: 130%;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.leaderboardEntry:last-child {
+  border-bottom: none;
+}
+
+.leaderboardRank,
+.leaderboardName,
+.leaderboardScore {
+  font-family: var(--font-overpass);
+  white-space: nowrap;
+}
+
+.leaderboardRank,
+.leaderboardName {
+  text-align: left;
+}
+
+.leaderboardName {
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.leaderboardScore {
+  text-align: center;
+}
+
+/* Highlights the current user's row */
+.highlight {
+  background-color: var(--color-primary) 22;
+}
+
+/* =============================================================================
+   9. STATS BAR
+   Displayed at the top of the game over screen: time | accuracy | rank
+   ============================================================================= */
+
+.statsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  gap: 8px;
+  margin-top: 12.8px;
+}
+
+/* Vertical rule between stat items */
+.statsDivider {
+  width: 1px;
+  min-width: 1px;
+  background-color: var(--color-primary);
+}
+
+.statsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.statsTitle {
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 800;
+  font-family: var(--font-overpass);
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.statsSubtitle {
+  font-size: 14px;
+  line-height: 130%;
+  font-weight: 500;
+  font-family: var(--font-overpass);
+  color: var(--color-primary);
+}
+
+/* =============================================================================
+   10. FORM FIELDS & INPUTS
+   ============================================================================= */
 
 .formField {
   display: flex;
@@ -552,12 +711,48 @@
 
 .input:focus-visible,
 .input:hover {
-  outline: none;
   outline: 1px solid var(--color-primary);
   background-color: var(--color-bg-hover);
 }
 
-/* Checkboxes */
+.input::placeholder {
+  color: var(--color-primary);
+  opacity: 0.5;
+  font-weight: 500;
+}
+
+/* Confirmation message shown after a successful score submission */
+.inputThankYou {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.6em;
+  font-family: var(--font-overpass);
+  font-size: 16px;
+  font-weight: 800 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800 !important;
+  line-height: 130%;
+  color: var(--color-primary);
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+/* =============================================================================
+   11. CHECKBOXES
+   Custom styled checkboxes that match the game's design system
+   ============================================================================= */
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25.6px;
+  width: 100%;
+  max-width: 360px;
+}
+
 .checkboxItem {
   display: flex;
   align-items: center;
@@ -565,6 +760,7 @@
   margin-bottom: 8px;
 }
 
+/* Hide the browser's default checkbox appearance */
 .checkboxItem input[type="checkbox"] {
   appearance: none;
   min-width: 20px;
@@ -574,178 +770,81 @@
   max-width: 20px;
   max-height: 20px;
   padding: 0px !important;
+  margin: 0px;
   position: relative;
   cursor: pointer;
-  margin: 0px;
 }
 
+/* Draw a filled square in the center when checked */
 .checkboxItem input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-primary);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-primary);
 }
 
 .checkboxItem label {
   font-family: var(--font-overpass);
+  font-size: 16px;
+  font-weight: 500 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 500 !important;
   color: var(--color-primary);
-  font-size: 14px;
-  cursor: pointer;
+  background-color: transparent;
   text-transform: none;
   letter-spacing: normal;
   margin-bottom: 0;
   padding-left: 8px;
+  cursor: pointer;
 }
 
-.checkboxContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 25.6px;
-  width: calc(100%);
-  max-width: 360px;
-}
-
-/* Leaderboard */
-.leaderboardContainer {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  color: var(--color-primary);
-}
-
-.leaderboardHeader {
-  display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
-  border-bottom: 1px solid var(--color-primary);
-  margin-bottom: 0;
-  width: 100%;
-  font-size: 14px;
-  line-height: 130%;
+/* Text and textarea inputs nested inside a checkbox item (e.g. "Other: ___") */
+.checkboxItem input[type="text"],
+.checkboxItem input[type="email"],
+.checkboxItem input[type="url"],
+.checkboxItem input,
+.checkboxItem textarea {
   font-family: var(--font-overpass);
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-top: 22.4px;
-  padding-bottom: 2.8px;
-}
-
-.leaderboardHeader span {
-  text-align: left;
-}
-
-.leaderboardHeader span:last-child {
-  text-align: center;
-}
-
-.leaderboardList {
-  padding: 0;
-  height: 100%;
-  min-height: 179px;
-  overflow-y: scroll;
-  margin: 0;
-  max-height: 100%;
-  width: 100%;
-  border-bottom: 1px solid var(--color-primary);
-}
-
-.leaderboardEntry {
-  display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
-  justify-content: flex-start;
-  padding: 5px 0 1px;
-  border-bottom: 1px solid var(--color-primary);
-  font-size: 24px;
-  line-height: 130%;
-  font-weight: 800;
-  font-style: italic;
-  width: 100%;
-  height: 29px;
-}
-
-.leaderboardEntry:last-child {
-  border-bottom: none;
-}
-
-.leaderboardRank,
-.leaderboardName,
-.leaderboardScore {
-  font-family: var(--font-overpass);
-  white-space: nowrap;
-}
-
-.leaderboardRank,
-.leaderboardName {
-  text-align: left;
-}
-
-.leaderboardName {
-  overflow: hidden;
-  text-overflow: clip;
-}
-
-.leaderboardScore {
-  text-align: center;
-}
-
-.highlight {
-  background-color: var(--color-primary) 22;
-}
-
-/* Stats & Trophy */
-.statsContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin-top: 12.8px;
-  justify-content: center;
-  height: fit-content;
-  gap: 8px;
-}
-
-.statsDivider {
-  width: 1px;
-  min-width: 1px;
-  background-color: var(--color-primary);
-}
-
-.statsWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.statsTitle {
+  border: 1px solid var(--color-primary);
+  outline: 0.6px solid var(--color-primary);
+  background-color: transparent;
+  padding: 13px 12px 11px;
   font-size: 16px;
-  line-height: 130%;
-  font-weight: 800;
-  font-family: var(--font-overpass);
+  font-weight: 500 !important;
+  border-radius: 0px;
   color: var(--color-primary);
-  text-align: center;
+  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
 }
 
-.statsSubtitle {
-  font-size: 14px;
-  line-height: 130%;
-  font-weight: 500;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
+.checkboxItem input:focus,
+.checkboxItem textarea:focus,
+.checkboxItem input:hover,
+.checkboxItem textarea:hover {
+  outline: 1px solid var(--color-primary);
+  background-color: var(--color-bg-hover);
 }
 
-/* Typography */
+.checkboxItem input::placeholder,
+.checkboxItem textarea::placeholder {
+  color: rgba(137, 24, 16, 0.5);
+  font-weight: 500 !important;
+}
+
+/* =============================================================================
+   12. TYPOGRAPHY
+   ============================================================================= */
+
 .bodyRegular {
   margin-top: 0.8em;
   margin-bottom: 0em;
   font-size: 19px;
   font-weight: 500;
-  width: calc(100%);
+  width: 100%;
   max-width: 360px;
   text-align: center;
   line-height: 130%;
@@ -759,56 +858,61 @@
   font-size: 32px;
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
-  margin-bottom: 0px;
   font-weight: 400;
   margin-top: 40px;
+  margin-bottom: 0px;
 }
 
+/* Utility class to visually hide labels while keeping them accessible */
 .label {
   display: none !important;
 }
 
-/* ==================== 
-     Visual Effects
-     ==================== */
+/* =============================================================================
+   13. VIDEO BACKGROUND
+   Sits behind everything (z-index: -50). Two colour overlays (screen + multiply)
+   knock it back to match the site palette.
+   ============================================================================= */
 
-/* Video Background */
 .videoWrapper {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -50;
   overflow: hidden;
   transition: 400ms cubic-bezier(0.33, 0, 0.66, 1) all;
   transition-delay: 400ms;
 }
 
+/* Fades out when the game starts */
 .videoWrapperClose {
   opacity: 0;
   pointer-events: none;
-  transition-delay: 0ms;
   transition: 400ms cubic-bezier(0.33, 0, 0.66, 1) all;
+  transition-delay: 0ms;
 }
 
+/* Screen-mode overlay tones down the brightness */
 .videoScreenOverlay {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--color-background);
   mix-blend-mode: screen;
   opacity: 50%;
 }
 
+/* Multiply-mode overlay shifts colour toward the brand palette */
 .videoMultiplyOverlay {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--color-background);
   mix-blend-mode: multiply;
 }
@@ -817,11 +921,12 @@
   position: relative;
   width: 100%;
   height: 100%;
-  filter: grayscale(100%) contrast(1.15) brightness(1.15);
   z-index: -1;
   object-fit: cover;
+  filter: grayscale(100%) contrast(1.15) brightness(1.15);
 }
 
+/* Invisible until the video has loaded enough to play */
 .videoLoading {
   opacity: 0;
 }
@@ -830,7 +935,10 @@
   opacity: 0;
 }
 
-/* Animations */
+/* =============================================================================
+   14. BANG ANIMATIONS
+   ============================================================================= */
+
 @keyframes bangAnimation {
   0% {
     transform: scale(1) translate(-50%, -50%);
@@ -856,9 +964,10 @@
   }
 }
 
-/* ==================== 
-     Media Queries
-     ==================== */
+/* =============================================================================
+   15. MEDIA QUERIES
+   ============================================================================= */
+
 @media screen and (max-width: 799px) {
   .checkboxContainer {
     grid-template-columns: 1fr;
@@ -866,25 +975,26 @@
 }
 
 @media screen and (max-width: 699px) {
-  /* Layout adjustments */
+  /* Remove header offset — game fills the whole screen on mobile */
   .gameFrameWrapper {
     top: 0px;
     height: calc(100svh);
   }
 
+  /* Game over panel fills most of the screen height */
   .gameOver {
+    width: calc(100% - 48px - 48px);
     max-height: calc(100% - 64px);
     height: calc(100% - 64px);
-    width: calc(100% - 48px - 48px);
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
 
   .emailSignup {
-    max-height: fit-content;
+    width: calc(100% - 80px - 48px);
     min-height: calc(100% - 64px);
     height: calc(100% - 64px);
-    width: calc(100% - 80px - 48px);
+    max-height: fit-content;
     padding-left: 40px !important;
     padding-right: 40px !important;
   }
@@ -898,7 +1008,7 @@
     width: calc(100% + 16px);
   }
 
-  /* Button adjustments */
+  /* Stack buttons vertically on narrow screens */
   .startButtonWrapper,
   .endButtonWrapper {
     flex-direction: column;
@@ -914,7 +1024,7 @@
     text-underline-offset: 0.2em !important;
   }
 
-  /* Hand positioning */
+  /* Move hand to center-bottom instead of bottom-right */
   .handWrapper,
   .handWrapperActive {
     right: auto;
@@ -928,7 +1038,7 @@
     margin-top: 0;
   }
 
-  /* Score adjustments */
+  /* Tighter score layout on mobile */
   .scoreWrapper {
     left: 16px;
     bottom: 8px;
@@ -955,31 +1065,29 @@
     font-size: clamp(14px, 2.9vw, 21px);
   }
 
+  /* Can counter slides in faster on mobile (less stagger needed) */
   .scoreWrapperActiveTwo {
     transform: translateY(0%);
     transition-delay: 50ms;
   }
 
-  /* Leaderboard adjustments */
   .leaderboardHeader {
-    width: calc(100%);
+    width: 100%;
     font-size: 12px;
     line-height: 130%;
   }
 
   .leaderboardList {
-    width: calc(100%);
+    width: 100%;
   }
 
-  /* Stats adjustments */
   .statsTitle {
     font-size: 15px;
     line-height: 130%;
   }
 
-  /* Typography adjustments */
   .bodyRegular {
-    width: calc(100%);
+    width: 100%;
     max-width: 360px;
     padding: 0px 16px;
     font-size: 16px;
@@ -1000,99 +1108,11 @@
     margin-top: 1.6em;
     font-size: 17px;
     line-height: 130%;
-    width: calc(100%);
+    width: 100%;
   }
 
   .leaderboardHeader,
   .leaderboardList {
-    width: calc(100%);
+    width: 100%;
   }
-}
-
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: 16px;
-  font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-}
-.checkboxItem {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-  margin-bottom: 8px;
-}
-
-.checkboxItem input[type="checkbox"] {
-  appearance: none;
-  min-width: 20px;
-  min-height: 20px;
-  width: 20px;
-  height: 20px;
-  max-width: 20px;
-  max-height: 20px;
-  padding: 0px !important;
-  position: relative;
-  cursor: pointer;
-  margin: 0px;
-}
-
-.checkboxItem input[type="checkbox"]:checked::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-primary);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  font-size: 16px;
-  cursor: pointer;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
-  background-color: transparent;
-  font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-  padding-left: 8px;
-}
-
-.checkboxItem input[type="text"],
-.checkboxItem input[type="email"],
-.checkboxItem input[type="url"],
-.checkboxItem input,
-.checkboxItem textarea {
-  font-family: var(--font-overpass);
-  border: 1px solid var(--color-primary);
-  background-color: transparent;
-  padding: 13px 12px 11px;
-  font-size: 16px;
-  font-weight: 500 !important;
-  border-radius: 0px;
-  color: var(--color-primary);
-  outline: 0.6px solid var(--color-primary);
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-}
-
-.checkboxItem input:focus,
-.checkboxItem textarea:focus,
-.checkboxItem input:hover,
-.checkboxItem textarea:hover {
-  outline: 1px solid var(--color-primary);
-  background-color: var(--color-bg-hover);
-}
-
-.checkboxItem input::placeholder,
-.checkboxItem textarea::placeholder {
-  color: rgba(137, 24, 16, 0.5);
-  font-weight: 500 !important;
 }
