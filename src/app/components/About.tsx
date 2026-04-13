@@ -155,15 +155,15 @@ export default function About() {
         </div>
         <div className={styles.bioText}>
           <p>
-            Mason O&apos;Mara is a product designer and software engineer.
-            He&apos;s shipped iOS and Android apps, full-stack web platforms,
-            Shopify storefronts, and AI-integrated tools — across industries
-            from yacht staffing to accessibility consulting to fashion retail.
+            Mason O’Mara is a product designer and software engineer. He&apos;s
+            shipped iOS and Android apps, full-stack web platforms, Shopify
+            storefronts, and AI-integrated tools across industries from yacht
+            staffing to accessibility consulting to fashion retail.
           </p>
           <p>
-            He moved from UX strategy into independent practice to do the work
-            he cares about with teams he believes in. He writes about product
-            and design on{" "}
+            He moved from UX strategy into independent practice to do end-to-end
+            work he cares about with teams he believes in. He writes about
+            product and design on{" "}
             <a
               href="https://substack.com/@masonomara"
               target="_blank"

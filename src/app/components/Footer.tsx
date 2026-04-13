@@ -9,8 +9,9 @@ import { fadeInButton, textFadeUpSmall } from "../lib/motion";
 const NAV_LINKS = [
   { id: "home", label: "Home", href: "/" },
   { id: "work", label: "Work", href: "/work" },
-  { id: "process", label: "Process", href: "/process" },
   { id: "about", label: "About", href: "/about" },
+  { id: "process", label: "Process", href: "/process" },
+
   { id: "contact", label: "Contact", href: "/contact" },
 ];
 
@@ -44,7 +45,10 @@ export default function Footer() {
 
       <motion.div
         className={styles.navLinks}
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.4 } } }}
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.06, delayChildren: 0.4 } },
+        }}
         initial="hidden"
         whileInView="show"
         viewport={viewport}
