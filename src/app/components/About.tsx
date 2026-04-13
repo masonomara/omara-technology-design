@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { fadeIn, textFadeUp, textFadeUpSmall } from "../lib/motion";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/about.module.css";
+import styles from "./About.module.css";
 
 const CAPABILITIES = [
   {
@@ -92,8 +91,9 @@ export default function About() {
             <h3>Strategic Engagements</h3>
             <p>
               Monthly. For products in motion or being formed. We work alongside
-              you — research, architecture, design direction, prioritization, and
-              iteration as the product develops. Not a project, a relationship.
+              you — research, architecture, design direction, prioritization,
+              and iteration as the product develops. Not a project, a
+              relationship.
             </p>
           </div>
           <div className={styles.engagementType}>

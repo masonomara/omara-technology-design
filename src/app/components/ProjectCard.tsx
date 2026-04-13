@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/work.module.css";
+import styles from "./work.module.css";
 import type { ContentNode } from "@/lib/types";
 
 interface ProjectCardProps {

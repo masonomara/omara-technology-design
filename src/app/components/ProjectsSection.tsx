@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../styles/work.module.css";
+import styles from "./work.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp } from "../lib/motion";
 import ProjectCard from "./ProjectCard";

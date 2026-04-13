@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "../../styles/contact.module.css";
+import styles from "./page.module.css";
 import { sendMail } from "@/app/lib/send-mail";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -19,17 +19,21 @@ const contactFormSchema = z.object({
 
 type FormData = z.infer<typeof contactFormSchema>;
 
-const SERVICE_OPTIONS = [
-  "Website / Web App Design",
-  "Website / Web App Development",
-  "Mobile App Development",
-  "Product Strategy",
-  "AI Engineering",
-  "Ongoing Partnership",
+const ENGAGEMENT_OPTIONS = ["One-time Project", "Partnership"];
+
+const CAPABILITY_OPTIONS = [
+  "Mobile Apps",
+  "Web Apps",
+  "AI Products",
+  "Ecommerce",
+  "Creative Design",
+  "UX Research",
+  "Product Development",
 ];
 
 export default function Contact() {
   const emailAddress = "info@omaratechnology.com";
+  const [selectedEngagement, setSelectedEngagement] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -65,8 +69,8 @@ Name: ${values.name}
 Organization: ${values.organization || "Not provided"}
 Email: ${values.email}
 
-Looking for:
-${selectedServices.length > 0 ? selectedServices.join(", ") : "Not specified"}
+Engagement Type: ${selectedEngagement || "Not specified"}
+Service Areas: ${selectedServices.length > 0 ? selectedServices.join(", ") : "Not specified"}
 
 Message:
 ${values.message || "None provided."}`;
@@ -79,6 +83,7 @@ ${values.message || "None provided."}`;
 
       if (response?.messageId) {
         reset();
+        setSelectedEngagement(null);
         setSelectedServices([]);
         setSubmitted(true);
       } else {
@@ -169,19 +174,37 @@ ${values.message || "None provided."}`;
                 </div>
               </div>
 
-              {/* Services */}
+              {/* Engagement Type */}
               <div className={styles.servicesBlock}>
                 <p className={styles.servicesLabel}>We&apos;re looking for</p>
                 <div className={styles.serviceGrid}>
-                  {SERVICE_OPTIONS.map((service) => (
-                    <label key={service} className={styles.serviceItem}>
+                  {ENGAGEMENT_OPTIONS.map((option) => (
+                    <label key={option} className={styles.serviceItem}>
+                      <input
+                        type="radio"
+                        className={styles.serviceCheckbox}
+                        checked={selectedEngagement === option}
+                        onChange={() => setSelectedEngagement(option)}
+                      />
+                      <span className={styles.serviceLabel}>{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Service Areas */}
+              <div className={styles.servicesBlock}>
+                <p className={styles.servicesLabel}>Focused on</p>
+                <div className={styles.serviceGrid}>
+                  {CAPABILITY_OPTIONS.map((capability) => (
+                    <label key={capability} className={styles.serviceItem}>
                       <input
                         type="checkbox"
                         className={styles.serviceCheckbox}
-                        checked={selectedServices.includes(service)}
-                        onChange={() => toggleService(service)}
+                        checked={selectedServices.includes(capability)}
+                        onChange={() => toggleService(capability)}
                       />
-                      <span className={styles.serviceLabel}>{service}</span>
+                      <span className={styles.serviceLabel}>{capability}</span>
                     </label>
                   ))}
                 </div>

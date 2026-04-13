@@ -2,9 +2,9 @@
 .ethos {
   margin-top: 0.8em;
   margin-bottom: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
   line-height: 145%;
 }
@@ -14,10 +14,9 @@
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 500;
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
   line-height: 140%;
-  opacity: 0.85;
 }
 
 .identity a {
@@ -68,7 +67,6 @@
   font-size: 15px;
   font-weight: 500;
   line-height: 145%;
-  opacity: 0.8;
 }
 
 /* Bio */
@@ -166,7 +164,9 @@
   font-family: var(--font-overpass);
   font-size: 20px;
   font-weight: 800;
-  font-variation-settings: "wdth" 100, "wght" 800;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
@@ -199,7 +199,6 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 145%;
-  opacity: 0.65;
 }
 
 .processLink {
@@ -225,7 +224,7 @@
   .ethos {
     width: calc(100% - 16px);
     padding: 0 8px;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .identity {

@@ -1,14 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MenuProvider } from "./context/MenuContext";
 import Header from "./components/Header";
-import styles from "./styles/notFound.module.css";
+import styles from "./not-found.module.css";
 
 export default function NotFound() {
   const emailAddress = "info@omaratechnology.com";
 
   return (
-    <MenuProvider>
+    <>
       <Header />
       <div className="standardPageContainer">
         <div className={styles.contactWrapper}>
@@ -93,6 +92,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-    </MenuProvider>
+    </>
   );
 }

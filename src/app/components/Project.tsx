@@ -1,6 +1,6 @@
 "use client";
 
-import projectStyles from "../styles/project.module.css";
+import projectStyles from "./Project.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 

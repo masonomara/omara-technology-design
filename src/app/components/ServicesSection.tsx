@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { textFadeUp, textFadeUpSmall } from "../lib/motion";
-import styles from "../styles/services.module.css";
+import styles from "./ServicesSection.module.css";
 import type { getServicesData } from "@/lib/content";
 
 type ServicesData = ReturnType<typeof getServicesData>;

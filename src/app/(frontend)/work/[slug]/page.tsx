@@ -7,7 +7,7 @@ import {
   getThumbnail,
 } from "@/lib/content";
 import { toSlug } from "@/lib/slug";
-import styles from "../../../styles/project.module.css";
+import styles from "../../../components/Project.module.css";
 import Image from "next/image";
 import type { Metadata } from "next";
 

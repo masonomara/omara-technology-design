@@ -33,14 +33,13 @@
 
 /* Nav Links */
 .navLinks {
-  width: calc(100% - 16px);
+  width: 100%;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: none;
   gap: 8px;
   max-width: 1204px;
-  padding: 0px 8px;
 }
 
 .navLink {
@@ -52,10 +51,10 @@
   text-transform: uppercase;
   letter-spacing: -0.015em;
   text-align: center;
-  font-size: 29px;
+  font-size: 21px;
   text-decoration: none !important;
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .navLink:hover {
@@ -74,15 +73,13 @@
 
 @media screen and (max-width: 699px) {
   .navLink {
-    font-size: 24px;
+    font-size: 21px;
   }
   .navLinks {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    column-gap: calc(24px * 0.8);
-    row-gap: calc(24px * 0.5);
+    width: calc(100% - 21px);
+    padding: 0px 10.5px;
   }
 }
 
