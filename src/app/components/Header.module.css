@@ -75,6 +75,30 @@
   }
 }
 
+.textContainer {
+  display: none;
+}
+@media (min-width: 1240px) {
+  .textContainer {
+    margin-top: 0em;
+    margin-bottom: 0em;
+    display: flex;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    max-width: 740px;
+    width: 100%;
+    font-family: var(--font-overpass);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 115%;
+    text-transform: uppercase;
+    margin-left: 12px;
+    margin-top: 2px;
+    margin-bottom: -2px;
+    flex: 1;
+  }
+}
+
 .logoMobile {
   display: none;
   pointer-events: none;
@@ -82,13 +106,7 @@
 
 /* ─── Navigation ───────────────────────────────────────────────────────────── */
 
-.textContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
-}
+
 
 .menuWrapper {
   display: flex;
@@ -166,9 +184,6 @@
     border-bottom: 1px solid var(--color-primary);
   }
 
-  .textContainer {
-    gap: 15px;
-  }
 
   .menuWrapper {
     justify-content: space-around;

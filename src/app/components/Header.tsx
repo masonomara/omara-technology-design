@@ -24,7 +24,7 @@ export default function Header() {
       const height = el.getBoundingClientRect().height;
       document.documentElement.style.setProperty(
         "--header-height",
-        `${height}px`
+        `${height}px`,
       );
     };
 
@@ -54,7 +54,11 @@ export default function Header() {
               alt="O'Mara Technology"
             />
           </Link>
-          <div className={styles.textContainer} />
+          <div className={styles.textContainer}>
+            Product Design &
+            <br />
+            Development Studio
+          </div>
         </div>
         <nav className={styles.menuWrapper}>
           {NAV_LINKS.map(({ id, label, href }) => (

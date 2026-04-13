@@ -74,6 +74,7 @@ export default async function Page({ params }: RouteProps) {
   return (
     <>
       <div className={styles.cardImageContainer}>
+        <div className={styles.cardImageScreen} />
         <div className={styles.cardImageMultiply} />
         {thumbnail && (
           <div className={styles.cardImage}>
