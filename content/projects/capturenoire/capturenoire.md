@@ -35,12 +35,3 @@ I built an AuthContext pattern as a single source of truth for authentication an
 The investor demo at Really went well. Investors were excited by the progress. CaptureNoire gained email signups, web traffic, merch sales, Instagram growth, and a partnership pipeline. Large institutions — nonprofits and educators — expressed interest in ambassador partnerships. Feature requests from the demo validated the initial research: Photoshop and Lightroom presets, and educational content.
 
 CaptureNoire is live on the App Store. Android version in progress.
-
-![Two women with phone displaying the app's crop tool](/content/projects/capturenoire/images/capturenoire-marketing-1.webp)
-![Mobile screens showing sign up, login, and verification flows](/content/projects/capturenoire/images/onboarding-mockups-1.png)
-![App screens showing filter homepage, user collection, and filter detail](/content/projects/capturenoire/images/mockups-1.png)
-![App screens showing photo collections, drafts, and profile pages](/content/projects/capturenoire/images/mockups-2.png)
-![Design system showing color palette, UI colors, and text hierarchy](/content/projects/capturenoire/images/components-2.png)
-![Grid of loading state screens](/content/projects/capturenoire/images/components-1.png)
-![Two phones showing adjust and filter tools](/content/projects/capturenoire/images/capturenoire-marketing-2.webp)
-![Two phones showing photo library and crop tool](/content/projects/capturenoire/images/capturenoire-marketing-3.webp)

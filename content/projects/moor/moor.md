@@ -65,27 +65,3 @@ Employers: free Starter, Urgent Hiring ($199/7 days or $299/14 days), or Profess
 Moor is a [two-sided market](https://en.wikipedia.org/wiki/Two-sided_market): neither side shows up until the other already has. Moor's social following was mostly crew, so we targeted them first with coupon codes for premium features.
 
 By the first weekend at Fort Lauderdale, Moor had 500+ users, 50+ paying customers, and active crew-employer conversations.
-
-![Hero — Discover browse grid, mobile, showing abundance](/content/projects/moor/images/1-hero-shot.png)
-![Style guide — logo, color palette, typography](/content/projects/moor/images/2-style-guide.png)
-![Matching diagram — crew preferences left, job requirements right](/content/projects/moor/images/3-matching-diagram.png)
-![Flow diagram — crew and employer parallel flows](/content/projects/moor/images/4-flow-diagram.png)
-![Search modal (mobile)](/content/projects/moor/images/5-search-modal-mobile.png)
-![Search modal (desktop)](/content/projects/moor/images/6-search-modal-desktop.png)
-![Onboarding step (crew)](/content/projects/moor/images/8-onboarding-step-crew.png)
-![Onboarding step (employer)](/content/projects/moor/images/9-onboarding-step-employer.png)
-![Wireframes](/content/projects/moor/images/10-wireframes.png)
-![Crew profile (complete)](/content/projects/moor/images/11-crew-profile.png)
-![Crew profile (card view)](/content/projects/moor/images/12-crew-profile-cards.png)
-![Job creation form](/content/projects/moor/images/13-job-creation-form.png)
-![Job post (published)](/content/projects/moor/images/14-job-post-published.png)
-![Crew applying to job](/content/projects/moor/images/16-crew-applying-to-job.png)
-![Employer viewing applicants](/content/projects/moor/images/17-employer-viewing-applicants.png)
-![Chat with job card](/content/projects/moor/images/20-chat-with-job-card.png)
-![Employer applicant view with spotlight ranking](/content/projects/moor/images/22-employer-applicant-view.png)
-![Pricing page (employer)](/content/projects/moor/images/24-pricing-page-employer.png)
-![Checkout flow](/content/projects/moor/images/26-checkout-flow.png)
-![Port selector](/content/projects/moor/images/27-port-selector.png)
-![Daywork123 screenshot](/content/projects/moor/images/32-daywork-screenshot.png)
-![Impact-resources matrix](/content/projects/moor/images/31-impact-resources.png)
-![FLIBS team photo](/content/projects/moor/images/29-flibs-photo.png)

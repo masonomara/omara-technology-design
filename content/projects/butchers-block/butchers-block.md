@@ -7,9 +7,3 @@ The Butcher's Block is a renowned restaurant and butcher shop in Long Branch, NJ
 I merged the domains, rebuilt the subscription system, and added inventory management and shipping features on a revamped Shopify setup. Styling matched their restaurant menus, accessibility was prioritized, and I documented everything so they could run it themselves.
 
 Daily sales +82%. New customer sales +134%. Subscriptions +150%. Search engine revenue share: 7% → 49%.
-
-![Figma wireframes showing page layouts and components](/content/projects/butchers-block/images/wireframes-1.png)
-![Figma mockups overview of all mobile screens](/content/projects/butchers-block/images/mockups-2.png)
-![Two phones showing Block Box subscription landing pages](/content/projects/butchers-block/images/showcase-2.webp)
-![Mobile beef collection page in restaurant setting](/content/projects/butchers-block/images/showcase-1.webp)
-![Product detail page with Block Box packaging](/content/projects/butchers-block/images/showcase-3.webp)

@@ -17,11 +17,3 @@ I brought on a specialty print designer for layout and print specifications whil
 ## Training and documentation
 
 I documented every step of Shopify administration as I built it. Troubleshooting guides for consistent issues. The goal was to make myself replaceable through monthly check-ins and knowledge sharing — by the end of the engagement, the team could handle operations independently.
-
-![Cookbook product page with add-to-cart interface](/content/projects/seed-to-sprout/images/screenshot-2.png)
-![Site map for homepage and shop with product categories](/content/projects/seed-to-sprout/images/information-architecture.png)
-![Style tiles with typography, colors, and UI components](/content/projects/seed-to-sprout/images/style-tiles-1.png)
-![Annotated wireframes for homepage, shop, and product pages](/content/projects/seed-to-sprout/images/wireframes.png)
-![Homepage with hand-drawn flowers and brand design](/content/projects/seed-to-sprout/images/screenshot-1.png)
-![Cookbook recipe page template with labeled sections](/content/projects/seed-to-sprout/images/cookbook-review.png)
-![Customer journey flowchart from order to delivery](/content/projects/seed-to-sprout/images/cookbook-journey.png)

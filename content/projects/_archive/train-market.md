@@ -3,15 +3,9 @@ A founder approached me with a vision: build the "Fiverr for personal training."
 His hypothesis: personal training was fragmented. Trainers struggle to find clients. Clients struggle to find trainers. The discovery process relies on word-of-mouth, gym affiliations, or Instagram scrolling. Neither side has good tools.
 
 Train Market aimed to solve both sides with a two-sided marketplace — trainers list services, clients browse and book, the platform handles payments and communication. Instead of rapid prototyping, I focused on research depth and strategy for investor pitch materials.
-
-![Mobile app screens showing workout tracking, messaging, and profile features](/content/projects/train-market/images/showcase-1.webp)
-
 ## Trainer Interviews
 
 I conducted seven user interviews across three segments: clients seeking trainers, independent trainers building practices, and gym owners managing rosters.
-
-![Two user personas with empathy maps showing pain points and goals](/content/projects/train-market/images/user-personas-1.png)
-
 I found three compounding problems. Most trainers operate locally with no digital presence beyond social media. Reaching new clients means constant content creation or expensive advertising—that's not their job.
 
 Trainers juggle spreadsheets, text threads, and payment apps. There's no unified system for scheduling, workout plans, nutrition tracking, and billing.
@@ -35,13 +29,7 @@ There were also software suites for existing trainers — excellent tools but no
 ## Synthesizing Findings
 
 This resulted in documented user interviews, empathy maps, competitor analysis, and market research. I defined a context framework based on these interviews, prioritized features, business objectives, and success metrics. I created information architecture, business objectives, risks and what could be done to reduce them, a feature roadmap, and technical requirements to complete them.
-
-![Context framework](/content/projects/train-market/images/context-framework-1.png)
-
 I created desired actions for each user. The app's proposed form followed function — a client dashboard for active plans, upcoming appointments, and tracking goals; a marketplace for trainer discovery with search, filtering, and categories; an inbox for messaging; and a profile for settings, payments, and account management.
-
-![Trainer profile mockups showing photo gallery, certifications, and training plans](/content/projects/train-market/images/mockups-1.png)
-
 Profiles were designed to communicate credibility quickly with verifications, activity statuses, location, bio and specializations, a photo gallery, available training plans, and reviews and ratings.
 
 All communication had to happen within the app. Documented conversations protect both parties, enable platform features like payment handling, and prevent trainers from taking clients off-platform.

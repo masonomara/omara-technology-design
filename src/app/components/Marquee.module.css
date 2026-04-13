@@ -5,6 +5,7 @@
   height: 28px;
   position: fixed;
   bottom: 0px;
+  z-index: 2000;
 }
 
 .marquee {

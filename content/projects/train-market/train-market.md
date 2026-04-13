@@ -17,8 +17,3 @@ For clients: finding a trainer means asking friends, searching Instagram, or hop
 ## Reflection
 
 If I did this again, I'd spend more time on the gym owner segment. Two-sided marketplaces are difficult when communication and payments aren't sticky enough to keep both sides on platform. Gym owners seemed to benefit most if they could onboard their entire roster — but many had already built custom apps or used white-labeled options. The founder used these deliverables to pursue investment.
-
-![Mobile app screens showing workout tracking, messaging, and profile features](/content/projects/train-market/images/showcase-1.webp)
-![Two user personas with empathy maps](/content/projects/train-market/images/user-personas-1.png)
-![Context framework](/content/projects/train-market/images/context-framework-1.png)
-![Trainer profile mockups showing photo gallery, certifications, and training plans](/content/projects/train-market/images/mockups-1.png)

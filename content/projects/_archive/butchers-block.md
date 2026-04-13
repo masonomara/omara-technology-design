@@ -1,15 +1,5 @@
 [thebutchersblocknj.com](https://thebutchersblocknj.com)
 
 The Butcher's Block is a renowned restaurant and butcher shop in Long Branch, NJ. Their COVID-era e-commerce setup worked, but had significant technical overhead: separate domains, stalled subscriptions, and no inventory management. They needed a rebuild that wouldn't disrupt subscription revenue for their growing online butcher shop.
-
-![Figma wireframes showing page layouts and components](/content/projects/butchers-block/images/wireframes-1.png)
-![Figma mockups overview of all mobile screens](/content/projects/butchers-block/images/mockups-2.png)
-
 I merged the domains, rebuilt the subscription system, and added inventory management and shipping features on a revamped Shopify setup. Styling matched their restaurant menus, accessibility was prioritized, and I documented everything so they could run it themselves.
-
-![Two phones showing Block Box subscription landing pages](/content/projects/butchers-block/images/showcase-2.webp)
-![Mobile beef collection page in restaurant setting](/content/projects/butchers-block/images/showcase-1.webp)
-
 Results came fast. Within a month, search engine sales jumped from 7% to 49% of revenue. Daily sales rose 82%, new customer sales climbed 134%, and subscriptions grew 150%.
-
-![Product detail page with Block Box packaging](/content/projects/butchers-block/images/showcase-3.webp)

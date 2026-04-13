@@ -4,18 +4,13 @@
   gap: 24px;
   width: 87vw;
   max-width: 1280px;
-  margin-top: 30.4px;
 }
 @media screen and (max-width: 899px) {
   .workWrapper {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (max-width: 699px) {
-  .workWrapper {
-    margin-top: 25.6px;
-  }
-}
+
 @media screen and (max-width: 549px) {
   .workWrapper {
     grid-template-columns: 1fr;
@@ -59,20 +54,20 @@
   z-index: 1;
 }
 .cardTitle {
-  margin-top: 0.8em;
+  margin-top: 0.6em;
   margin-bottom: 0px;
   width: 100%;
   text-align: left;
   color: var(--color-primary);
   font-size: var(--text-sm);
-  line-height: var(--leading-snug);
+  line-height: 1.45;
   font-weight: 800;
   font-family: var(--font-overpass);
   text-transform: uppercase;
 }
 .cardBody {
   font-size: var(--text-sm);
-  line-height: var(--leading-snug);
+  line-height: 1.45;
   font-weight: 500;
   font-family: var(--font-overpass);
   color: var(--color-primary);

@@ -3,8 +3,9 @@ import { Project } from "@/app/components/Project";
 import {
   getWorkItems,
   getWorkNode,
-  loadMarkdown,
+  loadMarkdownText,
   getThumbnail,
+  getImages,
 } from "@/lib/content";
 import { toSlug } from "@/lib/slug";
 import styles from "../../../components/Project.module.css";
@@ -66,8 +67,9 @@ export default async function Page({ params }: RouteProps) {
 
   if (!node) return null;
 
-  const html = loadMarkdown(slug);
+  const html = loadMarkdownText(slug);
   const thumbnail = getThumbnail(slug);
+  const images = getImages(slug);
 
   return (
     <>
@@ -91,6 +93,7 @@ export default async function Page({ params }: RouteProps) {
           <Project
             title={node.name}
             html={html}
+            images={images}
           />
           <Footer />
         </div>

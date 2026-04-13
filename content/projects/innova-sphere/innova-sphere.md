@@ -45,15 +45,3 @@ Octalysis gave stakeholders a shared vocabulary. Marketing wanted viral mechanic
 The app shipped to the App Store and Google Play in June 2024. The MVP hypothesized that users would complete 800+ question assessments, that personalized recommendations would create value, and that a non-clinical approach to accessibility would resonate. INNoVA tested those hypotheses through demos with existing clients, prospective partners, and government contacts.
 
 979 structured records across 10 interconnected tables. 144 personalized recommendations and 148 external tools and resources per module. Nine government departments trialing the enterprise version. The gamification framework, ideas deck, and prioritization matrix outlasted the code itself as strategic tools for the team.
-
-![Original PDF flowcharts](/content/projects/innova-sphere/images/flowcharts-1.png)
-![Marketing mockup showing app screens](/content/projects/innova-sphere/images/marketing-graphic-2.png)
-![Design workspace with flowcharts, color palettes, and UI mockups](/content/projects/innova-sphere/images/mockups-3.png)
-![App screenshots showing welcome, recommendations, and resources screens](/content/projects/innova-sphere/images/screenshots-5.png)
-![Entrypoints diagram](/content/projects/innova-sphere/images/entrypoints-4.png)
-![Development timetable](/content/projects/innova-sphere/images/development-timetable-6.png)
-![Gamification report slides](/content/projects/innova-sphere/images/gamification-report-7.png)
-![Feature list spreadsheet with impact-resources matrix](/content/projects/innova-sphere/images/feature-list-8.png)
-![Attribute system diagram](/content/projects/innova-sphere/images/user-chart-10.png)
-![App screens showing questions, lesson navigation, and module list](/content/projects/innova-sphere/images/screenshots-11.png)
-![App screens showing splash screen, resources, and question interface](/content/projects/innova-sphere/images/screenshots-12.png)

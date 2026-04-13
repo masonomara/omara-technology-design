@@ -7,9 +7,6 @@ Yacht staffing is a mess and the industry is growing. Every staffing season is a
 Traditional yacht staffing agencies earn placement fees, incentivizing volume over quality. Crew and employers called them "CV-pushers." Moor wanted memberships and flat fees that rewarded successful matches.
 
 I had three months to build before the [Fort Lauderdale International Boat Show](https://www.flibs.com/). By the first weekend's end, Moor had 500+ users, 50+ paying customers, and active crew-employer conversations.
-
-![Hero — Discover browse grid, mobile, showing abundance](/content/projects/moor/images/1-hero-shot.png)
-
 ## Discovery
 
 I ran two multi-hour whiteboard sessions with the Moor team, mapping users, interfaces, actions, business needs, goals, and rewards using the [8-Element context framework](https://masonomara.com/8-element-context-framework).
@@ -33,9 +30,6 @@ Employers fall into four groups: staffing agencies managing multiple vessels, ch
 ## Competitors
 
 The largest yacht job platform [Daywork123](https://www.daywork123.com/DayWork.aspx) hasn't updated since the early 2000s — its HTML looks like 1993, yet it dominates. Why? It's free, established, and captains trust it. There's no verification, no quality control, no messaging, no search. This demonstrated low friction beats features.
-
-![Daywork123 screenshot](/content/projects/moor/images/32-daywork-screenshot.png)
-
 [FindACrew](https://www.findacrew.net/) targets recreational sailors with $25/month verification. Works for hobbyists, feels unresponsive and underqualified for professionals.
 
 [Bluewater](https://www.bluewateryachting.com/) targets the high-end market with a full-service suite. They operate on 8% commission with quality screening. They built an incognito mode I emulated, but their model doesn't scale.
@@ -51,9 +45,6 @@ We first identified [Gale-Shapley](https://en.wikipedia.org/wiki/Gale–Shapley_
 Gale-Shapley assumes static, complete rankings from each side, executed once all lists are collected. Yacht jobs don't work that way — jobs post and fill asynchronously. Users can't rank entire pools when new crew and jobs appear daily. Yacht staffing is a dynamic market with incomplete information, not a static clearinghouse.
 
 I couldn't solve matching with incomplete information algorithmically, so I approximated it through design. Instead of Gale-Shapley, I built a scoring system (Moor Score plus Job Compatibility Ranking) presenting quality-ranked shortlists, then let users decide through browsing, applying, and accepting.
-
-![Matching diagram — crew preferences left, job requirements right, arrows pairing](/content/projects/moor/images/3-matching-diagram.png)
-
 ## Designing the Algorithm
 
 I designed onboarding around "browse-apply-accept." The algorithm scores how well each crew member fits a new job, runs when an employer posts, and creates a shortlist of best candidates.
@@ -81,9 +72,6 @@ After launch, a credentials verification service reached out to partner. The int
 ## Prioritizing Features
 
 I brainstormed and scored 40+ features on an [impact-resources matrix](https://masonomara.com/essays/impact-resources-matrix.md).
-
-![Impact-resources matrix](/content/projects/moor/images/31-impact-resources.png)
-
 Seven categories emerged: CORE (launch essentials), TRUST (verification), MESSAGES, EMPLOYER, CREW, REVENUE, POLISH (nice-to-haves).
 
 CORE became the launch roadmap, mapping features including OAuth login, job filtering, geographic search, mobile-first design, profile management, simple job posting, Stripe integration, one-click applications, in-app messaging.
@@ -97,9 +85,6 @@ Dating apps profit from engagement loops and withholding information. Moor users
 ## Style
 
 I studied Airbnb for warmth and community, Hinge for intentionality over endless browsing. The brand voice is casual but credible, speaking to real people making life decisions.
-
-![Style guide — logo, color palette, typography](/content/projects/moor/images/2-style-guide.png)
-
 The brand aimed to feel familiar — like Airbnb, Hinge, LinkedIn — to establish credibility without alienating less technical users. With a mobile app in the pipeline, I designed mobile-first layouts based on familiar flows. Yachting is global, so international appeal mattered. I avoided anything too American in tone or visual style.
 
 ## Information Architecture
@@ -107,9 +92,6 @@ The brand aimed to feel familiar — like Airbnb, Hinge, LinkedIn — to establi
 Crew and employers needed parallel experiences. Crew browse jobs; employers browse crew. Crew apply to jobs; employers "like" crew profiles. When either side accepts, a conversation opens. I borrowed this mutual-match pattern from Hinge — it gives both sides agency and prevents spam before interest is mutual.
 
 I kept the two experiences structurally identical. Same navigation, same patterns, different content. This simplified the database. A dual-role architecture where users could switch between crew and employer modes, so the schemas had to cooperate cleanly. Symmetry in the UI meant symmetry in the data.
-
-![Flow diagram — crew (browse → apply → conversation) mirrored by employer (browse → like → conversation)](/content/projects/moor/images/4-flow-diagram.png)
-
 ## Search Filters
 
 Moor needed browsing. We wanted users to scroll through crew and jobs and feel like they had plenty of options. Browsing felt fun. Airbnb had proven the pattern. Users knew "browse-apply-accept" from years of apartment and experience hunting. Discover would let the algorithms shine and provide a quick, easy way to find jobs and crew.
@@ -119,11 +101,6 @@ I understood some users would be more goal-oriented, so we needed search.
 From the Discover screen, users are easily able to search for crew. Some of the "premium" filters were to be paywalled, we had to "dangle" them in front of potential paying customers. I had to decide the ones that were allowed to be used for free.
 
 I modeled search after Airbnb — a guided flow around the three essential questions that employers and crew ask about each other: what is the position/experience, where is the boat located/where are you located, and when does the job start/when can you start. User feedback confirmed these were the right three.
-
-![Search modal (mobile) — guided search with position/location/date](/content/projects/moor/images/5-search-modal-mobile.png)
-
-![Search modal (desktop) — same flow, desktop layout](/content/projects/moor/images/6-search-modal-desktop.png)
-
 ## Architecture Decisions
 
 I had to decide where boats belonged: linked to employers, linked to jobs, or standalone. Jobs felt wrong — the same boat hosts multiple jobs over time. Boats belong to employers but live as separate database records. This allows an employer to create a boat once and reuse it across jobs.
@@ -133,9 +110,6 @@ Conversations needed threading logic, either by job or by person. Job-based thre
 ## User Flows
 
 I wrote user flows in [Gherkin syntax](https://cucumber.io/docs/gherkin/reference/) — structured scenarios that read like plain English and define exact behavior. Gherkin made flows readable for the Moor team while producing specs precise enough for development.
-
-![Wireframes — medium-fidelity flow documentation from Figma](/content/projects/moor/images/10-wireframes.png)
-
 I documented flows including authentication, job posting, messaging, and payments, then built medium-fidelity wireframes to demonstrate them.
 
 ## Development
@@ -155,11 +129,6 @@ Crew and employers had separate roles, set after onboarding. Role-based auth kee
 ## Onboarding
 
 Daywork123 proved low friction drives adoption. I kept mandatory fields minimal. Passwordless login reduced friction further and was well-praised. Users could easily edit skipped data from their profiles after onboarding. The matching algorithm assumed neutral defaults for incomplete fields so new users wouldn't be penalized.
-
-![Onboarding step (crew) — minimal required fields](/content/projects/moor/images/8-onboarding-step-crew.png)
-
-![Onboarding step (employer) — parallel screen](/content/projects/moor/images/9-onboarding-step-employer.png)
-
 Each onboarding question mapped to the matching algorithm. Every crew field — positions, salary, certifications, experience, ports, languages, social atmosphere — has a corresponding employer field. These pairs fed into Moor Scores and Job Compatibility Rankings.
 
 One caveat: only profiles with photos appear on Discover, creating that feeling of abundance when someone first checks the app. Profiles without photos still appear in search to avoid penalizing them further.
@@ -167,31 +136,16 @@ One caveat: only profiles with photos appear on Discover, creating that feeling 
 ## Profile Pages
 
 Moor needed profiles to reveal more than traditional resumes could. What someone fills in, what they skip, which badges they display — each choice signals something about jobs and crew.
-
-![Crew profile (complete) — photo, badges, certifications, bio, map](/content/projects/moor/images/11-crew-profile.png)
-
-![Crew profile (card view) — how profiles appear in browse grid](/content/projects/moor/images/12-crew-profile-cards.png)
-
 I showed early designs to captains and crew. Their feedback shaped hierarchy and layout — what they scrolled to check first. Photos and maps made profiles feel complete.
 
 ## Employers Creating Jobs
 
 Job creation followed onboarding's pattern: comprehensive options, most fields optional. Only position and departure port required. Users create and edit boats inline. Employers can skip everything else and fill in details later.
-
-![Job creation form — comprehensive options, most optional](/content/projects/moor/images/13-job-creation-form.png)
-
-![Job post (published) — completed job listing](/content/projects/moor/images/14-job-post-published.png)
-
 Employers asked for custom screening questions during discovery. I added two optional open-ended questions. Applicants would be required to answer them and their responses appear alongside applications and in chat history.
 
 ## Application System
 
 The application system needed to feel intuitive from both sides. Crew browse jobs, save favorites, apply with cover messages. Employers browse candidates, save promising ones, tap "like" on crew they want to recruit. I connected these two experiences into one coherent flow.
-
-![Crew applying to job — application modal with cover message](/content/projects/moor/images/16-crew-applying-to-job.png)
-
-![Employer viewing applicants — list with ranking](/content/projects/moor/images/17-employer-viewing-applicants.png)
-
 Crew and employers could view, edit, and delete their job posts and applications. When employers accepted applications or crew accepted likes, cover messages and intros transferred into chat history along with relevant job postings. Notifications triggered for new and accepted applications and messages.
 
 On the backend, I stored applications as arrays on job posts rather than a separate junction table. This simplified queries and made applicant counts easy to display. Functions like `add_applicant_to_job` and `accept_applicant` handle state transitions and prevent race conditions when multiple employers review the same candidate.
@@ -199,9 +153,6 @@ On the backend, I stored applications as arrays on job posts rather than a separ
 ## Live Chats
 
 Chat was a core feature. Once crew and employers matched, they needed a safe channel to communicate. I built messaging with conversations, typing indicators, read receipts, file sharing, and job post sharing.
-
-![Chat with job card — shared job post highlighted](/content/projects/moor/images/20-chat-with-job-card.png)
-
 Supabase Realtime handled near-instant updates and polling every 60 seconds served as backup. Polling sounds old-fashioned, but it's reliable when internet conditions are spotty.
 
 Each conversation tracks related jobs. Message types: text, images, files, system messages, and job post cards. Conversations can be archived but never deleted — protecting both parties with records and documentation.
@@ -211,9 +162,6 @@ Each conversation tracks related jobs. Message types: text, images, files, syste
 Two algorithms work in tandem. The "Moor Score" measures crew quality, hidden from users to prevent gaming. A cron job updates scores daily; individual scores update on account creation or edit.
 
 The "Job Compatibility Rating" measures how well a crew member fits a specific job. Like the Moor Score, it is also hidden and updated daily. When employers view applicants, candidates sort by compatibility across two tiers: spotlight profiles rise to the top by payment plan, then Moor Score determines ranking within each tier. Paying users gain visibility, quality still determines position among peers.
-
-![Employer applicant view — candidates with ranking, spotlight profiles at top](/content/projects/moor/images/22-employer-applicant-view.png)
-
 The Moor Score totals 100 points across four categories:
 
 - Profile completeness: 35 pts — photos, bio, certifications
@@ -240,13 +188,7 @@ Social atmosphere questions became a unique selling point. We emphasized them in
 ## Pricing and Stripe
 
 Moor charges employers and crew separately. Employers have three options: free Starter, Urgent Hiring ($199/7 days or $299/14 days), or Professional ($299/month or $750/quarter).
-
-![Pricing page (employer) — Starter, Urgent Hiring, Professional tiers](/content/projects/moor/images/24-pricing-page-employer.png)
-
 Crew have two options: free Starter or Profile Spotlight ($15 for 90 days). Stripe's embedded checkout kept payments seamless and signaled that payment data stays secure. Webhooks track payment status, renewals, and failed charges.
-
-![Checkout flow — Stripe embedded checkout](/content/projects/moor/images/26-checkout-flow.png)
-
 Checkout handled one-time payments (urgent hire, spotlight) differently from subscriptions (pro monthly/quarterly). One-time plans calculated `planExpiresAt` at purchase. Subscriptions stored metadata (`plan`, `customerId`, `customerEmail`) so webhooks could track status over time. Payment records lived in a separate table linked to user profiles — simpler duplicate detection, better security.
 
 On payment submission, the client polls Stripe's session status until confirmation, then redirects to success or failure. Stripe's webhook handler processes results: payment successes, subscription lifecycle events, invoice renewals, failed charges. Users can cancel subscriptions immediately or schedule cancellation at renewal.
@@ -260,13 +202,8 @@ Crew and employers think about ports differently. Crew select multiple departure
 The team assigned each port to an itinerary. Mediterranean Itineraries covers Monaco, Antibes, Palma de Mallorca, Greek islands. Caribbean Itinerary includes St. Maarten, Antigua, Virgin Islands.
 
 I saw alphabetical dropdowns frustrated users for common destinations. I surfaced popular ports — Monaco, Fort Lauderdale, Antibes — to the top.
-
-![Port selector — dropdown with popular ports at top](/content/projects/moor/images/27-port-selector.png)
-
 ## Launch
 
 Moor is a [two-sided market](https://en.wikipedia.org/wiki/Two-sided_market): neither side shows up until the other already has. Moor's social following was mostly crew, and crew had less onboarding friction, so we targeted them first with coupon codes for premium features.
 
 The site launched at Fort Lauderdale International Boat Show. I attended with the team to demo to crew and employers, running scheduled and guerilla interviews throughout the show. 500+ crew members signed up at the event — a complete success. We immediately got valuable feedback and started planning next features with a mobile app in the pipeline.
-
-![FLIBS team photo — human moment from boat show](/content/projects/moor/images/29-flibs-photo.png)

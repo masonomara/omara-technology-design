@@ -17,8 +17,3 @@ Improved the hierarchy guiding customers to a decision, moved up review scores f
 ## Integrations
 
 I helped transfer existing reviews to a new system with automated email reminders, discounts, and photo sharing. Smoothed out the preorder system, order validation, customer support tools, international currency conversion and regional shipping logic, and inventory and order syncing with backend systems. Each integration has its own quirks — Ruby on Rails to Shopify Liquid, ERP data structures, social media rate querying blockers.
-
-![Mobile product page mockup showing Robyn Jean listing](/content/projects/lisa-says-gah/images/showcase-1.webp)
-![Desktop product page with gallery, size selector, and reviews](/content/projects/lisa-says-gah/images/screenshot-1.webp)
-![Homepage with hero image and press logos from Vogue and Refinery29](/content/projects/lisa-says-gah/images/screenshot-2.webp)
-![Collection page with side filter panel](/content/projects/lisa-says-gah/images/screenshot-3.webp)

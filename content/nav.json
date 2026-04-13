@@ -4,63 +4,63 @@
     "children": [
       {
         "name": "Moor",
-        "description": "Matched yacht crew to employers through a platform that bet on design over algorithm — launched with 500 users at the Fort Lauderdale boat show."
+        "description": "Crew placement platform for the yachting industry — launched with 500 users at Fort Lauderdale."
       },
       {
         "name": "Innova Sphere",
-        "description": "Turned four PDFs of accessibility expertise into a queryable app — then spent 18 months building the system that let INNoVA's team update it without touching code."
-      },
-      {
-        "name": "Seed to Sprout",
-        "description": "A vegan restaurant's Shopify store with six product types, six different checkout rules, and a cookbook with a preorder system — built so the team could run it without me."
+        "description": "Accessibility expertise turned into a queryable app, with a CMS so the team could update it without touching code."
       },
       {
         "name": "CaptureNoire",
-        "description": "A photo editing app built specifically for darker skin tones — designed for the investors, shipped to the App Store."
-      },
-      {
-        "name": "Train Market",
-        "description": "A two-sided marketplace for personal trainers and clients — research, personas, and high-fidelity mockups for an investor pitch."
-      },
-      {
-        "name": "Lisa Says Gah",
-        "description": "Tens of thousands of daily visitors, inherited technical debt, and a team that couldn't stop for a rebuild. Fixed what was broken and didn't touch what was working."
+        "description": "A photo editing app for darker skin tones. Designed for investors, shipped to the App Store."
       },
       {
         "name": "Offshore Coffee",
-        "description": "A website redesign for one coffee shop that grew into four locations, a wholesale program, and 900% online sales growth."
+        "description": "One coffee shop, four locations, a wholesale program, and 900% online sales growth."
+      },
+      {
+        "name": "Lisa Says Gah",
+        "description": "Tens of thousands of daily visitors. Fixed what was broken, left alone what was working."
+      },
+      {
+        "name": "Seed to Sprout",
+        "description": "Six product types, six checkout rules, and a cookbook preorder — built for the team to run."
       },
       {
         "name": "Butcher's Block",
         "description": "Search engine sales went from 7% to 49% of revenue within a month of launch."
       },
       {
+        "name": "Train Market",
+        "description": "A two-sided marketplace for personal trainers and clients — research, personas, and mockups for an investor pitch."
+      },
+      {
+        "name": "Hazel Boutique",
+        "description": "Shopify rebuild for a four-location NJ fashion retailer."
+      },
+      {
+        "name": "Flora and Mar",
+        "description": "Three products. Built to feel considered, not minimal."
+      },
+      {
+        "name": "Talulas",
+        "description": "Shopify build with Resy, Toast online ordering, and print-on-demand merchandise."
+      },
+      {
+        "name": "Interwoven",
+        "description": "7,000+ SKUs and a brand identity worth building around."
+      },
+      {
         "name": "Chomp",
         "description": "A multi-step insurance quoting form built to know what to ask upfront and what to save for the follow-up call."
       },
       {
-        "name": "Flora and Mar",
-        "description": "Three products. The site needed to feel complete, not sparse."
-      },
-      {
-        "name": "Hazel Boutique",
-        "description": "Shopify rebuild for a four-location NJ fashion retailer — built for a team that updates the site constantly."
+        "name": "Patriae",
+        "description": "657% increase in online sales for a handcrafted goods brand."
       },
       {
         "name": "Cookman Creamery",
-        "description": "A 10-year anniversary redesign for an Asbury Park ice cream shop — three style directions, full design process, built on Shopify with DoorDash and custom cake ordering."
-      },
-      {
-        "name": "Interwoven",
-        "description": "A Shopify store for an Asbury Park boutique with 7,000+ SKUs and a strong brand guide — with no online presence to match."
-      },
-      {
-        "name": "Talulas",
-        "description": "Strong branding, no website. Built on Shopify with Resy reservations, Toast online ordering, and print-on-demand merchandise."
-      },
-      {
-        "name": "Patriae",
-        "description": "657% increase in online sales for a handcrafted goods brand that had been selling mostly in person."
+        "description": "10-year anniversary redesign on Shopify with DoorDash and custom cake ordering."
       },
       {
         "name": "Current Media Company",

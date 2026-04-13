@@ -35,6 +35,12 @@ export function loadMarkdown(slug: string): string {
   }
 }
 
+export function loadMarkdownText(slug: string): string {
+  const html = loadMarkdown(slug);
+  // Strip standalone image paragraphs — images are rendered separately in the masonry grid
+  return html.replace(/<p><img[^>]+><\/p>\n?/g, "");
+}
+
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]);
 
 function naturalCompare(a: string, b: string): number {

@@ -17,10 +17,3 @@ The product taxonomy had to expand from beans and subscriptions to merchandise, 
 The site processes were documented so the team could maintain product updates and seasonal campaigns without my intervention. They focus on decisions — what to launch, what to prioritize, what to cut.
 
 900% online sales growth from year two to year three.
-
-![Two phones showing Offshore Coffee website pages for services and products](/content/projects/offshore-coffee/images/showcase-1.webp)
-![Wireframes showing mobile, desktop homepage, and bean store layouts](/content/projects/offshore-coffee/images/wireframe-1.png)
-![Wireframes — product page and navigation structure](/content/projects/offshore-coffee/images/wireframe-2.png)
-![Night Cap cold espresso product page](/content/projects/offshore-coffee/images/screenshot-4.png)
-![Locations page showing four Jersey Shore cafe storefronts](/content/projects/offshore-coffee/images/screenshot-5.png)
-![Two phones showing wholesale partnerships and Voyager product pages](/content/projects/offshore-coffee/images/showcase-2.webp)

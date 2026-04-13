@@ -536,11 +536,14 @@ export default function Game() {
             className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}
           >
             <div className={styles.startTopWrapper}>
-              <p className={styles.startGameTitle}>Bean Shooter</p>
-              <p className={styles.startGameByline}>
-                by O&apos;Mara Technology and Design
+              <img
+                src="/wordmark.svg"
+                className={styles.startWordmark}
+                alt="O'Mara Technology Design"
+              />
+              <p className={styles.startTagline}>
+                Design and development studio for apps, websites, and software.
               </p>
-              <p className={styles.startGameType}>a product studio</p>
             </div>
             <div className={styles.buttonWrapper}>
               <button className={styles.primaryButton} onClick={startGame}>

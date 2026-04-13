@@ -19,8 +19,6 @@
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
   margin-top: clamp(56px, 6vw, 68px);
-  padding-top: clamp(28px, 3vw, 34px);
-  border-top: 2px solid var(--color-primary);
 }
 
 .wordmark {
@@ -75,8 +73,7 @@
 
 @media screen and (max-width: 699px) {
   .wordmarkWrapper {
-    margin-top: clamp(56px, 6vw, 68px);
-    padding-top: clamp(16px, 4vw, 21px);
+    margin-top: clamp(32px, 8vw, 42px);
   }
   .navLink {
     font-size: clamp(16px, 4vw, 21px);

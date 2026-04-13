@@ -33,7 +33,9 @@ const CAPABILITY_OPTIONS = [
 
 export default function Contact() {
   const emailAddress = "info@omaratechnology.com";
-  const [selectedEngagement, setSelectedEngagement] = useState<string | null>(null);
+  const [selectedEngagement, setSelectedEngagement] = useState<string | null>(
+    null,
+  );
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -87,10 +89,14 @@ ${values.message || "None provided."}`;
         setSelectedServices([]);
         setSubmitted(true);
       } else {
-        setSubmitError(`Something went wrong. Email us directly at ${emailAddress}`);
+        setSubmitError(
+          `Something went wrong. Email us directly at ${emailAddress}`,
+        );
       }
     } catch (error) {
-      setSubmitError(`Something went wrong. Email us directly at ${emailAddress}`);
+      setSubmitError(
+        `Something went wrong. Email us directly at ${emailAddress}`,
+      );
       console.error(error);
     }
   };
@@ -109,34 +115,6 @@ ${values.message || "None provided."}`;
         </motion.h1>
 
         <motion.div
-          variants={textFadeUpSmall(0.08, 0.4)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-          className={styles.openerBlock}
-        >
-          <p className={styles.opener}>
-            If something here looks right, let&apos;s talk.
-          </p>
-          <p className={styles.fallback}>
-            Not a forms person? Email us at{" "}
-            <a className={styles.emailLink} href={`mailto:${emailAddress}`}>
-              {emailAddress}
-            </a>{" "}
-            or find us on{" "}
-            <a
-              className={styles.emailLink}
-              href="https://linkedin.com/company/omaratechnology"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            .
-          </p>
-        </motion.div>
-
-        <motion.div
           className={styles.contactFormWrapper}
           variants={fadeInButton("up", 0.12, 0.35)}
           initial="hidden"
@@ -144,11 +122,13 @@ ${values.message || "None provided."}`;
           viewport={{ once: true, amount: 0.15 }}
         >
           {submitted ? (
-            <p className={styles.successMessage}>
-              We&apos;ll be in touch.
-            </p>
+            <p className={styles.successMessage}>We&apos;ll be in touch.</p>
           ) : (
-            <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form
+              className={styles.contactForm}
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+            >
               {/* Name + Organization */}
               <div className={styles.proseLine}>
                 <span className={styles.proseText}>My name is</span>
@@ -246,6 +226,21 @@ ${values.message || "None provided."}`;
               </button>
             </form>
           )}
+        </motion.div>
+        <motion.div
+          variants={textFadeUpSmall(0.08, 0.4)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className={styles.openerBlock}
+        >
+          <p className={styles.fallback}>
+            Contact forms not your thing? Email us at{" "}
+            <a className={styles.emailLink} href={`mailto:${emailAddress}`}>
+              {emailAddress}
+            </a>
+            .
+          </p>
         </motion.div>
 
         <Footer />

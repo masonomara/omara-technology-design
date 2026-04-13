@@ -93,7 +93,7 @@
   font-size: var(--text-lg);
   font-weight: 500;
   width: 100%;
-  line-height: var(--leading-snug);
+  line-height: 1.45;
   text-align: left;
   border: 2px solid var(--color-primary);
 }
@@ -265,7 +265,7 @@
 
   .servicesCategoryHeader * {
     font-size: var(--text-md);
-    line-height: var(--leading-snug);
+    line-height: 1.45;
   }
 
   .servicesCategoryTitle {
@@ -282,7 +282,7 @@
     padding-top: 0px;
     margin-top: -6px;
     font-size: var(--text-md);
-    line-height: var(--leading-snug);
+    line-height: 1.45;
   }
 
   .servicesDataWrapper {
