@@ -1,11 +1,11 @@
 .wrapper {
   margin-top: 0.8em;
   margin-bottom: 0em;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
   max-width: 640px;
   width: 60vw;
-  line-height: 130%;
+  line-height: var(--leading-snug);
   flex: 1;
 }
 .wrapper article > div {
@@ -38,20 +38,20 @@
   color: var(--color-primary);
   margin-top: 1.6em;
   margin-bottom: 0.4em;
-  font-size: 13px;
+  font-size: var(--text-xs);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--tracking-wide);
 }
 .content a {
   color: var(--color-primary);
   text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 0.12em;
+  text-decoration-thickness: var(--link-thickness);
+  text-underline-offset: var(--link-offset);
   transition: var(--transition-smooth-100) all;
 }
 .content a:hover {
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 0.18em;
+  text-decoration-thickness: var(--link-thickness);
+  text-underline-offset: var(--link-offset-hover);
   transition: var(--transition-smooth-100) all;
 }
 .content img {
@@ -77,16 +77,16 @@
   .wrapper {
     width: calc(100% - 32px);
     padding: 0px 16px;
-    font-size: 15px;
-    line-height: 130%;
+    font-size: var(--text-md);
+    line-height: var(--leading-snug);
   }
 }
 
 .emailInfo {
   margin-top: 0.8em;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
-  line-height: 140%;
+  line-height: var(--leading-normal);
   text-align: center;
   max-width: 529px;
 }
@@ -94,12 +94,12 @@
 .emailLink {
   color: var(--color-primary);
   text-decoration: underline !important;
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.12em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset) !important;
   transition: var(--transition-smooth-100) all;
 }
 .emailLink:hover {
-  text-underline-offset: 0.18em !important;
+  text-underline-offset: var(--link-offset-hover) !important;
 }
 
 .cardImageContainer {

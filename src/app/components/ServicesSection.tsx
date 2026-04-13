@@ -28,7 +28,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         viewport={{ once: true, amount: 0.15 }}
         className="title"
       >
-        SERVICES
+        PROCESS
       </motion.h1>
 
       <motion.div

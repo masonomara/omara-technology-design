@@ -2,34 +2,34 @@
 .ethos {
   margin-top: 0.8em;
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: var(--text-xl);
   font-weight: 600;
   max-width: 740px;
   width: 60vw;
-  line-height: 145%;
+  line-height: var(--leading-relaxed);
 }
 
 .identity {
   margin-top: 0.8em;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
   max-width: 740px;
   width: 60vw;
-  line-height: 140%;
+  line-height: var(--leading-normal);
 }
 
 .identity a {
   color: var(--color-primary);
   text-decoration: underline !important;
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.12em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset) !important;
   transition: var(--transition-smooth-100) all;
 }
 
 .identity a:hover {
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.18em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset-hover) !important;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -55,18 +55,18 @@
 
 .capabilityLabel {
   font-family: var(--font-overpass);
-  font-size: 13px;
+  font-size: var(--text-xs);
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--tracking-wide);
   margin: 0 0 0.45em 0;
 }
 
 .capabilityBody {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 500;
-  line-height: 145%;
+  line-height: var(--leading-relaxed);
 }
 
 /* Bio */
@@ -131,22 +131,22 @@
 
 .bioText p {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
-  line-height: 145%;
+  line-height: var(--leading-relaxed);
 }
 
 .bioText a {
   color: var(--color-primary);
   text-decoration: underline !important;
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.12em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset) !important;
   transition: var(--transition-smooth-100) all;
 }
 
 .bioText a:hover {
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.18em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset-hover) !important;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -162,13 +162,11 @@
 .sectionHeading {
   margin: 0 0 1.2em 0;
   font-family: var(--font-overpass);
-  font-size: 20px;
+  font-size: var(--text-xl);
   font-weight: 800;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800;
+  font-variation-settings: var(--fvs-overpass-heading);
   text-transform: uppercase;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--tracking-normal);
 }
 
 .engagementsGrid {
@@ -179,7 +177,7 @@
 
 .engagementType h3 {
   font-family: var(--font-overpass);
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 800;
   text-transform: uppercase;
   margin: 0;
@@ -187,34 +185,34 @@
 
 .engagementType p {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 500;
-  line-height: 145%;
+  line-height: var(--leading-relaxed);
 }
 
 .processNote {
   margin-top: 1.8em;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 500;
-  line-height: 145%;
+  line-height: var(--leading-relaxed);
 }
 
 .processLink {
   display: inline-block;
   margin-top: 1em;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--color-primary);
   text-decoration: underline !important;
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.12em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset) !important;
   transition: var(--transition-smooth-100) all;
 }
 
 .processLink:hover {
-  text-decoration-thickness: 1.5px !important;
-  text-underline-offset: 0.18em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset-hover) !important;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -229,7 +227,7 @@
   .identity {
     width: calc(100% - 16px);
     padding: 0 8px;
-    font-size: 15px;
+    font-size: var(--text-md);
   }
 
   .capabilitiesSection {
@@ -244,7 +242,7 @@
   }
 
   .capabilityBody {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 
   .bioSection {
@@ -260,7 +258,7 @@
   }
 
   .bioText p {
-    font-size: 15px;
+    font-size: var(--text-md);
   }
 
   .engagementsSection {
@@ -275,10 +273,10 @@
   }
 
   .engagementType p {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 
   .processNote {
-    font-size: 13px;
+    font-size: var(--text-xs);
   }
 }

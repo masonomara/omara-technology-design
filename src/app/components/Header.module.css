@@ -65,11 +65,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  gap: 15px;
 }
 
 .menuOption {
-  padding: 0px 5px;
   background-color: var(--color-background);
   border-radius: 4px;
   text-decoration: none !important;
@@ -77,12 +75,11 @@
 
 .menuOption span {
   font-family: var(--font-radio);
-  font-size: 54px;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  line-height: 54px;
-  letter-spacing: -0.015em;
+  font-size: 40px; /* intentionally oversized for overlay menu effect */
+  font-variation-settings: var(--fvs-radio-ui-big);
+  font-weight: 600!important;
+  line-height: 40px;
+  letter-spacing: var(--tracking-ui);
   text-transform: uppercase;
   color: var(--color-primary);
 }

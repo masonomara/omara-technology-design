@@ -24,12 +24,12 @@
 .title {
   flex-shrink: 0;
   color: var(--color-background);
-  font-size: 16px;
+  font-size: var(--text-lg);
   white-space: nowrap;
   font-family: var(--font-overpass);
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 33px;
+  line-height: 33px; /* fixed to match 28px marquee band height */
 }
 
 .wave {

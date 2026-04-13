@@ -46,14 +46,12 @@
 
 .navLink {
   color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
+  font-variation-settings: var(--fvs-radio-ui);
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--tracking-ui);
   text-align: center;
-  font-size: clamp(28px, 3vw, 34px);
+  font-size: var(--text-ui-xl);
   text-decoration: none !important;
   margin-top: 0.5em;
   margin-bottom: 0.5em;

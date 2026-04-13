@@ -1,22 +1,22 @@
 .intro {
   margin-top: 0.8em;
   margin-bottom: 0em;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
   max-width: 635px;
   width: 60vw;
-  line-height: 140%;
+  line-height: var(--leading-normal);
   text-align: left;
 }
 
 .introMeta {
   margin-top: 0.6em;
   margin-bottom: 0em;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 400;
   max-width: 635px;
   width: 60vw;
-  line-height: 140%;
+  line-height: var(--leading-normal);
   text-align: left;
   opacity: 0.75;
 }
@@ -34,13 +34,13 @@
   padding: 0;
   cursor: pointer;
   font-family: var(--font-overpass);
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 700;
   color: var(--color-primary);
   opacity: 0.4;
   transition: opacity 100ms ease;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--tracking-loose);
 }
 
 .toggleButton:hover {
@@ -60,9 +60,9 @@
 }
 
 .engagementDescription {
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
-  line-height: 140%;
+  line-height: var(--leading-normal);
   margin-bottom: 0.8em;
 }
 
@@ -77,11 +77,9 @@
   margin: 0px !important;
   font-family: var(--font-overpass);
   background-color: transparent;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
+  font-variation-settings: var(--fvs-overpass-heading) !important;
   text-transform: uppercase;
   margin-top: 0.8px !important;
   width: 100%;
@@ -92,10 +90,10 @@
 
 .servicesDataWrapper {
   margin-top: 0em;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
   width: 100%;
-  line-height: 130%;
+  line-height: var(--leading-snug);
   text-align: left;
   border: 2px solid var(--color-primary);
 }
@@ -147,38 +145,38 @@
 
 .timelinePhaseName {
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--text-sm);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--tracking-wide);
   font-family: var(--font-overpass);
 }
 
 .timelinePhaseDuration {
-  font-size: 13px;
+  font-size: var(--text-xs);
   opacity: 0.6;
 }
 
 .timelineMilestones {
-  font-size: 15px;
+  font-size: var(--text-md);
   margin-top: 6px;
   margin-bottom: 0;
   opacity: 0.8;
-  line-height: 140%;
+  line-height: var(--leading-normal);
 }
 
 .timelineOutcome {
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 700;
   margin-top: 1.5em;
   margin-bottom: 0;
 }
 
 .engagementNote {
-  font-size: 14px;
+  font-size: var(--text-sm);
   opacity: 0.65;
   margin-top: 1.5em;
   margin-bottom: 0;
-  line-height: 140%;
+  line-height: var(--leading-normal);
 }
 
 .processSection {
@@ -200,13 +198,11 @@
 .sectionHeading {
   margin: 0 0 1.2em 0;
   font-family: var(--font-overpass);
-  font-size: 20px;
+  font-size: var(--text-xl);
   font-weight: 800;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800;
+  font-variation-settings: var(--fvs-overpass-heading);
   text-transform: uppercase;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--tracking-normal);
 }
 
 .processBody {
@@ -224,24 +220,24 @@
 .processBody p,
 .pricingBody p {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
-  line-height: 145%;
+  line-height: var(--leading-relaxed);
 }
 
 @media screen and (max-width: 699px) {
   .intro {
     width: calc(100% - 16px);
     padding: 0 8px;
-    font-size: 15px;
-    line-height: 140%;
+    font-size: var(--text-md);
+    line-height: var(--leading-normal);
   }
 
   .introMeta {
     width: calc(100% - 16px);
     padding: 0 8px;
-    font-size: 15px;
-    line-height: 140%;
+    font-size: var(--text-md);
+    line-height: var(--leading-normal);
   }
 
   .toggle {
@@ -251,7 +247,7 @@
   }
 
   .toggleButton {
-    font-size: 15px;
+    font-size: var(--text-md);
   }
 
   .engagementContent {
@@ -260,7 +256,7 @@
   }
 
   .engagementDescription {
-    font-size: 15px;
+    font-size: var(--text-md);
   }
 
   .engagementCategories {
@@ -268,12 +264,12 @@
   }
 
   .servicesCategoryHeader * {
-    font-size: 15px;
-    line-height: 130%;
+    font-size: var(--text-md);
+    line-height: var(--leading-snug);
   }
 
   .servicesCategoryTitle {
-    font-size: 16px;
+    font-size: var(--text-lg);
     margin-left: 0px !important;
   }
 
@@ -285,8 +281,8 @@
     padding: 16px;
     padding-top: 0px;
     margin-top: -6px;
-    font-size: 15px;
-    line-height: 130%;
+    font-size: var(--text-md);
+    line-height: var(--leading-snug);
   }
 
   .servicesDataWrapper {
@@ -294,11 +290,11 @@
   }
 
   .timelineMilestones {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 
   .timelineOutcome {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 
   .processSection {
@@ -315,6 +311,6 @@
 
   .processBody p,
   .pricingBody p {
-    font-size: 15px;
+    font-size: var(--text-md);
   }
 }

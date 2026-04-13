@@ -64,15 +64,15 @@
   width: 100%;
   text-align: left;
   color: var(--color-primary);
-  font-size: 14px;
-  line-height: 17px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
   font-weight: 800;
   font-family: var(--font-overpass);
   text-transform: uppercase;
 }
 .cardBody {
-  font-size: 14px;
-  line-height: 17px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
   font-weight: 500;
   font-family: var(--font-overpass);
   color: var(--color-primary);
