@@ -14,12 +14,11 @@
 .wordmarkWrapper {
   width: 100%;
   max-width: 1220px;
-  aspect-ratio: 208 / 12;
+  aspect-ratio: 326/20.03;
   text-align: center;
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
-  margin-bottom: calc(80% / (208 / 12));
-  margin-top: calc(80% / (208 / 12));
+  margin-top: 54px;
 }
 
 .wordmark {
@@ -38,11 +37,10 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  flex-wrap: none;
   gap: 8px;
   max-width: 1204px;
   padding: 0px 8px;
-  margin-top: calc(29px * 0.4);
-  margin-bottom: calc(29px * 0.8);
 }
 
 .navLink {
@@ -56,6 +54,8 @@
   text-align: center;
   font-size: 29px;
   text-decoration: none !important;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
 }
 
 .navLink:hover {
@@ -76,17 +76,13 @@
   .navLink {
     font-size: 24px;
   }
-
   .navLinks {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     column-gap: calc(24px * 0.8);
     row-gap: calc(24px * 0.5);
-    margin-top: calc(24px * 0.8);
-    margin-bottom: calc(24px * 0.8);
   }
 }
 

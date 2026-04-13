@@ -22,6 +22,7 @@
 
 .standardPageContainer {
   padding: 32px;
+  padding-bottom: 28px;
   padding-top: var(--header-height);
   width: calc(100% - 64px);
   display: flex;
@@ -44,6 +45,7 @@
 @media screen and (max-width: 699px) {
   .standardPageContainer {
     padding: 16px;
+    padding-bottom: 28px;
     padding-top: var(--header-height);
     padding-bottom: 30px;
     width: calc(100% - 32px);

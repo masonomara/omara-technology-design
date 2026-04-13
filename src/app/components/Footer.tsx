@@ -1,20 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./Footer.module.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import styles from "./Footer.module.css";
 import { fadeInButton, textFadeUpSmall } from "../lib/motion";
+
+const NAV_LINKS = [
+  { id: "home", label: "Home", href: "/" },
+  { id: "work", label: "Work", href: "/work" },
+  { id: "process", label: "Process", href: "/process" },
+  { id: "about", label: "About", href: "/about" },
+  { id: "contact", label: "Contact", href: "/contact" },
+];
+
+const viewport = { once: true, amount: 0.15 } as const;
 
 export default function Footer() {
   return (
     <div className={styles.footer}>
       <motion.div
         className={styles.wordmarkWrapper}
-        variants={textFadeUpSmall(0.06, 0.4)}
+        variants={textFadeUpSmall(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <Image
           src="/longWordmark.svg"
@@ -23,7 +33,6 @@ export default function Footer() {
           alt="O'Mara Technology"
           className={styles.wordmark}
         />
-
         <Image
           src="/superCondensedWordmark.svg"
           height={36}
@@ -32,61 +41,25 @@ export default function Footer() {
           className={styles.wordmarkCondensed}
         />
       </motion.div>
+
       <motion.div
         className={styles.navLinks}
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.4 } } }}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.04,
-              delayChildren: 0.1,
-            },
-          },
-        }}
+        viewport={viewport}
       >
-        <motion.div
-          className={styles.navLink}
-          variants={fadeInButton("up", 0, 0.35)}
-        >
-          <Link href={`/`} target="_top" className={styles.navLink}>
-            HOME
-          </Link>
-        </motion.div>
-        <motion.div
-          className={styles.navLink}
-          variants={fadeInButton("up", 0, 0.35)}
-        >
-          <Link href={`/work`} target="_top" className={styles.navLink}>
-            WORK
-          </Link>
-        </motion.div>
-        <motion.div
-          className={styles.navLink}
-          variants={fadeInButton("up", 0, 0.35)}
-        >
-          <Link href={`/process`} target="_top" className={styles.navLink}>
-            PROCESS
-          </Link>
-        </motion.div>
-        <motion.div
-          className={styles.navLink}
-          variants={fadeInButton("up", 0, 0.35)}
-        >
-          <Link href={`/about`} target="_top" className={styles.navLink}>
-            ABOUT
-          </Link>
-        </motion.div>
-        <motion.div
-          className={styles.navLink}
-          variants={fadeInButton("up", 0, 0.35)}
-        >
-          <Link href={`/contact`} target="_top" className={styles.navLink}>
-            CONTACT
-          </Link>
-        </motion.div>
+        {NAV_LINKS.map(({ id, label, href }) => (
+          <motion.div
+            key={id}
+            className={styles.navLink}
+            variants={fadeInButton("up", 0, 0.35)}
+          >
+            <Link href={href} target="_top" className={styles.navLink}>
+              {label.toUpperCase()}
+            </Link>
+          </motion.div>
+        ))}
       </motion.div>
     </div>
   );
