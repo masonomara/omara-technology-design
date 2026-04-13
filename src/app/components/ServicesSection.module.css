@@ -179,7 +179,7 @@
   line-height: var(--leading-normal);
 }
 
-.processSection {
+.servicesSection {
   margin-top: 3em;
   padding-top: 2em;
   border-top: 2px solid var(--color-primary);
@@ -205,7 +205,7 @@
   letter-spacing: var(--tracking-normal);
 }
 
-.processBody {
+.servicesBody {
   display: flex;
   flex-direction: column;
   gap: 1.2em;
@@ -217,7 +217,7 @@
   gap: 1.2em;
 }
 
-.processBody p,
+.servicesBody p,
 .pricingBody p {
   margin: 0;
   font-size: var(--text-lg);
@@ -297,7 +297,7 @@
     font-size: var(--text-sm);
   }
 
-  .processSection {
+  .servicesSection {
     width: calc(100% - 16px);
     padding-left: 8px;
     padding-right: 8px;
@@ -309,7 +309,7 @@
     padding-right: 8px;
   }
 
-  .processBody p,
+  .servicesBody p,
   .pricingBody p {
     font-size: var(--text-md);
   }

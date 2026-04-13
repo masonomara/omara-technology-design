@@ -28,7 +28,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         viewport={{ once: true, amount: 0.15 }}
         className="title"
       >
-        PROCESS
+        SERVICES
       </motion.h1>
 
       <motion.div
@@ -122,10 +122,10 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
-        className={styles.processSection}
+        className={styles.servicesSection}
       >
         <h2 className={styles.sectionHeading}>How It Works</h2>
-        <div className={styles.processBody}>
+        <div className={styles.servicesBody}>
           <p>
             We start by listening. Every engagement — whether it runs three
             months or three years — begins the same way: a 20-minute call to

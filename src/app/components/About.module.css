@@ -190,7 +190,7 @@
   line-height: var(--leading-relaxed);
 }
 
-.processNote {
+.servicesNote {
   margin-top: 1.8em;
   margin-bottom: 0;
   font-size: var(--text-sm);
@@ -198,7 +198,7 @@
   line-height: var(--leading-relaxed);
 }
 
-.processLink {
+.servicesLink {
   display: inline-block;
   margin-top: 1em;
   font-size: var(--text-md);
@@ -210,7 +210,7 @@
   transition: var(--transition-smooth-100) all;
 }
 
-.processLink:hover {
+.servicesLink:hover {
   text-decoration-thickness: var(--link-thickness) !important;
   text-underline-offset: var(--link-offset-hover) !important;
   transition: var(--transition-smooth-100) all;
@@ -276,7 +276,7 @@
     font-size: var(--text-sm);
   }
 
-  .processNote {
+  .servicesNote {
     font-size: var(--text-xs);
   }
 }

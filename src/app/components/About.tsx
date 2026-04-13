@@ -105,14 +105,14 @@ export default function About() {
             </p>
           </div>
         </div>
-        <p className={styles.processNote}>
+        <p className={styles.servicesNote}>
           Once we commit after discovery, everything is in motion. Creative
           design stays with Mason. Architecture and information design is Mason
           or someone he trusts. Development is Mason or collaborators he&apos;s
           worked with. Nothing gets handed off to strangers.
         </p>
-        <Link href="/process" className={styles.processLink}>
-          Full services and process at omaratechnology.com/process
+        <Link href="/services" className={styles.servicesLink}>
+          Full services at omaratechnology.com/services
         </Link>
       </motion.div>
 

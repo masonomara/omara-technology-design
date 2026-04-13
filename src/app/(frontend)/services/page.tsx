@@ -6,17 +6,17 @@ import type { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Process | O'Mara Technology",
+  title: "Services | O'Mara Technology",
   description:
     "One-time project and partnership engagements for product design and development.",
   alternates: {
-    canonical: "https://omaratechnology.com/process",
+    canonical: "https://omaratechnology.com/services",
   },
   openGraph: {
-    title: "Process | O'Mara Technology",
+    title: "Services | O'Mara Technology",
     description:
       "One-time project and partnership engagements for product design and development.",
-    url: "https://omaratechnology.com/process",
+    url: "https://omaratechnology.com/services",
     siteName: "O'Mara Technology",
     images: [
       {
