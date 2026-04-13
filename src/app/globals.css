@@ -29,10 +29,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: calc(100svh - var(--header-height) - 30px);
+  min-height: calc(100svh - var(--header-height) - 28px);
 }
 .standardPageWrapper {
-  min-height: calc(100svh - var(--header-height) - 30px);
+  min-height: calc(100svh - var(--header-height) - 28px);
   display: flex;
   width: 100%;
   align-items: center;
@@ -47,7 +47,7 @@
     padding: 16px;
     padding-bottom: 28px;
     padding-top: var(--header-height);
-    padding-bottom: 30px;
+    padding-bottom: 28px;
     width: calc(100% - 32px);
   }
 }

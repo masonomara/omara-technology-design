@@ -3,13 +3,13 @@
    ==================== */
 .gameFrameWrapper {
   position: fixed;
-  top: 71px;
+  top: var(--header-height);
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100svh - 71px - 30px);
+  height: calc(100svh - var(--header-height) - 28px);
   overflow: hidden;
 }
 
@@ -408,7 +408,7 @@
     "wdth" 75,
     "wght" 600;
   font-family: var(--font-radio);
-  letter-spacing: 0;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
   text-decoration: none;
   transition: var(--transition-smooth-100) all;
@@ -435,7 +435,7 @@
     "wdth" 75,
     "wght" 600;
   font-family: var(--font-radio);
-  letter-spacing: 0;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
   text-decoration: none;
 

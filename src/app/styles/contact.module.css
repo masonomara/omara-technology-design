@@ -30,7 +30,7 @@
 .emailLink {
   color: var(--color-primary);
   text-decoration: underline !important;
-  text-decoration-thickness: 1.5px !important;
+  text-decoration-thickness: 0.02em !important;
   text-underline-offset: 0.12em !important;
   transition: var(--transition-smooth-100) all;
 }

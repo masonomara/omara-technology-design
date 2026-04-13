@@ -61,7 +61,7 @@
 .navLink:hover {
   text-decoration: underline !important;
   text-decoration-color: var(--color-primary) !important;
-  text-decoration-thickness: 2px !important;
+  text-decoration-thickness: 0.02em !important;
   text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
 }
