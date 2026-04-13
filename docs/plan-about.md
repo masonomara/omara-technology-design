@@ -34,7 +34,7 @@ H1: About
 │     Two engagement types: Strategic / Project.
 │     Short, clear. Points to /process for the rest.
 │
-└── [FooterContact] (unchanged)
+└── [Footer] (unchanged)
 ```
 
 ---
@@ -185,7 +185,7 @@ One-time. For new builds. Discovery, design, development, and launch — scoped 
 ### Notes
 
 - Keep the "note on the process" short. It addresses the outsourced-agency fear directly and honestly without being defensive.
-- The link to /process should be plain and direct, not a big CTA button. The FooterContact below handles the actual contact moment.
+- The link to /process should be plain and direct, not a big CTA button. The Footer below handles the actual contact moment.
 
 ---
 
@@ -286,7 +286,7 @@ Do not add new animation variants. The CLAUDE.md says not to without a clearly d
 | H1 "About"                     | Keep — nav consistency, SEO    |
 | Headshot photo                 | Keep — `siteHeadshot.png`      |
 | `cardImageContainer` structure | Keep — working, don't break    |
-| `FooterContact` at bottom      | Keep — unchanged               |
+| `Footer` at bottom      | Keep — unchanged               |
 | Link to masonomara.com         | Keep — earns trust             |
 | Animation variant files        | Keep — don't touch `motion.ts` |
 

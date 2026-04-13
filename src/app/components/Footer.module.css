@@ -1,0 +1,104 @@
+/* Layout Container */
+.footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-family: var(--font-overpass);
+  color: var(--color-primary);
+  height: fit-content;
+}
+
+/* Wordmark */
+.wordmarkWrapper {
+  width: 100%;
+  max-width: 1220px;
+  aspect-ratio: 208 / 12;
+  text-align: center;
+  font-family: var(--font-rallingtonSerif);
+  color: var(--color-primary);
+  margin-bottom: calc(80% / (208 / 12));
+  margin-top: calc(80% / (208 / 12));
+}
+
+.wordmark {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.wordmarkCondensed {
+  display: none;
+}
+
+/* Nav Links */
+.navLinks {
+  width: calc(100% - 16px);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 8px;
+  max-width: 1204px;
+  padding: 0px 8px;
+  margin-top: calc(29px * 0.4);
+  margin-bottom: calc(29px * 0.8);
+}
+
+.navLink {
+  color: var(--color-primary);
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 700;
+  font-family: var(--font-radio);
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  text-align: center;
+  font-size: 29px;
+  text-decoration: none !important;
+}
+
+.navLink:hover {
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-primary) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.15em !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+@media screen and (max-width: 799px) {
+  .navLink {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .navLink {
+    font-size: 24px;
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: calc(24px * 0.8);
+    row-gap: calc(24px * 0.5);
+    margin-top: calc(24px * 0.8);
+    margin-bottom: calc(24px * 0.8);
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .wordmark {
+    display: none;
+  }
+
+  .wordmarkCondensed {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+    display: flex;
+  }
+}

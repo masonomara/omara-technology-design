@@ -233,7 +233,7 @@ export function getServicesData() {
   → Note (partners / scope caveat)
 [How It Works]
 [Pricing]
-[FooterContact]
+[Footer]
 ```
 
 ---
@@ -752,7 +752,7 @@ export const metadata: Metadata = {
 - [x] Does the split at the end (handoff vs. loop) land clearly?
 - [x] Does pricing answer "how much does it cost to start?" without an hourly rate?
 - [x] Is there any MBA-speak or inflation anywhere? — none found
-- [x] Does the page earn the FooterContact CTA?
+- [x] Does the page earn the Footer CTA?
 
 ---
 

@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "../styles/about.module.css";
 import projectStyles from "../styles/project.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
@@ -36,7 +35,7 @@ export function Project({ title, html }: ProjectProps) {
                 dangerouslySetInnerHTML={{ __html: html }}
               />
               <motion.div
-                className={styles.emailInfo}
+                className={projectStyles.emailInfo}
                 variants={fadeInButton("up", 0.18, 0.35)}
                 initial="hidden"
                 whileInView="show"
@@ -45,7 +44,7 @@ export function Project({ title, html }: ProjectProps) {
                 Interested in working together?
                 <br />
                 Feel free to reach out to
-                <a className={styles.emailLink} href={`mailto:${emailAddress}`}>
+                <a className={projectStyles.emailLink} href={`mailto:${emailAddress}`}>
                   info@omaratechnology.com
                 </a>
               </motion.div>

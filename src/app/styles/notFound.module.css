@@ -1,6 +1,4 @@
-/* Layout Container */
 .contactWrapper {
-  /* min-height: calc(100svh - 71px - 30px); */
   display: flex;
   width: 100%;
   align-items: center;
@@ -11,7 +9,6 @@
   height: fit-content;
 }
 
-/* Typography */
 .title {
   width: 100%;
   text-align: center;
@@ -34,7 +31,6 @@
   margin-top: calc(80% / (208 / 12));
 }
 
-/* Company Title Images */
 .companyTitleImage {
   height: 100%;
   object-fit: contain;
@@ -49,7 +45,6 @@
   display: none;
 }
 
-/* Button Styles */
 .buttonBorder {
   outline: 2px solid var(--color-primary);
   display: flex;
@@ -83,18 +78,6 @@
   margin-top: 23px;
 }
 
-.subButtonsWrapper {
-  width: calc(100% - 16px);
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  gap: 8px;
-  max-width: 1204px;
-  padding: 0px 8px;
-  margin-top: calc(29px * 0.4);
-  margin-bottom: calc(29px * 0.8);
-}
-
 .mainButton {
   padding: 23.04px 23.04px;
   width: calc(100% - 46.08px);
@@ -113,6 +96,16 @@
   text-align: center;
 }
 
+.subButtonsWrapper {
+  width: calc(100% - 16px);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 8px;
+  max-width: 1204px;
+  padding: 0px 8px;
+}
+
 .subButton {
   color: var(--color-primary);
   font-variation-settings:
@@ -125,6 +118,7 @@
   font-size: 29px;
   text-decoration: none !important;
 }
+
 .subButton:hover {
   text-decoration: underline !important;
   text-decoration-color: var(--color-primary) !important;
@@ -132,12 +126,7 @@
   text-underline-offset: 0.15em !important;
   transition: var(--transition-smooth-100) all;
 }
-.bookends {
-  width: 0px;
-  height: 0px;
-  background: transparent;
-}
-/* Email Info */
+
 .emailInfo {
   margin-top: 0.8em;
   font-size: 19px;
@@ -152,7 +141,7 @@
   max-width: 529px;
 }
 
-.emailInfo a {
+.emailLink {
   color: var(--color-primary);
   text-decoration: underline !important;
   text-decoration-thickness: 2px !important;
@@ -161,7 +150,7 @@
   background-color: var(--color-background);
 }
 
-.emailInfo a:hover {
+.emailLink:hover {
   text-decoration-thickness: 2px !important;
   text-underline-offset: 0.2em !important;
   transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
@@ -184,13 +173,10 @@
     margin-bottom: calc(60% / (142 / 24));
     margin-top: calc(60% / (142 / 24));
   }
+
   .buttonHeading {
     font-size: 23px;
     line-height: 130%;
-  }
-
-  .subButton {
-    width: fit-content;
   }
 
   .buttonsWrapper {
@@ -210,6 +196,7 @@
     transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
     background-color: var(--color-background);
   }
+
   .subButton {
     font-size: 24px;
   }
@@ -222,8 +209,6 @@
     justify-content: center;
     column-gap: calc(24px * 0.8);
     row-gap: calc(24px * 0.5);
-    margin-top: calc(24px * 0.8);
-    margin-bottom: calc(24px * 0.8);
   }
 }
 

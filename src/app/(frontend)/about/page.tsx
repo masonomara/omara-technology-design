@@ -1,6 +1,6 @@
 // src/app/(frontend)/about/page.tsx
 import type { Metadata } from "next";
-import FooterContact from "@/app/components/FooterContact";
+import Footer from "@/app/components/Footer";
 import About from "@/app/components/About";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default async function Page() {
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
         <About />
-        <FooterContact />
+        <Footer />
       </div>
     </main>
   );

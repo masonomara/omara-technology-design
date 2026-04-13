@@ -1,4 +1,4 @@
-import FooterContact from "@/app/components/FooterContact";
+import Footer from "@/app/components/Footer";
 import ServicesSection from "@/app/components/ServicesSection";
 import { getServicesData } from "@/lib/content";
 import type { Metadata } from "next";
@@ -37,7 +37,7 @@ export default function Page() {
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
         <ServicesSection data={data} />
-        <FooterContact />
+        <Footer />
       </div>
     </main>
   );

@@ -411,22 +411,6 @@ export default function Game() {
             viewport={{ once: true, amount: 0.15 }}
             className={`${styles.startContainer} ${gameStart ? styles.startContainerClose : ""}`}
           >
-            <Image
-              src="/canTwo.svg"
-              alt=""
-              aria-hidden
-              width={36}
-              height={64}
-              className={styles.startCoverAssetRight}
-            />
-            <Image
-              src="/canThree.svg"
-              alt=""
-              aria-hidden
-              width={36}
-              height={64}
-              className={styles.startCoverAssetLeft}
-            />
             <div className={styles.startTopWrapper}>
               <p className={styles.startGameTitle}>Bean Shooter</p>
               <p className={styles.startGameByline}>
@@ -436,17 +420,17 @@ export default function Game() {
             </div>
             <div className={styles.startButtonWrapper}>
               <button className={styles.primaryButton} onClick={startGame}>
-                <p>Start Game</p>
+                Play Game
               </button>
               <Link
-                className={styles.primaryButton}
+                className={styles.secondaryButton}
                 href="/about"
                 target="_top"
               >
-                <p>About</p>
+                <p>About Us</p>
               </Link>
               <Link
-                className={styles.primaryButton}
+                className={styles.secondaryButton}
                 href="/work"
                 target="_top"
               >
@@ -490,9 +474,7 @@ export default function Game() {
               </span>
               <div className={styles.statsContainer}>
                 <div className={styles.statsWrapper}>
-                  <span className={styles.statsTitle}>
-                    {timeTaken} seconds
-                  </span>
+                  <span className={styles.statsTitle}>{timeTaken} seconds</span>
                 </div>
                 <div className={styles.statsDivider} />
                 <div className={styles.statsWrapper}>
@@ -537,9 +519,7 @@ export default function Game() {
                       ref={isUser ? userScoreRef : null}
                       className={`${styles.leaderboardEntry} ${isUser ? styles.highlight : ""}`}
                     >
-                      <div className={styles.leaderboardRank}>
-                        {index + 1}
-                      </div>
+                      <div className={styles.leaderboardRank}>{index + 1}</div>
                       <div
                         className={styles.leaderboardName}
                         style={
@@ -592,10 +572,7 @@ export default function Game() {
                     <p>{warning ? "Submit Anyway" : "Submit Score"}</p>
                   </button>
                 )}
-                <button
-                  onClick={restartGame}
-                  className={styles.primaryButton}
-                >
+                <button onClick={restartGame} className={styles.primaryButton}>
                   <p>Play Again</p>
                 </button>
               </div>

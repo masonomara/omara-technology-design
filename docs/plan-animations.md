@@ -157,8 +157,8 @@ Recommended call values: `delay: 0`, `duration: 0.35`
 | `contact/page.tsx`    | subtitle (`textFadeUpSmall`) | 0.8s    | 0.4s    | 0.2s        | 0.08s         |
 | `contact/page.tsx`    | form (`fadeInButton`)        | 1.2s    | 0.35s   | **0.4s**    | **0.12s**     |
 | `Marquee.tsx`         | nav links (`fadeInButton`)   | 1.2s    | 0.35s   | i×0.03s     | i×0.03s       |
-| `FooterContact.tsx`   | logo (`textFadeUpSmall`)     | 0.8s    | 0.4s    | 0.1s        | 0.06s         |
-| `FooterContact.tsx`   | links (`fadeInButton`)       | 0.4s    | 0.35s   | i×0.05s     | i×0.04s       |
+| `Footer.tsx`   | logo (`textFadeUpSmall`)     | 0.8s    | 0.4s    | 0.1s        | 0.06s         |
+| `Footer.tsx`   | links (`fadeInButton`)       | 0.4s    | 0.35s   | i×0.05s     | i×0.04s       |
 | `page.tsx` (home)     | game container (`fadeIn`)    | 0.8s    | 0.5s    | 0.1s        | 0.05s         |
 
 ---
@@ -174,7 +174,7 @@ This means the animation fires when 15% of the element is visible — the user's
 **Files to update:**
 
 - `Service.tsx`, `Project.tsx`, `About.tsx`, `ServicesSection.tsx`
-- `ProjectsSection.tsx`, `contact/page.tsx`, `Marquee.tsx`, `FooterContact.tsx`
+- `ProjectsSection.tsx`, `contact/page.tsx`, `Marquee.tsx`, `Footer.tsx`
 
 ---
 
@@ -354,7 +354,7 @@ Drop from 0.2s → 0.1s so the cursor ring tracks the pointer tightly instead of
 - [x] 3G.2 Update all `whileInView` viewports: `amount: 0` → `amount: 0.15`
 - [x] 3G.3 Remove unused `type` argument from `fadeInButton` call — done in Phase 2
 
-#### 3H — `src/app/components/FooterContact.tsx`
+#### 3H — `src/app/components/Footer.tsx`
 
 - [x] 3H.1 `textFadeUpSmall` (logo): update duration `0.8` → `0.4`, delay `0.1` → `0.06`
 - [x] 3H.2 `fadeInButton` (links): update duration `0.4` → `0.35`, stagger `staggerChildren: 0.05` → `0.04`

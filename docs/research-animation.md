@@ -60,7 +60,7 @@ This is a 19-variant library powering a ~5-variant site. Significant dead weight
 
 ## 3. Component-by-Component Breakdown
 
-### 3.1 `FooterContact.tsx`
+### 3.1 `Footer.tsx`
 
 **Animations:**
 
@@ -240,7 +240,7 @@ The stagger values across the site are inconsistent:
 | Location                   | Stagger Interval | Items  |
 | -------------------------- | ---------------- | ------ |
 | `ServicesSection` items    | 0.1s             | 5      |
-| `FooterContact` links      | 0.05s            | 5      |
+| `Footer` links      | 0.05s            | 5      |
 | `Marquee` links            | 0.03s            | 5      |
 | `staggerContainer` default | 0.2s             | varies |
 
@@ -317,7 +317,7 @@ The user complaints — "janky," "too slow," "performative" — map directly to:
 | `src/app/globals.css`                    | Marquee keyframe, CSS transition variables, cursor styles |
 | `src/app/styles/index.module.css`        | Game animations (score, hand, bang)                       |
 | `src/app/components/CursorFollower.tsx`  | Custom cursor logic                                       |
-| `src/app/components/FooterContact.tsx`   | Footer link stagger                                       |
+| `src/app/components/Footer.tsx`   | Footer link stagger                                       |
 | `src/app/components/ServicesSection.tsx` | Services stagger                                          |
 | `src/app/components/ProjectsSection.tsx` | Projects card entrance                                    |
 | `src/app/components/Marquee.tsx`         | Nav links entrance                                        |

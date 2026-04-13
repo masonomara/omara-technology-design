@@ -181,7 +181,7 @@ Delete everything listed in "What Gets Deleted" above. Run `npm uninstall` for S
 - Homepage game (Supabase leaderboard) — untouched
 - Contact page + nodemailer — untouched
 - About page — untouched
-- Header, Marquee, ScrollToTop, FooterContact — untouched
+- Header, Marquee, ScrollToTop, Footer — untouched
 - All CSS and styles — untouched
 - All animations (framer-motion) — untouched
 - Vercel deployment config — untouched

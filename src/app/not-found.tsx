@@ -1,9 +1,8 @@
 import Link from "next/link";
-import React from "react";
-import styles from "../app/styles/contact.module.css";
 import Image from "next/image";
 import { MenuProvider } from "./context/MenuContext";
 import Header from "./components/Header";
+import styles from "./styles/notFound.module.css";
 
 export default function NotFound() {
   const emailAddress = "info@omaratechnology.com";
@@ -72,15 +71,15 @@ export default function NotFound() {
             {/* O’Mara Technology */}
             <Image
               src="/longWordmark.svg"
-              height={12}
-              width={198}
+              width={326}
+              height={20.03}
               alt="O’Mara Technology"
               className={styles.companyTitleImage}
             />
             <Image
               src="/condensedWordmark.svg"
-              height={12}
-              width={198}
+              width={326}
+              height={20.03}
               alt="O’Mara Technology"
               className={styles.companyTitleImageCondensed}
             />

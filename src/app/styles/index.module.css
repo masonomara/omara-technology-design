@@ -227,7 +227,9 @@
 .startGameTitle {
   font-size: 64px;
   color: var(--color-primary);
-  font-variation-settings: "wdth" 75, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
@@ -241,7 +243,9 @@
   font-size: 11px;
   font-family: var(--font-overpass);
   color: var(--color-primary);
-  font-variation-settings: "wdth" 100, "wght" 800;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -254,7 +258,9 @@
   font-size: 11px;
   font-family: var(--font-overpass);
   color: var(--color-primary);
-  font-variation-settings: "wdth" 100, "wght" 500;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 500;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -386,27 +392,53 @@
 
 .primaryButton {
   height: 44px;
-  font-size: 24px;
+  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  border-radius: 19.2px;
-  border: none;
-  background-color: transparent;
+  border-radius: 0;
+  border: 1.5px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  width: 100%;
+  max-width: 450px;
+  white-space: nowrap;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
+  font-family: var(--font-radio);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition-smooth-100) all;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+.secondaryButton {
+  height: 44px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 0;
+
+  border: 1.5px solid var(--color-primary);
+
+  background-color: var(--color-background);
   color: var(--color-primary);
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
   font-variation-settings:
     "wdth" 75,
-    "wght" 700;
+    "wght" 600;
   font-family: var(--font-radio);
+  letter-spacing: 0;
   text-transform: uppercase;
-  letter-spacing: -0.015em;
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.15em !important;
+  text-decoration: none;
+
   transition: var(--transition-smooth-100) all;
   margin-top: -10px;
   margin-bottom: -10px;
@@ -1010,7 +1042,9 @@
   margin-bottom: 0;
   background-color: transparent;
   font-weight: 500 !important;
-  font-variation-settings: "wdth" 100, "wght" 500 !important;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 500 !important;
   padding-left: 8px;
 }
 
@@ -1044,4 +1078,3 @@
   color: rgba(137, 24, 16, 0.5);
   font-weight: 500 !important;
 }
-

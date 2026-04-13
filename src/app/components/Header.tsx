@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import styles from "./Header.module.css";
 
 const NAV_LINKS = [
@@ -11,10 +14,30 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const height = el.getBoundingClientRect().height;
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${height}px`
+      );
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header className={styles.header}>
+    <header ref={headerRef} className={styles.header}>
       <div className={styles.content}>
-        <div className={styles.contentLeft}>
+        <div className={styles.logoContent}>
           <Link href="/" className={styles.logoWrapper}>
             <Image
               className={styles.logoDesktop}
@@ -33,20 +56,18 @@ export default function Header() {
           </Link>
           <div className={styles.textContainer} />
         </div>
-        <div className={styles.contentRight}>
-          <nav className={styles.menuWrapper}>
-            {NAV_LINKS.map(({ id, label, href }) => (
-              <Link
-                key={id}
-                id={id}
-                className={`${styles.menuOption}${id === "contact" ? ` ${styles.contactLink}` : ""}`}
-                href={href}
-              >
-                <span>{label}</span>
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <nav className={styles.menuWrapper}>
+          {NAV_LINKS.map(({ id, label, href }) => (
+            <Link
+              key={id}
+              id={id}
+              className={`${styles.menuOption}${id === "contact" ? ` ${styles.contactLink}` : ""}`}
+              href={href}
+            >
+              <span>{label}</span>
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );

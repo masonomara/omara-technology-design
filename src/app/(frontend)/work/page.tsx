@@ -1,4 +1,4 @@
-import FooterContact from "@/app/components/FooterContact";
+import Footer from "@/app/components/Footer";
 import ProjectsSection from "@/app/components/ProjectsSection";
 import { getWorkItems, getThumbnail } from "@/lib/content";
 import { toSlug } from "@/lib/slug";
@@ -42,7 +42,7 @@ export default function Page() {
     <main className="standardPageContainer">
       <div className="standardPageWrapper">
         <ProjectsSection projects={projects} />
-        <FooterContact />
+        <Footer />
       </div>
     </main>
   );

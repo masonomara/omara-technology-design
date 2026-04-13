@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
-import styles from "../styles/footer.module.css";
+import styles from "./Footer.module.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUpSmall } from "../lib/motion";
 
-export default function FooterContact() {
+export default function Footer() {
   return (
-    <div className={styles.contactWrapper}>
+    <div className={styles.footer}>
       <motion.div
-        className={styles.companyTitle}
+        className={styles.wordmarkWrapper}
         variants={textFadeUpSmall(0.06, 0.4)}
         initial="hidden"
         whileInView="show"
@@ -19,28 +18,22 @@ export default function FooterContact() {
       >
         <Image
           src="/longWordmark.svg"
-          height={12}
-          width={208}
-          alt="O’Mara Technology"
-          className={styles.companyTitleImage}
+          width={326}
+          height={20.03}
+          alt="O'Mara Technology"
+          className={styles.wordmark}
         />
-        <Image
-          src="/condensedWordmark.svg"
-          height={24}
-          width={142}
-          alt="O’Mara Technology"
-          className={styles.companyTitleImageCondensed}
-        />
+
         <Image
           src="/superCondensedWordmark.svg"
           height={36}
           width={87}
-          alt="O’Mara Technology"
-          className={styles.companyTitleImageSuperCondensed}
+          alt="O'Mara Technology"
+          className={styles.wordmarkCondensed}
         />
       </motion.div>
       <motion.div
-        className={styles.subButtonsWrapper}
+        className={styles.navLinks}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
@@ -55,42 +48,42 @@ export default function FooterContact() {
         }}
       >
         <motion.div
-          className={styles.subButton}
+          className={styles.navLink}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/`} target="_top" className={styles.subButton}>
+          <Link href={`/`} target="_top" className={styles.navLink}>
             HOME
           </Link>
         </motion.div>
         <motion.div
-          className={styles.subButton}
+          className={styles.navLink}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/work`} target="_top" className={styles.subButton}>
+          <Link href={`/work`} target="_top" className={styles.navLink}>
             WORK
           </Link>
         </motion.div>
         <motion.div
-          className={styles.subButton}
+          className={styles.navLink}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/process`} target="_top" className={styles.subButton}>
+          <Link href={`/process`} target="_top" className={styles.navLink}>
             PROCESS
           </Link>
         </motion.div>
         <motion.div
-          className={styles.subButton}
+          className={styles.navLink}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/about`} target="_top" className={styles.subButton}>
+          <Link href={`/about`} target="_top" className={styles.navLink}>
             ABOUT
           </Link>
         </motion.div>
         <motion.div
-          className={styles.subButton}
+          className={styles.navLink}
           variants={fadeInButton("up", 0, 0.35)}
         >
-          <Link href={`/contact`} target="_top" className={styles.subButton}>
+          <Link href={`/contact`} target="_top" className={styles.navLink}>
             CONTACT
           </Link>
         </motion.div>

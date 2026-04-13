@@ -122,7 +122,7 @@ This answers a question (how do you price?) while creating new anxiety (how much
 The page tells you what you get but not what it's like to work with O'Mara. Is it collaborative? What does a week look like? What's the rhythm? Self Aware's process page answers all of this. The current page doesn't attempt to.
 
 **No call to action.**
-The page ends. There's a footer contact section via `FooterContact`, but the services page itself doesn't drive toward anything. It presents and then goes quiet.
+The page ends. There's a footer contact section via `Footer`, but the services page itself doesn't drive toward anything. It presents and then goes quiet.
 
 ---
 
@@ -172,7 +172,7 @@ Self Aware's process section energy — brief, concrete, specific. Not a diagram
 Not a number necessarily, but more transparent than "hourly rate." Something like what Self Aware does — give enough context that a client can self-qualify. Or keep it honest: hourly, with a note on how that works across engagement types.
 
 **5. CTA (clear)**
-A single, direct invitation. FooterContact handles this currently — make sure the page earns it by the time the reader gets there.
+A single, direct invitation. Footer handles this currently — make sure the page earns it by the time the reader gets there.
 
 ---
 

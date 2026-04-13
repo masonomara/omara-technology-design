@@ -1,4 +1,4 @@
-import FooterContact from "@/app/components/FooterContact";
+import Footer from "@/app/components/Footer";
 import { Project } from "@/app/components/Project";
 import {
   getWorkItems,
@@ -92,7 +92,7 @@ export default async function Page({ params }: RouteProps) {
             title={node.name}
             html={html}
           />
-          <FooterContact />
+          <Footer />
         </div>
       </main>
     </>

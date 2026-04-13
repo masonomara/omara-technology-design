@@ -6,7 +6,7 @@ import { sendMail } from "@/app/lib/send-mail";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import FooterContact from "@/app/components/FooterContact";
+import Footer from "@/app/components/Footer";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../../lib/motion";
 
@@ -225,7 +225,7 @@ ${values.message || "None provided."}`;
           )}
         </motion.div>
 
-        <FooterContact />
+        <Footer />
       </div>
     </main>
   );
