@@ -84,5 +84,16 @@ export function getThumbnail(slug: string): string {
       return `/content/projects/${slug}/${slug}.${ext}`;
     }
   }
+  // Fall back to first image in the images/ subdirectory
+  const imagesDir = path.join(process.cwd(), "content", "projects", slug, "images");
+  try {
+    const first = fs
+      .readdirSync(imagesDir)
+      .filter((f) => IMAGE_EXTENSIONS.has(path.extname(f).toLowerCase()))
+      .sort(naturalCompare)[0];
+    if (first) return `/content/projects/${slug}/images/${first}`;
+  } catch {
+    // no images directory
+  }
   return "";
 }
