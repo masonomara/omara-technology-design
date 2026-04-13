@@ -2,40 +2,38 @@
   width: 100%;
   overflow: hidden;
   background-color: var(--color-primary);
-  height: 30px;
+  height: 28px;
   position: fixed;
   bottom: 0px;
 }
 
 .marquee {
-  white-space: nowrap;
-  display: inline-block;
-  animation: marquee 40s linear infinite;
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee 20s linear infinite;
   will-change: transform;
 }
+
 @media screen and (max-width: 699px) {
   .marquee {
-    animation: marquee 18s linear infinite;
+    animation: marquee 10s linear infinite;
   }
 }
 
 .title {
-  display: inline-block;
+  flex-shrink: 0;
   color: var(--color-background);
   font-size: 16px;
-  line-height: 30px;
   white-space: nowrap;
   font-family: var(--font-overpass);
   font-weight: 600;
   text-transform: uppercase;
-  margin-left: 32px;
-  margin-right: 4px;
+  line-height: 33px;
 }
 
 .wave {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
+  margin: 3.5px 14px;
 }
 
 @keyframes marquee {

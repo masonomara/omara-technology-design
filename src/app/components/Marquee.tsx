@@ -8,24 +8,24 @@ const set = (
       className={styles.wave}
       src="/waves-background.svg"
       alt=""
-      height={22}
-      width={22}
+      height={21}
+      width={21}
     />
     <span className={styles.title}>Be creative</span>
     <Image
       className={styles.wave}
       src="/waves-background.svg"
       alt=""
-      height={22}
-      width={22}
+      height={21}
+      width={21}
     />
     <span className={styles.title}>Explore timeless work</span>
     <Image
       className={styles.wave}
       src="/waves-background.svg"
       alt=""
-      height={22}
-      width={22}
+      height={21}
+      width={21}
     />
   </>
 );
