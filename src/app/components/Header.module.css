@@ -10,10 +10,12 @@
   align-items: center;
   justify-content: center;
   width: calc(100% - 64px);
-  padding: 0px 32px;
+  padding: 8px 32px;
   overflow: hidden;
   background-color: var(--color-background);
   border-bottom: 1px solid var(--color-primary);
+  height: fit-content;
+  min-height: 32px;
 }
 
 .content {
@@ -43,6 +45,34 @@
 .logoDesktop {
   pointer-events: none;
   aspect-ratio: 326/20.03;
+  height: 24px;
+  width: auto;
+}
+
+@media (max-width: 999px) {
+  .logoDesktop {
+    height: 20px;
+  }
+  .content {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 849px) {
+  .logoDesktop {
+    height: 18px;
+  }
+  .content {
+    gap: 18px;
+  }
+}
+@media (max-width: 749px) {
+  .logoDesktop {
+    height: 17px;
+  }
+  .content {
+    gap: 17px;
+  }
 }
 
 .logoMobile {
@@ -65,6 +95,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  gap: calc(clamp(16px, 3vw, 34px) / 1.75);
 }
 
 .menuOption {
@@ -75,10 +106,10 @@
 
 .menuOption span {
   font-family: var(--font-radio);
-  font-size: 40px; /* intentionally oversized for overlay menu effect */
+  font-size: clamp(16px, 3vw, 34px);
   font-variation-settings: var(--fvs-radio-ui-big);
-  font-weight: 600!important;
-  line-height: 40px;
+  font-weight: 600 !important;
+  line-height: 100%;
   letter-spacing: var(--tracking-ui);
   text-transform: uppercase;
   color: var(--color-primary);
