@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import styles from "./CursorFollower.module.css";
 
 const CursorFollower = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -104,7 +105,7 @@ const CursorFollower = () => {
   return (
     <div
       ref={cursorRef}
-      className="cursorFollower"
+      className={styles.cursorFollower}
       style={{
         position: "fixed",
         top: 0,

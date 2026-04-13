@@ -1,26 +1,27 @@
 import Image from "next/image";
+import styles from "./Marquee.module.css";
 
 const set = (
   <>
-    <span className="marqueeTitle">Everything changes</span>
+    <span className={styles.title}>Everything changes</span>
     <Image
-      className="marqueeWave"
+      className={styles.wave}
       src="/waves-background.svg"
       alt=""
       height={22}
       width={22}
     />
-    <span className="marqueeTitle">Be creative</span>
+    <span className={styles.title}>Be creative</span>
     <Image
-      className="marqueeWave"
+      className={styles.wave}
       src="/waves-background.svg"
       alt=""
       height={22}
       width={22}
     />
-    <span className="marqueeTitle">Explore timeless work</span>
+    <span className={styles.title}>Explore timeless work</span>
     <Image
-      className="marqueeWave"
+      className={styles.wave}
       src="/waves-background.svg"
       alt=""
       height={22}
@@ -31,8 +32,8 @@ const set = (
 
 export default function Marquee() {
   return (
-    <div className="marqueeContainer">
-      <div className="marquee">
+    <div className={styles.container}>
+      <div className={styles.marquee}>
         {set}
         {set}
         {set}

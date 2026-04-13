@@ -1,0 +1,18 @@
+.cursorFollower {
+  display: none;
+}
+
+@media screen and (min-width: 699px) {
+  .cursorFollower {
+    display: flex;
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.1s ease,
+      height 0.1s ease,
+      transform var(--transition-smooth-100);
+    z-index: 1000;
+  }
+}

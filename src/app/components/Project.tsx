@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "../styles/about.module.css";
+import projectStyles from "../styles/project.module.css";
 import { motion } from "framer-motion";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../lib/motion";
 
@@ -23,7 +24,7 @@ export function Project({ title, html }: ProjectProps) {
       >
         {title}
       </motion.h1>
-      <div className="projectWrapper">
+      <div className={projectStyles.wrapper}>
         <article>
           {html ? (
             <div>
@@ -31,7 +32,7 @@ export function Project({ title, html }: ProjectProps) {
                 variants={textFadeUpSmall(0.08, 0.4)}
                 initial="hidden"
                 animate="show"
-                className="projectContent"
+                className={projectStyles.content}
                 dangerouslySetInnerHTML={{ __html: html }}
               />
               <motion.div

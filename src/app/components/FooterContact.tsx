@@ -11,7 +11,7 @@ export default function FooterContact() {
   return (
     <div className={styles.contactWrapper}>
       <motion.div
-        className="companyTitle"
+        className={styles.companyTitle}
         variants={textFadeUpSmall(0.06, 0.4)}
         initial="hidden"
         whileInView="show"
@@ -22,21 +22,21 @@ export default function FooterContact() {
           height={12}
           width={208}
           alt="O’Mara Technology"
-          className="companyTitleImage"
+          className={styles.companyTitleImage}
         />
         <Image
           src="/condensedWordmark.svg"
           height={24}
           width={142}
           alt="O’Mara Technology"
-          className="companyTitleImageCondensed"
+          className={styles.companyTitleImageCondensed}
         />
         <Image
           src="/superCondensedWordmark.svg"
           height={36}
           width={87}
           alt="O’Mara Technology"
-          className="companyTitleImageSuperCondensed"
+          className={styles.companyTitleImageSuperCondensed}
         />
       </motion.div>
       <motion.div

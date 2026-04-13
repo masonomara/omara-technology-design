@@ -1,3 +1,87 @@
+.wrapper {
+  margin-top: 0.8em;
+  margin-bottom: 0em;
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 635px;
+  width: 60vw;
+  line-height: 130%;
+  flex: 1;
+}
+.wrapper article > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper article > div > p {
+  margin-bottom: 0px;
+}
+.wrapper article p {
+  width: 100%;
+}
+.content {
+  width: 100%;
+}
+.content p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.content p:last-child {
+  margin-bottom: 0;
+}
+.content h1,
+.content h2,
+.content h3 {
+  font-family: var(--font-overpass);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.12em;
+  transition: var(--transition-smooth-100) all;
+}
+.content a:hover {
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition: var(--transition-smooth-100) all;
+}
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.6em 0;
+  outline: 1px solid var(--color-background);
+}
+.content ul,
+.content ol {
+  padding-left: 1.4em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+.content li {
+  margin-bottom: 0.25em;
+}
+.content strong {
+  font-weight: 700;
+}
+@media screen and (max-width: 699px) {
+  .wrapper {
+    width: calc(100% - 32px);
+    padding: 0px 16px;
+    font-size: 15px;
+    line-height: 130%;
+  }
+}
+
 .cardImageContainer {
   outline: 1px solid var(--color-primary);
   z-index: 0;
