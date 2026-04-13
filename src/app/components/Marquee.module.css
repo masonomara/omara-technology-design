@@ -10,13 +10,14 @@
 .marquee {
   display: flex;
   flex-shrink: 0;
-  animation: marquee 20s linear infinite;
+  width: max-content;
+  animation: marquee 120s linear infinite;
   will-change: transform;
 }
 
 @media screen and (max-width: 699px) {
   .marquee {
-    animation: marquee 10s linear infinite;
+    animation: marquee 60s linear infinite;
   }
 }
 
