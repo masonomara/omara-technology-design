@@ -418,24 +418,26 @@ export default function Game() {
               </p>
               <p className={styles.startGameType}>a product studio</p>
             </div>
-            <div className={styles.startButtonWrapper}>
+            <div className={styles.buttonWrapper}>
               <button className={styles.primaryButton} onClick={startGame}>
                 Play Game
               </button>
-              <Link
-                className={styles.secondaryButton}
-                href="/about"
-                target="_top"
-              >
-                <p>About Us</p>
-              </Link>
-              <Link
-                className={styles.secondaryButton}
-                href="/work"
-                target="_top"
-              >
-                <p>View Work</p>
-              </Link>
+              <div className={styles.secondaryButtonWrapper}>
+                <Link
+                  className={styles.secondaryButton}
+                  href="/about"
+                  target="_top"
+                >
+                  <p>About Us</p>
+                </Link>
+                <Link
+                  className={styles.secondaryButton}
+                  href="/work"
+                  target="_top"
+                >
+                  <p>View Work</p>
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

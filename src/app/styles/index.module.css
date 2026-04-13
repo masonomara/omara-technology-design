@@ -366,6 +366,24 @@
      ==================== */
 
 /* Button Styles */
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+.secondaryButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
 .startButtonWrapper {
   display: flex;
   flex-direction: column;
@@ -391,8 +409,8 @@
 }
 
 .primaryButton {
-  height: 44px;
-  font-size: 22px;
+  height: 40px;
+  font-size: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,12 +430,10 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: var(--transition-smooth-100) all;
-  margin-top: -10px;
-  margin-bottom: -10px;
 }
 .secondaryButton {
-  height: 44px;
-  font-size: 22px;
+  height: 40px;
+  font-size: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -440,8 +456,6 @@
   text-decoration: none;
 
   transition: var(--transition-smooth-100) all;
-  margin-top: -10px;
-  margin-bottom: -10px;
 }
 
 .primaryButton:hover {
@@ -889,6 +903,10 @@
   .endButtonWrapper {
     flex-direction: column;
     gap: 28px;
+  }
+
+  .secondaryButtonWrapper {
+    flex-direction: column;
   }
 
   .primaryButton:hover {
