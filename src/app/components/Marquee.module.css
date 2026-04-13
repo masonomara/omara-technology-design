@@ -24,7 +24,7 @@
 .title {
   flex-shrink: 0;
   color: var(--color-background);
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
   white-space: nowrap;
   font-family: var(--font-overpass);
   font-weight: 700;

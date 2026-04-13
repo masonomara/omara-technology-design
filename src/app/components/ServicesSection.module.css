@@ -3,7 +3,7 @@
   margin-bottom: 0em;
   font-size: var(--text-lg);
   font-weight: 500;
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
   line-height: var(--leading-normal);
   text-align: left;
@@ -14,7 +14,7 @@
   margin-bottom: 0em;
   font-size: var(--text-lg);
   font-weight: 400;
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
   line-height: var(--leading-normal);
   text-align: left;
@@ -54,7 +54,7 @@
 }
 
 .engagementContent {
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
   margin-top: 1.5em;
 }
@@ -183,7 +183,7 @@
   margin-top: 3em;
   padding-top: 2em;
   border-top: 2px solid var(--color-primary);
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
 }
 
@@ -191,7 +191,7 @@
   margin-top: 3em;
   padding-top: 2em;
   border-top: 2px solid var(--color-primary);
-  max-width: 635px;
+  max-width: 740px;
   width: 60vw;
 }
 
