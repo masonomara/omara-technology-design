@@ -1,14 +1,17 @@
-// src/app/layout.tsx
-
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Overpass, Radio_Canada } from "next/font/google";
 import CursorFollower from "./components/CursorFollower";
 
 export const metadata: Metadata = {
-  title: "O’Mara Technology",
+  title: "O'Mara Technology",
   description:
-    "Digital Product Strategy, Design, and Development - Mobile Apps, Websites, ECommerce, Software",
+    "Product design and development studio — mobile apps, web apps, AI products, and ecommerce.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 const overpass = Overpass({
@@ -30,20 +33,17 @@ const rallingtonSerif = localFont({
   variable: "--font-rallingtonSerif",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${overpass.variable} ${radioCanada.variable} ${rallingtonSerif.variable}`} style={{ margin: "0px", backgroundColor: "#FCEEDE" }}>
+    <html
+      lang="en"
+      className={`${overpass.variable} ${radioCanada.variable} ${rallingtonSerif.variable}`}
+      style={{ margin: "0px", backgroundColor: "#FCEEDE" }}
+    >
       <head>
-        <meta name="apple-mobile-web-app-title" content="O’Mara Technology" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="apple-mobile-web-app-title" content="O'Mara Technology" />
       </head>
-      <body
-        style={{ margin: "0px", position: "relative" }}
-      >
+      <body style={{ margin: "0px", position: "relative" }}>
         <CursorFollower />
         {children}
       </body>

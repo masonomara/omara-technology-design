@@ -3,17 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import styles from "./Footer.module.css";
+import { NAV_LINKS } from "../lib/constants";
 import { fadeInButton, textFadeUpSmall } from "../lib/motion";
-
-const NAV_LINKS = [
-  { id: "home", label: "Home", href: "/" },
-  { id: "work", label: "Work", href: "/work" },
-  { id: "about", label: "About", href: "/about" },
-  { id: "services", label: "Services", href: "/services" },
-
-  { id: "contact", label: "Contact", href: "/contact" },
-];
+import styles from "./Footer.module.css";
 
 const viewport = { once: true, amount: 0.15 } as const;
 

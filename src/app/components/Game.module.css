@@ -1,6 +1,5 @@
 /* =============================================================================
-   GAME PAGE STYLES
-   index.module.css
+   GAME COMPONENT STYLES
 
    Sections:
    1. Layout & Containers
@@ -8,16 +7,11 @@
    3. Hand Animation
    4. Enemy Targets
    5. Start Screen
-   6. Game Over Screen
+   6. Game Over Overlay
    7. Buttons
-   8. Leaderboard
-   9. Stats Bar
-   10. Form Fields & Inputs
-   11. Checkboxes
-   12. Typography
-   13. Video Background
-   14. Bang Animations
-   15. Media Queries
+   8. Video Background
+   9. Bang Animations
+   10. Media Queries
    ============================================================================= */
 
 /* =============================================================================
@@ -77,44 +71,25 @@
   font-size: 77px;
   pointer-events: none;
   color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 600;
+  font-variation-settings: "wdth" 75, "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   line-height: 100%;
-  transform: translateY(
-    calc(100% + 16px)
-  ); /* hidden below the fold by default */
+  transform: translateY(calc(100% + 16px)); /* hidden below the fold by default */
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
   transition-delay: 75ms;
 }
 
-/* Can count and point counter share the same large italic style */
-.cans,
-.pointScore,
-.trophyScore {
+/* Can counter shares the large italic style */
+.cans {
   font-size: 58px;
   pointer-events: none;
   color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 600;
+  font-variation-settings: "wdth" 75, "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   line-height: 100%;
-}
-
-/* These two live below the score number — extra top padding creates the
-   visual baseline alignment with the larger score text */
-.trophyScore,
-.pointScore {
-  padding-top: 40px;
-}
-
-/* Can counter slides in slightly later than the score (staggered entrance) */
-.cans {
   transform: translateY(calc(100% + 16px));
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
   transition-delay: 187ms;
@@ -137,14 +112,11 @@
 }
 
 /* Small label beneath the score number (e.g. "POINTS", "CANS") */
-.scoreDetails,
-.trophyDetails {
+.scoreDetails {
   font-size: 27px;
   pointer-events: none;
   color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800;
+  font-variation-settings: "wdth" 100, "wght" 800;
   font-family: var(--font-overpass);
   text-transform: uppercase;
   font-style: italic;
@@ -287,9 +259,7 @@
   font-family: var(--font-overpass);
   font-size: 13px;
   font-weight: 500;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500;
+  font-variation-settings: "wdth" 100, "wght" 500;
   line-height: 1.45;
   color: var(--color-primary);
   opacity: 0.8;
@@ -297,80 +267,9 @@
   margin: 0;
 }
 
-.startGameTitle {
-  font-size: 64px;
-  color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 600;
-  font-style: italic;
-  font-family: var(--font-radio);
-  letter-spacing: -0.015em;
-  line-height: 100%;
-  text-transform: uppercase;
-  text-align: center;
-  margin: 0;
-}
-
-.startGameByline {
-  font-size: 11px;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-align: center;
-  margin: 8px 0 0;
-  opacity: 0.65;
-}
-
-.startGameType {
-  font-size: 11px;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-align: center;
-  margin: 3px 0 0;
-  opacity: 0.45;
-}
-
-/* Decorative can images pinned to the corners of the start card */
-.startCoverAssetRight {
-  position: absolute;
-  top: -28px;
-  right: -14px;
-  width: 36px;
-  height: auto;
-  transform: rotate(14deg);
-  pointer-events: none;
-}
-
-.startCoverAssetLeft {
-  position: absolute;
-  bottom: -28px;
-  left: -14px;
-  width: 36px;
-  height: auto;
-  transform: rotate(-20deg);
-  pointer-events: none;
-}
-
-.startDivider {
-  height: 1px;
-  width: 100%;
-  background-color: var(--color-primary);
-}
-
 /* =============================================================================
-   6. GAME OVER SCREEN
+   6. GAME OVER OVERLAY
+   The modal container — leaderboard contents live in Leaderboard.module.css
    ============================================================================= */
 
 .gameOver {
@@ -408,39 +307,6 @@
   transition: var(--transition-smooth-200) all;
 }
 
-/* Email signup uses the same layout as game over */
-.emailSignup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--color-primary);
-  max-width: 412px;
-  width: calc(100% - 96px - 64px);
-  max-height: calc(100% - 71px - 25px - 32px);
-  height: fit-content;
-  min-height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: var(--color-background);
-  opacity: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 0px !important;
-  transition: var(--transition-smooth-200) all;
-  transition-delay: 400ms;
-}
-
-.emailSignupClose {
-  opacity: 0;
-  pointer-events: none;
-  transition: var(--transition-smooth-200) all;
-}
-
 /* =============================================================================
    7. BUTTONS
    ============================================================================= */
@@ -455,7 +321,7 @@
   gap: 10px;
 }
 
-/* Side-by-side secondary buttons (e.g. About / View Work) */
+/* Side-by-side secondary buttons (e.g. About Us, View Work) */
 .secondaryButtonWrapper {
   display: flex;
   flex-direction: row;
@@ -465,30 +331,7 @@
   gap: 10px;
 }
 
-/* Button group on the start screen */
-.startButtonWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  margin-top: 28px;
-  width: 100%;
-}
-
-/* Button group on the game over screen */
-.endButtonWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 33.6px;
-  width: 320px;
-  padding-bottom: 40px;
-}
-
-/* Filled button — primary action (Play, Submit Score, Play Again) */
+/* Filled button — primary action (Play Game) */
 .primaryButton {
   height: 40px;
   font-size: 21px;
@@ -503,9 +346,7 @@
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 600;
+  font-variation-settings: "wdth" 75, "wght" 600;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -534,9 +375,7 @@
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 600;
+  font-variation-settings: "wdth" 75, "wght" 600;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -544,355 +383,8 @@
   transition: var(--transition-smooth-100) all;
 }
 
-/* Inline warning / hint beneath the nickname input */
-.warning {
-  font-family: var(--font-overpass);
-  font-size: 12px;
-  line-height: 130%;
-  color: var(--color-primary);
-  text-align: center;
-  height: 15px;
-  margin-top: 4.8px;
-  margin-bottom: -10px;
-  opacity: 1;
-}
-
 /* =============================================================================
-   8. LEADERBOARD
-   3-column grid: rank | name | score
-   ============================================================================= */
-
-.leaderboardContainer {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  color: var(--color-primary);
-}
-
-.leaderboardHeader {
-  display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
-  width: 100%;
-  border-bottom: 1px solid var(--color-primary);
-  font-size: 14px;
-  line-height: 130%;
-  font-family: var(--font-overpass);
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-top: 22.4px;
-  margin-bottom: 0;
-  padding-bottom: 2.8px;
-}
-
-.leaderboardHeader span {
-  text-align: left;
-}
-
-.leaderboardHeader span:last-child {
-  text-align: center;
-}
-
-.leaderboardList {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 179px;
-  max-height: 100%;
-  overflow-y: scroll;
-  border-bottom: 1px solid var(--color-primary);
-}
-
-.leaderboardEntry {
-  display: grid;
-  grid-template-columns: 1fr 3fr 2fr;
-  justify-content: flex-start;
-  width: 100%;
-  height: 29px;
-  padding: 5px 0 1px;
-  border-bottom: 1px solid var(--color-primary);
-  font-size: 24px;
-  line-height: 130%;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.leaderboardEntry:last-child {
-  border-bottom: none;
-}
-
-.leaderboardRank,
-.leaderboardName,
-.leaderboardScore {
-  font-family: var(--font-overpass);
-  white-space: nowrap;
-}
-
-.leaderboardRank,
-.leaderboardName {
-  text-align: left;
-}
-
-.leaderboardName {
-  overflow: hidden;
-  text-overflow: clip;
-}
-
-.leaderboardScore {
-  text-align: center;
-}
-
-/* Highlights the current user's row */
-.highlight {
-  background-color: var(--color-primary) 22;
-}
-
-/* =============================================================================
-   9. STATS BAR
-   Displayed at the top of the game over screen: time | accuracy | rank
-   ============================================================================= */
-
-.statsContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  gap: 8px;
-  margin-top: 12.8px;
-}
-
-/* Vertical rule between stat items */
-.statsDivider {
-  width: 1px;
-  min-width: 1px;
-  background-color: var(--color-primary);
-}
-
-.statsWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.statsTitle {
-  font-size: 16px;
-  line-height: 130%;
-  font-weight: 800;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  text-align: center;
-}
-
-.statsSubtitle {
-  font-size: 14px;
-  line-height: 130%;
-  font-weight: 500;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-}
-
-/* =============================================================================
-   10. FORM FIELDS & INPUTS
-   ============================================================================= */
-
-.formField {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.formField label {
-  font-family: var(--font-radio);
-  font-variation-settings:
-    "wdth" 75,
-    "wght" 700;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  font-size: 16px;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.input {
-  font-family: var(--font-overpass);
-  border: 1px solid var(--color-primary) !important;
-  outline: 0.6px solid var(--color-primary);
-  background-color: transparent;
-  padding: 13px 12px 11px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--color-primary);
-  border-radius: 0px;
-  transition: var(--transition-smooth-100) all;
-}
-
-.input:focus-visible,
-.input:hover {
-  outline: 1px solid var(--color-primary);
-  background-color: var(--color-bg-hover);
-}
-
-.input::placeholder {
-  color: var(--color-primary);
-  opacity: 0.5;
-  font-weight: 500;
-}
-
-/* Confirmation message shown after a successful score submission */
-.inputThankYou {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.6em;
-  font-family: var(--font-overpass);
-  font-size: 16px;
-  font-weight: 800 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 800 !important;
-  line-height: 130%;
-  color: var(--color-primary);
-  background-color: transparent;
-  text-transform: uppercase;
-}
-
-/* =============================================================================
-   11. CHECKBOXES
-   Custom styled checkboxes that match the game's design system
-   ============================================================================= */
-
-.checkboxContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 25.6px;
-  width: 100%;
-  max-width: 360px;
-}
-
-.checkboxItem {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-  margin-bottom: 8px;
-}
-
-/* Hide the browser's default checkbox appearance */
-.checkboxItem input[type="checkbox"] {
-  appearance: none;
-  min-width: 20px;
-  min-height: 20px;
-  width: 20px;
-  height: 20px;
-  max-width: 20px;
-  max-height: 20px;
-  padding: 0px !important;
-  margin: 0px;
-  position: relative;
-  cursor: pointer;
-}
-
-/* Draw a filled square in the center when checked */
-.checkboxItem input[type="checkbox"]:checked::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-primary);
-}
-
-.checkboxItem label {
-  font-family: var(--font-overpass);
-  font-size: 16px;
-  font-weight: 500 !important;
-  font-variation-settings:
-    "wdth" 100,
-    "wght" 500 !important;
-  color: var(--color-primary);
-  background-color: transparent;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
-  padding-left: 8px;
-  cursor: pointer;
-}
-
-/* Text and textarea inputs nested inside a checkbox item (e.g. "Other: ___") */
-.checkboxItem input[type="text"],
-.checkboxItem input[type="email"],
-.checkboxItem input[type="url"],
-.checkboxItem input,
-.checkboxItem textarea {
-  font-family: var(--font-overpass);
-  border: 1px solid var(--color-primary);
-  outline: 0.6px solid var(--color-primary);
-  background-color: transparent;
-  padding: 13px 12px 11px;
-  font-size: 16px;
-  font-weight: 500 !important;
-  border-radius: 0px;
-  color: var(--color-primary);
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-}
-
-.checkboxItem input:focus,
-.checkboxItem textarea:focus,
-.checkboxItem input:hover,
-.checkboxItem textarea:hover {
-  outline: 1px solid var(--color-primary);
-  background-color: var(--color-bg-hover);
-}
-
-.checkboxItem input::placeholder,
-.checkboxItem textarea::placeholder {
-  color: rgba(137, 24, 16, 0.5);
-  font-weight: 500 !important;
-}
-
-/* =============================================================================
-   12. TYPOGRAPHY
-   ============================================================================= */
-
-.bodyRegular {
-  margin-top: 0.8em;
-  margin-bottom: 0em;
-  font-size: 19px;
-  font-weight: 500;
-  width: 100%;
-  max-width: 360px;
-  text-align: center;
-  line-height: 130%;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-}
-
-.titleRegular {
-  width: 100%;
-  text-align: center;
-  font-size: 32px;
-  font-family: var(--font-rallingtonSerif);
-  color: var(--color-primary);
-  font-weight: 400;
-  margin-top: 40px;
-  margin-bottom: 0px;
-}
-
-/* Utility class to visually hide labels while keeping them accessible */
-.label {
-  display: none !important;
-}
-
-/* =============================================================================
-   13. VIDEO BACKGROUND
+   8. VIDEO BACKGROUND
    Sits behind everything (z-index: -50). Two colour overlays (screen + multiply)
    knock it back to match the site palette.
    ============================================================================= */
@@ -959,19 +451,8 @@
 }
 
 /* =============================================================================
-   14. BANG ANIMATIONS
+   9. BANG ANIMATIONS
    ============================================================================= */
-
-@keyframes bangAnimation {
-  0% {
-    transform: scale(1) translate(-50%, -50%);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2) translate(-50%, -50%);
-    opacity: 0;
-  }
-}
 
 @keyframes bangAppear {
   0% {
@@ -988,14 +469,8 @@
 }
 
 /* =============================================================================
-   15. MEDIA QUERIES
+   10. MEDIA QUERIES
    ============================================================================= */
-
-@media screen and (max-width: 799px) {
-  .checkboxContainer {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media screen and (max-width: 699px) {
   /* Remove header offset — game fills the whole screen on mobile */
@@ -1013,31 +488,12 @@
     padding-right: 24px !important;
   }
 
-  .emailSignup {
-    width: calc(100% - 80px - 48px);
-    min-height: calc(100% - 64px);
-    height: calc(100% - 64px);
-    max-height: fit-content;
-    padding-left: 40px !important;
-    padding-right: 40px !important;
-  }
-
   .startContainer {
     padding: 40px;
     width: calc(100% - 80px - 64px);
   }
 
-  .startDescription {
-    width: calc(100% + 16px);
-  }
-
   /* Stack buttons vertically on narrow screens */
-  .startButtonWrapper,
-  .endButtonWrapper {
-    flex-direction: column;
-    gap: 28px;
-  }
-
   .secondaryButtonWrapper {
     flex-direction: column;
   }
@@ -1079,10 +535,6 @@
     transform: translateY(calc(300% + 16px));
   }
 
-  .trophyScore {
-    font-size: 50px;
-  }
-
   .scoreDetails {
     margin-left: 2px;
     font-size: clamp(14px, 2.9vw, 21px);
@@ -1093,29 +545,6 @@
     transform: translateY(0%);
     transition-delay: 50ms;
   }
-
-  .leaderboardHeader {
-    width: 100%;
-    font-size: 12px;
-    line-height: 130%;
-  }
-
-  .leaderboardList {
-    width: 100%;
-  }
-
-  .statsTitle {
-    font-size: 15px;
-    line-height: 130%;
-  }
-
-  .bodyRegular {
-    width: 100%;
-    max-width: 360px;
-    padding: 0px 16px;
-    font-size: 16px;
-    line-height: 130%;
-  }
 }
 
 @media screen and (max-width: 399px) {
@@ -1125,17 +554,5 @@
 
   .gameOver {
     width: calc(100% - 48px - 48px);
-  }
-
-  .startDescription {
-    margin-top: 1.6em;
-    font-size: 17px;
-    line-height: 130%;
-    width: 100%;
-  }
-
-  .leaderboardHeader,
-  .leaderboardList {
-    width: 100%;
   }
 }

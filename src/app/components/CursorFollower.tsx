@@ -44,6 +44,9 @@ const CursorFollower = () => {
       let isHovering = false;
       let currentElement: HTMLElement | null = target;
 
+      // Walk up the DOM tree from the hovered element.
+      // This catches interactive children (e.g. a <span> inside a <button>)
+      // and elements with the "menuActive" id used by the game overlay.
       while (currentElement) {
         if (currentElement.id === "menuActive") {
           isOverMenuActive = true;
@@ -51,9 +54,7 @@ const CursorFollower = () => {
 
         if (
           !isHovering &&
-          (["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL"].includes(
-            currentElement.tagName,
-          ) ||
+          (["A", "BUTTON", "INPUT", "TEXTAREA", "LABEL"].includes(currentElement.tagName) ||
             currentElement.hasAttribute("onclick") ||
             typeof currentElement.onclick === "function" ||
             currentElement.getAttribute("role") === "button" ||

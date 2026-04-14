@@ -21,13 +21,7 @@ export function getWorkNode(slug: string): ContentNode | null {
 }
 
 export function loadMarkdown(slug: string): string {
-  const mdPath = path.join(
-    process.cwd(),
-    "content",
-    "projects",
-    slug,
-    `${slug}.md`,
-  );
+  const mdPath = path.join(process.cwd(), "content", "projects", slug, `${slug}.md`);
   try {
     return marked(fs.readFileSync(mdPath, "utf-8")) as string;
   } catch {
@@ -52,23 +46,12 @@ function naturalCompare(a: string, b: string): number {
   return a.localeCompare(b);
 }
 
-export function getImages(slug: string): string[] {
-  const node = getWorkNode(slug);
-  if (node?.images && node.images.length > 0) {
-    return node.images.map((f) =>
-      f.startsWith("/") ? f : `/content/projects/${slug}/images/${f}`,
-    );
-  }
-  const imagesDir = path.join(
-    process.cwd(),
-    "content",
-    "projects",
-    slug,
-    "images",
-  );
+// Reads image files from a project's images/ subdirectory, sorted naturally.
+function readImagesDir(slug: string): string[] {
+  const dir = path.join(process.cwd(), "content", "projects", slug, "images");
   try {
     return fs
-      .readdirSync(imagesDir)
+      .readdirSync(dir)
       .filter((f) => IMAGE_EXTENSIONS.has(path.extname(f).toLowerCase()))
       .sort(naturalCompare)
       .map((f) => `/content/projects/${slug}/images/${f}`);
@@ -77,29 +60,23 @@ export function getImages(slug: string): string[] {
   }
 }
 
+export function getImages(slug: string): string[] {
+  const node = getWorkNode(slug);
+  if (node?.images && node.images.length > 0) {
+    return node.images.map((f) =>
+      f.startsWith("/") ? f : `/content/projects/${slug}/images/${f}`,
+    );
+  }
+  return readImagesDir(slug);
+}
+
 export function getThumbnail(slug: string): string {
   for (const ext of ["png", "webp", "jpg", "jpeg"]) {
-    const filePath = path.join(
-      process.cwd(),
-      "content",
-      "projects",
-      slug,
-      `${slug}.${ext}`,
-    );
+    const filePath = path.join(process.cwd(), "content", "projects", slug, `${slug}.${ext}`);
     if (fs.existsSync(filePath)) {
       return `/content/projects/${slug}/${slug}.${ext}`;
     }
   }
   // Fall back to first image in the images/ subdirectory
-  const imagesDir = path.join(process.cwd(), "content", "projects", slug, "images");
-  try {
-    const first = fs
-      .readdirSync(imagesDir)
-      .filter((f) => IMAGE_EXTENSIONS.has(path.extname(f).toLowerCase()))
-      .sort(naturalCompare)[0];
-    if (first) return `/content/projects/${slug}/images/${first}`;
-  } catch {
-    // no images directory
-  }
-  return "";
+  return readImagesDir(slug)[0] ?? "";
 }

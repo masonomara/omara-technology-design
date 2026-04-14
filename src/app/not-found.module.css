@@ -1,229 +1,38 @@
-.contactWrapper {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  font-family: var(--font-overpass);
-  color: var(--color-primary);
-  height: fit-content;
-}
-
-.title {
-  width: 100%;
-  text-align: center;
-  font-size: clamp(48px, 6.7vw, 74px);
-  font-family: var(--font-rallingtonSerif);
-  color: var(--color-primary);
-  margin-top: 0.5em;
-  margin-bottom: 0px;
-  font-weight: 400;
-}
-
-.companyTitle {
-  width: 100%;
-  max-width: 1220px;
-  aspect-ratio: 326/20.03;
-  text-align: center;
-  font-family: var(--font-rallingtonSerif);
-  color: var(--color-primary);
-  margin-bottom: calc(80% / (208 / 12));
-  margin-top: calc(80% / (208 / 12));
-}
-
-.companyTitleImage {
-  height: 100%;
-  object-fit: contain;
-  width: 100%;
-}
-
-.companyTitleImageCondensed {
-  display: none;
-}
-
-.companyTitleImageSuperCondensed {
-  display: none;
-}
-
-.buttonBorder {
-  outline: 2px solid var(--color-primary);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: space-around;
-  font-size: var(--text-ui-sm);
-  line-height: 1.45;
-  outline-offset: 0px;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  text-decoration: none !important;
-}
-
-.buttonBorder:hover {
-  outline-offset: 1.2px;
-  outline: 2.4px solid var(--color-primary);
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: var(--color-bg-hover);
-}
-
-.buttonsWrapper {
-  width: 75vw;
-  max-width: 1120px;
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: calc(100svh - var(--header-height));
+  padding: 32px;
+  text-align: center;
   gap: 16px;
-  flex: 1;
-  margin-top: 23px;
 }
 
-.mainButton {
-  padding: 23.04px 23.04px;
-  width: calc(100% - 46.08px);
+.heading {
+  font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 400;
+  margin: 0;
 }
 
-.buttonHeading {
-  font-size: var(--text-ui-lg);
-  line-height: 1.45;
-  font-variation-settings: var(--fvs-radio-ui);
-  font-family: var(--font-radio);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-ui);
-  text-align: center;
-}
-
-.subButtonsWrapper {
-  width: calc(100% - 16px);
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  gap: 8px;
-  max-width: 1204px;
-  padding: 0px 8px;
-}
-
-.subButton {
+.message {
+  font-family: var(--font-overpass);
   color: var(--color-primary);
-  font-variation-settings: var(--fvs-radio-ui);
-  font-family: var(--font-radio);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-ui);
-  text-align: center;
-  font-size: var(--text-ui-lg);
-  text-decoration: none !important;
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  margin: 0;
 }
 
-.subButton:hover {
-  text-decoration: underline !important;
-  text-decoration-color: var(--color-primary) !important;
-  text-decoration-thickness: 0.02em !important;
-  text-underline-offset: 0.15em !important;
-  transition: var(--transition-smooth-100) all;
-}
-
-.emailInfo {
-  margin-top: 0.8em;
-  font-size: var(--text-ui-sm);
-  line-height: 1.45;
-  font-variation-settings: var(--fvs-radio-ui);
-  font-family: var(--font-radio);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-ui);
-  text-align: center;
-  max-width: 529px;
-}
-
-.emailLink {
+.link {
   color: var(--color-primary);
-  text-decoration: underline !important;
-  text-decoration-thickness: 0.02em !important;
-  text-underline-offset: 0.15em !important;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-  background-color: var(--color-background);
+  text-decoration: underline;
+  text-decoration-thickness: var(--link-thickness);
+  text-underline-offset: var(--link-offset);
+  transition: var(--transition-smooth-100) text-underline-offset;
 }
 
-.emailLink:hover {
-  text-decoration-thickness: 0.02em !important;
-  text-underline-offset: 0.2em !important;
-  transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-}
-
-@media screen and (max-width: 799px) {
-  .companyTitleImage {
-    display: none;
-  }
-
-  .companyTitleImageCondensed {
-    height: 100%;
-    object-fit: contain;
-    width: 100%;
-    display: flex;
-  }
-
-  .companyTitle {
-    aspect-ratio: 142 / 24;
-    margin-bottom: calc(60% / (142 / 24));
-    margin-top: calc(60% / (142 / 24));
-  }
-
-  .buttonHeading {
-    font-size: 23px;
-    line-height: 1.45;
-  }
-
-  .buttonsWrapper {
-    width: calc(100% - 32px);
-  }
-
-  .emailInfo {
-    font-size: 17px;
-    line-height: 1.45;
-  }
-}
-
-@media screen and (max-width: 699px) {
-  .buttonBorder:hover {
-    outline-offset: 0px;
-    outline: 2px solid var(--color-primary);
-    transition: 100ms cubic-bezier(0.33, 0, 0.66, 1) all;
-    background-color: var(--color-background);
-  }
-
-  .subButton {
-    font-size: 24px; /* slightly reduced from --text-ui-lg (29px) for mobile */
-  }
-
-  .subButtonsWrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    column-gap: calc(24px * 0.8);
-    row-gap: calc(24px * 0.5);
-  }
-}
-
-@media screen and (max-width: 349px) {
-  .companyTitleImage {
-    display: none;
-  }
-
-  .companyTitleImageCondensed {
-    display: none;
-  }
-
-  .companyTitleImageSuperCondensed {
-    height: 100%;
-    object-fit: contain;
-    width: 100%;
-    display: flex;
-  }
-
-  .companyTitle {
-    margin-bottom: calc(60% / (142 / 24));
-    margin-top: calc(60% / (142 / 24));
-  }
+.link:hover {
+  text-underline-offset: var(--link-offset-hover);
 }

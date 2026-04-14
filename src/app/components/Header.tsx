@@ -3,15 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { NAV_LINKS } from "../lib/constants";
 import styles from "./Header.module.css";
-
-const NAV_LINKS = [
-  { id: "home", label: "Home", href: "/" },
-  { id: "work", label: "Work", href: "/work" },
-  { id: "about", label: "About", href: "/about" },
-  { id: "services", label: "Services", href: "/services" },
-  { id: "contact", label: "Contact", href: "/contact" },
-];
 
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
@@ -22,10 +15,7 @@ export default function Header() {
 
     const update = () => {
       const height = el.getBoundingClientRect().height;
-      document.documentElement.style.setProperty(
-        "--header-height",
-        `${height}px`,
-      );
+      document.documentElement.style.setProperty("--header-height", `${height}px`);
     };
 
     update();
