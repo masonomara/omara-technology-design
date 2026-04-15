@@ -66,61 +66,6 @@
   margin-bottom: 0.8em;
 }
 
-.engagementCategories {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 1.5em;
-}
-
-.servicesCategoryTitle {
-  margin: 0px !important;
-  font-family: var(--font-overpass);
-  background-color: transparent;
-  font-size: var(--text-lg);
-  font-weight: 800 !important;
-  font-variation-settings: var(--fvs-overpass-heading) !important;
-  text-transform: uppercase;
-  margin-top: 0.8px !important;
-  width: 100%;
-  margin-top: 12.8px !important;
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
-}
-
-.servicesDataWrapper {
-  margin-top: 0em;
-  font-size: var(--text-lg);
-  font-weight: 500;
-  width: 100%;
-  line-height: 1.45;
-  text-align: left;
-  border: 2px solid var(--color-primary);
-}
-
-.servicesCategoryHeader {
-  padding: 24px;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.servicesCategoryHeader * {
-  padding: 0px;
-  margin: 0px !important;
-}
-
-.servicesList {
-  padding: 24px;
-  padding-top: 0px;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: -10px;
-}
-
 .timeline {
   margin-top: 2em;
   border-top: 2px solid var(--color-primary);
@@ -161,6 +106,14 @@
   margin-top: 6px;
   margin-bottom: 0;
   opacity: 0.8;
+  line-height: var(--leading-normal);
+}
+
+.phaseItems {
+  font-size: var(--text-sm);
+  margin-top: 8px;
+  margin-bottom: 0;
+  opacity: 0.55;
   line-height: var(--leading-normal);
 }
 
@@ -257,36 +210,6 @@
 
   .engagementDescription {
     font-size: var(--text-md);
-  }
-
-  .engagementCategories {
-    gap: 12px;
-  }
-
-  .servicesCategoryHeader * {
-    font-size: var(--text-md);
-    line-height: 1.45;
-  }
-
-  .servicesCategoryTitle {
-    font-size: var(--text-lg);
-    margin-left: 0px !important;
-  }
-
-  .servicesCategoryHeader {
-    padding: 20px 16px;
-  }
-
-  .servicesList {
-    padding: 16px;
-    padding-top: 0px;
-    margin-top: -6px;
-    font-size: var(--text-md);
-    line-height: 1.45;
-  }
-
-  .servicesDataWrapper {
-    width: 100%;
   }
 
   .timelineMilestones {

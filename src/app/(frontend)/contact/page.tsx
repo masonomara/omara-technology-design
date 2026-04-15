@@ -1,14 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "./page.module.css";
-import { sendMail } from "@/app/lib/send-mail";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Footer from "@/app/components/Footer";
-import { motion } from "framer-motion";
+import { sendMail } from "@/app/lib/send-mail";
+import { EMAIL_ADDRESS } from "@/app/lib/constants";
 import { fadeInButton, textFadeUp, textFadeUpSmall } from "../../lib/motion";
+import styles from "./page.module.css";
+
+// ─── Schema ───────────────────────────────────────────────────────────────────
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Please enter your name" }),
@@ -18,6 +21,8 @@ const contactFormSchema = z.object({
 });
 
 type FormData = z.infer<typeof contactFormSchema>;
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 const ENGAGEMENT_OPTIONS = ["One-time Project", "Partnership"];
 
@@ -31,11 +36,12 @@ const CAPABILITY_OPTIONS = [
   "Product Development",
 ];
 
+const viewport = { once: true, amount: 0.15 } as const;
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
 export default function Contact() {
-  const emailAddress = "info@omaratechnology.com";
-  const [selectedEngagement, setSelectedEngagement] = useState<string | null>(
-    null,
-  );
+  const [selectedEngagement, setSelectedEngagement] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -47,19 +53,12 @@ export default function Contact() {
     reset,
   } = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      organization: "",
-      message: "",
-      email: "",
-    },
+    defaultValues: { name: "", organization: "", message: "", email: "" },
   });
 
   const toggleService = (service: string) => {
     setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service],
+      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service],
     );
   };
 
@@ -89,14 +88,10 @@ ${values.message || "None provided."}`;
         setSelectedServices([]);
         setSubmitted(true);
       } else {
-        setSubmitError(
-          `Something went wrong. Email us directly at ${emailAddress}`,
-        );
+        setSubmitError(`Something went wrong. Email us directly at ${EMAIL_ADDRESS}`);
       }
     } catch (error) {
-      setSubmitError(
-        `Something went wrong. Email us directly at ${emailAddress}`,
-      );
+      setSubmitError(`Something went wrong. Email us directly at ${EMAIL_ADDRESS}`);
       console.error(error);
     }
   };
@@ -108,7 +103,7 @@ ${values.message || "None provided."}`;
           variants={textFadeUp(0, 0.45)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={viewport}
           className="title"
         >
           Contact
@@ -119,16 +114,12 @@ ${values.message || "None provided."}`;
           variants={fadeInButton("up", 0.12, 0.35)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={viewport}
         >
           {submitted ? (
             <p className={styles.successMessage}>We&apos;ll be in touch.</p>
           ) : (
-            <form
-              className={styles.contactForm}
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
-            >
+            <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)} noValidate>
               {/* Name + Organization */}
               <div className={styles.proseLine}>
                 <span className={styles.proseText}>My name is</span>
@@ -142,15 +133,36 @@ ${values.message || "None provided."}`;
                     <p className={styles.inlineError}>{errors.name.message}</p>
                   )}
                 </div>
-                <span className={styles.proseText}>
-                  and I&apos;m reaching out from
-                </span>
+                <span className={styles.proseText}>and I&apos;m reaching out from</span>
                 <div className={styles.inlineFieldWrapper}>
                   <input
                     className={styles.inlineInput}
                     placeholder="your company or project"
                     {...register("organization")}
                   />
+                </div>
+              </div>
+
+              {/* Message */}
+              <textarea
+                className={styles.messageInput}
+                rows={4}
+                placeholder="What are you building, what's the problem, what do you need?"
+                {...register("message")}
+              />
+
+              {/* Email */}
+              <div className={styles.proseLine}>
+                <span className={styles.proseText}>You can reach me at</span>
+                <div className={styles.inlineFieldWrapper}>
+                  <input
+                    className={styles.inlineInput}
+                    placeholder="your email"
+                    {...register("email")}
+                  />
+                  {errors.email && (
+                    <p className={styles.inlineError}>{errors.email.message}</p>
+                  )}
                 </div>
               </div>
 
@@ -190,32 +202,7 @@ ${values.message || "None provided."}`;
                 </div>
               </div>
 
-              {/* Message */}
-              <textarea
-                className={styles.messageInput}
-                rows={4}
-                placeholder="Tell us more — what's the project, what's the problem, where are you in it?"
-                {...register("message")}
-              />
-
-              {/* Email */}
-              <div className={styles.proseLine}>
-                <span className={styles.proseText}>You can reach me at</span>
-                <div className={styles.inlineFieldWrapper}>
-                  <input
-                    className={styles.inlineInput}
-                    placeholder="your email"
-                    {...register("email")}
-                  />
-                  {errors.email && (
-                    <p className={styles.inlineError}>{errors.email.message}</p>
-                  )}
-                </div>
-              </div>
-
-              {submitError && (
-                <p className={styles.errorMessage}>{submitError}</p>
-              )}
+              {submitError && <p className={styles.errorMessage}>{submitError}</p>}
 
               <button
                 type="submit"
@@ -227,19 +214,19 @@ ${values.message || "None provided."}`;
             </form>
           )}
         </motion.div>
+
         <motion.div
           variants={textFadeUpSmall(0.08, 0.4)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={viewport}
           className={styles.openerBlock}
         >
           <p className={styles.fallback}>
-            Contact forms not your thing? Email us at{" "}
-            <a className={styles.emailLink} href={`mailto:${emailAddress}`}>
-              {emailAddress}
+            Prefer email?{" "}
+            <a className={styles.emailLink} href={`mailto:${EMAIL_ADDRESS}`}>
+              {EMAIL_ADDRESS}
             </a>
-            .
           </p>
         </motion.div>
 

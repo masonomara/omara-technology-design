@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeIn, textFadeUp, textFadeUpSmall } from "../lib/motion";
 import Image from "next/image";
 import Link from "next/link";
+import { fadeIn, textFadeUp, textFadeUpSmall } from "../lib/motion";
 import styles from "./About.module.css";
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 const CAPABILITIES = [
   {
@@ -33,9 +35,13 @@ const CAPABILITIES = [
   },
   {
     label: "Product Development",
-    body: "Strategy, roadmapping, feature prioritization, algorithm design, gamification, onboarding. From the first whiteboard session to a shipped product and everything the loop requires in between.",
+    body: "Strategy, roadmapping, feature prioritization, algorithm design, gamification, onboarding. From the first whiteboard session to a launched product — and every loop in between.",
   },
 ];
+
+const viewport = { once: true, amount: 0.15 } as const;
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function About() {
   return (
@@ -45,7 +51,7 @@ export default function About() {
         variants={textFadeUp(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         About
       </motion.h1>
@@ -54,7 +60,7 @@ export default function About() {
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <p className={styles.ethos}>
           Everything changes faster than anyone can track. Tools, platforms,
@@ -63,18 +69,18 @@ export default function About() {
           Technology is built around.
         </p>
         <p className={styles.identity}>
-          O&apos;Mara Technology is{" "}
+          O&apos;Mara Technology is one person —{" "}
           <a
             href="https://masonomara.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Mason O&apos;Mara
-          </a>{" "}
-          — a product designer and developer based in Asbury Park, NJ. We take
-          on formal engagements for founders and teams building real products:
-          mobile apps, web apps, AI products, and ecommerce experiences. Brought
-          in through trusted partners for larger scopes.
+          </a>
+          , a product designer and developer based in Asbury Park, NJ. We work
+          with founders and teams on mobile apps, web apps, AI products, and
+          ecommerce experiences. For larger scopes, we bring in collaborators we
+          trust.
         </p>
       </motion.div>
 
@@ -83,7 +89,7 @@ export default function About() {
         variants={textFadeUpSmall(0.12, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <h2 className={styles.sectionHeading}>How We Work</h2>
         <div className={styles.engagementsGrid}>
@@ -121,8 +127,9 @@ export default function About() {
         variants={textFadeUpSmall(0.16, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
+        <h2 className={styles.sectionHeading}>What We Do</h2>
         <div className={styles.capabilitiesGrid}>
           {CAPABILITIES.map((cap) => (
             <div key={cap.label} className={styles.capability}>
@@ -138,7 +145,7 @@ export default function About() {
         variants={fadeIn("up", 0.2, 0.5)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <div className={styles.bioImageContainer}>
           <div className={styles.cardImageScreen} />
@@ -147,23 +154,23 @@ export default function About() {
             <Image
               src="/siteHeadshot.png"
               alt="Headshot of Mason O'Mara"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
               className={styles.cardImageTwo}
             />
           </div>
         </div>
         <div className={styles.bioText}>
           <p>
-            Mason O’Mara is a product designer and software engineer. He&apos;s
-            shipped iOS and Android apps, full-stack web platforms, Shopify
-            storefronts, and AI-integrated tools across industries from yacht
-            staffing to accessibility consulting to fashion retail.
+            Mason O&apos;Mara is a product designer and software engineer.
+            He&apos;s shipped iOS and Android apps, full-stack web platforms,
+            Shopify storefronts, and AI-integrated tools across industries from
+            yacht staffing to accessibility consulting to fashion retail.
           </p>
           <p>
-            He moved from UX strategy into independent practice to do end-to-end
-            work he cares about with teams he believes in. He writes about
-            product and design on{" "}
+            He moved from UX strategy into independent practice to do
+            end-to-end work he cares about with teams he believes in. He writes
+            about product and design on{" "}
             <a
               href="https://substack.com/@masonomara"
               target="_blank"

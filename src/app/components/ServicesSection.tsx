@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { textFadeUp, textFadeUpSmall } from "../lib/motion";
-import styles from "./ServicesSection.module.css";
 import type { getServicesData } from "@/lib/content";
+import styles from "./ServicesSection.module.css";
 
 type ServicesData = ReturnType<typeof getServicesData>;
 type Engagement = ServicesData["engagements"][number];
@@ -13,11 +13,11 @@ interface ServicesSectionProps {
   data: ServicesData;
 }
 
+const viewport = { once: true, amount: 0.15 } as const;
+
 export default function ServicesSection({ data }: ServicesSectionProps) {
   const [active, setActive] = useState<string>(data.engagements[0].id);
-  const current = data.engagements.find(
-    (e: Engagement) => e.id === active,
-  ) as Engagement;
+  const current = data.engagements.find((e: Engagement) => e.id === active) as Engagement;
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         variants={textFadeUp(0, 0.45)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
         className="title"
       >
         SERVICES
@@ -35,16 +35,11 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
       >
         <p className={styles.intro}>
-          Everything changes fast. What holds up is better thinking at the
-          start — products designed around a real problem, for a real person,
-          with a clear reason to exist.
-        </p>
-        <p className={styles.introMeta}>
-          We take on two kinds of engagements: one-time projects and ongoing
-          partnerships. Both start the same way.
+          Two kinds of engagements. One-time projects and ongoing partnerships.
+          Both start the same way.
         </p>
       </motion.div>
 
@@ -52,7 +47,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         variants={textFadeUpSmall(0.12, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
         className={styles.toggle}
       >
         {data.engagements.map((e: Engagement) => (
@@ -79,17 +74,6 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
           </p>
         ))}
 
-        <div className={styles.engagementCategories}>
-          {current.categories.map((cat) => (
-            <div key={cat.name} className={styles.servicesDataWrapper}>
-              <div className={styles.servicesCategoryHeader}>
-                <h3 className={styles.servicesCategoryTitle}>{cat.name}</h3>
-              </div>
-              <p className={styles.servicesList}>{cat.items.join(", ")}</p>
-            </div>
-          ))}
-        </div>
-
         <div className={styles.timeline}>
           {current.timeline.phases.map((phase, i) => (
             <div
@@ -98,18 +82,15 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
             >
               <div className={styles.timelinePhaseHeader}>
                 <span className={styles.timelinePhaseName}>{phase.name}</span>
-                <span className={styles.timelinePhaseDuration}>
-                  {phase.duration}
-                </span>
+                <span className={styles.timelinePhaseDuration}>{phase.duration}</span>
               </div>
-              <p className={styles.timelineMilestones}>
-                {phase.milestones.join(", ")}
-              </p>
+              <p className={styles.timelineMilestones}>{phase.milestones.join(", ")}</p>
+              {"items" in phase && phase.items && (
+                <p className={styles.phaseItems}>{phase.items.join(", ")}</p>
+              )}
             </div>
           ))}
-          <p className={styles.timelineOutcome}>
-            {current.timeline.outcome}
-          </p>
+          <p className={styles.timelineOutcome}>{current.timeline.outcome}</p>
         </div>
 
         {current.note && (
@@ -121,55 +102,33 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
         className={styles.servicesSection}
       >
         <h2 className={styles.sectionHeading}>How It Works</h2>
         <div className={styles.servicesBody}>
           <p>
-            We start by listening. Every engagement — whether it runs three
-            months or three years — begins the same way: a 20-minute call to
-            see if it&apos;s worth a conversation, then a paid discovery phase
-            where we ask the questions that actually matter.
+            Every engagement starts the same way: a 20-minute call to see if
+            it&apos;s worth a conversation, then a paid discovery phase where
+            we ask the questions that actually matter.
           </p>
           <p>
-            Every product goes through the same loop. An idea, then discovery,
-            then design, then build — then back around. The job is
-            understanding where you are in the loop and what it needs next.
+            Every product goes through the same loop — idea, discovery, design,
+            build — then back around. Discovery is where most ideas stop, and
+            should. It&apos;s where we find out whether the problem is real,
+            who actually has it, and whether someone&apos;s already solved it
+            better.
           </p>
           <p>
-            Discovery is where most ideas stop — and should. This is where we
-            find out what we actually don&apos;t know: who the real user is,
-            what the actual problem is, whether someone&apos;s already solved
-            it better. We put the idea in front of as many people as possible.
-            We listen to how they describe their own problem, not just what
-            they say about the solution. We research competitors — what did
-            they do well, what can we learn from, where did they fail? We
-            document what we learn and what we still don&apos;t understand.
-            Both come back around.
+            Design is when the idea crystallizes. Build is where the code gets
+            written. AI is making the build cycle faster — which means
+            discovery and design have more leverage than they used to. Better
+            thinking up front compounds.
           </p>
           <p>
-            Design is when the idea crystallizes. Defining who we&apos;re
-            building for. Communicating it clearly to everyone who needs to
-            build it with us. These are real decisions made for real reasons,
-            not templates filled in.
-          </p>
-          <p>
-            Build is where the code gets written. AI is making this faster —
-            cycles that used to take months are contracting. The implication
-            isn&apos;t that development matters less. It&apos;s that everything
-            before development has more leverage than it used to. Better
-            discovery, better design, tighter iteration — these compound. The
-            loop gets smaller and faster, which means the thinking at the
-            start of each loop matters more.
-          </p>
-          <p>
-            For a one-time project, launch is a handoff. We ship it, document
-            it, train your team on it, and you own it from there.
-          </p>
-          <p>
-            For a partnership, launch is the beginning. The loop keeps going —
-            smaller and faster each time.
+            For a one-time project, launch is a handoff — documented, trained,
+            yours to run. For a partnership, launch is the beginning. The loop
+            keeps going.
           </p>
         </div>
       </motion.section>
@@ -178,7 +137,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={viewport}
         className={styles.pricingSection}
       >
         <h2 className={styles.sectionHeading}>Pricing</h2>
