@@ -121,6 +121,7 @@ ${values.message || "None provided."}`;
           whileInView="show"
           viewport={viewport}
           className="title"
+          style={{ marginBottom: 0 }}
         >
           Contact
         </motion.h1>
@@ -137,124 +138,131 @@ ${values.message || "None provided."}`;
               Thank you for considering us. We&apos;ll be in touch soon.
             </p>
           ) : (
-            <form
-              className={styles.contactForm}
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
-            >
-              {/* Name */}
-              <div className={styles.proseLine}>
-                <span className={styles.proseText}>My name is</span>
-                <div className={styles.inlineFieldWrapper}>
+            <>
+              <form
+                id="contact-form"
+                className={styles.contactForm}
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+              >
+                {/* Name */}
+                <div className={styles.fieldGroup}>
+                  <label
+                    className={styles.fieldLabel}
+                    style={{ marginTop: 0 }}
+                  >
+                    My name is:
+                  </label>
                   <input
-                    className={styles.inlineInput}
-                    placeholder="your name"
+                    className={styles.fieldInput}
+                    placeholder="Your name"
                     {...register("name")}
                   />
                   {errors.name && (
-                    <p className={styles.inlineError}>{errors.name.message}</p>
+                    <p className={styles.fieldError}>{errors.name.message}</p>
                   )}
                 </div>
-                <span className={styles.proseText}>.</span>
-              </div>
 
-              {/* Role + Company */}
-              <div className={styles.proseLine}>
-                <span className={styles.proseText}>I am the</span>
-                <div className={styles.inlineFieldWrapper}>
+                {/* Email */}
+                <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}>My best email is:</label>
                   <input
-                    className={styles.inlineInput}
-                    placeholder="role"
-                    {...register("role")}
-                  />
-                </div>
-                <span className={styles.proseText}>of</span>
-                <div className={styles.inlineFieldWrapper}>
-                  <input
-                    className={styles.inlineInput}
-                    placeholder="company or project"
-                    {...register("company")}
-                  />
-                </div>
-                <span className={styles.proseText}>.</span>
-              </div>
-
-              {/* Service Areas */}
-              <div className={styles.servicesBlock}>
-                <p className={styles.servicesLabel}>We&apos;re looking for:</p>
-                <div className={styles.serviceGrid}>
-                  {CAPABILITY_OPTIONS.map((capability) => (
-                    <label key={capability} className={styles.serviceItem}>
-                      <input
-                        type="checkbox"
-                        className={styles.serviceCheckbox}
-                        checked={selectedServices.includes(capability)}
-                        onChange={() => toggleService(capability)}
-                      />
-                      <span className={styles.serviceLabel}>{capability}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Message */}
-              <textarea
-                className={styles.messageInput}
-                rows={4}
-                placeholder="Tell us more about what you're building, where you're stuck, or what you need."
-                {...register("message")}
-              />
-
-              {/* Budget */}
-              <div className={styles.proseLine}>
-                <span className={styles.proseText}>Our budget ranges from</span>
-                <div className={styles.inlineFieldWrapper}>
-                  <input
-                    className={styles.inlineInput}
-                    placeholder="low price"
-                    {...register("budgetLow")}
-                  />
-                </div>
-                <span className={styles.proseText}>to</span>
-                <div className={styles.inlineFieldWrapper}>
-                  <input
-                    className={styles.inlineInput}
-                    placeholder="high price"
-                    {...register("budgetHigh")}
-                  />
-                </div>
-                <span className={styles.proseText}>.</span>
-              </div>
-
-              {/* Email */}
-              <div className={styles.proseLine}>
-                <span className={styles.proseText}>
-                  The best place to reach me is
-                </span>
-                <div className={styles.inlineFieldWrapper}>
-                  <input
-                    className={styles.inlineInput}
-                    placeholder="email address"
+                    className={styles.fieldInput}
+                    placeholder="your@email.com"
                     {...register("email")}
                   />
                   {errors.email && (
-                    <p className={styles.inlineError}>{errors.email.message}</p>
+                    <p className={styles.fieldError}>{errors.email.message}</p>
                   )}
                 </div>
-              </div>
 
-              {submitError && (
-                <p className={styles.errorMessage}>{submitError}</p>
-              )}
+                {/* Role + Company */}
+                <div className={styles.fieldRow}>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>I am the:</label>
+                    <input
+                      className={styles.fieldInput}
+                      placeholder="Your role"
+                      {...register("role")}
+                    />
+                  </div>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>
+                      at:
+                    </label>
+                    <input
+                      className={styles.fieldInput}
+                      placeholder="Company or project name"
+                      {...register("company")}
+                    />
+                  </div>
+                </div>
+
+                {/* Service Areas */}
+                <div className={styles.servicesBlock}>
+                  <p className={styles.fieldLabel}>I am looking for:</p>
+                  <div className={styles.serviceGrid}>
+                    {CAPABILITY_OPTIONS.map((capability) => (
+                      <label key={capability} className={styles.serviceItem}>
+                        <input
+                          type="checkbox"
+                          className={styles.serviceCheckbox}
+                          checked={selectedServices.includes(capability)}
+                          onChange={() => toggleService(capability)}
+                        />
+                        <span className={styles.serviceLabel}>
+                          {capability}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}></label>
+                  <textarea
+                    className={styles.messageInput}
+                    rows={4}
+                    placeholder="Tell us more about what you're building, where you're stuck, or what you need."
+                    {...register("message")}
+                  />
+                </div>
+
+                {/* Budget */}
+                <div className={styles.fieldRow}>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>My budget is:</label>
+                    <input
+                      className={styles.fieldInput}
+                      placeholder="e.g. $5,000"
+                      {...register("budgetLow")}
+                    />
+                  </div>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.fieldLabel}>to:</label>
+                    <input
+                      className={styles.fieldInput}
+                      placeholder="e.g. $20,000"
+                      {...register("budgetHigh")}
+                    />
+                  </div>
+                </div>
+
+                {submitError && (
+                  <p className={styles.errorMessage}>{submitError}</p>
+                )}
+              </form>
 
               <button
                 type="submit"
+                form="contact-form"
                 className={styles.submitButton}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Submit"}
               </button>
-            </form>
+            </>
           )}
         </motion.div>
 

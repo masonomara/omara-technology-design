@@ -4,7 +4,7 @@
   font-family: var(--font-overpass);
   font-weight: 500;
   color: var(--color-primary);
-  line-height: var(--leading-normal);
+  line-height: var(--leading-relaxed);
   text-align: center;
   margin-top: 32px;
 }
@@ -24,69 +24,69 @@
 
 /* Form container */
 .contactFormWrapper {
-  width: 100%;
-  max-width: 640px;
-  border: 2px solid var(--color-primary);
-  padding: 40px;
+  width: 87vw;
+  max-width: 740px;
+  box-sizing: border-box;
+  margin-top: 24px;
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
-  gap: 28px;
   width: 100%;
 }
 
-/* Prose lines */
-.proseLine {
+/* Standard field groups */
+.fieldGroup {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 10px;
-  line-height: var(--leading-relaxed);
-}
-
-.proseText {
-  font-size: var(--text-ui-md);
-  font-family: var(--font-overpass);
-  font-weight: 500;
-  color: var(--color-primary);
-  white-space: nowrap;
-}
-
-.inlineFieldWrapper {
-  display: inline-flex;
   flex-direction: column;
 }
 
-.inlineInput {
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--color-primary);
-  padding: 0 4px 3px;
-  font-size: var(--text-ui-md);
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fieldLabel {
   font-family: var(--font-overpass);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: var(--leading-relaxed);
+  margin-top: 1.6em;
+  margin-bottom: 0.2em;
+}
+
+.fieldInput {
+  font-family: var(--font-overpass);
+  font-size: var(--text-lg);
   font-weight: 500;
   color: var(--color-primary);
-  min-width: 160px;
-  outline: none;
-  transition: var(--transition-smooth-100) box-shadow;
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  outline: 0.6px solid var(--color-primary);
+  padding: 10px 12px 9px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: var(--transition-smooth-100) all;
 }
 
-.inlineInput::placeholder {
-  color: rgba(137, 24, 16, 0.4);
-  font-style: italic;
+.fieldInput::placeholder {
+  color: rgba(137, 24, 16, 0.75);
+  font-weight: 500;
 }
 
-.inlineInput:focus {
-  box-shadow: 0 0.5px 0 var(--color-primary);
+.fieldInput:focus-visible,
+.fieldInput:hover {
+  outline: 1px solid var(--color-primary);
+  background-color: var(--color-bg-hover);
 }
 
-.inlineError {
+.fieldError {
   font-family: var(--font-overpass);
   font-size: var(--text-2xs);
   color: var(--color-primary);
-  margin-top: 3px;
   font-style: italic;
 }
 
@@ -94,14 +94,14 @@
 .servicesBlock {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
 .servicesLabel {
   margin: 0;
-  font-size: var(--text-ui-md);
+  font-size: var(--text-lg);
   font-family: var(--font-overpass);
-  font-weight: 500;
+  font-weight: 800;
+  text-transform: uppercase;
   color: var(--color-primary);
   line-height: var(--leading-relaxed);
 }
@@ -110,6 +110,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px 24px;
+  margin-top: 8px;
 }
 
 .serviceItem {
@@ -172,7 +173,7 @@
 }
 
 .messageInput::placeholder {
-  color: rgba(137, 24, 16, 0.5);
+  color: rgba(137, 24, 16, 0.75);
   font-weight: 500;
 }
 
@@ -201,9 +202,16 @@
   color: var(--color-background);
   white-space: nowrap;
   cursor: pointer;
-  margin-top: 4px;
+  margin-top: 16px;
   align-self: flex-start;
   transition: var(--transition-smooth-100) all;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+    max-width: 220px;
+    width: 100%;
+
 }
 
 .submitButton:hover {
@@ -224,7 +232,7 @@
 
 /* Success / Error */
 .successMessage {
-  font-size: var(--text-ui-md);
+  font-size: var(--text-lg);
   font-family: var(--font-overpass);
   font-weight: 500;
   color: var(--color-primary);
@@ -241,19 +249,6 @@
 
 /* Mobile */
 @media screen and (max-width: 799px) {
-  .proseText {
-    font-size: var(--text-ui-sm);
-  }
-
-  .inlineInput {
-    font-size: var(--text-ui-sm);
-    min-width: 130px;
-  }
-
-  .servicesLabel {
-    font-size: var(--text-ui-sm);
-  }
-
   .serviceGrid {
     grid-template-columns: 1fr;
   }
@@ -261,8 +256,21 @@
 
 @media screen and (max-width: 699px) {
   .contactFormWrapper {
-    width: calc(100% - 16px);
-    padding: 0 8px;
+    width: calc(100% - 24px);
+    padding: 0 12px;
+  }
+  .fieldLabel {
+    font-family: var(--font-overpass);
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: var(--leading-relaxed);
+    margin-top: 1.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
   }
 
   .fallback {
@@ -271,5 +279,12 @@
 
   .submitButton:hover {
     background-color: var(--color-btn-primary-hover);
+  }
+}
+
+@media screen and (max-width: 449px) {
+  .contactFormWrapper {
+    width: calc(100% - 16px);
+    padding: 0 8px;
   }
 }

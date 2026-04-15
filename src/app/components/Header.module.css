@@ -45,7 +45,7 @@
 .logoDesktop {
   pointer-events: none;
   aspect-ratio: 326/20.03;
-  height: clamp(14px, 2.6vw, 29.6px);
+  height: clamp(14px, 2.3vw, 29.6px);
   width: auto;
 }
 
