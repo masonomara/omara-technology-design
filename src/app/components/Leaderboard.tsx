@@ -30,16 +30,16 @@ function containsBadWord(name: string): boolean {
 }
 
 /**
- * Converts a leaderboard position into a human-readable rank label.
- * Returns "Rank not available" if the score isn't in the fetched leaderboard yet.
+ * Converts a score into a human-readable rank label by counting how many
+ * existing leaderboard entries scored strictly higher. Works before submission.
  */
 function getRankLabel(score: number, leaderboard: LeaderboardEntry[]): string {
   const total = leaderboard.length;
-  const rank = leaderboard.findIndex((entry) => entry.score === score);
+  if (total === 0) return "Rank not available";
 
-  if (rank === -1) return "Rank not available";
+  const betterCount = leaderboard.filter((entry) => entry.score > score).length;
+  const pct = (betterCount / total) * 100;
 
-  const pct = (rank / total) * 100;
   if (pct <= 0.01) return "Top 0.01%";
   if (pct <= 0.1) return "Top 0.1%";
   if (pct <= 1) return "Top 1%";
@@ -192,7 +192,7 @@ export default function Leaderboard({
       <div className={styles.buttonRow}>
         {!submitted && (
           <button
-            className={styles.button}
+            className={`${styles.button} ${styles.buttonPrimary}`}
             onClick={handleSubmit}
             disabled={!nickname.trim() || isSubmitting}
           >

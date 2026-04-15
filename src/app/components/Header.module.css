@@ -135,7 +135,7 @@
     width: calc(100vw - 40px);
     height: fit-content;
     padding: 0px 0px 0px;
-    border: 1.5px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
   }
 
   .menuOption span {

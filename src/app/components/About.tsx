@@ -126,7 +126,7 @@ export default function About() {
           committing to a full design and build.
         </p>
         <Link href="/services" className={styles.servicesLink}>
-          Learn more details
+          Learn more
         </Link>
       </motion.div>
 
@@ -155,47 +155,50 @@ export default function About() {
         whileInView="show"
         viewport={viewport}
       >
-        <div className={styles.bioImageContainer}>
-          <div className={styles.cardImageScreen} />
-          <div className={styles.cardImageMultiply} />
-          <div className={styles.cardImage}>
-            <Image
-              src="/siteHeadshot.png"
-              alt="Headshot of Mason O'Mara"
-              fill
-              style={{ objectFit: "cover" }}
-              className={styles.cardImageTwo}
-            />
+        <h2 className={styles.sectionHeading}>Our Team</h2>
+        <div className={styles.bioContent}>
+          <div className={styles.bioImageContainer}>
+            <div className={styles.cardImageScreen} />
+            <div className={styles.cardImageMultiply} />
+            <div className={styles.cardImage}>
+              <Image
+                src="/siteHeadshot.png"
+                alt="Headshot of Mason O’Mara"
+                fill
+                style={{ objectFit: "cover" }}
+                className={styles.cardImageTwo}
+              />
+            </div>
           </div>
-        </div>
-        <div className={styles.bioText}>
-          <p>
-            Mason O’Mara is a product designer and software engineer. He&apos;s
-            shipped iOS and Android apps, full-stack web platforms, Shopify
-            storefronts, and AI-integrated tools across industries from yacht
-            staffing to accessibility consulting to fashion retail.
-          </p>
-          <p>
-            He moved from UX strategy into independent practice to do the work
-            he cares about with teams he believes in. He writes about product
-            and design on{" "}
-            <a
-              href="https://substack.com/@masonomara"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Substack
-            </a>{" "}
-            and documents builds on{" "}
-            <a
-              href="https://youtube.com/@masonomaratechnology"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              YouTube
-            </a>
-            . He&apos;s based in Asbury Park, NJ.
-          </p>
+          <div className={styles.bioText}>
+            <p>
+              Mason O’Mara is a product designer and software engineer. He&apos;s
+              shipped iOS and Android apps, full-stack web platforms, Shopify
+              storefronts, and AI-integrated tools across industries from yacht
+              staffing to accessibility consulting to fashion retail.
+            </p>
+            <p>
+              He moved from UX strategy into independent practice to do the work
+              he cares about with teams he believes in. He writes about product
+              and design on{" "}
+              <a
+                href="https://substack.com/@masonomara"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Substack
+              </a>{" "}
+              and documents builds on{" "}
+              <a
+                href="https://youtube.com/@masonomaratechnology"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube
+              </a>
+              . He&apos;s based in Asbury Park, NJ.
+            </p>
+          </div>
         </div>
       </motion.div>
     </>

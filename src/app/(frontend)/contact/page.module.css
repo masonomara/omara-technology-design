@@ -62,7 +62,7 @@
 .inlineInput {
   background: transparent;
   border: none;
-  border-bottom: 1.5px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
   padding: 0 4px 3px;
   font-size: var(--text-ui-md);
   font-family: var(--font-overpass);
@@ -70,7 +70,7 @@
   color: var(--color-primary);
   min-width: 160px;
   outline: none;
-  transition: var(--transition-smooth-100) border-bottom-width;
+  transition: var(--transition-smooth-100) box-shadow;
 }
 
 .inlineInput::placeholder {
@@ -79,7 +79,7 @@
 }
 
 .inlineInput:focus {
-  border-bottom-width: 2px;
+  box-shadow: 0 0.5px 0 var(--color-primary);
 }
 
 .inlineError {
@@ -131,7 +131,7 @@
   min-height: 18px;
   width: 18px;
   height: 18px;
-  border: 1.5px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   position: relative;
   cursor: pointer;
   margin: 0;
@@ -196,7 +196,7 @@
     "wght" 600;
   letter-spacing: -0.015em;
   text-transform: uppercase;
-  border: 1.5px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   background-color: var(--color-primary);
   color: var(--color-background);
   white-space: nowrap;

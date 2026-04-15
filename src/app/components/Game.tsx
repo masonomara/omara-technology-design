@@ -112,7 +112,7 @@ export default function Game() {
         width: "clamp(51px, 9.7vw, 67px)",
         height: "clamp(91px, 17.3vw, 120px)",
         backgroundImage: `url(${ENEMY_IMAGES[game.currentEnemy % ENEMY_IMAGES.length]})`,
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         left: `${enemyX}px`,
         top: `${enemyY}px`,
       });

@@ -21,7 +21,6 @@
 /* Full-screen wrapper that sits below the site header */
 .gameFrameWrapper {
   position: fixed;
-  top: var(--header-height);
   left: 0;
   display: flex;
   align-items: center;
@@ -29,15 +28,15 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  
+  height: calc(100% - var(--header-height) - 28px);
+  margin-top: calc(var(--header-height));
+  margin-bottom: 28px;
 }
 
 /* Inner frame — caps width so the game doesn't stretch on ultra-wide screens */
 .gameFrame {
   width: 100%;
-  height: calc(100% - var(--header-height) - 12px - 28px);
-  margin-top: calc(var(--header-height) + 12px);
-  margin-bottom: 28px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,12 +71,16 @@
   font-size: 77px;
   pointer-events: none;
   color: var(--color-primary);
-  font-variation-settings: "wdth" 75, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   line-height: 100%;
-  transform: translateY(calc(100% + 16px)); /* hidden below the fold by default */
+  transform: translateY(
+    calc(100% + 16px)
+  ); /* hidden below the fold by default */
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 187ms;
   transition-delay: 75ms;
 }
@@ -87,7 +90,9 @@
   font-size: 58px;
   pointer-events: none;
   color: var(--color-primary);
-  font-variation-settings: "wdth" 75, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
   font-style: italic;
   font-family: var(--font-radio);
   line-height: 100%;
@@ -117,7 +122,9 @@
   font-size: 27px;
   pointer-events: none;
   color: var(--color-primary);
-  font-variation-settings: "wdth" 100, "wght" 800;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 800;
   font-family: var(--font-overpass);
   text-transform: uppercase;
   font-style: italic;
@@ -223,7 +230,7 @@
 .startContainer {
   padding: 48px;
   border: 1px solid var(--color-primary);
-  max-width: 740px;
+  max-width: 404px;
   width: calc(100% - 240px);
   height: fit-content;
   display: flex;
@@ -251,21 +258,22 @@
 
 .startWordmark {
   width: 100%;
-  max-width: 800px;
+  max-width: 360px;
   display: block;
   margin-bottom: 8px;
 }
 
 .startTagline {
   font-family: var(--font-overpass);
-  font-size: 13px;
-  font-weight: 500;
-  font-variation-settings: "wdth" 100, "wght" 500;
+  font-size: 16px;
+  font-weight: 700;
+  font-variation-settings:
+    "wdth" 100,
+    "wght" 600;
   line-height: 1.45;
   color: var(--color-primary);
-  opacity: 0.8;
   text-align: center;
-  margin: 0;
+  margin: 0.8em 0px 0.8em;
 }
 
 /* =============================================================================
@@ -285,15 +293,14 @@
      accounts for header, bottom bar, and breathing room */
   max-height: calc(100% - 71px - 25px - 32px);
   height: 100%;
-  min-height: fit-content;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   background-color: var(--color-background);
   opacity: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 0px !important;
@@ -341,13 +348,15 @@
   justify-content: center;
   gap: 7px;
   border-radius: 0;
-  border: 1.5px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   background-color: var(--color-primary);
   color: var(--color-background);
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
-  font-variation-settings: "wdth" 75, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -375,13 +384,15 @@
   justify-content: center;
   gap: 7px;
   border-radius: 0;
-  border: 1.5px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   background-color: var(--color-background);
   color: var(--color-primary);
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
-  font-variation-settings: "wdth" 75, "wght" 600;
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
   font-family: var(--font-radio);
   letter-spacing: -0.015em;
   text-transform: uppercase;
@@ -492,7 +503,12 @@
   /* Remove header offset — game fills the whole screen on mobile */
   .gameFrameWrapper {
     top: 0px;
-    height: calc(100svh);
+  }
+
+  .gameFrameWrapper {
+    height: calc(100% - var(--header-height) - 12px - 28px);
+    margin-top: calc(var(--header-height) + 12px);
+    margin-bottom: 28px;
   }
 
   /* Game over panel fills most of the screen height */
@@ -507,6 +523,8 @@
   .startContainer {
     padding: 40px;
     width: calc(100% - 80px - 64px);
+
+    max-width: 320px;
   }
 
   /* Stack buttons vertically on narrow screens */
@@ -559,6 +577,15 @@
   .scoreWrapperActiveTwo {
     transform: translateY(0%);
     transition-delay: 50ms;
+  }
+
+  /* Video breaks out of the offset wrapper to fill the full viewport */
+  .videoWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100svh;
   }
 }
 
