@@ -118,8 +118,8 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
               </p>
             </div>
           ))}
-          {"total" in current.timeline && current.timeline.total && (
-            <p className={styles.timelineTotal}>{current.timeline.total as string}</p>
+          {"total" in current.timeline && typeof current.timeline.total === "string" && (
+            <p className={styles.timelineTotal}>{current.timeline.total}</p>
           )}
         </div>
       </motion.div>
