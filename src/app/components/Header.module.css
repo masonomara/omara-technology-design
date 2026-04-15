@@ -113,6 +113,15 @@
   transition: var(--transition-smooth-100) all;
 }
 
+@media (min-width: 700px) {
+  .menuOptionActive span {
+    text-decoration: underline !important;
+    text-decoration-color: var(--color-primary) !important;
+    text-decoration-thickness: 0.05em !important;
+    text-underline-offset: 0.15em !important;
+  }
+}
+
 /* ─── Mobile ───────────────────────────────────────────────────────────────── */
 
 @media screen and (max-width: 699px) {
