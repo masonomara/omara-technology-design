@@ -48,6 +48,12 @@
   gap: 16px;
 }
 
+@media screen and (max-width: 699px) {
+  .fieldRow {
+    gap: 0px;
+  }
+}
+
 .fieldLabel {
   font-family: var(--font-overpass);
   font-size: var(--text-lg);
@@ -209,9 +215,8 @@
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
-    max-width: 220px;
-    width: 100%;
-
+  max-width: 220px;
+  width: 100%;
 }
 
 .submitButton:hover {
@@ -238,6 +243,7 @@
   color: var(--color-primary);
   line-height: var(--leading-relaxed);
   margin: 0;
+  text-align: center;
 }
 
 .errorMessage {
