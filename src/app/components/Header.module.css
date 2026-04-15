@@ -45,40 +45,14 @@
 .logoDesktop {
   pointer-events: none;
   aspect-ratio: 326/20.03;
-  height: 24px;
+  height: clamp(14px, 2.6vw, 29.6px);
   width: auto;
-}
-
-@media (max-width: 999px) {
-  .logoDesktop {
-    height: 20px;
-  }
-  .content {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 849px) {
-  .logoDesktop {
-    height: 18px;
-  }
-  .content {
-    gap: 18px;
-  }
-}
-@media (max-width: 749px) {
-  .logoDesktop {
-    height: 17px;
-  }
-  .content {
-    gap: 17px;
-  }
 }
 
 .textContainer {
   display: none;
 }
-@media (min-width: 1240px) {
+@media (min-width: 1333px) {
   .textContainer {
     margin-top: 0em;
     margin-bottom: 0em;
