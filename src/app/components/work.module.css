@@ -63,12 +63,12 @@
   z-index: 2;
 }
 .cardTitle {
-  margin-top: 0.6em;
-  margin-bottom: 0px;
+  margin-top: 0.8em;
+  margin-bottom: 00em;
   width: 100%;
   text-align: left;
   color: var(--color-primary);
-  font-size: var(--text-sm);
+  font-size: var(--text-md);
   line-height: 1.45;
   font-weight: 800;
   font-family: var(--font-overpass);
@@ -84,5 +84,5 @@
   text-align: left;
   text-decoration: none;
   margin: 0px !important;
-  margin-top: 0.8em;
+  margin-top: 0.2em !important;
 }

@@ -69,10 +69,13 @@ export function Project({ title, html, images = [] }: ProjectProps) {
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
-          Want to work together?
+          Interested in working together?
           <br />
-          Email{" "}
-          <a className={projectStyles.emailLink} href={`mailto:${EMAIL_ADDRESS}`}>
+          Feel free to email us at{" "}
+          <a
+            className={projectStyles.emailLink}
+            href={`mailto:${EMAIL_ADDRESS}`}
+          >
             {EMAIL_ADDRESS}
           </a>
         </motion.div>

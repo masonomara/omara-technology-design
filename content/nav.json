@@ -39,12 +39,12 @@
         "description": "Ecommerce rebuild for a growing boutique brand retailer with multiple locations and shifting inventory, and complex custom integrations"
       },
       {
-        "name": "Flora and Mar",
-        "description": "Design and development of an online store built to match the handcrafted care in the ayurvedic skincare products it sells"
-      },
-      {
         "name": "Talulas",
         "description": "Website for a local pizza brand complete with custom merchandise, restaurant reservations, online ordering, and a single admin for all of it"
+      },
+      {
+        "name": "Flora and Mar",
+        "description": "Design and development of an online store built to match the handcrafted care in the ayurvedic skincare products it sells"
       },
       {
         "name": "Interwoven",

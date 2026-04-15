@@ -56,6 +56,7 @@ export default function About() {
         initial="hidden"
         whileInView="show"
         viewport={viewport}
+        style={{ marginBottom: 0 }}
       >
         About
       </motion.h1>
@@ -65,6 +66,7 @@ export default function About() {
         initial="hidden"
         whileInView="show"
         viewport={viewport}
+        style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}
       >
         <p className={styles.ethos}>
           We are another generation of constant change. Tools, platforms,
@@ -100,8 +102,8 @@ export default function About() {
           <div className={styles.engagementType}>
             <h3>One-Time Projects</h3>
             <p>
-              For new products and features. Discovery, design, development,
-              and launch all scoped before we start, with payments at monthly
+              For new products and features. Discovery, design, development, and
+              launch all scoped before we start, with payments at monthly
               milestones along the way. At the end, you own the codebase,
               documentation, and training — the project is yours to operate.
             </p>

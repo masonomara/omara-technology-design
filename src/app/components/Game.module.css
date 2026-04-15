@@ -29,6 +29,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  
 }
 
 /* Inner frame — caps width so the game doesn't stretch on ultra-wide screens */
@@ -355,8 +356,13 @@
 }
 
 .primaryButton:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
+  background-color: var(--color-btn-primary-hover);
+  transition: var(--transition-smooth-100) all;
+  cursor: pointer;
+}
+
+.primaryButton:active {
+  opacity: 0.75;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -380,6 +386,16 @@
   letter-spacing: -0.015em;
   text-transform: uppercase;
   text-decoration: none;
+  transition: var(--transition-smooth-100) all;
+}
+
+.secondaryButton:hover {
+  background-color: var(--color-btn-hover);
+  transition: var(--transition-smooth-100) all;
+}
+
+.secondaryButton:active {
+  opacity: 0.75;
   transition: var(--transition-smooth-100) all;
 }
 
@@ -499,8 +515,7 @@
   }
 
   .primaryButton:hover {
-    text-decoration-thickness: 2px !important;
-    text-underline-offset: 0.2em !important;
+    background-color: var(--color-btn-primary-hover);
   }
 
   /* Move hand to center-bottom instead of bottom-right */

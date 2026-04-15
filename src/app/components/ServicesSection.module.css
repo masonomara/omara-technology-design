@@ -132,20 +132,34 @@
 }
 
 .ctaLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 1.2em;
-  font-size: var(--text-md);
-  font-weight: 500;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 21px;
+  font-family: var(--font-radio);
+  font-variation-settings: "wdth" 75, "wght" 600;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1.5px solid var(--color-primary);
+  background-color: var(--color-background);
   color: var(--color-primary);
-  text-decoration: underline !important;
-  text-decoration-thickness: var(--link-thickness) !important;
-  text-underline-offset: var(--link-offset) !important;
+  text-decoration: none !important;
   transition: var(--transition-smooth-100) all;
+  cursor: pointer;
 }
 
 .ctaLink:hover {
-  text-decoration-thickness: var(--link-thickness) !important;
-  text-underline-offset: var(--link-offset-hover) !important;
+  background-color: var(--color-btn-hover);
+  text-decoration: none !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.ctaLink:active {
+  opacity: 0.75;
   transition: var(--transition-smooth-100) all;
 }
 

@@ -184,23 +184,37 @@
 
 /* Submit */
 .submitButton {
+  height: 40px;
+  font-size: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
   font-family: var(--font-radio);
-  font-variation-settings: var(--fvs-radio-ui);
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
-  letter-spacing: var(--tracking-ui);
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  padding: 12px 24px;
-  font-size: var(--text-ui-sm);
+  border: 1.5px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  white-space: nowrap;
   cursor: pointer;
   margin-top: 4px;
-  transition: var(--transition-smooth-100) all;
   align-self: flex-start;
+  transition: var(--transition-smooth-100) all;
 }
 
 .submitButton:hover {
-  background-color: var(--color-bg-hover);
+  background-color: var(--color-btn-primary-hover);
+  transition: var(--transition-smooth-100) all;
+  cursor: pointer;
+}
+
+.submitButton:active {
+  opacity: 0.75;
+  transition: var(--transition-smooth-100) all;
 }
 
 .submitButton:disabled {
@@ -256,6 +270,6 @@
   }
 
   .submitButton:hover {
-    background-color: var(--color-background);
+    background-color: var(--color-btn-primary-hover);
   }
 }

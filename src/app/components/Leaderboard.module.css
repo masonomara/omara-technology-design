@@ -251,8 +251,8 @@
   gap: 7px;
   border-radius: 0;
   border: 1.5px solid var(--color-primary);
-  background-color: var(--color-primary);
-  color: var(--color-background);
+  background-color: var(--color-background);
+  color: var(--color-primary);
   width: 100%;
   max-width: 450px;
   white-space: nowrap;
@@ -262,11 +262,16 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: var(--transition-smooth-100) all;
+  cursor: pointer;
 }
 
 .button:hover {
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 0.2em !important;
+  background-color: var(--color-btn-hover);
+  transition: var(--transition-smooth-100) all;
+}
+
+.button:active {
+  opacity: 0.75;
   transition: var(--transition-smooth-100) all;
 }
 
