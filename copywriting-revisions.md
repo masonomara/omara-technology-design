@@ -124,7 +124,7 @@ Your browser does not support the video tag.
 
 6. **Seed to Sprout** — Website handling multiple product types and shipping rules, plus a cookbook designed for print, preorder, and shipping
 
-7. **Butcher's Block** — Launched online store and redesigned restaurant site for the famous restaurant growing search engine and online sales
+7. **Butcher's Block** — Launched online store and redesigned restaurant site for the famous restaurant growing search visibility and online sales
 
 8. **Train Market** — A two-sided marketplace for personal trainers and clients complete with research, personas, and mockups for investor pitches
 
@@ -132,17 +132,17 @@ Your browser does not support the video tag.
 
 10. **Flora and Mar** — Handcrafted design and development of an online store that matches the care put into the ayurvedic skincare product
 
-11. **Talulas** — Revamped website for beloved pizza brand complete with DTP merchandise, restaurant reservations, ordering, all through one admin
+11. **Talulas** — Revamped website for beloved pizza brand complete with custom merchandise, restaurant reservations, ordering, all through one admin
 
-12. **Interwoven** — Rebuild of an online store holding over 7,000 SKUs for a new brand identity.
+12. **Interwoven** — Rebuild of an online store holding over 7,000 SKUs for a new brand identity
 
-13. **Chomp** — A multi-step insurance quoting form and website rebuild for an insurance brokerage.
+13. **Chomp** — A multi-step insurance quoting form and website rebuild for an insurance brokerage
 
-14. **Patriae** — A beautiful online store for handcrafted goods and things of beauty for a significant increase in online sales.
+14. **Patriae** — A beautiful online store for handcrafted goods and things of beauty for a significant increase in online sales
 
-15. **Cookman Creamery** — A website redesign for a favorite ice cream shop setting up DoorDash delivery, pickup scheduling, and custom ordering.
+15. **Cookman Creamery** — A website redesign for a favorite ice cream shop setting up DoorDash delivery, pickup scheduling, and custom ordering
 
-16. **Current Media Company** — Brand identity, internal tooling, and workflow systems for a growing photo and video studio.
+16. **Current Media Company** — Brand identity, internal tooling, and workflow systems for a growing photo and video studio
 
 ---
 
@@ -151,10 +151,10 @@ Your browser does not support the video tag.
 **Page heading:** About
 
 **Ethos paragraph:**
-We are another generation of constant change. Tools, platforms, markets - all move faster than anyone can track. We find success is exploring timeless solutions and applying them with creativity that meets the moment.
+We are another generation of constant change. Tools, platforms, markets all move faster than anyone can track. We find success in exploring timeless solutions and applying them with creativity that meets the moment.
 
 **Identity paragraph:**
-O'Mara Technology is led by Mason O’Mara, a product designer and software engineer based remotely. We work with founders and teams on mobile apps, websites, AI products, and software. We handle all work internally or with partners we trust and have worked with before.
+O’Mara Technology is led by Mason O’Mara, a product designer and software engineer based remotely. We work with founders and teams on mobile apps, websites, AI products, and software. We handle all work internally or with partners we trust and have worked with before.
 
 ---
 
@@ -163,10 +163,10 @@ O'Mara Technology is led by Mason O’Mara, a product designer and software engi
 **Section heading:** How We Work
 
 **One-Time Projects**
-Discovery, design, development, and launch for new products and features — project goals, context, product, and milestones are all scoped out before we begin building a product that you own at the end. All code and documentation yours to operate.
+Discovery, design, development, and launch for new products and features — project goals, context, product, and milestones are all scoped out before we begin building a product that you own at the end. All code and documentation is yours to operate.
 
 **Partnerships**
-Iterative product development over a minimum three-month engagement for new and existing products and software. We work fractionally or lead you and your team through research, architecture, design direction, prioritization, and iteration.
+Iterative product development over a minimum three-month engagement for new and existing products and software. We embed with your team or lead the work through research, architecture, design direction, prioritization, and iteration.
 
 **Note below engagement types:**
 Every product goes through the same development cycle phases — idea, discovery, design, build, launch. Both engagements help you work through and understand each of these phases. We start with a free 20-minute intro call, and after our discovery phase we offer an opportunity to reevaluate based on our research.
@@ -192,10 +192,10 @@ RAG architecture, MCP server development, AI integration into existing products.
 Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need to handle complexity and can be managed independently.
 
 **Creative Design**
-Interface design, design systems, visual direction, branding, print design. The creative work stays here so every product is deisgned to work with the final product. Art is cheap, taste is still expensive.
+Interface design, design systems, visual direction, branding, print design. The creative work stays here so every design is made to work with with the final product. Art is cheap, taste is still expensive.
 
 **UX Research**
-Discovery sessions, user interviews, competitor audits, information architecture, context framework. The foudnational and iterative research that decides what is going to be built.
+Discovery sessions, user interviews, competitor audits, information architecture, context framework. The foundational and iterative research that decides what is going to be built.
 
 **Product Development**
 Strategy, roadmapping, feature prioritization, algorithm design, gamification, onboarding, investor-ready specifications. From the first whiteboard session to a launched product, and every loop in between.
@@ -205,11 +205,11 @@ Content creation, graphic design, Shopify storefronts, marketing sites, workflow
 
 ---
 
-### Bio - still needs cleanup
+### Bio
 
 Mason O'Mara is a product designer and software engineer. He's shipped iOS and Android apps, full-stack web platforms, Shopify storefronts, and AI-integrated tools across industries from yacht staffing to accessibility consulting to fashion retail.
 
-He moved from UX strategy into independent practice to do end-to-end work he cares about with teams he believes in. He writes about product and design on Substack and documents builds on YouTube. He's based in Asbury Park, NJ.
+He moved from UX strategy into independent practice to do end-to-end work he cares about with teams he believes in who are also excited for the future of tech. He writes about product on Substack and documents builds on YouTube. He's based in Asbury Park, NJ.
 
 ---
 
@@ -236,12 +236,12 @@ The scope is defined before we start. Payments at monthly milestones.
 
 **Timeline:**
 
-| Phase       | Duration   | Milestones                                                                                                                                                         |
-| ----------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Discovery   | 1–2 weeks  | Intro call, Discovery & scoping sessions, Problem definition, User research, Competitive audit, Information architecture, Proposal                                 |
+| Phase       | Duration   | Milestones                                                                                                                                                                 |
+| ----------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Discovery   | 1–2 weeks  | Intro call, Discovery & scoping sessions, Problem definition, User research, Competitive audit, Information architecture, Proposal                                         |
 | Design      | 2–6 weeks  | Wireframes, Interface design, Design systems, Prototyping, Accessible & responsive design, Technical writing, Content strategy, CMS architecture, Design review, Revisions |
-| Development | 4–12 weeks | Build, Database & auth setup, API development, Third-party integrations, Content population, Internal QA, Client QA                                                |
-| Launch      | 1–2 weeks  | Final testing, Deployment, Documentation, Handoff session, Client training                                                                                         |
+| Development | 4–12 weeks | Build, Database & auth setup, API development, Third-party integrations, Content population, Internal QA, Client QA                                                        |
+| Launch      | 1–2 weeks  | Final testing, Deployment, Documentation, Handoff session, Client training                                                                                                 |
 
 **Outcome:** A shipped product and the keys to run it.
 
@@ -258,10 +258,10 @@ Launch isn't the end here. It's the beginning of the loop.
 
 **Timeline:**
 
-| Phase     | Duration  | Milestones                                                                                                                                                                                                           |
-| --------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Discovery | 1–2 weeks | Intro call, Discovery sessions, User research & interviews, Competitive audit, Information architecture, Market positioning, Roadmap alignment, Engagement proposal                                                  |
-| Monthly   | Ongoing   | Product strategy & roadmapping, Research & prioritization, Architecture & system design, Design direction & execution, Interface design & prototyping, Feature development & build, Review & iteration, Deployment & launch                          |
+| Phase     | Duration  | Milestones                                                                                                                                                                                                                  |
+| --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Discovery | 1–2 weeks | Intro call, Discovery sessions, User research & interviews, Competitive audit, Information architecture, Market positioning, Roadmap alignment, Engagement proposal                                                         |
+| Monthly   | Ongoing   | Product strategy & roadmapping, Research & prioritization, Architecture & system design, Design direction & execution, Interface design & prototyping, Feature development & build, Review & iteration, Deployment & launch |
 
 **Outcome:** A product that keeps getting better.
 
@@ -280,7 +280,6 @@ Every product goes through the same development cycle phases — idea, discovery
 Design is where the idea crystallizes with mockups, prototypes, architecture decisions, and specification documents for stakeholders, agents, and teammates. Build is when the code gets written. AI has made the build phase faster, which means discovery and design have more leverage than they used to. Better thinking up front means better development.
 
 One-time projects cover one product development cycle through launch. Partnerships cover multiple iterative cycles plus maintenance. Often our one-time projects turn into partnerships.
-
 [Get in touch button to contact form]
 
 ---
@@ -291,7 +290,7 @@ One-time projects cover one product development cycle through launch. Partnershi
 
 Consider our initial 20-minute intro call a free consultation. We want to find out if we are a good fit, or point you in the right direction if not.
 
-We aim for our discovery phase deposit to be 7.5% of our initial project estimate. Once we commit to a design and build, we have another initial deposit and then monthly payments tied to deliverables, and a final payment upon launch.
+We aim for our discovery phase deposit to be 7.5% of our initial project estimate. Once we commit to a design and build, we require a second deposit and then monthly payments tied to deliverables, and a final payment upon launch.
 
 One-time projects typically range from $5,000 to $60,000 depending on scope and complexity. Ongoing partnerships typically run $3,500–$10,000 per month.
 
