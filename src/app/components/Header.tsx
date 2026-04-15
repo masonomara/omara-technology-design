@@ -17,7 +17,10 @@ export default function Header() {
 
     const update = () => {
       const height = el.getBoundingClientRect().height;
-      document.documentElement.style.setProperty("--header-height", `${height}px`);
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${height}px`,
+      );
     };
 
     update();
@@ -43,7 +46,7 @@ export default function Header() {
               src="/top-logo-spacing.svg"
               width={326}
               height={51.03}
-              alt="O'Mara Technology"
+              alt="O’Mara Technology"
             />
           </Link>
           <div className={styles.textContainer}>
@@ -54,7 +57,8 @@ export default function Header() {
         </div>
         <nav className={styles.menuWrapper}>
           {NAV_LINKS.map(({ id, label, href }) => {
-            const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+            const isActive =
+              href === "/" ? pathname === "/" : pathname.startsWith(href);
             return (
               <Link
                 key={id}

@@ -4,9 +4,9 @@ import { Overpass, Radio_Canada } from "next/font/google";
 import CursorFollower from "./components/CursorFollower";
 
 export const metadata: Metadata = {
-  title: "O'Mara Technology",
+  title: "O’Mara Technology",
   description:
-    "Product design and development studio — mobile apps, web apps, AI products, and ecommerce.",
+    "Product design and development studio for apps, websites, and software.",
 };
 
 export const viewport: Viewport = {
@@ -33,7 +33,11 @@ const rallingtonSerif = localFont({
   variable: "--font-rallingtonSerif",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -41,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       style={{ margin: "0px", backgroundColor: "#FCEEDE" }}
     >
       <head>
-        <meta name="apple-mobile-web-app-title" content="O'Mara Technology" />
+        <meta name="apple-mobile-web-app-title" content="O’Mara Technology" />
       </head>
       <body style={{ margin: "0px", position: "relative" }}>
         <CursorFollower />

@@ -50,7 +50,12 @@ export default function Game() {
 
       setBangs((prev) => [
         ...prev,
-        { x: event.clientX - rect.left, y: event.clientY - rect.top, id: bangId, rotation },
+        {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+          id: bangId,
+          rotation,
+        },
       ]);
 
       setHandImage("/thumbsDown.svg");
@@ -136,13 +141,19 @@ export default function Game() {
       enemy.classList.remove(styles.enemyHit);
       enemy.classList.add(styles.hidden);
     }, 500);
-    enemy.style.transition = "transform 0.5s cubic-bezier(0,0.66,.66,1), opacity 0.5s linear";
+    enemy.style.transition =
+      "transform 0.5s cubic-bezier(0,0.66,.66,1), opacity 0.5s linear";
     enemy.style.transform = `rotate(${Math.random() * 90}deg) scale(.75) translate(${(Math.random() - 0.75) * 300}px, ${(Math.random() - 0.5) * 500}px)`;
     enemy.style.opacity = "0";
     enemy.style.pointerEvents = "none";
 
     // Delegate all state updates + score calculation to the hook
-    game.recordShot(event.clientX, event.clientY, enemy.getBoundingClientRect(), index);
+    game.recordShot(
+      event.clientX,
+      event.clientY,
+      enemy.getBoundingClientRect(),
+      index,
+    );
   };
 
   // ─── Restart ─────────────────────────────────────────────────────────────────
@@ -151,7 +162,9 @@ export default function Game() {
   // (handled here, because the enemy elements are mutated directly during play).
   function handleRestart() {
     // Reset all enemy DOM nodes that were mutated during the previous round
-    const allEnemies = document.querySelectorAll<HTMLElement>(`.${styles.enemy}`);
+    const allEnemies = document.querySelectorAll<HTMLElement>(
+      `.${styles.enemy}`,
+    );
     allEnemies.forEach((enemy) => {
       enemy.style.transition = "";
       enemy.style.transform = "";
@@ -191,7 +204,9 @@ export default function Game() {
       </div>
 
       {/* ── Hand (bottom-right corner, animates in when game starts) ── */}
-      <div className={`${styles.handWrapper} ${game.isGameActive ? styles.handWrapperActive : ""}`}>
+      <div
+        className={`${styles.handWrapper} ${game.isGameActive ? styles.handWrapperActive : ""}`}
+      >
         <Image
           src={handImage}
           alt="Line drawing of hand"
@@ -218,7 +233,13 @@ export default function Game() {
               } as React.CSSProperties
             }
           >
-            <Image src="/bang.svg" priority height={120} width={120} alt="Bang" />
+            <Image
+              src="/bang.svg"
+              priority
+              height={120}
+              width={120}
+              alt="Bang"
+            />
           </div>
         ))}
 
@@ -248,7 +269,7 @@ export default function Game() {
               <img
                 src="/wordmark.svg"
                 className={styles.startWordmark}
-                alt="O'Mara Technology Design"
+                alt="O’Mara Technology Design"
               />
               <p className={styles.startTagline}>
                 Product design and development studio for apps, websites, and
@@ -260,10 +281,18 @@ export default function Game() {
                 Play Game
               </button>
               <div className={styles.secondaryButtonWrapper}>
-                <Link className={styles.secondaryButton} href="/about" target="_top">
+                <Link
+                  className={styles.secondaryButton}
+                  href="/about"
+                  target="_top"
+                >
                   <p>About Us</p>
                 </Link>
-                <Link className={styles.secondaryButton} href="/work" target="_top">
+                <Link
+                  className={styles.secondaryButton}
+                  href="/work"
+                  target="_top"
+                >
                   <p>View Work</p>
                 </Link>
               </div>

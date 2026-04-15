@@ -23,14 +23,14 @@ export default function Footer() {
           src="/longWordmark.svg"
           width={326}
           height={20.03}
-          alt="O'Mara Technology"
+          alt="O’Mara Technology"
           className={styles.wordmark}
         />
         <Image
           src="/superCondensedWordmark.svg"
           height={36}
           width={87}
-          alt="O'Mara Technology"
+          alt="O’Mara Technology"
           className={styles.wordmarkCondensed}
         />
       </motion.div>

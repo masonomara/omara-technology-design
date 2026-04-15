@@ -50,7 +50,7 @@ export function Project({ title, html, images = [] }: ProjectProps) {
             <div key={i} className={projectStyles.masonryItem}>
               <Image
                 src={src}
-                alt=""
+                alt={`${title} — project image ${i + 1}`}
                 width={0}
                 height={0}
                 sizes="(max-width: 699px) 100vw, 50vw"
