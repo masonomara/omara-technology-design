@@ -43,7 +43,7 @@ Everything changes · Be creative · Explore timeless work
 **Wordmark alt text:** O'Mara Technology Design
 
 **Tagline:**
-Design and development studio for apps, websites, and software.
+Product design and development studio for apps, websites, and software.
 
 **Buttons:**
 
@@ -112,35 +112,35 @@ Your browser does not support the video tag.
 
 ### Project Overviews
 
-1. **Moor** — Two-sided crew placement marketplace app for yacht staffing industry launched at the Fort Lauderdale International Boat Show
+1. **Moor** — Two-sided crew placement marketplace app for the yacht staffing industry, launched at the Fort Lauderdale International Boat Show
 
 2. **Innova Sphere** — Accessibility expertise turned into a queryable mobile app trialing with government departments for workplace adjustments
 
 3. **CaptureNoire** — Mobile app designed and shipped to the App Store for photo editing software that better represents darker skin tones
 
-4. **Offshore Coffee** — Growing a coffee shop to multiple locations, a wholesale program, and online product lines with huge online sales growth
+4. **Offshore Coffee** — Website and online store supporting a coffee shop's growth to multiple locations, a wholesale program, and a DTC product line
 
 5. **Lisa Says Gah** — Managing, optimizing, and styling a boutique online fashion retailer storefront for tens of thousands of daily visitors
 
 6. **Seed to Sprout** — Website handling multiple product types and shipping rules, plus a cookbook designed for print, preorder, and shipping
 
-7. **Butcher's Block** — Launched online store and redesigned restaurant site for the famous restaurant growing search visibility and online sales
+7. **Butcher's Block** — Launched online store and redesigned restaurant site for the famous restaurant, improving search visibility and driving online sales
 
-8. **Train Market** — A two-sided marketplace for personal trainers and clients complete with research, personas, and mockups for investor pitches
+8. **Train Market** — A two-sided marketplace for personal trainers and clients, complete with research, personas, and mockups for investor pitches
 
-9. **Hazel Boutique** — Ecommerce rebuild for a growing boutique brand and retailer with multiple locations, shifting inventory, and huge sales
+9. **Hazel Boutique** — Ecommerce rebuild for a growing boutique brand retailer with multiple locations and shifting inventory, and complex custom integrations
 
-10. **Flora and Mar** — Handcrafted design and development of an online store that matches the care put into the ayurvedic skincare product
+10. **Flora and Mar** — Design and development of an online store built to match the handcrafted care in the ayurvedic skincare products it sells
 
-11. **Talulas** — Revamped website for beloved pizza brand complete with custom merchandise, restaurant reservations, ordering, all through one admin
+11. **Talulas** — Website for a local pizza brand complete with custom merchandise, restaurant reservations, online ordering, and a single admin for all of it
 
 12. **Interwoven** — Rebuild of an online store holding over 7,000 SKUs for a new brand identity
 
 13. **Chomp** — A multi-step insurance quoting form and website rebuild for an insurance brokerage
 
-14. **Patriae** — A beautiful online store for handcrafted goods and things of beauty for a significant increase in online sales
+14. **Patriae** — An online store for handcrafted goods with a complete design and development rebuild to support sales growth
 
-15. **Cookman Creamery** — A website redesign for a favorite ice cream shop setting up DoorDash delivery, pickup scheduling, and custom ordering
+15. **Cookman Creamery** — Website redesign for a neighborhood ice cream shop with DoorDash delivery, pickup scheduling, and custom ordering
 
 16. **Current Media Company** — Brand identity, internal tooling, and workflow systems for a growing photo and video studio
 
@@ -151,10 +151,11 @@ Your browser does not support the video tag.
 **Page heading:** About
 
 **Ethos paragraph:**
-We are another generation of constant change. Tools, platforms, markets all move faster than anyone can track. We find success in exploring timeless solutions and applying them with creativity that meets the moment.
+We are another generation of constant change. Tools, platforms, markets all move faster than anyone can track. We find success is built on exploring timeless solutions and applying them with creativity that meets the moment.
 
 **Identity paragraph:**
-O’Mara Technology is led by Mason O’Mara, a product designer and software engineer based remotely. We work with founders and teams on mobile apps, websites, AI products, and software. We handle all work internally or with partners we trust and have worked with before.
+
+O’Mara Technology is led by Mason O’Mara, a product designer and software engineer based in Asbury Park, NJ and operating remotely. We work with founders and teams on mobile apps, websites, AI products, and software. We handle all work internally or with partners we trust and have worked with before.
 
 ---
 
@@ -163,15 +164,15 @@ O’Mara Technology is led by Mason O’Mara, a product designer and software en
 **Section heading:** How We Work
 
 **One-Time Projects**
-Discovery, design, development, and launch for new products and features — project goals, context, product, and milestones are all scoped out before we begin building a product that you own at the end. All code and documentation is yours to operate.
+For new products and features. Discovery, design, development, and launch all scoped before we start, with payments at monthly milestones along the way. At the end, you own the codebase, documentation, and training - the project is yours to operate.
 
 **Partnerships**
-Iterative product development over a minimum three-month engagement for new and existing products and software. We embed with your team or lead the work through research, architecture, design direction, prioritization, and iteration.
+For new and existing products and software. Iterative product development over a minimum three-month engagement where we work embedded or lead research, architecture derections, design direction, prioritization, and iteration as the product develops.
 
 **Note below engagement types:**
-Every product goes through the same development cycle phases — idea, discovery, design, build, launch. Both engagements help you work through and understand each of these phases. We start with a free 20-minute intro call, and after our discovery phase we offer an opportunity to reevaluate based on our research.
+Every product goes through the same phases — idea, discovery, design, build, and launch. Both engagements help you work through and understand each phase. We start with a free 20-minute intro call. After discovery, there's an opportunity to reevaluate before committing to a full design and build.
 
-[Learn more details button to process]
+[Learn more details button to /services]
 
 ---
 
@@ -180,19 +181,18 @@ Every product goes through the same development cycle phases — idea, discovery
 **Section heading:** What We Do
 
 **Mobile Apps**
-Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission with Native features and capabilities.
+Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission.
 
 **Web Apps**
-React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations, and more. Designed, built, and deployed end-to-end.
+React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations. Designed, built, and deployed end-to-end.
 
 **AI Products**
-RAG architecture, MCP server development, AI integration into existing products. AI/Cloud infrastructure. Production Rules. Building products where AI is actually the feature, not bolted on as an afterthought.
+RAG architecture, MCP server development, AI integration into existing products. AI/cloud infrastructure and production rules. Building products where AI is actually the feature — not bolted on as an afterthought.
 
 **Ecommerce**
-Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need to handle complexity and can be managed independently.
-
+Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need a store that handles complexity and can be managed independently.
 **Creative Design**
-Interface design, design systems, visual direction, branding, print design. The creative work stays here so every design is made to work with with the final product. Art is cheap, taste is still expensive.
+Interface design, design systems, visual direction, branding, print design. The creative work stays here so designs work with the final product and we don;t pass you on to a template. Art is cheap, taste is still valuable.
 
 **UX Research**
 Discovery sessions, user interviews, competitor audits, information architecture, context framework. The foundational and iterative research that decides what is going to be built.
@@ -209,7 +209,7 @@ Content creation, graphic design, Shopify storefronts, marketing sites, workflow
 
 Mason O'Mara is a product designer and software engineer. He's shipped iOS and Android apps, full-stack web platforms, Shopify storefronts, and AI-integrated tools across industries from yacht staffing to accessibility consulting to fashion retail.
 
-He moved from UX strategy into independent practice to do end-to-end work he cares about with teams he believes in who are also excited for the future of tech. He writes about product on Substack and documents builds on YouTube. He's based in Asbury Park, NJ.
+He moved from UX strategy into independent practice to do the work he cares about with teams he believes in. He writes about product and design on Substack and documents builds on YouTube. He's based in Asbury Park, NJ.
 
 ---
 
@@ -238,12 +238,12 @@ Discovery, design, development, and launch for new products and features — pro
 
 **Timeline:**
 
-| Phase       | Duration   | Milestones                                                                                                                                                                 |
-| ----------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Discovery   | 1–2 weeks  | Intro call, Discovery & scoping sessions, Problem definition, User research, Competitive audit, Information architecture, Proposal                                         |
-| Design      | 2–6 weeks  | Wireframes, Interface design, Design systems, Prototyping, Accessible & responsive design, Technical writing, Content strategy, CMS architecture, Design review, Revisions |
-| Development | 4–12 weeks | Build, Database & auth setup, API development, Third-party integrations, Content population, Internal QA, Client QA                                                        |
-| Launch      | 1–2 weeks  | Final testing, Deployment, Documentation, Handoff session, Client training                                                                                                 |
+| Phase       | Duration   | Milestones                                                                                                                               |
+| ----------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Discovery   | 1–2 weeks  | Intro call, discovery & scoping sessions, user research, competitive audit, information architecture, proposal                           |
+| Design      | 2–6 weeks  | Wireframes, interface design, design systems, prototyping, accessible & responsive design, content strategy, CMS architecture, revisions |
+| Development | 4–12 weeks | Build, database & auth setup, API development, third-party integrations, content population, internal QA, client QA                      |
+| Launch      | 1–2 weeks  | Final testing, deployment, documentation, handoff session, client training                                                               |
 
 ---
 
@@ -256,8 +256,8 @@ Iterative product development over a minimum three-month engagement for new and 
 
 | Phase     | Duration  | Milestones                                                                                                                                                                                                                  |
 | --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Discovery | 1–2 weeks | Intro call, Discovery sessions, User research & interviews, Competitive audit, Information architecture, Market positioning, Roadmap alignment, Engagement proposal                                                         |
-| Monthly   | Ongoing   | Product strategy & roadmapping, Research & prioritization, Architecture & system design, Design direction & execution, Interface design & prototyping, Feature development & build, Review & iteration, Deployment & launch |
+| Discovery | 1–2 weeks | Intro call, discovery sessions, user research & interviews, competitive audit, information architecture, market positioning, roadmap alignment, engagement proposal                                                         |
+| Monthly   | Ongoing   | Product strategy & roadmapping, research & prioritization, architecture & system design, design direction & execution, interface design & prototyping, feature development & build, review & iteration, deployment & launch |
 
 ---
 
@@ -302,17 +302,18 @@ My name is [name]. I am the [role] of [company or project].
 
 **Service areas label:** We're looking for:
 
-- Mobile Apps
-- Web Apps
-- AI Products
+- Mobile App
+- Website/Web App
+- AI Product
 - Ecommerce
 - Creative Design
 - UX Research
 - Product Development
+- Something else
 
-[Tell us more... what are you building, what's the problem, what do you need?]
+[Tell us more about what you're building, where you;re stuck, or what you need.]
 
-Our budget ranges from [low price] to [high price]. The best place to reach me is [email address]
+Our budget ranges from [low price] to [high price]. You can reach me at [email address].
 
 **Submit button:** Submit
 **Submitting state:** Sending...
@@ -322,7 +323,7 @@ Our budget ranges from [low price] to [high price]. The best place to reach me i
 **Error message:** We're sorry, something went wrong. Feel free to email us directly at info@omaratechnology.com
 
 **Email fallback:**
-Prefer email? info@omaratechnology.com
+Online forms not your thing? Feel free to email us at info@omaratechnology.com
 
 **Validation errors:**
 

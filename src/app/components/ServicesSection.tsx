@@ -41,8 +41,15 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         viewport={viewport}
       >
         <p className={styles.intro}>
-          Two kinds of engagements. One-time projects and ongoing partnerships.
-          Both start the same way.
+          Every product moves through four phases: discovery, design,
+          development and launch. We lead or work embedded within your team to
+          help your product along every step of the way.
+        </p>
+        <p className={styles.intro}>
+          We offer two types of engagements with clients, one time projects and
+          partnerships. One-time projects cover one product development cycle
+          through launch. Partnerships cover multiple iterative cycles plus
+          maintenance. Often our one-time projects turn into partnerships.
         </p>
       </motion.div>
 

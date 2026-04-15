@@ -28,13 +28,14 @@ type FormData = z.infer<typeof contactFormSchema>;
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const CAPABILITY_OPTIONS = [
-  "Mobile Apps",
-  "Web Apps",
-  "AI Products",
+  "Mobile App",
+  "Website/Web App",
+  "AI Product",
   "Ecommerce",
   "Creative Design",
   "UX Research",
   "Product Development",
+  "Something else",
 ];
 
 const viewport = { once: true, amount: 0.15 } as const;
@@ -200,7 +201,7 @@ ${values.message || "None provided."}`;
               <textarea
                 className={styles.messageInput}
                 rows={4}
-                placeholder="Tell us more... what are you building, what's the problem, what do you need?"
+                placeholder="Tell us more about what you're building, where you're stuck, or what you need."
                 {...register("message")}
               />
 
@@ -265,7 +266,7 @@ ${values.message || "None provided."}`;
           className={styles.openerBlock}
         >
           <p className={styles.fallback}>
-            Prefer email?{" "}
+            Online forms not your thing? Feel free to email us at{" "}
             <a className={styles.emailLink} href={`mailto:${EMAIL_ADDRESS}`}>
               {EMAIL_ADDRESS}
             </a>

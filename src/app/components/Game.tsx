@@ -251,7 +251,8 @@ export default function Game() {
                 alt="O'Mara Technology Design"
               />
               <p className={styles.startTagline}>
-                Design and development studio for apps, websites, and software.
+                Product design and development studio for apps, websites, and
+                software.
               </p>
             </div>
             <div className={styles.buttonWrapper}>

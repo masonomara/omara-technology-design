@@ -3,7 +3,7 @@
     {
       "id": "project",
       "label": "One-time Project",
-      "description": "For new products and new builds. We take it from idea through design, development, and launch. At the end, we hand it off — documented, trained, and yours to run.\n\nThe scope is defined before we start. Payments at monthly milestones.",
+      "description": "Discovery, design, development, and launch for new products and features — project goals, context, product, and milestones are all scoped out before we begin building a product that you own at the end. All code and documentation is yours to operate.",
       "timeline": {
         "total": "8–22 weeks end to end",
         "phases": [
@@ -13,7 +13,6 @@
             "milestones": [
               "Intro call",
               "Discovery & scoping sessions",
-              "Problem definition",
               "User research",
               "Competitive audit",
               "Information architecture",
@@ -29,10 +28,8 @@
               "Design systems",
               "Prototyping",
               "Accessible & responsive design",
-              "Technical writing",
               "Content strategy",
               "CMS architecture",
-              "Design review",
               "Revisions"
             ]
           },
@@ -66,7 +63,7 @@
     {
       "id": "partnership",
       "label": "Partnership",
-      "description": "For products in motion or in formation. Monthly engagements where we work alongside you — research, architecture, design direction, prioritization, and iteration as the product develops.\n\nLaunch isn't the end here. It's the beginning of the loop.",
+      "description": "Iterative product development over a minimum three-month engagement for new and existing products and software. We embed with your team or lead the work through research, architecture, design direction, prioritization, and iteration.",
       "timeline": {
         "phases": [
           {

@@ -11,23 +11,23 @@ import styles from "./About.module.css";
 const CAPABILITIES = [
   {
     label: "Mobile Apps",
-    body: "Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission. Built to ship, not just to demo.",
+    body: "Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission.",
   },
   {
     label: "Web Apps",
-    body: "React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations, and more. Designed, built, and deployed end-to-end.",
+    body: "React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations. Designed, built, and deployed end-to-end.",
   },
   {
     label: "AI Products",
-    body: "RAG architecture, MCP server development, AI integration into existing products. AI/Cloud infrastructure. Production Rules. Building products where AI is actually the feature, not bolted on as an afterthought.",
+    body: "RAG architecture, MCP server development, AI integration into existing products. AI/cloud infrastructure and production rules. Building products where AI is actually the feature — not bolted on as an afterthought.",
   },
   {
     label: "Ecommerce",
-    body: "Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need to handle complexity and can be managed independently.",
+    body: "Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need a store that handles complexity and can be managed independently.",
   },
   {
     label: "Creative Design",
-    body: "Interface design, design systems, visual direction, branding, print design. The creative work stays here so every design is made to work with with the final product. Art is cheap, taste is still expensive.",
+    body: "Interface design, design systems, visual direction, branding, print design. The creative work stays here so designs work with the final product and we don't pass you on to a template. Art is cheap, taste is still valuable.",
   },
   {
     label: "UX Research",
@@ -68,9 +68,9 @@ export default function About() {
       >
         <p className={styles.ethos}>
           We are another generation of constant change. Tools, platforms,
-          markets all move faster than anyone can track. We find success in
-          exploring timeless solutions and applying them with creativity that
-          meets the moment.
+          markets all move faster than anyone can track. We find success is
+          built on exploring timeless solutions and applying them with
+          creativity that meets the moment.
         </p>
         <p className={styles.identity}>
           O’Mara Technology is led by{" "}
@@ -81,10 +81,10 @@ export default function About() {
           >
             Mason O’Mara
           </a>
-          , a product designer and software engineer based remotely. We work
-          with founders and teams on mobile apps, websites, AI products, and
-          software. We handle all work internally or with partners we trust and
-          have worked with before.
+          , a product designer and software engineer based in Asbury Park, NJ
+          and operating remotely. We work with founders and teams on mobile
+          apps, websites, AI products, and software. We handle all work
+          internally or with partners we trust and have worked with before.
         </p>
       </motion.div>
 
@@ -100,28 +100,28 @@ export default function About() {
           <div className={styles.engagementType}>
             <h3>One-Time Projects</h3>
             <p>
-              Discovery, design, development, and launch for new products and
-              features — project goals, context, product, and milestones are all
-              scoped out before we begin building a product that you own at the
-              end. All code and documentation is yours to operate.
+              For new products and features. Discovery, design, development,
+              and launch all scoped before we start, with payments at monthly
+              milestones along the way. At the end, you own the codebase,
+              documentation, and training — the project is yours to operate.
             </p>
           </div>
           <div className={styles.engagementType}>
             <h3>Partnerships</h3>
             <p>
-              Iterative product development over a minimum three-month
-              engagement for new and existing products and software. We embed
-              with your team or lead the work through research, architecture,
-              design direction, prioritization, and iteration.
+              For new and existing products and software. Iterative product
+              development over a minimum three-month engagement where we work
+              embedded or lead research, architecture directions, design
+              direction, prioritization, and iteration as the product develops.
             </p>
           </div>
         </div>
         <p className={styles.servicesNote}>
-          Every product goes through the same development cycle phases — idea,
-          discovery, design, build, launch. Both engagements help you work
-          through and understand each of these phases. We start with a free
-          20-minute intro call, and after our discovery phase we offer an
-          opportunity to reevaluate based on our research.
+          Every product goes through the same phases — idea, discovery, design,
+          build, and launch. Both engagements help you work through and
+          understand each phase. We start with a free 20-minute intro call.
+          After discovery, there&apos;s an opportunity to reevaluate before
+          committing to a full design and build.
         </p>
         <Link href="/services" className={styles.servicesLink}>
           Learn more details
@@ -174,9 +174,9 @@ export default function About() {
             staffing to accessibility consulting to fashion retail.
           </p>
           <p>
-            He moved from UX strategy into independent practice to do end-to-end
-            work he cares about with teams he believes in who are also excited
-            for the future of tech. He writes about product on{" "}
+            He moved from UX strategy into independent practice to do the work
+            he cares about with teams he believes in. He writes about product
+            and design on{" "}
             <a
               href="https://substack.com/@masonomara"
               target="_blank"
