@@ -38,7 +38,7 @@
   max-width: 740px;
   width: 87vw;
   text-align: left;
-  font-size: clamp(24px, 7.8vw, 48px);
+  font-size: clamp(38px, 7.8vw, 48px);
   font-family: var(--font-rallingtonSerif);
   color: var(--color-primary);
   margin-top: 1.6em;

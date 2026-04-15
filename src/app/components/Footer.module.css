@@ -49,7 +49,7 @@
   font-variation-settings: var(--fvs-radio-ui);
   font-family: var(--font-radio);
   text-transform: uppercase;
-  letter-spacing: var(--tracking-ui);
+  letter-spacing: -0.015em;
   text-align: center;
   font-size: var(--text-ui-xl);
   text-decoration: none !important;

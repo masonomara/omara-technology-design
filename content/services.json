@@ -5,7 +5,6 @@
       "label": "One-time Project",
       "description": "Discovery, design, development, and launch for new products and features — project goals, context, product, and milestones are all scoped out before we begin building a product that you own at the end. All code and documentation is yours to operate.",
       "timeline": {
-        "total": "8–22 weeks end to end",
         "phases": [
           {
             "name": "Discovery",
@@ -81,7 +80,7 @@
             ]
           },
           {
-            "name": "Monthly",
+            "name": "Monthly Strategy & Service",
             "duration": "Ongoing",
             "milestones": [
               "Product strategy & roadmapping",

@@ -13,13 +13,13 @@
 .emailLink {
   color: var(--color-primary);
   text-decoration: underline !important;
-  text-decoration-thickness: 0.075em !important;
-  text-underline-offset: 0.15em !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset) !important;
   transition: var(--transition-smooth-100) all;
 }
 
 .emailLink:hover {
-  text-underline-offset: 0.18em !important;
+  text-underline-offset: var(--link-offset-hover) !important;
 }
 
 /* Form container */

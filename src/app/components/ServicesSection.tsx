@@ -30,6 +30,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         whileInView="show"
         viewport={viewport}
         className="title"
+        style={{ marginBottom: 0 }}
       >
         SERVICES
       </motion.h1>
@@ -39,19 +40,35 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         initial="hidden"
         whileInView="show"
         viewport={viewport}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          flexDirection: "column",
+        }}
       >
         <p className={styles.intro}>
           Every product moves through four phases: discovery, design,
           development and launch. We lead or work embedded within your team to
           help your product along every step of the way.
         </p>
-        <p className={styles.intro}>
+        <p className={styles.introMeta}>
           We offer two types of engagements with clients, one time projects and
           partnerships. One-time projects cover one product development cycle
           through launch. Partnerships cover multiple iterative cycles plus
           maintenance. Often our one-time projects turn into partnerships.
         </p>
       </motion.div>
+
+      <motion.h2
+        className={styles.sectionHeading}
+        variants={textFadeUpSmall(0.1, 0.4)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+      >
+        Engagements
+      </motion.h2>
 
       <motion.div
         variants={textFadeUpSmall(0.12, 0.4)}

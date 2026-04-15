@@ -100,7 +100,7 @@
   font-variation-settings: var(--fvs-radio-ui-big);
   font-weight: 600 !important;
   line-height: 100%;
-  letter-spacing: var(--tracking-ui);
+  letter-spacing: -0.015em;
   text-transform: uppercase;
   color: var(--color-primary);
 }
