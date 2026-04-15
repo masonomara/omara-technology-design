@@ -180,7 +180,7 @@ Every product goes through the same development cycle phases — idea, discovery
 **Section heading:** What We Do
 
 **Mobile Apps**
-Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission. Built to ship, not just to demo.
+Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission with Native features and capabilities.
 
 **Web Apps**
 React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations, and more. Designed, built, and deployed end-to-end.
@@ -218,7 +218,11 @@ He moved from UX strategy into independent practice to do end-to-end work he car
 **Page heading:** SERVICES
 
 **Intro:**
-Two kinds of engagements. One-time projects and ongoing partnerships. Both start the same way.
+Every product moves through four phases: discovery, design, development and launch. We lead or work embedded within your team to help your product along every step of the way.
+
+**Subintro:**
+
+We offer two types of engagements with clients, one time projects and partnerhsips. One-time projects cover one product development cycle through launch. Partnerships cover multiple iterative cycles plus maintenance. Often our one-time projects turn into partnerships.
 
 **Toggle buttons:**
 
@@ -230,9 +234,7 @@ Two kinds of engagements. One-time projects and ongoing partnerships. Both start
 ### One-time Project
 
 **Description:**
-For new products and new builds. We take it from idea through design, development, and launch. At the end, we hand it off — documented, trained, and yours to run.
-
-The scope is defined before we start. Payments at monthly milestones.
+Discovery, design, development, and launch for new products and features — project goals, context, product, and milestones are all scoped out before we begin building a product that you own at the end. All code and documentation is yours to operate.
 
 **Timeline:**
 
@@ -243,18 +245,12 @@ The scope is defined before we start. Payments at monthly milestones.
 | Development | 4–12 weeks | Build, Database & auth setup, API development, Third-party integrations, Content population, Internal QA, Client QA                                                        |
 | Launch      | 1–2 weeks  | Final testing, Deployment, Documentation, Handoff session, Client training                                                                                                 |
 
-**Outcome:** A shipped product and the keys to run it.
-
-**Total:** 8–22 weeks end to end
-
 ---
 
 ### Partnership
 
 **Description:**
-For products in motion or in formation. Monthly engagements where we work alongside you — research, architecture, design direction, prioritization, and iteration as the product develops.
-
-Launch isn't the end here. It's the beginning of the loop.
+Iterative product development over a minimum three-month engagement for new and existing products and software. We embed with your team or lead the work through research, architecture, design direction, prioritization, and iteration.
 
 **Timeline:**
 
@@ -262,8 +258,6 @@ Launch isn't the end here. It's the beginning of the loop.
 | --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Discovery | 1–2 weeks | Intro call, Discovery sessions, User research & interviews, Competitive audit, Information architecture, Market positioning, Roadmap alignment, Engagement proposal                                                         |
 | Monthly   | Ongoing   | Product strategy & roadmapping, Research & prioritization, Architecture & system design, Design direction & execution, Interface design & prototyping, Feature development & build, Review & iteration, Deployment & launch |
-
-**Outcome:** A product that keeps getting better.
 
 ---
 
@@ -280,6 +274,7 @@ Every product goes through the same development cycle phases — idea, discovery
 Design is where the idea crystallizes with mockups, prototypes, architecture decisions, and specification documents for stakeholders, agents, and teammates. Build is when the code gets written. AI has made the build phase faster, which means discovery and design have more leverage than they used to. Better thinking up front means better development.
 
 One-time projects cover one product development cycle through launch. Partnerships cover multiple iterative cycles plus maintenance. Often our one-time projects turn into partnerships.
+
 [Get in touch button to contact form]
 
 ---

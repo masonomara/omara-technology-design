@@ -15,27 +15,31 @@ const CAPABILITIES = [
   },
   {
     label: "Web Apps",
-    body: "React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, Stripe integration. Designed and built end-to-end, deployed on Vercel.",
+    body: "React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations, and more. Designed, built, and deployed end-to-end.",
   },
   {
     label: "AI Products",
-    body: "RAG architecture, MCP server development, AI integration into existing products. Building things where AI is actually the feature — not bolted on as an afterthought.",
+    body: "RAG architecture, MCP server development, AI integration into existing products. AI/Cloud infrastructure. Production Rules. Building products where AI is actually the feature, not bolted on as an afterthought.",
   },
   {
     label: "Ecommerce",
-    body: "Shopify storefronts, custom Shopify development, Stripe, product flows, checkout design. For brands that need a store that works — and handles complexity without falling apart at the seams.",
+    body: "Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need to handle complexity and can be managed independently.",
   },
   {
     label: "Creative Design",
-    body: "Interface design, design systems, visual direction, branding. The creative work stays here — not outsourced, not templated. Every product that goes through this studio gets original thinking.",
+    body: "Interface design, design systems, visual direction, branding, print design. The creative work stays here so every design is made to work with with the final product. Art is cheap, taste is still expensive.",
   },
   {
     label: "UX Research",
-    body: "Discovery sessions, user interviews, competitor audits, information architecture. This is where most ideas should stop — and the ones that shouldn't come out the other side with a real direction.",
+    body: "Discovery sessions, user interviews, competitor audits, information architecture, context framework. The foundational and iterative research that decides what is going to be built.",
   },
   {
     label: "Product Development",
-    body: "Strategy, roadmapping, feature prioritization, algorithm design, gamification, onboarding. From the first whiteboard session to a launched product — and every loop in between.",
+    body: "Strategy, roadmapping, feature prioritization, algorithm design, gamification, onboarding, investor-ready specifications. From the first whiteboard session to a launched product, and every loop in between.",
+  },
+  {
+    label: "Trusted Partnerships:",
+    body: "Content creation, graphic design, Shopify storefronts, marketing sites, workflow automations, social media setup, SEO — available through trusted partners we've worked with before when the scope of work calls for it.",
   },
 ];
 
@@ -63,24 +67,24 @@ export default function About() {
         viewport={viewport}
       >
         <p className={styles.ethos}>
-          Everything changes faster than anyone can track. Tools, platforms,
-          markets — constantly. What holds up is timeless thinking and
-          creativity that meets the moment. That&apos;s what O&apos;Mara
-          Technology is built around.
+          We are another generation of constant change. Tools, platforms,
+          markets all move faster than anyone can track. We find success in
+          exploring timeless solutions and applying them with creativity that
+          meets the moment.
         </p>
         <p className={styles.identity}>
-          O&apos;Mara Technology is one person —{" "}
+          O’Mara Technology is led by{" "}
           <a
             href="https://masonomara.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Mason O&apos;Mara
+            Mason O’Mara
           </a>
-          , a product designer and developer based in Asbury Park, NJ. We work
-          with founders and teams on mobile apps, web apps, AI products, and
-          ecommerce experiences. For larger scopes, we bring in collaborators we
-          trust.
+          , a product designer and software engineer based remotely. We work
+          with founders and teams on mobile apps, websites, AI products, and
+          software. We handle all work internally or with partners we trust and
+          have worked with before.
         </p>
       </motion.div>
 
@@ -94,31 +98,33 @@ export default function About() {
         <h2 className={styles.sectionHeading}>How We Work</h2>
         <div className={styles.engagementsGrid}>
           <div className={styles.engagementType}>
-            <h3>Strategic Engagements</h3>
+            <h3>One-Time Projects</h3>
             <p>
-              Monthly. For products in motion or being formed. We work alongside
-              you — research, architecture, design direction, prioritization,
-              and iteration as the product develops. Not a project, a
-              relationship.
+              Discovery, design, development, and launch for new products and
+              features — project goals, context, product, and milestones are all
+              scoped out before we begin building a product that you own at the
+              end. All code and documentation is yours to operate.
             </p>
           </div>
           <div className={styles.engagementType}>
-            <h3>Project Engagements</h3>
+            <h3>Partnerships</h3>
             <p>
-              One-time. For new builds. Discovery, design, development, and
-              launch — scoped before we start, payments at monthly milestones.
-              At the end, you own it: documented, trained, yours to run.
+              Iterative product development over a minimum three-month
+              engagement for new and existing products and software. We embed
+              with your team or lead the work through research, architecture,
+              design direction, prioritization, and iteration.
             </p>
           </div>
         </div>
         <p className={styles.servicesNote}>
-          Once we commit after discovery, everything is in motion. Creative
-          design stays with Mason. Architecture and information design is Mason
-          or someone he trusts. Development is Mason or collaborators he&apos;s
-          worked with. Nothing gets handed off to strangers.
+          Every product goes through the same development cycle phases — idea,
+          discovery, design, build, launch. Both engagements help you work
+          through and understand each of these phases. We start with a free
+          20-minute intro call, and after our discovery phase we offer an
+          opportunity to reevaluate based on our research.
         </p>
         <Link href="/services" className={styles.servicesLink}>
-          Full services at omaratechnology.com/services
+          Learn more details
         </Link>
       </motion.div>
 
@@ -162,15 +168,15 @@ export default function About() {
         </div>
         <div className={styles.bioText}>
           <p>
-            Mason O&apos;Mara is a product designer and software engineer.
-            He&apos;s shipped iOS and Android apps, full-stack web platforms,
-            Shopify storefronts, and AI-integrated tools across industries from
-            yacht staffing to accessibility consulting to fashion retail.
+            Mason O’Mara is a product designer and software engineer. He&apos;s
+            shipped iOS and Android apps, full-stack web platforms, Shopify
+            storefronts, and AI-integrated tools across industries from yacht
+            staffing to accessibility consulting to fashion retail.
           </p>
           <p>
-            He moved from UX strategy into independent practice to do
-            end-to-end work he cares about with teams he believes in. He writes
-            about product and design on{" "}
+            He moved from UX strategy into independent practice to do end-to-end
+            work he cares about with teams he believes in who are also excited
+            for the future of tech. He writes about product on{" "}
             <a
               href="https://substack.com/@masonomara"
               target="_blank"

@@ -124,6 +124,31 @@
   margin-bottom: 0;
 }
 
+.timelineTotal {
+  font-size: var(--text-sm);
+  opacity: 0.6;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.ctaLink {
+  display: inline-block;
+  margin-top: 1.2em;
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: underline !important;
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset) !important;
+  transition: var(--transition-smooth-100) all;
+}
+
+.ctaLink:hover {
+  text-decoration-thickness: var(--link-thickness) !important;
+  text-underline-offset: var(--link-offset-hover) !important;
+  transition: var(--transition-smooth-100) all;
+}
+
 .engagementNote {
   font-size: var(--text-sm);
   opacity: 0.65;

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { textFadeUp, textFadeUpSmall } from "../lib/motion";
 import type { getServicesData } from "@/lib/content";
 import styles from "./ServicesSection.module.css";
@@ -17,7 +18,9 @@ const viewport = { once: true, amount: 0.15 } as const;
 
 export default function ServicesSection({ data }: ServicesSectionProps) {
   const [active, setActive] = useState<string>(data.engagements[0].id);
-  const current = data.engagements.find((e: Engagement) => e.id === active) as Engagement;
+  const current = data.engagements.find(
+    (e: Engagement) => e.id === active,
+  ) as Engagement;
 
   return (
     <>
@@ -82,20 +85,19 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
             >
               <div className={styles.timelinePhaseHeader}>
                 <span className={styles.timelinePhaseName}>{phase.name}</span>
-                <span className={styles.timelinePhaseDuration}>{phase.duration}</span>
+                <span className={styles.timelinePhaseDuration}>
+                  {phase.duration}
+                </span>
               </div>
-              <p className={styles.timelineMilestones}>{phase.milestones.join(", ")}</p>
-              {"items" in phase && phase.items && (
-                <p className={styles.phaseItems}>{phase.items.join(", ")}</p>
-              )}
+              <p className={styles.timelineMilestones}>
+                {phase.milestones.join(", ")}
+              </p>
             </div>
           ))}
-          <p className={styles.timelineOutcome}>{current.timeline.outcome}</p>
+          {"total" in current.timeline && current.timeline.total && (
+            <p className={styles.timelineTotal}>{current.timeline.total}</p>
+          )}
         </div>
-
-        {current.note && (
-          <p className={styles.engagementNote}>{current.note}</p>
-        )}
       </motion.div>
 
       <motion.section
@@ -105,32 +107,47 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         viewport={viewport}
         className={styles.servicesSection}
       >
-        <h2 className={styles.sectionHeading}>How It Works</h2>
+        <h2 className={styles.sectionHeading}>How We Work</h2>
         <div className={styles.servicesBody}>
           <p>
-            Every engagement starts the same way: a 20-minute call to see if
-            it&apos;s worth a conversation, then a paid discovery phase where
-            we ask the questions that actually matter.
+            We offer free 20-minute intro calls to see if we are a good fit. If
+            not, we&apos;ll try to point you in the right direction. If so, we
+            will schedule an hour-long discovery and scoping session. After
+            that, we will send a proposal that outlines the rest of the
+            discovery phase and a brief overview of the design, development, and
+            launch.
           </p>
           <p>
-            Every product goes through the same loop — idea, discovery, design,
-            build — then back around. Discovery is where most ideas stop, and
-            should. It&apos;s where we find out whether the problem is real,
-            who actually has it, and whether someone&apos;s already solved it
-            better.
+            There is an initial deposit that covers the remainder of the
+            discovery phase. We learn more about whether the problem is real,
+            who we are solving the problem for, and possible solutions. If we
+            find something we don&apos;t like, we have an opportunity to
+            reevaluate before committing to a design and build. We are not
+            committed to telling you what you want to hear — we will be
+            constructive and honest. If we want to move forward, it is an idea
+            we stand behind.
           </p>
           <p>
-            Design is when the idea crystallizes. Build is where the code gets
-            written. AI is making the build cycle faster — which means
-            discovery and design have more leverage than they used to. Better
-            thinking up front compounds.
+            Every product goes through the same development cycle phases — idea,
+            discovery, design, build, launch — then back around.
           </p>
           <p>
-            For a one-time project, launch is a handoff — documented, trained,
-            yours to run. For a partnership, launch is the beginning. The loop
-            keeps going.
+            Design is where the idea crystallizes with mockups, prototypes,
+            architecture decisions, and specification documents for
+            stakeholders, agents, and teammates. Build is when the code gets
+            written. AI has made the build phase faster, which means discovery
+            and design have more leverage than they used to. Better thinking up
+            front means better development.
+          </p>
+          <p>
+            One-time projects cover one product development cycle through
+            launch. Partnerships cover multiple iterative cycles plus
+            maintenance. Often our one-time projects turn into partnerships.
           </p>
         </div>
+        <Link href="/contact" className={styles.ctaLink}>
+          Get in touch
+        </Link>
       </motion.section>
 
       <motion.section
@@ -142,25 +159,26 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
       >
         <h2 className={styles.sectionHeading}>Pricing</h2>
         <div className={styles.pricingBody}>
-          <p>A 20-minute intro call is free. After that, nothing is.</p>
           <p>
-            The first phase — discovery and planning — is required before any
-            engagement starts. It&apos;s where we figure out what we&apos;re
-            building, what it needs, and whether we&apos;re the right fit to
-            build it together. No commitment beyond this phase is required to
-            continue.
+            Consider our initial 20-minute intro call a free consultation. We
+            want to find out if we are a good fit, or point you in the right
+            direction if not.
           </p>
           <p>
-            One-time projects typically range from $4,000 to $60,000 depending
-            on scope and complexity.
+            We aim for our discovery phase deposit to be 7.5% of our initial
+            project estimate. Once we commit to a design and build, we require a
+            second deposit and then monthly payments tied to deliverables, and a
+            final payment upon launch.
           </p>
-          <p>Ongoing partnerships run $5,000–$10,000 per month.</p>
           <p>
-            Both engagement types include design and development. Creative
-            design stays with us. Architecture and development are handled by
-            us or by collaborators we trust, depending on scope.
+            One-time projects typically range from $5,000 to $60,000 depending
+            on scope and complexity. Ongoing partnerships typically run
+            $3,500–$10,000 per month.
           </p>
         </div>
+        <Link href="/about" className={styles.ctaLink}>
+          Learn more
+        </Link>
       </motion.section>
     </>
   );

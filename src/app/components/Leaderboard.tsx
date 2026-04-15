@@ -7,8 +7,22 @@ import styles from "./Leaderboard.module.css";
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const BAD_WORDS = [
-  "FAG", "FUCK", "TITS", "CUNT", "8=D", "SHIT", "PISS", "KKK",
-  "COCK", "NIGGER", "NIGGA", "KIKE", "PUSSY", "SLUT", "CRAP", "BITCH",
+  "FAG",
+  "FUCK",
+  "TITS",
+  "CUNT",
+  "8=D",
+  "SHIT",
+  "PISS",
+  "KKK",
+  "COCK",
+  "NIGGER",
+  "NIGGA",
+  "KIKE",
+  "PUSSY",
+  "SLUT",
+  "CRAP",
+  "BITCH",
 ];
 
 function containsBadWord(name: string): boolean {
@@ -69,7 +83,10 @@ export default function Leaderboard({
   useEffect(() => {
     if (leaderboard.length > 0) {
       setTimeout(() => {
-        userRowRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        userRowRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }, 100);
     }
   }, [leaderboard]);
@@ -81,7 +98,7 @@ export default function Leaderboard({
     }
     // On first bad word detection, warn and stop. On second attempt, allow through.
     if (containsBadWord(nickname) && !warning) {
-      setWarning("Your nickname contains a bad word. Please consider a different name.");
+      setWarning("Your nickname has a bad word. Please use a different name.");
       return;
     }
     setWarning("");
@@ -108,7 +125,9 @@ export default function Leaderboard({
         </div>
         <div className={styles.statsDivider} />
         <div className={styles.statsWrapper}>
-          <span className={styles.statsTitle}>{getRankLabel(score, leaderboard)}</span>
+          <span className={styles.statsTitle}>
+            {getRankLabel(score, leaderboard)}
+          </span>
         </div>
       </div>
 
@@ -130,7 +149,11 @@ export default function Leaderboard({
               <div className={styles.rank}>{index + 1}</div>
               <div
                 className={styles.name}
-                style={isCurrentUser && !entry.nickname ? { opacity: 0.5 } : undefined}
+                style={
+                  isCurrentUser && !entry.nickname
+                    ? { opacity: 0.5 }
+                    : undefined
+                }
               >
                 {entry.nickname
                   ? entry.nickname.toUpperCase()
@@ -159,7 +182,9 @@ export default function Leaderboard({
               if (warning) setWarning("");
             }}
           />
-          <div className={styles.warning}>{warning || "Enter your nickname"}</div>
+          <div className={styles.warning}>
+            {warning || "Enter your nickname"}
+          </div>
         </>
       )}
 

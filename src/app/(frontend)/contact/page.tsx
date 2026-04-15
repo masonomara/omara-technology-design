@@ -15,16 +15,17 @@ import styles from "./page.module.css";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Please enter your name" }),
-  organization: z.string().optional(),
+  role: z.string().optional(),
+  company: z.string().optional(),
   message: z.string().optional(),
+  budgetLow: z.string().optional(),
+  budgetHigh: z.string().optional(),
   email: z.string().email({ message: "Please enter a valid email address" }),
 });
 
 type FormData = z.infer<typeof contactFormSchema>;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-
-const ENGAGEMENT_OPTIONS = ["One-time Project", "Partnership"];
 
 const CAPABILITY_OPTIONS = [
   "Mobile Apps",
@@ -41,7 +42,6 @@ const viewport = { once: true, amount: 0.15 } as const;
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Contact() {
-  const [selectedEngagement, setSelectedEngagement] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -53,12 +53,22 @@ export default function Contact() {
     reset,
   } = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: { name: "", organization: "", message: "", email: "" },
+    defaultValues: {
+      name: "",
+      role: "",
+      company: "",
+      message: "",
+      budgetLow: "",
+      budgetHigh: "",
+      email: "",
+    },
   });
 
   const toggleService = (service: string) => {
     setSelectedServices((prev) =>
-      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service],
+      prev.includes(service)
+        ? prev.filter((s) => s !== service)
+        : [...prev, service],
     );
   };
 
@@ -67,11 +77,13 @@ export default function Contact() {
     try {
       const mailText = `
 Name: ${values.name}
-Organization: ${values.organization || "Not provided"}
+Role: ${values.role || "Not provided"}
+Company / Project: ${values.company || "Not provided"}
 Email: ${values.email}
 
-Engagement Type: ${selectedEngagement || "Not specified"}
 Service Areas: ${selectedServices.length > 0 ? selectedServices.join(", ") : "Not specified"}
+
+Budget: ${values.budgetLow || "Not provided"} – ${values.budgetHigh || "Not provided"}
 
 Message:
 ${values.message || "None provided."}`;
@@ -84,14 +96,17 @@ ${values.message || "None provided."}`;
 
       if (response?.messageId) {
         reset();
-        setSelectedEngagement(null);
         setSelectedServices([]);
         setSubmitted(true);
       } else {
-        setSubmitError(`Something went wrong. Email us directly at ${EMAIL_ADDRESS}`);
+        setSubmitError(
+          `We're sorry, something went wrong. Feel free to email us directly at ${EMAIL_ADDRESS}`,
+        );
       }
     } catch (error) {
-      setSubmitError(`Something went wrong. Email us directly at ${EMAIL_ADDRESS}`);
+      setSubmitError(
+        `We're sorry, something went wrong. Feel free to email us directly at ${EMAIL_ADDRESS}`,
+      );
       console.error(error);
     }
   };
@@ -117,10 +132,16 @@ ${values.message || "None provided."}`;
           viewport={viewport}
         >
           {submitted ? (
-            <p className={styles.successMessage}>We&apos;ll be in touch.</p>
+            <p className={styles.successMessage}>
+              Thank you for considering us. We&apos;ll be in touch soon.
+            </p>
           ) : (
-            <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)} noValidate>
-              {/* Name + Organization */}
+            <form
+              className={styles.contactForm}
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+            >
+              {/* Name */}
               <div className={styles.proseLine}>
                 <span className={styles.proseText}>My name is</span>
                 <div className={styles.inlineFieldWrapper}>
@@ -133,60 +154,33 @@ ${values.message || "None provided."}`;
                     <p className={styles.inlineError}>{errors.name.message}</p>
                   )}
                 </div>
-                <span className={styles.proseText}>and I&apos;m reaching out from</span>
-                <div className={styles.inlineFieldWrapper}>
-                  <input
-                    className={styles.inlineInput}
-                    placeholder="your company or project"
-                    {...register("organization")}
-                  />
-                </div>
+                <span className={styles.proseText}>.</span>
               </div>
 
-              {/* Message */}
-              <textarea
-                className={styles.messageInput}
-                rows={4}
-                placeholder="What are you building, what's the problem, what do you need?"
-                {...register("message")}
-              />
-
-              {/* Email */}
+              {/* Role + Company */}
               <div className={styles.proseLine}>
-                <span className={styles.proseText}>You can reach me at</span>
+                <span className={styles.proseText}>I am the</span>
                 <div className={styles.inlineFieldWrapper}>
                   <input
                     className={styles.inlineInput}
-                    placeholder="your email"
-                    {...register("email")}
+                    placeholder="role"
+                    {...register("role")}
                   />
-                  {errors.email && (
-                    <p className={styles.inlineError}>{errors.email.message}</p>
-                  )}
                 </div>
-              </div>
-
-              {/* Engagement Type */}
-              <div className={styles.servicesBlock}>
-                <p className={styles.servicesLabel}>We&apos;re looking for</p>
-                <div className={styles.serviceGrid}>
-                  {ENGAGEMENT_OPTIONS.map((option) => (
-                    <label key={option} className={styles.serviceItem}>
-                      <input
-                        type="radio"
-                        className={styles.serviceCheckbox}
-                        checked={selectedEngagement === option}
-                        onChange={() => setSelectedEngagement(option)}
-                      />
-                      <span className={styles.serviceLabel}>{option}</span>
-                    </label>
-                  ))}
+                <span className={styles.proseText}>of</span>
+                <div className={styles.inlineFieldWrapper}>
+                  <input
+                    className={styles.inlineInput}
+                    placeholder="company or project"
+                    {...register("company")}
+                  />
                 </div>
+                <span className={styles.proseText}>.</span>
               </div>
 
               {/* Service Areas */}
               <div className={styles.servicesBlock}>
-                <p className={styles.servicesLabel}>Focused on</p>
+                <p className={styles.servicesLabel}>We&apos;re looking for:</p>
                 <div className={styles.serviceGrid}>
                   {CAPABILITY_OPTIONS.map((capability) => (
                     <label key={capability} className={styles.serviceItem}>
@@ -202,7 +196,55 @@ ${values.message || "None provided."}`;
                 </div>
               </div>
 
-              {submitError && <p className={styles.errorMessage}>{submitError}</p>}
+              {/* Message */}
+              <textarea
+                className={styles.messageInput}
+                rows={4}
+                placeholder="Tell us more... what are you building, what's the problem, what do you need?"
+                {...register("message")}
+              />
+
+              {/* Budget */}
+              <div className={styles.proseLine}>
+                <span className={styles.proseText}>Our budget ranges from</span>
+                <div className={styles.inlineFieldWrapper}>
+                  <input
+                    className={styles.inlineInput}
+                    placeholder="low price"
+                    {...register("budgetLow")}
+                  />
+                </div>
+                <span className={styles.proseText}>to</span>
+                <div className={styles.inlineFieldWrapper}>
+                  <input
+                    className={styles.inlineInput}
+                    placeholder="high price"
+                    {...register("budgetHigh")}
+                  />
+                </div>
+                <span className={styles.proseText}>.</span>
+              </div>
+
+              {/* Email */}
+              <div className={styles.proseLine}>
+                <span className={styles.proseText}>
+                  The best place to reach me is
+                </span>
+                <div className={styles.inlineFieldWrapper}>
+                  <input
+                    className={styles.inlineInput}
+                    placeholder="email address"
+                    {...register("email")}
+                  />
+                  {errors.email && (
+                    <p className={styles.inlineError}>{errors.email.message}</p>
+                  )}
+                </div>
+              </div>
+
+              {submitError && (
+                <p className={styles.errorMessage}>{submitError}</p>
+              )}
 
               <button
                 type="submit"
