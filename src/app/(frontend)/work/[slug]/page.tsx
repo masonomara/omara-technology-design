@@ -90,8 +90,10 @@ export default async function Page({ params }: RouteProps) {
               src={thumbnail}
               alt={node.name}
               fill
+              sizes="100vw"
               style={{ objectFit: "cover" }}
               className={styles.cardImageTwo}
+              priority
             />
           </div>
         )}

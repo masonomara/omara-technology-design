@@ -22,6 +22,7 @@ export default function ProjectCard({ node, slug, thumbnail }: ProjectCardProps)
                 src={thumbnail}
                 alt={node.name}
                 fill
+                sizes="(max-width: 549px) 100vw, (max-width: 899px) 50vw, 33vw"
                 style={{ objectFit: "cover" }}
                 className={styles.cardImageTwo}
               />

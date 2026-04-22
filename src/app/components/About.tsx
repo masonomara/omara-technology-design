@@ -165,6 +165,7 @@ export default function About() {
                 src="/siteHeadshot.png"
                 alt="Headshot of Mason O’Mara"
                 fill
+                sizes="(max-width: 699px) 100vw, 340px"
                 style={{ objectFit: "cover" }}
                 className={styles.cardImageTwo}
               />

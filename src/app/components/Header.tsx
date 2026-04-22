@@ -40,6 +40,7 @@ export default function Header() {
               width={326}
               height={20.03}
               alt="Logo"
+              priority
             />
             <Image
               className={styles.logoMobile}
@@ -47,6 +48,7 @@ export default function Header() {
               width={326}
               height={51.03}
               alt="O’Mara Technology"
+              priority
             />
           </Link>
           <div className={styles.textContainer}>
