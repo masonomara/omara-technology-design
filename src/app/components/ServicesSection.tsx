@@ -27,8 +27,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
       <motion.h1
         variants={textFadeUp(0, 0.45)}
         initial="hidden"
-        whileInView="show"
-        viewport={viewport}
+        animate="show"
         className="title"
         style={{ marginBottom: 0 }}
       >
@@ -38,8 +37,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
       <motion.div
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
-        whileInView="show"
-        viewport={viewport}
+        animate="show"
         style={{
           display: "flex",
           alignItems: "center",

@@ -22,8 +22,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       <motion.h1
         variants={textFadeUp(0, 0.45)}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        animate="show"
         className="title"
       >
         WORK

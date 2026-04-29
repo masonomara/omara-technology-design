@@ -38,8 +38,6 @@ const CAPABILITY_OPTIONS = [
   "Something else",
 ];
 
-const viewport = { once: true, amount: 0.15 } as const;
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function ContactForm() {
@@ -118,8 +116,7 @@ ${values.message || "None provided."}`;
         <motion.h1
           variants={textFadeUp(0, 0.45)}
           initial="hidden"
-          whileInView="show"
-          viewport={viewport}
+          animate="show"
           className="title"
           style={{ marginBottom: 0 }}
         >
@@ -130,8 +127,7 @@ ${values.message || "None provided."}`;
           className={styles.contactFormWrapper}
           variants={fadeInButton("up", 0.12, 0.35)}
           initial="hidden"
-          whileInView="show"
-          viewport={viewport}
+          animate="show"
         >
           {submitted ? (
             <p className={styles.successMessage}>
@@ -265,7 +261,7 @@ ${values.message || "None provided."}`;
           variants={textFadeUpSmall(0.08, 0.4)}
           initial="hidden"
           whileInView="show"
-          viewport={viewport}
+          viewport={{ once: true, amount: 0.15 }}
           className={styles.openerBlock}
         >
           <p className={styles.fallback}>

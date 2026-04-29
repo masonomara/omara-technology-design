@@ -54,8 +54,7 @@ export default function About() {
         className="title"
         variants={textFadeUp(0, 0.45)}
         initial="hidden"
-        whileInView="show"
-        viewport={viewport}
+        animate="show"
         style={{ marginBottom: 0 }}
       >
         About
@@ -64,8 +63,7 @@ export default function About() {
       <motion.div
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
-        whileInView="show"
-        viewport={viewport}
+        animate="show"
         style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}
       >
         <p className={styles.ethos}>
