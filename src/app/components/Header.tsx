@@ -51,11 +51,6 @@ export default function Header() {
               priority
             />
           </Link>
-          <div className={styles.textContainer}>
-            Product Design &
-            <br />
-            Development Studio
-          </div>
         </div>
         <nav className={styles.menuWrapper}>
           {NAV_LINKS.map(({ id, label, href }) => {

@@ -273,8 +273,7 @@ export default function Game() {
                 alt="O’Mara Technology Design"
               />
               <p className={styles.startTagline}>
-                Product design and development studio for apps, websites, and
-                software.
+                Digital studio for creative technical strategy, design, and development.
               </p>
             </div>
             <div className={styles.buttonWrapper}>
@@ -287,7 +286,7 @@ export default function Game() {
                   href="/about"
                   target="_top"
                 >
-                  <p>About</p>
+                  <p>About Us</p>
                 </Link>
                 <Link
                   className={styles.secondaryButton}

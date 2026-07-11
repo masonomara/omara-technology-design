@@ -6,7 +6,7 @@ import CursorFollower from "./components/CursorFollower";
 export const metadata: Metadata = {
   title: "O’Mara Technology",
   description:
-    "O’Mara Technology — a product design and development studio led by Mason O’Mara, working with founders and teams from design through deployment.",
+    "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
 };
 
 export const viewport: Viewport = {
