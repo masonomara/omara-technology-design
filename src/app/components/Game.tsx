@@ -32,7 +32,6 @@ export default function Game() {
 
   const [bangs, setBangs] = useState<BangMarker[]>([]);
   const [handImage, setHandImage] = useState("/thumbsUp.svg");
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // ─── Click / bang effect ─────────────────────────────────────────────────────
 
@@ -304,7 +303,7 @@ export default function Game() {
 
         {/* ── Video background (fades out once the game goes active) ── */}
         <div
-          className={`${styles.videoWrapper} ${game.isGameActive ? styles.videoWrapperClose : ""} ${!videoLoaded ? styles.videoLoading : ""}`}
+          className={`${styles.videoWrapper} ${game.isGameActive ? styles.videoWrapperClose : ""}`}
         >
           <div className={styles.videoScreenOverlay} />
           <div className={styles.videoMultiplyOverlay} />
@@ -316,7 +315,6 @@ export default function Game() {
             playsInline
             loop
             preload="auto"
-            onCanPlayThrough={() => setVideoLoaded(true)}
             className={styles.videoSource}
           >
             <source src="/mason.mp4" type="video/mp4" />

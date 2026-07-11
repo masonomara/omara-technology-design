@@ -473,15 +473,6 @@
   filter: grayscale(100%) contrast(1.15) brightness(1.15);
 }
 
-/* Invisible until the video has loaded enough to play */
-.videoLoading {
-  opacity: 0;
-}
-
-.videoLoading .videoSource {
-  opacity: 0;
-}
-
 /* =============================================================================
    9. BANG ANIMATIONS
    ============================================================================= */
