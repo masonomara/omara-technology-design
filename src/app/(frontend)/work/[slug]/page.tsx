@@ -36,7 +36,7 @@ export async function generateMetadata({
     title,
     description:
       node?.description ??
-      "Digital studio for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+      "Digital studio for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and more creative solutions.",
     alternates: {
       canonical: `https://omaratechnology.com/work/${slug}`,
     },
@@ -44,7 +44,7 @@ export async function generateMetadata({
       title,
       description:
         node?.description ??
-        "Digital studio for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+        "Digital studio for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and more creative solutions.",
       url: `https://omaratechnology.com/work/${slug}`,
       siteName: "O’Mara Technology",
       images: [
@@ -63,7 +63,7 @@ export async function generateMetadata({
       title,
       description:
         node?.description ??
-        "Digital studio for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+        "Digital studio for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and more creative solutions.",
       images: ["https://omaratechnology.com/bizCard.png"],
     },
   };

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.pageContainer}>
       <h1 className="srOnly">
-        Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.
+        Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.
       </h1>
       {/* The game's background <video> lives in an ssr:false chunk, so its
           poster isn't in the initial HTML. Preload it here (hoisted to <head>

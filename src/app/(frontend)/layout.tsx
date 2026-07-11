@@ -8,14 +8,14 @@ import ScrollToTop from "../components/ScrollToTop";
 export const metadata: Metadata = {
   title: "O’Mara Technology",
   description:
-    "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+    "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
   alternates: {
     canonical: "https://omaratechnology.com/",
   },
   openGraph: {
     title: "O’Mara Technology",
     description:
-      "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     url: "https://omaratechnology.com/",
     siteName: "O’Mara Technology",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "O’Mara Technology",
     description:
-      "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };
@@ -55,7 +55,7 @@ export default function RootLayout({
             url: "https://omaratechnology.com",
             logo: "https://omaratechnology.com/longWordmark.svg",
             description:
-              "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+              "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
             email: "info@omaratechnology.com",
           }),
         }}

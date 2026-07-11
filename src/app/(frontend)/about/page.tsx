@@ -6,14 +6,14 @@ import About from "@/app/components/About";
 export const metadata: Metadata = {
   title: "About | O‘Mara Technology",
   description:
-    "Meet O’Mara Technology — how the studio works with founders and teams, from one-time projects to ongoing partnerships across design and development.",
+    "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
   alternates: {
     canonical: "https://omaratechnology.com/about",
   },
   openGraph: {
     title: "About | O’Mara Technology",
     description:
-      "Meet O’Mara Technology — how the studio works with founders and teams, from one-time projects to ongoing partnerships across design and development.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     url: "https://omaratechnology.com/about",
     siteName: "O‘Mara Technology",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About | O’Mara Technology",
     description:
-      "Meet O’Mara Technology — how the studio works with founders and teams, from one-time projects to ongoing partnerships across design and development.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };

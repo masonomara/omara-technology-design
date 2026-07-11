@@ -4,14 +4,14 @@ import ContactForm from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contact | O’Mara Technology",
   description:
-    "Contact O’Mara Technology to book a free 20-minute intro call about your app, website, AI, or software project.",
+    "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
   alternates: {
     canonical: "https://omaratechnology.com/contact",
   },
   openGraph: {
     title: "Contact | O’Mara Technology",
     description:
-      "Contact O’Mara Technology to book a free 20-minute intro call about your app, website, AI, or software project.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     url: "https://omaratechnology.com/contact",
     siteName: "O’Mara Technology",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | O’Mara Technology",
     description:
-      "Contact O’Mara Technology to book a free 20-minute intro call about your app, website, AI, or software project.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };

@@ -11,14 +11,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Services | O’Mara Technology",
   description:
-    "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+    "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
   alternates: {
     canonical: "https://omaratechnology.com/services",
   },
   openGraph: {
     title: "Services | O’Mara Technology",
     description:
-      "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     url: "https://omaratechnology.com/services",
     siteName: "O’Mara Technology",
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Services | O’Mara Technology",
     description:
-      "Digital studio led by Mason O'Mara for creative technical strategy, design, and development of mobile apps, websites, applied AI, software, and other solutions.",
+      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };
