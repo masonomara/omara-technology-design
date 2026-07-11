@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import { marked } from "marked";
 import navRaw from "../../content/nav.json";
-import servicesRaw from "../../content/services.json";
 import type { ContentNode } from "./types";
 import { toSlug } from "./slug";
 
@@ -10,10 +9,6 @@ const nav = navRaw as ContentNode[];
 
 export function getWorkItems(): ContentNode[] {
   return nav.find((n) => n.name === "work")?.children ?? [];
-}
-
-export function getServicesData(): typeof servicesRaw {
-  return servicesRaw;
 }
 
 export function getWorkNode(slug: string): ContentNode | null {
