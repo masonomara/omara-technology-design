@@ -44,9 +44,9 @@ export default function Header() {
             />
             <Image
               className={styles.logoMobile}
-              src="/top-logo-spacing.svg"
+              src="/longWordmark.svg"
               width={326}
-              height={51.03}
+              height={20.03}
               alt="O’Mara Technology"
               priority
             />

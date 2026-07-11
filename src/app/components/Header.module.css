@@ -113,7 +113,7 @@
     width: calc(100vw - 40px);
     height: fit-content;
     padding: 0px 0px 0px;
-    border: 2px solid var(--color-primary);
+    border: 1px solid var(--color-primary);
   }
 
   .menuOption span {
@@ -132,7 +132,7 @@
 
   .logoWrapper {
     width: 100%;
-    margin: 0px 7px;
+    margin: 0px 16px;
   }
 
   .logoDesktop {
@@ -143,17 +143,17 @@
     display: flex;
     width: 100%;
     height: auto;
-    aspect-ratio: 326/63.03;
-    border-bottom: 1px solid var(--color-primary);
+    aspect-ratio: 326/40.03;
+    border-bottom: 2px solid var(--color-primary);
   }
 
   .menuWrapper {
     justify-content: space-around;
     width: 100%;
-    margin: calc(clamp(15px, 4.75vw, 24px) / 2.5) 0px;
+    margin: calc(clamp(16px, 5vw, 28px) / 2.5) 0px;
     gap: 0px;
-    width: calc(100% - clamp(15px, 4.75vw, 24px));
-    padding: 0px calc(clamp(15px, 4.75vw, 24px) / 2);
+    width: calc(100% - clamp(16px, 5vw, 28px));
+    padding: 0px calc(clamp(16px, 5vw, 28px) / 2);
   }
 
   .menuOption {
