@@ -1,0 +1,18 @@
+# The Hobbes engine ignores its own secrets and artifacts, so the drop-in is
+# self-contained — no per-client root .gitignore editing, nothing to forget.
+
+# Python build artifacts
+__pycache__/
+*.py[cod]
+
+# The PSI key — never commit (it was historically tracked; rotate if exposed)
+tools/.psi-key
+
+# Cycle build intermediates — raw/ (pre-publish capture) and raw-review/ (the
+# post-publish re-capture, incl. its rendered after-digest baseline.md) are the
+# machine source the tools write and evaluation.py / review.py parse. Neither is a
+# durable deliverable, so both stay out of git to keep the repo from ballooning.
+# The durable record is 01-baseline.md, 02-evaluation.md, 03-plan.md, 04-execute.md,
+# 06-review.md.
+cycle/*/raw/
+cycle/*/raw-review/

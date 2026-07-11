@@ -1,0 +1,99 @@
+# Hobbes work cycle: measure (deterministic) -> plan + fix (Claude agent) -> ONE PR.
+# Manual trigger only. Firing it always produces BOTH the scorecard/findings AND
+# the reviewable code fix, in a single PR. (The before/after diff is NOT here — it's
+# the review phase's job, after a publish.) The deterministic half is pure Python (stdlib)
+# + the SiteOne crawler (no LLM); the agent half is Claude Code (subscription auth). It
+# writes only to GitHub — no platform/deploy CLI, no publish. Review + publish are human.
+#
+# (Data collection alone runs locally via `python3 hobbes/tools/cli.py cycle`; in CI the data
+#  and the fix always fire together — there's no measure-only automation.)
+name: Hobbes cycle
+
+on:
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "Effort budget for batch selection (blank = use [cycle].effort_budget from hobbes.toml)"
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write # claude-code-action fetches an OIDC token → exchanges for the Claude GitHub App token
+
+concurrency: # one cycle at a time
+  group: hobbes-cycle
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install SiteOne crawler
+        # The release asset carries the version in its name (…-vX.Y.Z-linux-x64.tar.gz)
+        # and unpacks to siteone-crawler/siteone-crawler, so resolve the URL from the
+        # API and strip the top dir onto PATH. (glibc x64 — skip the musl/arm assets.)
+        run: |
+          URL=$(curl -s https://api.github.com/repos/janreges/siteone-crawler/releases/latest \
+            | grep -o 'https://[^"]*-linux-x64\.tar\.gz' | grep -v musl | head -1)
+          echo "SiteOne asset: $URL"
+          curl -fsSL -o /tmp/siteone.tar.gz "$URL"
+          mkdir -p "$HOME/siteone"
+          tar -xzf /tmp/siteone.tar.gz -C "$HOME/siteone" --strip-components=1
+          echo "$HOME/siteone" >> "$GITHUB_PATH"
+          "$HOME/siteone/siteone-crawler" --version || true   # --version prints then exits nonzero; the line above confirms it runs
+
+      - name: Resolve effort budget (input override, else hobbes.toml)
+        run: |
+          EFFORT="${{ inputs.budget }}"
+          [ -z "$EFFORT" ] && EFFORT="$(python3 hobbes/tools/cli.py budget)"
+          echo "EFFORT=$EFFORT" >> "$GITHUB_ENV"
+
+      - name: Measure — baseline + evaluation (deterministic, no LLM)
+        env:
+          PSI_API_KEY: ${{ secrets.PSI_API_KEY }}
+        run: |
+          python3 hobbes/tools/cli.py cycle          # baseline + evaluation only — no diff in a cycle
+          DATE=$(python3 hobbes/tools/cli.py today)   # pinned tz — must match the folder cli wrote
+          echo "CYCLE_DATE=$DATE" >> "$GITHUB_ENV"
+          # The before/after is the review phase's job (post-publish), not the cycle's.
+          echo "Cycle $DATE — 01-baseline.md + 02-evaluation.md written; the fix and data ship in one PR below." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Plan + fix — Claude agent, then ONE PR (data + code)
+        uses: anthropics/claude-code-action@v1
+        env:
+          GH_TOKEN: ${{ github.token }} # authenticates the agent's git push + `gh pr create`
+        with:
+          # Auth via the Claude Code subscription (Pro/Max), NOT a pay-per-token API key.
+          # Generate once with `claude setup-token`, store as the CLAUDE_CODE_OAUTH_TOKEN secret.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Automation mode needs an explicit tool allow-list, or every edit/git/gh call is denied.
+          claude_args: |
+            --model claude-opus-4-8
+            --max-turns 150
+            --allowedTools Edit,Read,Write,Glob,Grep,Bash
+          prompt: |
+            This cycle's deterministic measurements are already in the working tree at
+            hobbes/cycle/${{ env.CYCLE_DATE }}/ (01-baseline.md, 02-evaluation.md), uncommitted.
+            Run the Hobbes plan + execute stages against them.
+            Read hobbes/templates/03-plan-template.md and hobbes/templates/04-execute-template.md and
+            follow them exactly. Effort budget: ${{ env.EFFORT }}.
+            Write 03-plan.md and 04-execute.md into hobbes/cycle/${{ env.CYCLE_DATE }}/, then make
+            the code changes.
+            Open ONE pull request carrying BOTH the cycle data and the fix:
+              - create a branch `hobbes-cycle-${{ env.CYCLE_DATE }}`
+              - `git add -A` (stages the scorecard/evaluation, your 03-plan.md/04-execute.md, and the
+                code changes; raw/ is git-ignored, so it's excluded)
+              - commit, `git push -u origin`
+              - `gh pr create` with title "Hobbes ${{ env.CYCLE_DATE }} — <a short summary of what you
+                shipped this batch>" and a body carrying the current baseline + evaluation summary, what
+                shipped, and any human-owned deferrals (content at scale, integration/platform config, sign-off). There
+                is no before/after here — the measured impact lands in the review comment after publish.
+            Hard rules: write only to GitHub. Do NOT run any deploy/platform CLI. Do NOT publish. Verification
+            (the stack's checker, browser) and the live publish are the human's, at review.
