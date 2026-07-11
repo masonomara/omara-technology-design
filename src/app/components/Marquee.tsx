@@ -1,32 +1,13 @@
-import Image from "next/image";
 import styles from "./Marquee.module.css";
 
 const set = (
   <>
     <span className={styles.title}>Everything changes</span>
-    <Image
-      className={styles.wave}
-      src="/waves-background.svg"
-      alt=""
-      height={21}
-      width={21}
-    />
+    <span className={styles.wave} aria-hidden="true" />
     <span className={styles.title}>Be creative</span>
-    <Image
-      className={styles.wave}
-      src="/waves-background.svg"
-      alt=""
-      height={21}
-      width={21}
-    />
+    <span className={styles.wave} aria-hidden="true" />
     <span className={styles.title}>Embrace timeless work</span>
-    <Image
-      className={styles.wave}
-      src="/waves-background.svg"
-      alt=""
-      height={21}
-      width={21}
-    />
+    <span className={styles.wave} aria-hidden="true" />
   </>
 );
 

@@ -143,10 +143,15 @@ ${values.message || "None provided."}`;
               >
                 {/* Name */}
                 <div className={styles.fieldGroup}>
-                  <label className={styles.fieldLabel} style={{ marginTop: 0 }}>
+                  <label
+                    htmlFor="contact-name"
+                    className={styles.fieldLabel}
+                    style={{ marginTop: 0 }}
+                  >
                     My name is:
                   </label>
                   <input
+                    id="contact-name"
                     className={styles.fieldInput}
                     placeholder="Your name"
                     {...register("name")}
@@ -158,8 +163,11 @@ ${values.message || "None provided."}`;
 
                 {/* Email */}
                 <div className={styles.fieldGroup}>
-                  <label className={styles.fieldLabel}>My best email is:</label>
+                  <label htmlFor="contact-email" className={styles.fieldLabel}>
+                    My best email is:
+                  </label>
                   <input
+                    id="contact-email"
                     className={styles.fieldInput}
                     placeholder="your@email.com"
                     {...register("email")}
@@ -172,16 +180,25 @@ ${values.message || "None provided."}`;
                 {/* Role + Company */}
                 <div className={styles.fieldRow}>
                   <div className={styles.fieldGroup}>
-                    <label className={styles.fieldLabel}>I am the:</label>
+                    <label htmlFor="contact-role" className={styles.fieldLabel}>
+                      I am the:
+                    </label>
                     <input
+                      id="contact-role"
                       className={styles.fieldInput}
                       placeholder="Your role"
                       {...register("role")}
                     />
                   </div>
                   <div className={styles.fieldGroup}>
-                    <label className={styles.fieldLabel}>at:</label>
+                    <label
+                      htmlFor="contact-company"
+                      className={styles.fieldLabel}
+                    >
+                      at:
+                    </label>
                     <input
+                      id="contact-company"
                       className={styles.fieldInput}
                       placeholder="Company or project name"
                       {...register("company")}
@@ -211,8 +228,13 @@ ${values.message || "None provided."}`;
 
                 {/* Message */}
                 <div className={styles.fieldGroup}>
-                  <label className={styles.fieldLabel}></label>
+                  <label
+                    htmlFor="contact-message"
+                    className={styles.fieldLabel}
+                  ></label>
                   <textarea
+                    id="contact-message"
+                    aria-label="Your message"
                     className={styles.messageInput}
                     rows={4}
                     placeholder="Tell us more about what you're building, where you're stuck, or what you need."
@@ -223,16 +245,28 @@ ${values.message || "None provided."}`;
                 {/* Budget */}
                 <div className={styles.fieldRow}>
                   <div className={styles.fieldGroup}>
-                    <label className={styles.fieldLabel}>My budget is:</label>
+                    <label
+                      htmlFor="contact-budget-low"
+                      className={styles.fieldLabel}
+                    >
+                      My budget is:
+                    </label>
                     <input
+                      id="contact-budget-low"
                       className={styles.fieldInput}
                       placeholder="e.g. $5,000"
                       {...register("budgetLow")}
                     />
                   </div>
                   <div className={styles.fieldGroup}>
-                    <label className={styles.fieldLabel}>to:</label>
+                    <label
+                      htmlFor="contact-budget-high"
+                      className={styles.fieldLabel}
+                    >
+                      to:
+                    </label>
                     <input
+                      id="contact-budget-high"
                       className={styles.fieldInput}
                       placeholder="e.g. $20,000"
                       {...register("budgetHigh")}

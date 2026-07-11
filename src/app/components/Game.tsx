@@ -269,6 +269,8 @@ export default function Game() {
               <img
                 src="/wordmark.svg"
                 className={styles.startWordmark}
+                width={363}
+                height={143}
                 alt="O’Mara Technology Design"
               />
               <p className={styles.startTagline}>
@@ -309,7 +311,6 @@ export default function Game() {
           <video
             width="320"
             height="240"
-            poster="/mason-poster.jpg"
             autoPlay
             muted
             playsInline
@@ -318,7 +319,6 @@ export default function Game() {
             onCanPlayThrough={() => setVideoLoaded(true)}
             className={styles.videoSource}
           >
-            <source src="/mason.webm" type="video/webm" />
             <source src="/mason.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

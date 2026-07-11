@@ -258,6 +258,7 @@
 
 .startWordmark {
   width: 100%;
+  height: auto;
   max-width: 360px;
   display: block;
   margin-bottom: 8px;

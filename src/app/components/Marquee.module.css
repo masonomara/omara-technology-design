@@ -35,7 +35,14 @@
 
 .wave {
   flex-shrink: 0;
+  display: inline-block;
+  width: 21px;
+  height: 21px;
   margin: 3.5px 14px;
+  background-image: url(/waves-background.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @keyframes marquee {

@@ -4,14 +4,14 @@ import ContactForm from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contact | O’Mara Technology",
   description:
-    "Product design and development studio for apps, websites, and software.",
+    "Contact O’Mara Technology to book a free 20-minute intro call about your app, website, AI, or software project.",
   alternates: {
     canonical: "https://omaratechnology.com/contact",
   },
   openGraph: {
     title: "Contact | O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "Contact O’Mara Technology to book a free 20-minute intro call about your app, website, AI, or software project.",
     url: "https://omaratechnology.com/contact",
     siteName: "O’Mara Technology",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "Contact O’Mara Technology to book a free 20-minute intro call about your app, website, AI, or software project.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };

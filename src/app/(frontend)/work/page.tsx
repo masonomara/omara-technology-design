@@ -9,14 +9,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Work | O’Mara Technology",
   description:
-    "Product design and development studio for apps, websites, and software.",
+    "See O’Mara Technology’s work — case studies across mobile apps, web apps, ecommerce, and AI products, taken from design through deployment.",
   alternates: {
     canonical: "https://omaratechnology.com/work",
   },
   openGraph: {
     title: "Work | O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "See O’Mara Technology’s work — case studies across mobile apps, web apps, ecommerce, and AI products, taken from design through deployment.",
     url: "https://omaratechnology.com/work",
     siteName: "O’Mara Technology",
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Work | O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "See O’Mara Technology’s work — case studies across mobile apps, web apps, ecommerce, and AI products, taken from design through deployment.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };
