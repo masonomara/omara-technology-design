@@ -270,6 +270,7 @@ export default function Game() {
                 className={styles.startWordmark}
                 width={363}
                 height={143}
+                fetchPriority="high"
                 alt="O’Mara Technology Design"
               />
               <p className={styles.startTagline}>

@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.pageContainer}>
+    <main className={styles.pageContainer}>
       <h1 className="srOnly">
         Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.
       </h1>
@@ -17,6 +17,6 @@ export default function Home() {
         fetchPriority="high"
       />
       <GameLoader />
-    </div>
+    </main>
   );
 }

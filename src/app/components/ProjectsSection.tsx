@@ -29,7 +29,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       </motion.h1>
 
       <div className={styles.workWrapper}>
-        {projects.map((item) => (
+        {projects.map((item, index) => (
           <motion.div
             key={item.slug}
             variants={fadeInButton("up", 0.1, 0.35)}
@@ -41,6 +41,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
               node={item.node}
               slug={item.slug}
               thumbnail={item.thumbnail}
+              priority={index === 0}
             />
           </motion.div>
         ))}
