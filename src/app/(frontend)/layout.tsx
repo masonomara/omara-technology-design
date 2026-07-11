@@ -8,14 +8,14 @@ import ScrollToTop from "../components/ScrollToTop";
 export const metadata: Metadata = {
   title: "O’Mara Technology",
   description:
-    "Product design and development studio for apps, websites, and software.",
+    "O’Mara Technology is a product design and development studio building mobile apps, websites, AI products, and software — from discovery through launch.",
   alternates: {
     canonical: "https://omaratechnology.com/",
   },
   openGraph: {
     title: "O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "O’Mara Technology is a product design and development studio building mobile apps, websites, AI products, and software — from discovery through launch.",
     url: "https://omaratechnology.com/",
     siteName: "O’Mara Technology",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "O’Mara Technology is a product design and development studio building mobile apps, websites, AI products, and software — from discovery through launch.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };

@@ -6,14 +6,14 @@ import About from "@/app/components/About";
 export const metadata: Metadata = {
   title: "About | O‘Mara Technology",
   description:
-    "Product design and development studio for apps, websites, and software.",
+    "Meet O’Mara Technology — how the studio works with founders and teams, from one-time projects to ongoing partnerships across design and development.",
   alternates: {
     canonical: "https://omaratechnology.com/about",
   },
   openGraph: {
     title: "About | O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "Meet O’Mara Technology — how the studio works with founders and teams, from one-time projects to ongoing partnerships across design and development.",
     url: "https://omaratechnology.com/about",
     siteName: "O‘Mara Technology",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About | O’Mara Technology",
     description:
-      "Product design and development studio for apps, websites, and software.",
+      "Meet O’Mara Technology — how the studio works with founders and teams, from one-time projects to ongoing partnerships across design and development.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };
