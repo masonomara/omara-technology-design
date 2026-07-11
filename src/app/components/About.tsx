@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { fadeIn, textFadeUp, textFadeUpSmall } from "../lib/motion";
 import styles from "./About.module.css";
+import Link from "next/link";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -66,16 +66,22 @@ export default function About() {
         style={{ display: "flex", maxWidth: "740px", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}
       >
         <p className={styles.identity}>
-          O’Mara Technology is a digital studio led by{" "}
+          O&apos;Mara Technology is a digital studio led by{" "}
           <a
             href="https://masonomara.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Mason O’Mara
+            Mason O&apos;Mara
           </a>
           , a creative technologist based out of Los Angeles, California. We lead or integrate with teams across end-to-end creative technical strategy and service from discovery to design, engineering, launch, and iteration across digital products, mobile apps, web apps, custom software, infrastructure, applied AI, and other creative solutions.
         </p>
+        <p className={styles.introNote}>
+          We are currently not accepting new clients but we’d still love to connect or for a free 20-minute consultation call.
+        </p>
+        <Link href="/contact" className={styles.ctaLink}>
+          Contact Us
+        </Link>
       </motion.div>
 
       <motion.div
@@ -104,33 +110,26 @@ export default function About() {
         viewport={viewport}
       >
         <h2 className={styles.sectionHeading}>How We Work</h2>
+        <p className={styles.servicesNote}>
+          We lead or integrate within existing teams across the development lifecycle. WE work across discovery, research, design, development, launch, and iteration. We are committed to being constructive and honest rather than telling you what you want to hear. We handle all work internally or with partners we trust.
+
+        </p>
         <div className={styles.engagementsGrid}>
           <div className={styles.engagementType}>
             <h3>One-Time Projects</h3>
             <p>
-              For new products and features. Discovery, design, development, and
-              launch all scoped before we start, with payments at monthly
-              milestones along the way. At the end, you own the codebase,
-              documentation, and training — the project is yours to operate.
+              Best for new products and features. Discovery, design, development, and launch and after final handoff you completely own the codebase, documentation, and training. One-time projects cover one development cycle from discover to launch through launch. Often our one-time projects turn into partnerships.
+
             </p>
           </div>
           <div className={styles.engagementType}>
             <h3>Partnerships</h3>
             <p>
-              For new and existing products and software. Iterative product
-              development over a minimum three-month engagement where we work
-              embedded or lead research, architecture directions, design
-              direction, prioritization, and iteration as the product develops.
+              For new and existing products and software. Partnerships cover multiple iterative cycles plus maintenance. Engagements typically include research, architecture directions, design direction, prioritization, and iteration as the product develops.
             </p>
           </div>
         </div>
-        <p className={styles.servicesNote}>
-          Every product goes through the same phases — idea, discovery, design,
-          build, and launch. Both engagements help you work through and
-          understand each phase. We start with a free 20-minute intro call.
-          After discovery, there&apos;s an opportunity to reevaluate before
-          committing to a full design and build.
-        </p>
+
       </motion.div>
 
 
@@ -142,51 +141,14 @@ export default function About() {
         whileInView="show"
         viewport={viewport}
       >
-        <h2 className={styles.sectionHeading}>Our Team</h2>
+        <h2 className={styles.sectionHeading}>Getting Started</h2>
         <div className={styles.bioContent}>
-          <div className={styles.bioImageContainer}>
-            <div className={styles.cardImageScreen} />
-            <div className={styles.cardImageMultiply} />
-            <div className={styles.cardImage}>
-              <Image
-                src="/siteHeadshot.png"
-                alt="Headshot of Mason O’Mara"
-                fill
-                sizes="(max-width: 699px) 100vw, 340px"
-                style={{ objectFit: "cover" }}
-                className={styles.cardImageTwo}
-              />
-            </div>
-          </div>
-          <div className={styles.bioText}>
-            <p>
-              Mason O’Mara is a product designer and software engineer. He&apos;s
-              shipped iOS and Android apps, full-stack web platforms, Shopify
-              storefronts, and AI-integrated tools across industries from yacht
-              staffing to accessibility consulting to fashion retail.
-            </p>
-            <p>
-              He moved from UX strategy into independent practice to do the work
-              he cares about with teams he believes in. He writes about product
-              and design on{" "}
-              <a
-                href="https://substack.com/@masonomara"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Substack
-              </a>{" "}
-              and documents builds on{" "}
-              <a
-                href="https://youtube.com/@masonomaratechnology"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                YouTube
-              </a>
-              . He&apos;s based in Asbury Park, NJ.
-            </p>
-          </div>
+          <p className={styles.gettingStartedNote}>
+            We offer a free 20 minute consultation calls to see if we are a good fit or point you in the right direction If not. From there we meet again to properly scope out remainder of project and create an outline of the discovery, design, build, and launch phases. Your first payment covers the discovery phase only so we can make sure the project solves a real problem and has a viable solution before committing further.
+          </p>
+          <Link href="/contact" className={styles.ctaLink}>
+            Contact Us
+          </Link>
         </div>
       </motion.div>
     </>

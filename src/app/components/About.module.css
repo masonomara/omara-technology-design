@@ -10,6 +10,26 @@
   line-height: 1.23;
 }
 
+.intro {
+  margin-top: 1em;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 600;
+  max-width: 740px;
+  width: 87vw;
+  line-height: 1.23;
+}
+
+.introMeta {
+  margin-top: 1.6em;
+  margin-bottom: 0;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  max-width: 740px;
+  width: 87vw;
+  line-height: var(--leading-relaxed);
+}
+
 .identity {
   margin-top: 1.6em;
   margin-bottom: 0;
@@ -104,7 +124,24 @@
 
 .servicesNote {
   font-size: var(--text-lg);
-  margin-top: 1.6em;
+  margin-bottom: 28px;
+  margin-top: 0px;
+  font-weight: 500;
+  line-height: var(--leading-relaxed);
+}
+
+.introNote {
+  font-size: var(--text-lg);
+  margin-bottom: 0px;
+  margin-top: 28px;
+  font-weight: 500;
+  line-height: var(--leading-relaxed);
+}
+
+.gettingStartedNote {
+  font-size: var(--text-lg);
+  margin-bottom: 0px;
+  margin-top: 0px;
   font-weight: 500;
   line-height: var(--leading-relaxed);
 }
@@ -135,6 +172,31 @@
   max-width: 180px;
 }
 
+.ctaLink {
+  height: 40px;
+  font-size: 21px;
+  font-family: var(--font-radio);
+  font-variation-settings:
+    "wdth" 75,
+    "wght" 600;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  transition: var(--transition-smooth-100) all;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 180px;
+  margin-top: calc(28px);
+  padding: 0 20px;
+  display: inline-flex;
+  text-decoration: none !important;
+}
+
 .servicesLink:hover {
   background-color: var(--color-btn-hover);
   text-decoration: none !important;
@@ -149,22 +211,61 @@
 /* ─── Capabilities ───────────────────────────────────────────── */
 
 .capabilitiesSection {
-  max-width: 740px;
-  width: 87vw;
+  max-width: 1080px;
+  width: 100vw;
   /* margin-top: 2.4em; */
   /* padding-top: 2em; */
   /* border-top: 2px solid var(--color-primary); */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .capabilitiesGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  display: flex;
+  flex-direction: row;
+flex-wrap: wrap;  gap: 34px;
+align-items: flex-start;
+justify-content: center;
+padding: 0px 32px;
+
 }
+
 
 .capability {
   display: flex;
   flex-direction: column;
+  width: calc((100% - 34px - 34px) / 3);
+}
+
+@media screen and (max-width: 699px) {
+    .capability {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% - 34px) / 2);
+    }
+    .capabilitiesGrid {
+padding: 0px;
+    }
+}
+@media screen and (max-width: 799px) {
+
+.capability {
+  display: flex;
+  flex-direction: column;
+  width: calc((100% - 34px) / 2);
+}
+
+}
+
+@media screen and (max-width: 569px) {
+
+    .capability {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
 }
 
 /* ─── Bio ────────────────────────────────────────────────────── */
@@ -179,9 +280,9 @@
 
 .bioContent {
   display: flex;
-  flex-direction: row;
-  gap: 48px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0px;
+  align-items:center;
 }
 
 .bioImageContainer {
@@ -249,7 +350,7 @@
 
 .engagementsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 28px;
 }
 
@@ -289,7 +390,7 @@
 
   .bioContent {
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
   }
 
   .bioImageContainer {

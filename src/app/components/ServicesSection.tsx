@@ -48,15 +48,16 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
         }}
       >
         <p className={styles.intro}>
-          Every product moves through four phases: discovery, design,
-          development and launch. We lead or work embedded within your team to
-          help your product along every step of the way.
+          O’Mara Technology is a digital studio led by{" "}<a
+            href="https://masonomara.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mason O’Mara
+          </a>, a creative technologist based out of Los Angeles, California. We lead or integrate with teams across end-to-end creative technical strategy and service from discovery to design, engineering, launch, and iteration across digital products, mobile apps, web apps, custom software, infrastructure, applied AI, and other creative solutions.
         </p>
         <p className={styles.introMeta}>
-          We offer two types of engagements with clients, one time projects and
-          partnerships. One-time projects cover one product development cycle
-          through launch. Partnerships cover multiple iterative cycles plus
-          maintenance. Often our one-time projects turn into partnerships.
+          We are currently not accepting new clients but we’d still love to connect or for a free 20-minute consultation call.
         </p>
       </motion.div>
         <h2 className={styles.sectionHeading}>Engagements</h2>
