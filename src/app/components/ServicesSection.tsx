@@ -27,7 +27,8 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
       <motion.h1
         variants={textFadeUp(0, 0.45)}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={viewport}
         className="title"
         style={{ marginBottom: 0 }}
       >
@@ -37,7 +38,8 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
       <motion.div
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={viewport}
         style={{
           display: "flex",
           alignItems: "center",
@@ -57,16 +59,7 @@ export default function ServicesSection({ data }: ServicesSectionProps) {
           maintenance. Often our one-time projects turn into partnerships.
         </p>
       </motion.div>
-
-      <motion.h2
-        className={styles.sectionHeading}
-        variants={textFadeUpSmall(0.1, 0.4)}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewport}
-      >
-        Engagements
-      </motion.h2>
+        <h2 className={styles.sectionHeading}>Engagements</h2>
 
       <motion.div
         variants={textFadeUpSmall(0.12, 0.4)}

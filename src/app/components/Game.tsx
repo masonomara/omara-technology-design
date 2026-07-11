@@ -286,7 +286,7 @@ export default function Game() {
                   href="/about"
                   target="_top"
                 >
-                  <p>About Us</p>
+                  <p>About</p>
                 </Link>
                 <Link
                   className={styles.secondaryButton}

@@ -1,3 +1,6 @@
+// TODO: DELETE THIS PAGE. The /services route is being retired — its language is
+// being ported into the About page. Kept temporarily for reference; remove once the
+// port is complete. (ServicesSection + services.json are being reused on About.)
 import Footer from "@/app/components/Footer";
 import ServicesSection from "@/app/components/ServicesSection";
 import { getServicesData } from "@/lib/content";

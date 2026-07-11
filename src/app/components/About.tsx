@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { fadeIn, textFadeUp, textFadeUpSmall } from "../lib/motion";
 import styles from "./About.module.css";
 
@@ -123,9 +122,6 @@ export default function About() {
           After discovery, there&apos;s an opportunity to reevaluate before
           committing to a full design and build.
         </p>
-        <Link href="/services" className={styles.servicesLink}>
-          Learn more
-        </Link>
       </motion.div>
 
       <motion.div
