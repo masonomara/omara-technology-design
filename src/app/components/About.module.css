@@ -13,7 +13,7 @@
 .identity {
   margin-top: 1.6em;
   margin-bottom: 0;
-  font-size: var(--text-lg);
+  font-size: 22px;
   font-weight: 500;
   max-width: 740px;
   width: 87vw;
@@ -267,17 +267,7 @@
   .identity {
     width: calc(100% - 24px);
     padding: 0 12px;
-    font-size: var(--text-md);
-  }
-
-  .capabilityBody {
-    font-size: var(--text-md);
-  }
-
-  .engagementType h3,
-  .engagementType p,
-  .servicesNote {
-    font-size: var(--text-md);
+    font-size: 20px;
   }
 
   /* Layout */

@@ -10,35 +10,35 @@ import styles from "./About.module.css";
 const CAPABILITIES = [
   {
     label: "Mobile Apps",
-    body: "Cross-platform iOS and Android built in React Native. Real-time features, matching systems, custom algorithms, subscription payments, App Store and Google Play submission.",
+    body: "Full-stack design, development and cross platform launches on the App Store for iOS and Google Play store for Android using React Native including features such as real-time updates, chat, subscriptions, payments, and custom features.",
   },
   {
-    label: "Web Apps",
-    body: "React and Next.js, full-stack. PostgreSQL, Supabase, authentication, real-time subscriptions, payment integrations, third-party and CRM integrations. Designed, built, and deployed end-to-end.",
+    label: "Websites",
+    body: "Custom accessible and discoverable web apps and creative websites designed, built, and deployed securely. Typically built with Next.js, PostgreSQL, and Supabase complete with auth, realtime, payments, and content management.",
   },
   {
-    label: "AI Products",
-    body: "RAG architecture, MCP server development, AI integration into existing products. AI/cloud infrastructure and production rules. Building products where AI is actually the feature — not bolted on as an afterthought.",
+    label: "Applied AI",
+    body: "Digital solutions built around AI such as vector databases, RAG, product rule design, LLM training, MCP server and client development, algorithm design, and integrating non-deterministic LLM processes into existing products and software.",
   },
   {
     label: "Ecommerce",
-    body: "Custom Shopify theme development, creative design, best practices, multi-location inventory management, and integrations. For brands that need a store that handles complexity and can be managed independently.",
+    body: "Custom Shopify theme development, creative design, implementing e-commerce best practices, third-party management integrations. For brands that need a creative or complex storefronts that can be managed independently and reliably.",
   },
   {
     label: "Creative Design",
-    body: "Interface design, design systems, visual direction, branding, print design. The creative work stays here so designs work with the final product and we don't pass you on to a template. Art is cheap, taste is still valuable.",
+    body: "From speaking to shareholders and users to mocking up Interfaces, developing design systems, visual direction, and brand. All creative work is done in-house with technical specs ready for handoff. Unique and designed for your users.",
   },
   {
     label: "UX Research",
-    body: "Discovery sessions, user interviews, competitor audits, information architecture, context framework. The foundational and iterative research that decides what is going to be built.",
+    body: "Leading discovery sessions, user interviews, competitor audits, building out information architecture, and developing context framework. This is foundational and iterative research that decides what is to be built and what can be improved.",
   },
   {
     label: "Product Development",
-    body: "Strategy, roadmapping, feature prioritization, algorithm design, gamification, onboarding, investor-ready specifications. From the first whiteboard session to a launched product, and every loop in between.",
+    body: "Leading and managing project strategy, roadmaps, prioritizing features, creating gamification strategy, creative to technical handoffs, shareholder-ready technical writing and presentations, and iterating what features can be better.",
   },
   {
-    label: "Trusted Partnerships:",
-    body: "Content creation, graphic design, Shopify storefronts, marketing sites, workflow automations, social media setup, SEO — available through trusted partners we've worked with before when the scope of work calls for it.",
+    label: "Project Management",
+    body: "We are a generation on constant change. Tools, platforms, and markets all move faster than anyone can track. We believe success is built on embracing timeless solutions and applying them with modern frameworks and technology.",
   },
 ];
 
@@ -63,16 +63,10 @@ export default function About() {
         variants={textFadeUpSmall(0.08, 0.4)}
         initial="hidden"
         animate="show"
-        style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}
+        style={{ display: "flex", maxWidth: "740px", alignItems: "center", justifyContent: "flex-start", flexDirection: "column"}}
       >
-        <p className={styles.ethos}>
-          We are another generation of constant change. Tools, platforms,
-          markets all move faster than anyone can track. We find success is
-          built on exploring timeless solutions and applying them with
-          creativity that meets the moment.
-        </p>
         <p className={styles.identity}>
-          O’Mara Technology is led by{" "}
+          O’Mara Technology is a digital studio led by{" "}
           <a
             href="https://masonomara.com"
             target="_blank"
@@ -80,11 +74,26 @@ export default function About() {
           >
             Mason O’Mara
           </a>
-          , a product designer and software engineer based in Asbury Park, NJ
-          and operating remotely. We work with founders and teams on mobile
-          apps, websites, AI products, and software. We handle all work
-          internally or with partners we trust and have worked with before.
+          , a creative technologist based out of Los Angeles, California. We lead or integrate with teams across end-to-end creative technical strategy and service from discovery to design, engineering, launch, and iteration across digital products, mobile apps, web apps, custom software, infrastructure, applied AI, and other creative solutions.
         </p>
+      </motion.div>
+
+      <motion.div
+        className={styles.capabilitiesSection}
+        variants={textFadeUpSmall(0.16, 0.4)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+      >
+        <h2 className={styles.sectionHeading}>What We Do</h2>
+        <div className={styles.capabilitiesGrid}>
+          {CAPABILITIES.map((cap) => (
+            <div key={cap.label} className={styles.capability}>
+              <h3 className={styles.capabilityLabel}>{cap.label}</h3>
+              <p className={styles.capabilityBody}>{cap.body}</p>
+            </div>
+          ))}
+        </div>
       </motion.div>
 
       <motion.div
@@ -124,23 +133,7 @@ export default function About() {
         </p>
       </motion.div>
 
-      <motion.div
-        className={styles.capabilitiesSection}
-        variants={textFadeUpSmall(0.16, 0.4)}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewport}
-      >
-        <h2 className={styles.sectionHeading}>What We Do</h2>
-        <div className={styles.capabilitiesGrid}>
-          {CAPABILITIES.map((cap) => (
-            <div key={cap.label} className={styles.capability}>
-              <h3 className={styles.capabilityLabel}>{cap.label}</h3>
-              <p className={styles.capabilityBody}>{cap.body}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+
 
       <motion.div
         className={styles.bioSection}
