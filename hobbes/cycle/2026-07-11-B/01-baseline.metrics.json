@@ -1,0 +1,84 @@
+{
+  "scores": {
+    "Home \u2014 mobile": {
+      "perf": 83,
+      "a11y": 100,
+      "bp": 96,
+      "seo": 100
+    },
+    "Home \u2014 desktop": {
+      "perf": 99,
+      "a11y": 100,
+      "bp": 96,
+      "seo": 100
+    },
+    "Work \u2014 mobile": {
+      "perf": 81,
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100
+    },
+    "Work \u2014 desktop": {
+      "perf": 100,
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100
+    },
+    "About \u2014 mobile": {
+      "perf": 86,
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100
+    },
+    "About \u2014 desktop": {
+      "perf": 99,
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100
+    },
+    "Contact \u2014 mobile": {
+      "perf": 97,
+      "a11y": 100,
+      "bp": 96,
+      "seo": 100
+    },
+    "Contact \u2014 desktop": {
+      "perf": 100,
+      "a11y": 100,
+      "bp": 96,
+      "seo": 100
+    },
+    "Sample Work \u2014 mobile": {
+      "perf": 98,
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100
+    },
+    "Sample Work \u2014 desktop": {
+      "perf": 100,
+      "a11y": 100,
+      "bp": 100,
+      "seo": 100
+    }
+  },
+  "field": {},
+  "axe": {},
+  "counts": {
+    "Broken links (4xx)": 0,
+    "Redirects": 0,
+    "Missing titles": 0,
+    "Duplicate titles": 0,
+    "Missing meta descriptions": 0,
+    "Pages with multiple H1": 1,
+    "Pages with skipped heading levels": 0,
+    "Pages missing image alt": 0,
+    "Pages missing aria-labels": 0,
+    "Pages missing roles": 0,
+    "Pages missing html lang": 0,
+    "Pages with invalid inline SVG": 0,
+    "Pages with duplicate inline SVG": 0,
+    "Pages with non-clickable phone numbers": 0,
+    "Valid HTML": 20
+  },
+  "crawl_pages": 20
+}

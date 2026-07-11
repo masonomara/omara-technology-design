@@ -7,9 +7,15 @@ interface ProjectCardProps {
   node: ContentNode;
   slug: string;
   thumbnail: string;
+  priority?: boolean;
 }
 
-export default function ProjectCard({ node, slug, thumbnail }: ProjectCardProps) {
+export default function ProjectCard({
+  node,
+  slug,
+  thumbnail,
+  priority,
+}: ProjectCardProps) {
   return (
     <Link href={`/work/${slug}`} className={styles.cardContainer}>
       <div className={styles.cardWrapper}>
@@ -25,6 +31,7 @@ export default function ProjectCard({ node, slug, thumbnail }: ProjectCardProps)
                 sizes="(max-width: 549px) 100vw, (max-width: 899px) 50vw, 33vw"
                 style={{ objectFit: "cover" }}
                 className={styles.cardImageTwo}
+                priority={priority}
               />
             </div>
           )}
