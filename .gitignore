@@ -18,6 +18,7 @@
 /out/
 
 /.github/*
+!/.github/workflows
 
 # production
 /build
