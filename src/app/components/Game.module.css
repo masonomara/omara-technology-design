@@ -148,6 +148,8 @@
   height: 50%;
   aspect-ratio: 473.95 / 461;
   pointer-events: none;
+  opacity: 0;
+  z-index: -1;
   transform: translateY(100%) rotate(-30deg);
   transition: all cubic-bezier(0.33, 0, 0.66, 1) 225ms;
   transition-delay: 300ms;
@@ -162,6 +164,8 @@
   height: 50%;
   aspect-ratio: 473.95 / 461;
   pointer-events: none;
+  opacity: 1;
+  z-index: 1;
   transform: translateY(0%) rotate(0deg);
   transition: all cubic-bezier(0.33, 0, 0.66, 1.33) 300ms;
   transition-delay: 400ms;
