@@ -111,7 +111,7 @@ export default function About() {
       >
         <h2 className={styles.sectionHeading}>How We Work</h2>
         <p className={styles.servicesNote}>
-          We lead or integrate within existing teams across the development lifecycle. WE work across discovery, research, design, development, launch, and iteration. We are committed to being constructive and honest rather than telling you what you want to hear. We handle all work internally or with partners we trust.
+          We lead or integrate within existing teams across the development lifecycle. We work across discovery, research, design, development, launch, and iteration. We are committed to being constructive and honest rather than telling you what you want to hear. We handle all work internally or with partners we trust.
 
         </p>
         <div className={styles.engagementsGrid}>
