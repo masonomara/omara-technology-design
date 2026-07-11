@@ -1,0 +1,78 @@
+# Hobbes review — post-publish verification, fired by an explicit GitHub signal.
+# The operator publishes/deploys the site live (however that works for this client), then
+# adds the `published` label to the PR. THAT is the trigger: this re-baselines the
+# LIVE site, diffs against the pre-publish baseline, and comments the before/after
+# on the PR. Deterministic (no LLM). Writes only a PR comment.
+#
+# Why a label, not the merge event: "merged" does not mean "live" — every client's
+# hosting/deploy is wired differently, so the trigger must not guess at live state. The
+# label is a safe, GitHub-native signal the human controls and only adds once the
+# change is actually serving users. (Create the label once: `gh label create published`.)
+name: Hobbes review
+
+on:
+  pull_request:
+    types: [labeled]
+  workflow_dispatch: # manual escape hatch — runs main's code, not the PR's frozen ref
+    inputs:
+      pr:
+        description: "PR number to re-baseline against and comment on"
+        required: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    # Auto: `published` added to a merged PR on the default branch (the operator's
+    # explicit "it's live now" signal). Manual: workflow_dispatch with a PR number.
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.label.name == 'published' &&
+       github.event.pull_request.merged == true &&
+       github.event.pull_request.base.ref == github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }} # latest tools + cycle data, not the PR's merge ref
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install SiteOne crawler
+        # Versioned asset name + unpacks to siteone-crawler/siteone-crawler; resolve
+        # the URL from the API and strip the top dir onto PATH. (glibc x64 build.)
+        run: |
+          URL=$(curl -s https://api.github.com/repos/janreges/siteone-crawler/releases/latest \
+            | grep -o 'https://[^"]*-linux-x64\.tar\.gz' | grep -v musl | head -1)
+          echo "SiteOne asset: $URL"
+          curl -fsSL -o /tmp/siteone.tar.gz "$URL"
+          mkdir -p "$HOME/siteone"
+          tar -xzf /tmp/siteone.tar.gz -C "$HOME/siteone" --strip-components=1
+          echo "$HOME/siteone" >> "$GITHUB_PATH"
+          "$HOME/siteone/siteone-crawler" --version || true   # --version prints then exits nonzero; the line above confirms it runs
+
+      - name: Brief CDN cushion
+        run: sleep 60 # the `published` label already means it's live; small buffer for CDN cache
+
+      - name: Re-baseline the live site into the cycle's raw-review/ + diff vs pre-publish
+        env:
+          PSI_API_KEY: ${{ secrets.PSI_API_KEY }}
+        run: |
+          CYCLE=$(ls -d hobbes/cycle/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[A-Z] 2>/dev/null | sort | tail -1)
+          echo "PR cycle (pre-publish 01-baseline.md is the before): $CYCLE"
+          echo "CYCLE=$CYCLE" >> "$GITHUB_ENV"
+          # publish-review.py captures the LIVE site into $CYCLE/raw-review/ and renders
+          # raw-review/baseline.md; review.py diffs 01-baseline.md (before) vs that (after).
+          python3 hobbes/tools/publish-review.py --run-dir "$CYCLE"
+          python3 hobbes/tools/review.py --run-dir "$CYCLE"
+
+      - name: Comment the before/after on the merged PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # 06-review.md already carries the title + the latency caveat (from 06-review-template.md).
+          gh pr comment ${{ github.event.pull_request.number || inputs.pr }} --body-file "$CYCLE/06-review.md"
