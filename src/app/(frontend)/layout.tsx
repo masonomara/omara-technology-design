@@ -8,14 +8,14 @@ import ScrollToTop from "../components/ScrollToTop";
 export const metadata: Metadata = {
   title: "O’Mara Technology",
   description:
-    "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
+    "O’Mara Technology — a digital studio led by Mason O’Mara, designing and building mobile apps, websites, applied AI, and software from strategy through launch.",
   alternates: {
     canonical: "https://omaratechnology.com/",
   },
   openGraph: {
     title: "O’Mara Technology",
     description:
-      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
+      "O’Mara Technology — a digital studio led by Mason O’Mara, designing and building mobile apps, websites, applied AI, and software from strategy through launch.",
     url: "https://omaratechnology.com/",
     siteName: "O’Mara Technology",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "O’Mara Technology",
     description:
-      "Digital studio led by Mason O'Mara for creative technical strategy and service including research, design, and development across digital products, mobile apps, websites, applied AI, software, and more creative solutions.",
+      "O’Mara Technology — a digital studio led by Mason O’Mara, designing and building mobile apps, websites, applied AI, and software from strategy through launch.",
     images: ["https://omaratechnology.com/bizCard.png"],
   },
 };
