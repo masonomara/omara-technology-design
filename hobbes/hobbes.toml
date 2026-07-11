@@ -1,0 +1,37 @@
+# Per-client config. The engine (tools/) reads this; the instance fills it.
+# Secrets are NEVER stored here — the PSI key comes from $PSI_API_KEY (a repo secret in CI).
+
+[client]
+name     = "O'Mara Technology"
+site     = "omaratechnology.com"
+platform = "Vercel"
+run_by   = "Mason"
+
+# The locked golden path: representative pages measured every cycle, in order.
+# Each entry needs a url; label is optional — omit it and the label is derived from
+# the url (first path directory, or "/" for the root). No fixed page types.
+[[golden_path]]
+label = "Home"
+url   = "https://omaratechnology.com/"
+
+[[golden_path]]
+label = "Work"
+url   = "https://omaratechnology.com/work"
+
+[[golden_path]]
+label = "About"
+url   = "https://omaratechnology.com/about"
+
+[[golden_path]]
+label = "Contact"
+url   = "https://omaratechnology.com/contact"
+
+[[golden_path]]
+label = "Sample Work"
+url   = "https://omaratechnology.com/work/moor"
+
+[cycle]
+branch_prefix = "hobbes-"   # flat, never collides with a branch literally named "hobbes"
+effort_budget = 100         # effort points per execute batch; 100 ≫ a full plan (~25 pts) = "do everything"
+timezone = "America/New_York"   # pins cycle dates so local + CI land on the same calendar day
+sample_path = "/products/"  # the high-volume page type the crawler subsamples (omit to crawl every page)
