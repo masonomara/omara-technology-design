@@ -62,7 +62,7 @@ The stage table above says *what each stage produces*. This is the other axis �
 
 ```mermaid
 flowchart TD
-    LIVE["LIVE SITE — hazelboutique.com<br/>PSI API · page HTML · SiteOne crawl"]:::live
+    LIVE["LIVE SITE — omaratechnology.com<br/>PSI API · page HTML · SiteOne crawl"]:::live
 
     %% ═════════ CYCLE · hobbes-cycle.yml — one trigger: measure → fix → ONE PR ═════════
     subgraph CYCLE["CYCLE · hobbes-cycle.yml"]

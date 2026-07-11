@@ -6,38 +6,37 @@ Who and what this client is. Read it to get your bearings on the client, or any 
 
 ## 1. Business goals
 
-Hazel Boutique is a women's fashion boutique in New Jersey whose online store is hosted at `hazelboutique.com` with Shopify Advanced. It sells clothing such as hoodies, mock necks, barrel pants, joggers, accessories, perfume, home goods, and a vintage line under the EVI11 Twin Vintage label.
+O'Mara Technology is a product design and development studio at `omaratechnology.com`, led by Mason O'Mara out of Asbury Park, NJ and operating remotely. It works with founders and teams on mobile apps, websites, AI products, and software — end to end, design through deployment — handling the work internally or with trusted partners.
 
-The primary work is ongoing theme development: make the storefront clean, confident, and product-forward; keep it accessible and fast; and ship targeted features as they come up.
+The site is the studio's storefront: a marketing and portfolio site whose job is to show the work and the taste behind it, and to make booking the free 20-minute intro call effortless. Two engagement types are on offer — a scoped **one-time project** (discovery → design → development → launch, client owns it at the end) and an ongoing **partnership** (iterative, minimum three-month engagement).
 
-As with most e-commerce stores, the primary goals are to improve average order value (AOV), increase conversion rates, and hold the mix of site performance, discoverability, and accessibility.
+The primary goal is qualified intro-call bookings via the Contact page; supporting that are a credible, complete Work/case-study surface and a site that stays fast, accessible, and discoverable so the content does the selling.
 
 ## 2. Users
 
-Women of all ages looking for stylish, unique, and trendy products. Primarily based around the Jersey Shore / NJ local and tourist shoppers, plus a young social-media-driven audience.
+Founders and teams evaluating a design/development studio — deciding whether the work, the taste, and the way of working fit. Secondary: readers arriving from Mason's writing and videos (Substack, YouTube) and peers/referrers browsing the portfolio.
 
 ## 3. People and roles
 
-- **Jenna Campfield** — runs Hazel Boutique; owns brand, product, merchandising, and final sign-off; supplies assets (e.g. the May 2026 size charts).
-- **Mason O'Mara** — developer / operator, and creator of Hobbes. Builds, ships, and drives the baseline cycle; the only one who publishes the live theme. Works under **Tigertail**, his agency, which owns Hobbes (the agent running this engagement).
-- **Britni Adamo** — Hazel's second in command; competent and more responsible for the day-to-day on the site.
-- **Brenda McWynn** — social media manager; for help regarding things like TikTok, Instagram, Facebook.
+- **Mason O'Mara** — product designer and software engineer; owns and runs the studio, builds and ships the site, drives the baseline cycle, and is the **only one who publishes** (deploys the live site on Vercel). Also the creator and operator of Hobbes.
+- **Trusted partners** — content, additional design/dev, and specialist scope brought in per project when the work calls for it. No standing access to this repo.
 
 ## 4. Access
 
 Locations only — never the secrets themselves.
 
-- **Shopify admin** — owner's account; store `hazelboutiquenj.myshopify.com`. Theme ships via the Shopify CLI authed on Mason's machine.
-- **GitHub** — `github.com/masonomara/hazel.git` (Mason).
-- **Store CDN** — fonts and images under `cdn.shopify.com/s/files/1/0051/3264/8566/`.
-- **Apps** (configured in Shopify admin) — Judge.me, Instafeed, DA Restock, Route Insurance, AccessEase.
-- **Email** — `shop@hazelboutique.com` (contact + returns).
+- **GitHub** — `github.com/masonomara/omara-technology-design` (Mason).
+- **Hosting / deploy** — Vercel (`omaratechnology.com`). Only Mason publishes.
+- **Database** — Supabase, backing the homepage score game (`scores` table).
+- **Email** — `info@omaratechnology.com` (Contact form; delivered via Nodemailer/SMTP from `src/app/lib/send-mail.ts`).
+- **Analytics** — Vercel Analytics.
+- **External profiles** (linked from the site, not part of the build) — `masonomara.com`, Substack `@masonomara`, YouTube `@masonomaratechnology`.
 
 ## 5. Hard constraints
 
-- **Shopify Advanced, not Plus.** No Plus-only mechanics (Cart Transform Functions, full checkout extensibility) — design features to work on Advanced (the embroidery upcharge is carried by a **higher-priced variant of the same product** — a hidden "Embroidery" option toggled "Standard"↔"Embroidered" — not a separate fee product or a line-price transform; the `embroidery_price` theme setting drives only the on-page "+$20" display label, per `config/settings_schema.json`).
-- **Keep the fork upgrade-safe.** Minimize edits to Dawn core; prefer self-contained snippets over scattered changes.
-- **Brand bar:** clean, product-forward. Premium licensed fonts (Pragmatica, PragmaticaCondensed, Millionare Script, Lustria) — rights secured, hosted on the store CDN; do not reintroduce unlicensed font use.
+- **Do not break the live store.** Only Mason publishes, and only after sign-off. Verify on mobile + desktop before publishing.
 - **Accessibility is a standing requirement** — every change holds the a11y bar.
-- **Do not break the live store.** `settings_data.json` is admin-generated; coordinate pushes so the theme editor and code do not clobber each other. Verify on mobile + desktop before publishing.
+- **Protect the feel.** The site sells taste, so motion and finish are part of the product. The animation library is intentionally small — 5 variants in `src/app/lib/motion.ts`; don't add one without a clearly distinct use case. `whileInView` viewports use `amount: 0.15` everywhere. The homepage game's animations are tuned separately (see `CLAUDE.md`) — don't touch them during site-animation work.
+- **Keep overrides where they belong.** Match the surrounding file — CSS-module + global-token conventions, the existing `framer-motion` variants, and the typography tokens in `globals.css`. Don't scatter one-off styles.
+- **Secrets never in the repo.** Supabase keys and SMTP credentials live in Vercel env vars — never hard-code tokens or keys.
 - **No automated tests** — correctness is proven by manual verification plus the baseline cycle.

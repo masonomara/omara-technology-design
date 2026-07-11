@@ -1,12 +1,12 @@
 # Mission
 
-<!-- Human-owned. The high-level overview Hazel steers by — edited by a human when strategy shifts, not every cycle. Hobbes reads it to weigh and rate work, but never writes it. Keep it small and plain; the per-cycle numbers live in the scorecard. -->
+<!-- Human-owned. The high-level overview the website steers by — edited by a human when strategy shifts, not every cycle. Hobbes reads it to weigh and rate work, but never writes it. Keep it small and plain; the per-cycle numbers live in the scorecard. -->
 
 This is the single source of truth. When you weigh an idea, weigh it against what's written here. If a request cuts against the mission, say so *before* you build it.
 
 ## The mission
 
-Make the Hazel storefront fast, accessible, and easy to find — clean and consistent enough to let the brand do the work.
+Make the O'Mara Technology website fast, accessible, and easy to find — clean and consistent enough to let the content do the work.
 
 ## Top priorities
 
@@ -18,18 +18,17 @@ Each is written **baseline → target** so "done" is measured, not argued. This 
 
 ## Active builds
 
-- **Hazel storefront** — ongoing performance, accessibility, and discoverability fixes via Hobbes.
+- **O'Mara Technology website** — ongoing performance, accessibility, and discoverability fixes via Hobbes.
 
 ## Needs work
 
-- **Motion & consistency ("move well")** — Jenna likes the style, but the site doesn't move well or hold together yet; she wants more animation. This is the real gap — the priority work should protect it, not trample it.
-- **Page & navigation cleanup** — leftover template pieces and nav items.
+- **Leaderboard loading and performance** — Confirm loading is fast, wired up properly with Supabase, and reliable.
+- **Rich content & navigation cleanup** — leftover needless code and not top best performances.
 - **Image & asset loading** — confirm loading is consistent across the whole site.
 
 ## Back burner
 
-- **Mobile app** — not scoped. Park it until we can name the problem it solves.
-- **Automation research** — back-in-stock alerts, inventory, customer flows, recommendations. Research first; bring recommendations before building.
+*(none)*
 
 ## Sunset candidates
 
